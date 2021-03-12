@@ -9,9 +9,14 @@
     border-radius: 0px;
 }
 
-#custom-bootstrap-menu.navbar-default .navbar-nav > li > a {
-    color: rgba(119, 119, 119, 1);
-    background-color: rgba(248, 248, 248, 0);
+    #custom-bootstrap-menu.navbar-default .navbar-nav > li > a {
+        color: rgba(255, 255, 255, 1);
+        background-color: rgba(248, 248, 248, 0);
+    }
+
+
+li.custom-text-white > a {
+    color: rgba(255, 255, 255, 1);
 }
 
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > a:hover,
