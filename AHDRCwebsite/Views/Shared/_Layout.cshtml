@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AHDRCwebsite</title>
+    <title>@ViewData["Title"] - AHDRC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body style="overflow: hidden;">
+<img src="./Background.jpg" style="position: absolute; z-index: 0; left: -100px; top: -150px;">
 <header>
     <div id="custom-bootstrap-menu">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
@@ -19,26 +20,26 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item custom-text-white">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Archive">ARCHIVE</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Archive">ARCHIVE</a>
                         </li>
-                        <li class="nav-item custom-text-white">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
                         </li>
-                        <li class="nav-item custom-text-white">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="News">NEWS</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="News">NEWS</a>
                         </li>
-                        <li class="nav-item custom-text-white">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Help">HELP</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Help">HELP</a>
                         </li>
-                        <li class="nav-item custom-text-white">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Partnerships">PARTNERSHIPS</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Partnerships">PARTNERSHIPS</a>
                         </li>
-                        <li class="nav-item custom-text-white">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial"/>
                 </div>
             </div>
         </nav>
@@ -57,12 +58,6 @@
 </html>
 
 <style>
-    body {
-        background-image: url('./Background.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-    }
+
 </style>
 
