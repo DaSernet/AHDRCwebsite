@@ -1,0 +1,623 @@
+﻿@model IEnumerable<AHDRCwebsite.Models.Artwork>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Acquiredfrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acquisitiondate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Additionalfeatures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artistgender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artistsg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Associatefeatures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auctions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calabashinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chefferie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Collectedby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Collectedwhen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Collection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commanditaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commgender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commonfeatures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commsg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Condition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Confidential)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Createdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Createdatemax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Createdatemin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creditline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Depth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diameter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donationfrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ethnicgroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exhibition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Features)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groups)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hairinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kingdom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Langgroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medbeinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medbkinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medboinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medceinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medclinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medfeinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medfiinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medglinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medhoinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medirinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medium)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medivinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medmainfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medotinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medrainfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medreinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medseedpodsinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medshinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medskinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medstinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medwoinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Needbetter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objectgender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objectjanus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objectname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objectnameex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objectnamegn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Objectposture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photocopy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photographer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photoinvnr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photoprov)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pigmentinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Provenance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ispublic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raaiid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restoration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ritualassoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sitearcheo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Structuralfeatures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Village)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Web)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshoplist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yaleid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Associatfeatures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Multiline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Langsubgroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aquisitiondate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medwoodinfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reacttmp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acquiredfrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acquisitiondate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Additionalfeatures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artistgender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artistsg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Associatefeatures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auctions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calabashinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certificate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chefferie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Collectedby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Collectedwhen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Collection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commanditaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commgender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commonfeatures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commsg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Condition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confidential)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Createdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Createdatemax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Createdatemin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creditline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diameter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donationfrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ethnicgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exhibition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Features)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groups)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hairinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inventory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kingdom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Langgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medbeinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medbkinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medboinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medceinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medclinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medfeinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medfiinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medglinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medhoinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medirinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medium)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medivinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medmainfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medotinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medrainfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medreinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medseedpodsinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medshinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medskinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medstinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medwoinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Needbetter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objectgender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objectjanus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objectname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objectnameex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objectnamegn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objectposture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photocopy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photographer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photoinvnr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photoprov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pigmentinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provenance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ispublic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raaiid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restoration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ritualassoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sitearcheo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Structuralfeatures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Village)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Web)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Workshop)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Workshoplist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yaleid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Associatfeatures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Multiline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Langsubgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aquisitiondate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medwoodinfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reacttmp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
