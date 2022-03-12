@@ -14,10 +14,5 @@ namespace AHDRCwebsite.Data
         }
 
         public DbSet<Artwork> Artworks { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Artwork>().ToTable("Artwork");
-        }
     }
 }

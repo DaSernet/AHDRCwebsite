@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body style="overflow: hidden;">
-<img src="./Background.jpg" style="position: absolute; z-index: 0; left: -100px; top: -150px;">
+<img src="./Background.jpg" style="position: absolute; z-index: -100; left: -100px; top: -150px;" >
 <header>
     <div id="custom-bootstrap-menu">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
@@ -37,6 +37,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Artworks" asp-action="Index">ARTWORKS (TEMP)</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial"/>

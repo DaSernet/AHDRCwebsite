@@ -22,7 +22,7 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artworks.ToListAsync());
+            return View(await _context.Artworks.Take(100).ToListAsync());
         }
 
         // GET: Artworks/Details/5
