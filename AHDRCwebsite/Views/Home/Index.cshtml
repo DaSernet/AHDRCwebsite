@@ -4,7 +4,14 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form asp-controller="Artworks" asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by identifier: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                <button id="update-profile-button" type="submit" class="btn btn-primary">Search</button>
+            </p>
+        </div>
+    </form>
 </div>
 
 <footer class="footer text-muted">

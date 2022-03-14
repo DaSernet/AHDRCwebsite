@@ -20,9 +20,30 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: Artworks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber)
         {
-            return View(await _context.Artworks.Take(100).ToListAsync());
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var artworks = from s in _context.Artworks
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                artworks = artworks.Where(s => s.Identifier.Contains(searchString)
+                                       || s.Country.Contains(searchString));
+            }
+
+            int pageSize = 50;
+            return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Artworks/Details/5
