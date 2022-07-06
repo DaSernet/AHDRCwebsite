@@ -1,0 +1,11 @@
+﻿1) Change identifier from nchar to nvarchar
+ALTER TABLE dbo.artworks
+ALTER COLUMN Identifier NVARCHAR(MAX)
+
+update [AHDRC].[dbo].[Artworks]
+SET [Identifier] = REPLACE([Identifier],' ','')
+
+SELECT [Identifier]
+From [AHDRC].[dbo].[Artworks]
+
+2)

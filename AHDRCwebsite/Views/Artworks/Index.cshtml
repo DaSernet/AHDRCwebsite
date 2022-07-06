@@ -41,6 +41,7 @@
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
+                <td><a asp-action="Details" asp-route-id="@item.Id"><img src="@("/images/" + @item.Identifier +"-001.jpg")" class="rounded-circle"height="40" width="40"></a></td>
             </tr>
         }
     </tbody>
