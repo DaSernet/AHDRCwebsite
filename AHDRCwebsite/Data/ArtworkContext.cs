@@ -14,5 +14,7 @@ namespace AHDRCwebsite.Data
         }
 
         public DbSet<Artwork> Artworks { get; set; }
+
+        public DbSet<ArtworkImage> ArtworkImages { get; set; }
     }
 }
