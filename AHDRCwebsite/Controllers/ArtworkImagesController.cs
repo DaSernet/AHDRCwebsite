@@ -50,10 +50,10 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: ArtworkImages/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
             ArtImages vm = new ArtImages();
-            ViewBag.images = new SelectList(_context.Artworks.ToList(), "Id", "Identifier");
+            ViewBag.images = new SelectList(_context.Artworks.Where(m => m.Id == id).ToList(), "Id", "Identifier");
             return View(vm);
         }
 

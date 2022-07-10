@@ -49,7 +49,7 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Artworks == null)
             {
                 return NotFound();
             }
@@ -89,7 +89,7 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Artworks == null)
             {
                 return NotFound();
             }
@@ -140,7 +140,7 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Artworks == null)
             {
                 return NotFound();
             }
@@ -160,15 +160,23 @@ namespace AHDRCwebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (_context.Artworks == null)
+            {
+                return Problem("Entity set 'ArtworkContext.Artworks'  is null.");
+            }
             var artwork = await _context.Artworks.FindAsync(id);
-            _context.Artworks.Remove(artwork);
+            if (artwork != null)
+            {
+                _context.Artworks.Remove(artwork);
+            }
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ArtworkExists(int id)
         {
-            return _context.Artworks.Any(e => e.Id == id);
+          return _context.Artworks.Any(e => e.Id == id);
         }
     }
 }
