@@ -72,11 +72,15 @@ namespace AHDRCwebsite.Controllers
                     ImageURL = stringFileName,
                     Artwork = vm.Artwork
                 };
-                _context.ArtworkImages.Add(artworkImage);
 
-                
+
+                var artwork = _context.Artworks.Find(vm.Artwork.Id);
+                artworkImage.Artwork = artwork;
+                _context.ArtworkImages.Add(artworkImage);
             }
-            _context.SaveChanges();
+
+
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
