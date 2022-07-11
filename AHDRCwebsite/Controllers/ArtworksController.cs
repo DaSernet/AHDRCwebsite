@@ -33,7 +33,7 @@ namespace AHDRCwebsite.Controllers
 
             ViewData["CurrentFilter"] = searchString;
 
-            var artworks = from s in _context.Artworks
+            var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
                            select s;
 
             if (!String.IsNullOrEmpty(searchString))
