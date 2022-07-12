@@ -604,6 +604,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Reacttmp)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ArtworkImage)
+        </dt>
+        @foreach (var item in Model.ArtworkImage)
+        {
+            <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
+        }
+    </dl>
+</div>
     </dl>
 </div>
 <div>

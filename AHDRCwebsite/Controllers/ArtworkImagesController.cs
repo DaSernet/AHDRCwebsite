@@ -64,6 +64,7 @@ namespace AHDRCwebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ArtImages vm)
         {
+            if(vm.Images != null && vm.Artwork != null) { 
             foreach (var item in vm.Images)
             {
                 string stringFileName = UploadFile(item);
@@ -81,7 +82,9 @@ namespace AHDRCwebsite.Controllers
 
 
             await _context.SaveChangesAsync();
+            }
             return RedirectToAction("Index");
+            
         }
 
         private string UploadFile(IFormFile file)
