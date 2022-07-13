@@ -107,6 +107,7 @@ namespace AHDRCwebsite.Models
         public string Aquisitiondate { get; set; }
         public string Medwoodinfo { get; set; }
         public string Reacttmp { get; set; }
+        public string Category { get; set; }
         public ICollection<ArtworkImage> ArtworkImage { get; set; }
     }
 }
