@@ -177,6 +177,7 @@ namespace AHDRCwebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            string fileName = null;
             if (_context.ArtworkImages == null)
             {
                 return Problem("Entity set 'ArtworkContext.ArtworkImages'  is null.");
@@ -185,6 +186,13 @@ namespace AHDRCwebsite.Controllers
             if (artworkImage != null)
             {
                 _context.ArtworkImages.Remove(artworkImage);
+                string uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                fileName = artworkImage.ImageURL;
+                string filePath = Path.Combine(uploadDir, fileName);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
             }
             
             await _context.SaveChangesAsync();

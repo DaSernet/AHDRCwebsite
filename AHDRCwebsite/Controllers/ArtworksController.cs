@@ -94,7 +94,8 @@ namespace AHDRCwebsite.Controllers
                 return NotFound();
             }
 
-            var artwork = await _context.Artworks.FindAsync(id);
+            //var artwork = await _context.Artworks.FindAsync(id);
+            var artwork = await _context.Artworks.Include(i => i.ArtworkImage).FirstOrDefaultAsync(m => m.Id == id);
             if (artwork == null)
             {
                 return NotFound();
