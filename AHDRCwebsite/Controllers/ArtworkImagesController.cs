@@ -83,7 +83,7 @@ namespace AHDRCwebsite.Controllers
 
             await _context.SaveChangesAsync();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Artworks");
             
         }
 
@@ -196,7 +196,7 @@ namespace AHDRCwebsite.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Artworks");
         }
 
         private bool ArtworkImageExists(int id)

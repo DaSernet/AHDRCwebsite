@@ -615,7 +615,7 @@
         </dt>
         @foreach (var item in Model.ArtworkImage)
         {
-            <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
+            <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
         }
     </dl>
 </div>
