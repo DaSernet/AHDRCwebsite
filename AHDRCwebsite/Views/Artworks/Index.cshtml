@@ -18,7 +18,49 @@
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
+    <label>
+  <input type="checkbox" name="selectedCategory" value="au" /> 
+  <span>au</span>
+</label>
+<label>
+  <input type="checkbox" name="selectedCategory" value="bk" /> 
+  <span>bk</span>
+</label>
+<label>
+  <input type="checkbox" name="selectedCategory" value="co" /> 
+  <span>co</span>
+</label>
+<label>
+  <input type="checkbox" name="selectedCategory" value="pc" /> 
+  <span>pc</span>
+</label>
+<label>
+  <input type="checkbox" name="selectedCategory" value="ph" /> 
+  <span>ph</span>
+</label>
+<label>
+  <input type="checkbox" name="selectedCategory" value="wh" /> 
+  <span>wh</span>
+</label>
+<label>
+  <input type="checkbox" name="selectedCategory" value="xp" /> 
+  <span>xp</span>
+</label>
 </form>
+
+ @*@foreach (var artwork in Model)
+            {
+                <tr>
+                    <td>
+                        <input id="@artwork.Category" type="checkbox" name="selectedCategory" value="@artwork.Category" checked="@artwork.Category"/>
+                    </td>
+                    <td>
+                        <label for="@artwork.Category">@artwork.Category</label>
+                    </td>
+                </tr>
+            }*@
+
+
 <table class="table">
     <thead>
         <tr>

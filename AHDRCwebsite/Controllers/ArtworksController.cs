@@ -20,7 +20,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: Artworks
-        public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber)
+        public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber, string[] selectedCategory)
         {
             if (searchString != null)
             {
@@ -40,7 +40,13 @@ namespace AHDRCwebsite.Controllers
             {
                 artworks = artworks.Where(s => s.Identifier.Contains(searchString)
                                        || s.Country.Contains(searchString));
+
+                if (selectedCategory.Length >= 1) 
+                {
+                artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
+                }
             }
+            
 
             int pageSize = 50;
             return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize));
