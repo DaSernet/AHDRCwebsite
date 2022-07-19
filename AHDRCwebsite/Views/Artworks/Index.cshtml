@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Index";
+
+
 }
 
 <h1>Index</h1>
@@ -18,48 +20,37 @@
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
-    <label>
-  <input type="checkbox" name="selectedCategory" value="au" /> 
-  <span>au</span>
-</label>
-<label>
-  <input type="checkbox" name="selectedCategory" value="bk" /> 
-  <span>bk</span>
-</label>
-<label>
-  <input type="checkbox" name="selectedCategory" value="co" /> 
-  <span>co</span>
-</label>
-<label>
-  <input type="checkbox" name="selectedCategory" value="pc" /> 
-  <span>pc</span>
-</label>
-<label>
-  <input type="checkbox" name="selectedCategory" value="ph" /> 
-  <span>ph</span>
-</label>
-<label>
-  <input type="checkbox" name="selectedCategory" value="wh" /> 
-  <span>wh</span>
-</label>
-<label>
-  <input type="checkbox" name="selectedCategory" value="xp" /> 
-  <span>xp</span>
-</label>
+    <div id="checkbox-container">
+        <label>
+            <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
+            <span>au</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
+            <span>bk</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
+            <span>co</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="pc" id="pc-checkbox" />
+            <span>pc</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
+            <span>ph</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
+            <span>wh</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
+            <span>xp</span>
+        </label>
+    </div>
 </form>
-
- @*@foreach (var artwork in Model)
-            {
-                <tr>
-                    <td>
-                        <input id="@artwork.Category" type="checkbox" name="selectedCategory" value="@artwork.Category" checked="@artwork.Category"/>
-                    </td>
-                    <td>
-                        <label for="@artwork.Category">@artwork.Category</label>
-                    </td>
-                </tr>
-            }*@
-
 
 <table class="table">
     <thead>
@@ -82,9 +73,9 @@
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
-                <td><a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-circle"height="40" width="40"></a></td>
-                
-          </tr>
+                <td><a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-circle" height="40" width="40"></a></td>
+
+            </tr>
         }
     </tbody>
 </table>
@@ -106,3 +97,25 @@
    class="btn btn-primary @nextDisabled">
     Next
 </a>
+
+@section Scripts
+    {
+    <script>
+
+        var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+            $checkboxes = $("#checkbox-container :checkbox");
+
+        $checkboxes.on("change", function() {
+            $checkboxes.each(function() {
+                checkboxValues[this.id] = this.checked;
+            });
+
+            localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+
+        // On page load
+        $.each(checkboxValues, function(key, value) {
+            $("#" + key).prop('checked', value);
+        });
+    </script>
+}
