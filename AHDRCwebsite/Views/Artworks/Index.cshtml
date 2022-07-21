@@ -56,9 +56,13 @@
     <thead>
         <tr>
             <th>
-                <a>Identifier</a>
+             <a asp-action="Index" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Identifier</a>
             </th>
-            <th></th>
+            <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Size</a>
+            </th>
+            <th>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -67,6 +71,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Identifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Height)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

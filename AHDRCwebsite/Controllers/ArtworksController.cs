@@ -20,7 +20,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: Artworks
-        public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber, string[] selectedCategory)
+        public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
             if (searchString != null)
             {
@@ -31,6 +31,8 @@ namespace AHDRCwebsite.Controllers
                 searchString = currentFilter;
             }
 
+            ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
+            ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
 
             var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
@@ -46,7 +48,22 @@ namespace AHDRCwebsite.Controllers
                 artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
                 }
             }
-            
+
+            switch (sortOrder)
+            {
+                case "identifier_desc":
+                    artworks = artworks.OrderByDescending(s => s.Identifier);
+                    break;
+                case "Size":
+                    artworks = artworks.OrderBy(s => s.Height);
+                    break;
+                case "size_desc":
+                    artworks = artworks.OrderByDescending(s => s.Height);
+                    break;
+                default:
+                    artworks = artworks.OrderBy(s => s.Identifier);
+                    break;
+            }
 
             int pageSize = 50;
             return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize));
