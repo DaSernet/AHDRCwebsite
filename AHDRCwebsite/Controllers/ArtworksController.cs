@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AHDRCwebsite.Data;
 using AHDRCwebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AHDRCwebsite.Controllers
 {
+    [Authorize]
     public class ArtworksController : Controller
     {
         private readonly ArtworkContext _context;

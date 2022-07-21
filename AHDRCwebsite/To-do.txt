@@ -8,4 +8,4 @@ SET [Identifier] = REPLACE([Identifier],' ','')
 SELECT [Identifier]
 From [AHDRC].[dbo].[Artworks]
 
-2)
+2) DisplayConfirmAccountLink = false; should be set to true on production
