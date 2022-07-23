@@ -2,8 +2,6 @@
 
 @{
     ViewData["Title"] = "Index";
-
-
 }
 
 <h1>Index</h1>
@@ -21,6 +19,8 @@
         </p>
     </div>
     <div id="checkbox-container">
+        @if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
+        { 
         <label>
             <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
             <span>au</span>
@@ -49,6 +49,36 @@
             <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
             <span>xp</span>
         </label>
+        } else { 
+        <label>
+            <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" disabled/>
+            <span>au</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" disabled/>
+            <span>bk</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled/>
+            <span>co</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="pc" id="pc-checkbox" />
+            <span>pc</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
+            <span>ph</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
+            <span>wh</span>
+        </label>
+        <label>
+            <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
+            <span>xp</span>
+        </label>
+        }
     </div>
 </form>
 
@@ -81,7 +111,6 @@
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
                 <td><a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-circle" height="40" width="40"></a></td>
-
             </tr>
         }
     </tbody>

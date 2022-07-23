@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using AHDRCwebsite.ViewModel;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AHDRCwebsite.Controllers
 {
@@ -50,6 +51,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: ArtworkImages/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create(int id)
         {
             ArtImages vm = new ArtImages();
@@ -62,6 +64,7 @@ namespace AHDRCwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create(ArtImages vm)
         {
             if(vm.Images != null && vm.Artwork != null) { 
@@ -104,6 +107,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: ArtworkImages/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.ArtworkImages == null)
@@ -124,6 +128,7 @@ namespace AHDRCwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ImageURL")] ArtworkImage artworkImage)
         {
             if (id != artworkImage.Id)
@@ -155,6 +160,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: ArtworkImages/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.ArtworkImages == null)
@@ -175,6 +181,7 @@ namespace AHDRCwebsite.Controllers
         // POST: ArtworkImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             string fileName = null;
