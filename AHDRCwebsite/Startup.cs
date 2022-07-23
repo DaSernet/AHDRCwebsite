@@ -1,4 +1,5 @@
 using AHDRCwebsite.Data;
+using DotNetEd.CoreAdmin;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,8 +37,11 @@ namespace AHDRCwebsite
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddCoreAdmin("Administrator");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,9 +62,14 @@ namespace AHDRCwebsite
             app.UseStaticFiles();
 
             app.UseRouting();
+            
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            //app.UseCoreAdminCustomUrl("Adminpanel");
+            app.UseCoreAdminCustomTitle("AHDRC Admin panel");
+
 
             app.UseEndpoints(endpoints =>
             {

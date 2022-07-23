@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AHDRCwebsite.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ArtworksController : Controller
     {
         private readonly ArtworkContext _context;
@@ -32,7 +32,7 @@ namespace AHDRCwebsite.Controllers
             {
                 searchString = currentFilter;
             }
-
+                
             ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
