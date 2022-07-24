@@ -32,7 +32,7 @@ namespace AHDRCwebsite.Controllers
             {
                 searchString = currentFilter;
             }
-                
+
             ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
@@ -47,34 +47,49 @@ namespace AHDRCwebsite.Controllers
 
                 if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
                 {
-                    
-                } else
+
+                }
+                else
                 {
                     /*var list = new List<string>(selectedCategory);
                     list.Remove("au");
                     selectedCategory = list.ToArray();*/
                 }
-                
-                if (selectedCategory.Length >= 1) 
+
+                if (selectedCategory.Length >= 1)
                 {
-                artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
+                    artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
+                }
+            }
+            else
+            {
+                if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
+                {
+
+                }
+                else
+                {
+                    artworks = artworks.Where(s => s.Category == null);
                 }
             }
 
-            switch (sortOrder)
+            if (artworks != null)
             {
-                case "identifier_desc":
-                    artworks = artworks.OrderByDescending(s => s.Identifier);
-                    break;
-                case "Size":
-                    artworks = artworks.OrderBy(s => s.Height);
-                    break;
-                case "size_desc":
-                    artworks = artworks.OrderByDescending(s => s.Height);
-                    break;
-                default:
-                    artworks = artworks.OrderBy(s => s.Identifier);
-                    break;
+                switch (sortOrder)
+                {
+                    case "identifier_desc":
+                        artworks = artworks.OrderByDescending(s => s.Identifier);
+                        break;
+                    case "Size":
+                        artworks = artworks.OrderBy(s => s.Height);
+                        break;
+                    case "size_desc":
+                        artworks = artworks.OrderByDescending(s => s.Height);
+                        break;
+                    default:
+                        artworks = artworks.OrderBy(s => s.Identifier);
+                        break;
+                }
             }
 
             int pageSize = 50;
@@ -226,14 +241,14 @@ namespace AHDRCwebsite.Controllers
             {
                 _context.Artworks.Remove(artwork);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ArtworkExists(int id)
         {
-          return _context.Artworks.Any(e => e.Id == id);
+            return _context.Artworks.Any(e => e.Id == id);
         }
     }
 }
