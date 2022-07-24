@@ -22,7 +22,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: Artworks
-        public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
+        public async Task<IActionResult> Index(string currentSelectedCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
             var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
                            select s;
@@ -42,12 +42,16 @@ namespace AHDRCwebsite.Controllers
             else
             {
                 searchString = currentFilter;
+                if (currentSelectedCategory != null) { 
+                selectedCategory = currentSelectedCategory.Split(',');
+                }
             }
 
             ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
-            
+            ViewData["CurrentSelectedCategory"] = String.Join(",",selectedCategory);
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 artworks = artworks.Where(s => s.Identifier.Contains(searchString)
