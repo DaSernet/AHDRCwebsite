@@ -24,9 +24,20 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks
         public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
+            var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
+                           select s;
+
             if (searchString != null)
             {
                 pageNumber = 1;
+                if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
+                {
+
+                }
+                else
+                {
+                    artworks = artworks.Where(s => s.Category == null);
+                }
             }
             else
             {
@@ -36,10 +47,7 @@ namespace AHDRCwebsite.Controllers
             ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
-
-            var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
-                           select s;
-
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 artworks = artworks.Where(s => s.Identifier.Contains(searchString)
@@ -51,25 +59,14 @@ namespace AHDRCwebsite.Controllers
                 }
                 else
                 {
-                    /*var list = new List<string>(selectedCategory);
-                    list.Remove("au");
-                    selectedCategory = list.ToArray();*/
+                    var list = new List<string>(selectedCategory);
+                    list.Remove("bk");
+                    selectedCategory = list.ToArray();
                 }
 
                 if (selectedCategory.Length >= 1)
                 {
                     artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
-                }
-            }
-            else
-            {
-                if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
-                {
-
-                }
-                else
-                {
-                    artworks = artworks.Where(s => s.Category == null);
                 }
             }
 

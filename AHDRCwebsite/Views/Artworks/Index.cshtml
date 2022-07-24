@@ -55,7 +55,7 @@
         else
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" disabled />
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
                 <span>au</span>
             </label>
             <label>
@@ -63,7 +63,7 @@
                 <span>bk</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled />
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
                 <span>co</span>
             </label>
             <label>
@@ -91,10 +91,10 @@
         <thead>
             <tr>
                 <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Identifier</a>
+                    <a asp-action="Index" method="get" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Identifier</a>
                 </th>
                 <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Size</a>
+                    <a asp-action="Index" method="get" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Size</a>
                 </th>
                 <th>
                 </th>
@@ -135,11 +135,10 @@
 }
 
 
-
 @section Scripts
     {
     <script>
-        var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+        var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
             $checkboxes = $("#checkbox-container :checkbox");
 
         $checkboxes.on("change", function() {
@@ -147,16 +146,12 @@
                 checkboxValues[this.id] = this.checked;
             });
 
-            localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+            sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
         });
 
         // On page load
         $.each(checkboxValues, function(key, value) {
             $("#" + key).prop('checked', value);
         });
-
-        window.onbeforeunload = function() {
-            localStorage.removeItem("checkboxValues");
-        };
     </script>
 }
