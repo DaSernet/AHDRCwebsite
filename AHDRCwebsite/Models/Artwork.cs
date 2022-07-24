@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace AHDRCwebsite.Models
     public class Artwork
     {
         public int Id { get; set; }
+        [Display(Name = "Acquired from")]
         public string Acquiredfrom { get; set; }
         public string Acquisitiondate { get; set; }
         public string Additionalfeatures { get; set; }
@@ -107,6 +109,8 @@ namespace AHDRCwebsite.Models
         public string Aquisitiondate { get; set; }
         public string Medwoodinfo { get; set; }
         public string Reacttmp { get; set; }
+
+        [Required]
         public string Category { get; set; }
         public ICollection<ArtworkImage> ArtworkImage { get; set; }
     }
