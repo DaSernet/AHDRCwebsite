@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Index";
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
 <h1>Index</h1>
@@ -20,119 +22,119 @@
     </div>
     <div id="checkbox-container">
         @if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
-        { 
-        <label>
-            <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
-            <span>au</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-            <span>bk</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
-            <span>co</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="pc" id="pc-checkbox" />
-            <span>pc</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
-            <span>ph</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-            <span>wh</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-            <span>xp</span>
-        </label>
-        } else { 
-        <label>
-            <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" disabled/>
-            <span>au</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" disabled/>
-            <span>bk</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled/>
-            <span>co</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="pc" id="pc-checkbox" />
-            <span>pc</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
-            <span>ph</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-            <span>wh</span>
-        </label>
-        <label>
-            <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-            <span>xp</span>
-        </label>
+        {
+            <label>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
+                <span>au</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
+                <span>bk</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
+                <span>co</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="pc" id="pc-checkbox" />
+                <span>pc</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
+                <span>ph</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
+                <span>wh</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
+                <span>xp</span>
+            </label>
+        }
+        else
+        {
+            <label>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" disabled />
+                <span>au</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" disabled />
+                <span>bk</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled />
+                <span>co</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="pc" id="pc-checkbox" />
+                <span>pc</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
+                <span>ph</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
+                <span>wh</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
+                <span>xp</span>
+            </label>
         }
     </div>
 </form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-             <a asp-action="Index" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Identifier</a>
-            </th>
-            <th>
-            <a asp-action="Index" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Size</a>
-            </th>
-            <th>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Identifier)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Height)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-                <td><a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-circle" height="40" width="40"></a></td>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Identifier</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Size</a>
+                </th>
+                <th>
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
-
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<a asp-action="Index"
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Identifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Height)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                    <td><a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-circle" height="40" width="40"></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-primary @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
+        Previous
+    </a>
+    <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-primary @nextDisabled">
-    Next
-</a>
+        Next
+    </a>
+}
+
+
 
 @section Scripts
     {
