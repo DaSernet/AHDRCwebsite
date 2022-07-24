@@ -139,7 +139,6 @@
 @section Scripts
     {
     <script>
-
         var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
             $checkboxes = $("#checkbox-container :checkbox");
 
@@ -155,5 +154,9 @@
         $.each(checkboxValues, function(key, value) {
             $("#" + key).prop('checked', value);
         });
+
+        window.onbeforeunload = function() {
+            localStorage.removeItem("checkboxValues");
+        };
     </script>
 }
