@@ -27,19 +27,23 @@ namespace AHDRCwebsite.Controllers
             var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
                            select s;
 
+
+            //confidentials
             if (!User.IsInRole("Administrator"))
             {
                 artworks = artworks.Except(artworks.Where(i => i.Ispublic == "false"));
             }
 
+            //non-subscriber
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
+            {
+                artworks = artworks.Except(artworks.Where(i => i.Category == "bk"));
+            }
+
             if (searchString != null)
             {
                 pageNumber = 1;
-                if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
-                {
-
-                }
-                else
+                if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
                 {
                     artworks = artworks.Where(s => s.Category == null);
                 }
@@ -47,7 +51,8 @@ namespace AHDRCwebsite.Controllers
             else
             {
                 searchString = currentFilter;
-                if (currentSelectedCategory != null) {
+                if (currentSelectedCategory != null)
+                {
                     selectedCategory = currentSelectedCategory.Split(',');
                 }
             }
@@ -62,11 +67,7 @@ namespace AHDRCwebsite.Controllers
                 artworks = artworks.Where(s => s.Identifier.Contains(searchString)
                                        || s.Country.Contains(searchString));
 
-                if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
-                {
-
-                }
-                else
+                if (!User.IsInRole("Administrator") || !User.IsInRole("Subscriber"))
                 {
                     var list = new List<string>(selectedCategory);
                     list.Remove("bk");
@@ -148,7 +149,7 @@ namespace AHDRCwebsite.Controllers
 
                 // get everything after -
                 if (identifier != null)
-                { 
+                {
                     identifierNumber = identifier.Substring(identifier.IndexOf('-') + 1);
                 }
 
