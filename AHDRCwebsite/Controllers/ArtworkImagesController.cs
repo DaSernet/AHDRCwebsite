@@ -27,12 +27,14 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: ArtworkImages
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.ArtworkImages.ToListAsync());
         }
 
         // GET: ArtworkImages/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.ArtworkImages == null)
