@@ -7,11 +7,13 @@
 <h1>Edit</h1>
 
 <a asp-controller="ArtworkImages" asp-action="Create" asp-route-id="@Model.Id">Add images</a>
+@if(Model.ArtworkImage != null)
+{
 @foreach (var item in Model.ArtworkImage)
         {
             <a asp-controller="ArtworkImages" asp-action="delete" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
         }
-
+}
 <h4>Artwork</h4>
 <hr />
 <div class="row">
@@ -23,6 +25,11 @@
                 <label asp-for="Category" class="control-label"></label>
                 <input asp-for="Category" class="form-control" />
                 <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Identifier" class="control-label"></label>
+                <input asp-for="Identifier" class="form-control" readonly="readonly"/>
+                <span asp-validation-for="Identifier" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Acquiredfrom" class="control-label"></label>
