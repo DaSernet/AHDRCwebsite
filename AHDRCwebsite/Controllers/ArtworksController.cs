@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AHDRCwebsite.Controllers
 {
-    [Authorize]
     public class ArtworksController : Controller
     {
         private readonly ArtworkContext _context;
@@ -34,10 +33,12 @@ namespace AHDRCwebsite.Controllers
                 artworks = artworks.Except(artworks.Where(i => i.Ispublic == "false"));
             }
 
-            //non-subscriber
-            if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
+            //not logged in
+            if (!User.Identity.IsAuthenticated)
             {
-                artworks = artworks.Except(artworks.Where(i => i.Category == "bk"));
+                artworks = artworks.Except(artworks.Where(i => i.Category == "ph"));
+                artworks = artworks.Except(artworks.Where(i => i.Category == "co"));
+                artworks = artworks.Except(artworks.Where(i => i.Category == "pc"));
             }
 
             if (searchString != null)
