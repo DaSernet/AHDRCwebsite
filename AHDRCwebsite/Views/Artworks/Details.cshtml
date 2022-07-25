@@ -10,6 +10,20 @@
     <h4>Artwork</h4>
     <hr />
     <dl class="row">
+        @if (Model.ArtworkImage != null)
+        {
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ArtworkImage)
+            </dt>
+            <dd class = "col-sm-10">
+                @foreach (var item in Model.ArtworkImage)
+                {
+
+                    <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
+
+                }
+            </dd>
+        }
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Category)
         </dt>
@@ -610,13 +624,6 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Reacttmp)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ArtworkImage)
-        </dt>
-        @foreach (var item in Model.ArtworkImage)
-        {
-            <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
-        }
     </dl>
 </div>
 <div>
