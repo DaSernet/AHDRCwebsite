@@ -85,7 +85,6 @@ namespace AHDRCwebsite.Models
         public string Photoprov { get; set; }
         public string Pigmentinfo { get; set; }
         public string Provenance { get; set; }
-        [Required]
         public string Ispublic { get; set; }
         public string Publication { get; set; }
         public string Raaiid { get; set; }
