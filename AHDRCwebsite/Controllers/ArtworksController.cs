@@ -44,7 +44,7 @@ namespace AHDRCwebsite.Controllers
             if (searchString != null)
             {
                 pageNumber = 1;
-                if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
+                if (!User.Identity.IsAuthenticated)
                 {
                     artworks = artworks.Where(s => s.Category == null);
                 }
@@ -74,11 +74,11 @@ namespace AHDRCwebsite.Controllers
                     list.Remove("bk");
                     selectedCategory = list.ToArray();
                 }
+            }
 
-                if (selectedCategory.Length >= 1)
-                {
-                    artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
-                }
+            if (selectedCategory.Length >= 1)
+            {
+                artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
             }
 
             if (artworks != null)
