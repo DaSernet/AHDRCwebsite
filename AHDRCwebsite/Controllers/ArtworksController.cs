@@ -38,7 +38,7 @@ namespace AHDRCwebsite.Controllers
             {
                 artworks = artworks.Except(artworks.Where(i => i.Category == "ph"));
                 artworks = artworks.Except(artworks.Where(i => i.Category == "co"));
-                artworks = artworks.Except(artworks.Where(i => i.Category == "pc"));
+                artworks = artworks.Except(artworks.Where(i => i.Category == "ao"));
             }
 
             if (searchString != null)
