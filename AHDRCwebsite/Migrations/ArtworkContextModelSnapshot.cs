@@ -63,6 +63,10 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Calabashinfo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Certificate")
                         .HasColumnType("nvarchar(max)");
 
@@ -343,7 +347,19 @@ namespace AHDRCwebsite.Migrations
                     b.Property<int?>("ArtworkId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Copyright")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Courtesy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageSize")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photographer")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

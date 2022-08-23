@@ -7,45 +7,102 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body style="">
-    @*<p style="background-image: url('')position: absolute; z-index: -100; left: -100px; top: -150px; width:max-content; object-position: 50% 50%; background-size: cover;">*@
+<style>
+    body {
+        background-color: #666666;
+        background-image: url('/Images/Background.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    header{
+        width: 100%;
+    }
+    .navbar-logo {
+        position: absolute;
+        left: 10px;
+        top: auto;
+    }
+
+    .navbar {
+        font-size: 18px;
+        text-align: center;
+        list-style-type: none;
+        line-height: 40px;
+        position: relative;
+    }
+
+    .navbar ul {
+        padding: 10px 0;
+        margin: 0;
+    }
+    
+    .navbar-nav {
+        display: inline;
+    }
+    .navbar li {
+        display: inline-block;
+        padding: 0 18px 0px 18px;
+    }
+
+    .login-partial{
+        font-size: 12px;
+        position: absolute;
+        right: 10px;
+        top: 0px;
+    }
+    
+    .footer-text{
+        font-size: 12px;
+    }
+
+    .footer-text a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+        </style>
+        <div class="card-overlay">
+<body>
+    
     <header>
         <div id="custom-bootstrap-menu">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
                 <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LOGO</a>
+                    <a class="navbar-brand navbar-logo" asp-controller="Home" asp-action="Index">LOGO</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+                    <div class="navbar-collapse collapse d-sm-inline-flex">
+                        <ul class="navbar-nav flex-grow-1 justify-content-between">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Artworks" asp-action="index">ARCHIVE</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Artworks" asp-action="index">ARCHIVE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="News">NEWS</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="News">NEWS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Help">HELP</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Help">HELP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Partnerships">PARTNERSHIPS</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Partnerships">PARTNERSHIPS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">CONTACT</a>
                             </li>
-                             @if (User.IsInRole("Administrator"))
-                               {
+                            @if (User.IsInRole("Administrator"))
+                            {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="/CoreAdmin">ADMIN</a>
+                                    <a class="nav-link text-light" href="/CoreAdmin">ADMIN</a>
                                 </li>
-                               }
+                            }
                         </ul>
+                        <div class="login-partial">
                         <partial name="_LoginPartial" />
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -61,12 +118,16 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+</div>
 </html>
 
 <footer class="footer text-muted">
-    <div class="container text-dark text-center">
+    <div class="card-overlay">
+    <div class="container text-light text-center footer-text">
         background photo: info | <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a> | <a asp-area="" asp-controller="Home" asp-action="Terms">Terms of use</a> | <a asp-area="" asp-controller="Home" asp-action="Disclaimer">Disclaimer</a> | &copy; 2021 - AHDRC NPO. All rights reserved
     </div>
+    </div>
 </footer>
+
 
 
