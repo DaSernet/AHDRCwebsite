@@ -6,6 +6,8 @@
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
+<link rel="stylesheet" href="~/css/Information-pages.css">
+
 <style>
   .image-list{
       display: -webkit-box;
@@ -13,35 +15,36 @@
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-left: 50px;
-      width: 100vw;
-      position: relative;
-      left: calc(-50vw + 50%);
       display: flex;
       flex-direction: row;
+      width: 90vw;
+      position: relative;
+      left: calc(-40vw + 48.5%);
 }
 
 .img-with-text {
-    text-align: justify;
+    text-align: center;
     width: 160px;
-    margin-right: 15px;
+    margin-right: 8px;
 }
 
 .img-with-text img {
     display: block;
     margin: 0 auto;
+    max-width: 160px;
 }
 </style>
 
-<h1>Index</h1>
-
+@if (User.IsInRole("Administrator"))
+{
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+}
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
-        <p>
+        <p  class="text-light">
             Find by identifier: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
             <button id="update-profile-button" type="submit" class="btn btn-primary">Search</button>
             <a asp-action="Index">Back to Full List</a>
@@ -52,62 +55,62 @@
         {
             <label>
                 <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
-                <span>au</span>
+                <span class="text-light">au</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-                <span>bk</span>
+                <span class="text-light">bk</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
-                <span>co</span>
+                <span class="text-light">co</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ao" id="pc-checkbox" />
-                <span>pc</span>
+                <span class="text-light">pc</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
-                <span>ph</span>
+                <span class="text-light">ph</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-                <span>wh</span>
+                <span class="text-light">wh</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-                <span>xp</span>
+                <span class="text-light">xp</span>
             </label>
         }
         else
         {
             <label>
                 <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
-                <span>au</span>
+                <span class="text-light">au</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-                <span>bk</span>
+                <span class="text-light">bk</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled />
-                <span>co</span>
+                <span class="text-light">co</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ao" id="pc-checkbox" disabled />
-                <span>pc</span>
+                <span class="text-light">pc</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled />
-                <span>ph</span>
+                <span class="text-light">ph</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-                <span>wh</span>
+                <span class="text-light">wh</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-                <span>xp</span>
+                <span class="text-light">xp</span>
             </label>
         }
     </div>
@@ -155,26 +158,12 @@
     }
     else
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-currentSelectedCategory="@ViewData["CurrentSelectedCategory"]">Identifier</a>
-                    </th>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-currentSelectedCategory="@ViewData["CurrentSelectedCategory"]">Size</a>
-                    </th>
-                    <th>
-                    </th>
-                </tr>
-            </thead>
-        </table>
         <div class="image-list">
         @foreach (var item in Model)
         {
             <div class="img-with-text">
-            <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160" width="160"></a>
-            <figcaption>@Html.DisplayFor(modelItem => item.Identifier)</figcaption>
+            <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+            <figcaption class="text-light">@Html.DisplayFor(modelItem => item.Identifier)</figcaption>
             </div>
         }
         </div>
