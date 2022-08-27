@@ -6,626 +6,879 @@
 
 <link rel="stylesheet" href="~/css/Information-pages.css">
 
-<h1>Details</h1>
-
-<div>
+<div class="text-light">
     <h4>Artwork</h4>
     <hr />
     <dl class="row">
         @if (Model.ArtworkImage != null)
         {
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ArtworkImage)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @foreach (var item in Model.ArtworkImage)
                 {
 
-                    <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
+                    <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle" height="40" width="40"></a>
 
                 }
             </dd>
         }
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Acquiredfrom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Acquiredfrom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Acquisitiondate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Acquisitiondate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Additionalfeatures)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Additionalfeatures)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Artist)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Artist)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Artistgender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Artistgender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Artistsg)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Artistsg)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Associatefeatures)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Associatefeatures)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Auctions)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Auctions)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Calabashinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Calabashinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Certificate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Certificate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Chefferie)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Chefferie)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Clan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Clan)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Collectedby)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Collectedby)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Collectedwhen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Collectedwhen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Collection)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Collection)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Commanditaire)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Commanditaire)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Comments)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Comments)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Commgender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Commgender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Commonfeatures)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Commonfeatures)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Commsg)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Commsg)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Condition)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Condition)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Confidential)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Confidential)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Createdate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Createdate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Createdatemax)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Createdatemax)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Createdatemin)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Createdatemin)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Creditline)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Creditline)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Depth)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Depth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Diameter)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Diameter)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Donationfrom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Donationfrom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ethnicgroup)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ethnicgroup)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Exhibition)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Exhibition)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Features)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Features)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Groups)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Groups)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Hairinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Hairinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Height)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Height)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Identifier)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Identifier)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Inventory)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Inventory)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Kingdom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kingdom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Langgroup)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Langgroup)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Length)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Length)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medbeinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medbeinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medbkinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medbkinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medboinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medboinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medceinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medceinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medclinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medclinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medfeinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medfeinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medfiinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medfiinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medglinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medglinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medhoinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medhoinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medirinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medirinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medium)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medium)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medivinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medivinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medmainfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medmainfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medotinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medotinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medrainfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medrainfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medreinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medreinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medseedpodsinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medseedpodsinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medshinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medshinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medskinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medskinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medstinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medstinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medwoinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medwoinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Needbetter)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Needbetter)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Objectgender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Objectgender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Objectjanus)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Objectjanus)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Objectname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Objectname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Objectnameex)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Objectnameex)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Objectnamegn)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Objectnamegn)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Objectposture)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Objectposture)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photocopy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photocopy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photographer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photographer)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photoinvnr)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photoinvnr)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photoprov)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photoprov)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pigmentinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pigmentinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Provenance)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Provenance)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ispublic)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ispublic)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Publication)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Publication)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Raaiid)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Raaiid)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Region)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Region)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Restoration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Restoration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ritualassoc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ritualassoc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sitearcheo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sitearcheo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Structuralfeatures)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Structuralfeatures)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tms)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tms)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Usage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Usage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Village)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Village)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Web)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Web)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Weight)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Weight)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Width)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Width)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Workshop)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Workshop)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Workshoplist)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Workshoplist)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Yaleid)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Yaleid)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Unit)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Unit)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Associatfeatures)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Associatfeatures)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Multiline)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Multiline)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Langsubgroup)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Langsubgroup)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Aquisitiondate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Aquisitiondate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medwoodinfo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medwoodinfo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Reacttmp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Reacttmp)
-        </dd>
+        @if (Model.Acquiredfrom != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Acquiredfrom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Acquiredfrom)
+            </dd>
+        }
+        @if (Model.Acquisitiondate != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Acquisitiondate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Acquisitiondate)
+            </dd>
+        }
+        @if (Model.Additionalfeatures != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Additionalfeatures)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Additionalfeatures)
+            </dd>
+        }
+        @if (Model.Artist != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Artist)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Artist)
+            </dd>
+        }
+        @if (Model.Artistgender != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Artistgender)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Artistgender)
+            </dd>
+        }
+        @if (Model.Artistsg != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Artistsg)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Artistsg)
+            </dd>
+        }
+        @if (Model.Associatefeatures != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Associatefeatures)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Associatefeatures)
+            </dd>
+        }
+        @if (Model.Auctions != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Auctions)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Auctions)
+            </dd>
+        }
+        @if (Model.Calabashinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Calabashinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Calabashinfo)
+            </dd>
+        }
+        @if (Model.Certificate != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Certificate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Certificate)
+            </dd>
+        }
+        @if (Model.Chefferie != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Chefferie)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Chefferie)
+            </dd>
+        }
+        @if (Model.Clan != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Clan)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Clan)
+            </dd>
+        }
+        @if (Model.Collectedby != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Collectedby)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Collectedby)
+            </dd>
+        }
+        @if (Model.Collectedwhen != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Collectedwhen)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Collectedwhen)
+            </dd>
+        }
+        @if (Model.Collection != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Collection)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Collection)
+            </dd>
+        }
+        @if (Model.Commanditaire != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Commanditaire)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Commanditaire)
+            </dd>
+        }
+        @if (Model.Comments != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Comments)
+            </dd>
+        }
+        @if (Model.Commgender != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Commgender)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Commgender)
+            </dd>
+        }
+        @if (Model.Commonfeatures != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Commonfeatures)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Commonfeatures)
+            </dd>
+        }
+        @if (Model.Commsg != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Commsg)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Commsg)
+            </dd>
+        }
+        @if (Model.Condition != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Condition)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Condition)
+            </dd>
+        }
+        @if (Model.Confidential != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Confidential)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Confidential)
+            </dd>
+        }
+        @if (Model.Country != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Country)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+        }
+        @if (Model.Createdate != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Createdate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Createdate)
+            </dd>
+        }
+        @if (Model.Createdatemax != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Createdatemax)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Createdatemax)
+            </dd>
+        }
+        @if (Model.Createdatemin != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Createdatemin)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Createdatemin)
+            </dd>
+        }
+        @if (Model.Creditline != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Creditline)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Creditline)
+            </dd>
+        }
+        @if (Model.Depth != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Depth)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Depth)
+            </dd>
+        }
+        @if (Model.Diameter != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Diameter)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Diameter)
+            </dd>
+        }
+        @if (Model.Donationfrom != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Donationfrom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Donationfrom)
+            </dd>
+        }
+        @if (Model.Ethnicgroup != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Ethnicgroup)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ethnicgroup)
+            </dd>
+        }
+        @if (Model.Exhibition != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Exhibition)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Exhibition)
+            </dd>
+        }
+        @if (Model.Features != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Features)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Features)
+            </dd>
+        }
+        @if (Model.Groups != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Groups)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Groups)
+            </dd>
+        }
+        @if (Model.Hairinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Hairinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Hairinfo)
+            </dd>
+        }
+        @if (Model.Height != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Height)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Height)
+            </dd>
+        }
+        @if (Model.Identifier != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Identifier)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Identifier)
+            </dd>
+        }
+        @if (Model.Inventory != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Inventory)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Inventory)
+            </dd>
+        }
+        @if (Model.Kingdom != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Kingdom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Kingdom)
+            </dd>
+        }
+        @if (Model.Langgroup != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Langgroup)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Langgroup)
+            </dd>
+        }
+        @if (Model.Length != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Length)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Length)
+            </dd>
+        }
+        @if (Model.Medbeinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medbeinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medbeinfo)
+            </dd>
+        }
+        @if (Model.Medbkinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medbkinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medbkinfo)
+            </dd>
+        }
+        @if (Model.Medboinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medboinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medboinfo)
+            </dd>
+        }
+        @if (Model.Medceinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medceinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medceinfo)
+            </dd>
+        }
+        @if (Model.Medclinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medclinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medclinfo)
+            </dd>
+        }
+        @if (Model.Medfeinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medfeinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medfeinfo)
+            </dd>
+        }
+        @if (Model.Medfiinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medfiinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medfiinfo)
+            </dd>
+        }
+        @if (Model.Medglinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medglinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medglinfo)
+            </dd>
+        }
+        @if (Model.Medhoinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medhoinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medhoinfo)
+            </dd>
+        }
+        @if (Model.Medirinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medirinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medirinfo)
+            </dd>
+        }
+        @if (Model.Medium != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medium)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medium)
+            </dd>
+        }
+        @if (Model.Medivinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medivinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medivinfo)
+            </dd>
+        }
+        @if (Model.Medmainfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medmainfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medmainfo)
+            </dd>
+        }
+        @if (Model.Medotinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medotinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medotinfo)
+            </dd>
+        }
+        @if (Model.Medrainfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medrainfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medrainfo)
+            </dd>
+        }
+        @if (Model.Medreinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medreinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medreinfo)
+            </dd>
+        }
+        @if (Model.Medseedpodsinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medseedpodsinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medseedpodsinfo)
+            </dd>
+        }
+        @if (Model.Medshinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medshinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medshinfo)
+            </dd>
+        }
+        @if (Model.Medskinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medskinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medskinfo)
+            </dd>
+        }
+        @if (Model.Medstinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medstinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medstinfo)
+            </dd>
+        }@if (Model.Medwoinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medwoinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medwoinfo)
+            </dd>
+        }@if (Model.Needbetter != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Needbetter)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Needbetter)
+            </dd>
+        }@if (Model.Objectgender != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Objectgender)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Objectgender)
+            </dd>
+        }@if (Model.Objectjanus != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Objectjanus)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Objectjanus)
+            </dd>
+        }@if (Model.Objectname != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Objectname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Objectname)
+            </dd>
+        }@if (Model.Objectnameex != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Objectnameex)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Objectnameex)
+            </dd>
+        }@if (Model.Objectnamegn != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Objectnamegn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Objectnamegn)
+            </dd>
+        }@if (Model.Objectposture != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Objectposture)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Objectposture)
+            </dd>
+        }@if (Model.Photocopy != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Photocopy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Photocopy)
+            </dd>
+        }@if (Model.Photographer != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Photographer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Photographer)
+            </dd>
+        }@if (Model.Photoinvnr != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Photoinvnr)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Photoinvnr)
+            </dd>
+        }@if (Model.Photoprov != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Photoprov)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Photoprov)
+            </dd>
+        }@if (Model.Pigmentinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Pigmentinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pigmentinfo)
+            </dd>
+        }@if (Model.Provenance != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Provenance)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Provenance)
+            </dd>
+        }@if (Model.Ispublic != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Ispublic)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ispublic)
+            </dd>
+        }@if (Model.Publication != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Publication)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Publication)
+            </dd>
+        }@if (Model.Raaiid != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Raaiid)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Raaiid)
+            </dd>
+        }@if (Model.Region != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Region)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Region)
+            </dd>
+        }@if (Model.Restoration != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restoration)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restoration)
+            </dd>
+        }@if (Model.Ritualassoc != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Ritualassoc)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ritualassoc)
+            </dd>
+        }@if (Model.Sitearcheo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Sitearcheo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sitearcheo)
+            </dd>
+        }@if (Model.Structuralfeatures != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Structuralfeatures)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Structuralfeatures)
+            </dd>
+        }@if (Model.Tms != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Tms)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Tms)
+            </dd>
+        }@if (Model.Usage != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Usage)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Usage)
+            </dd>
+        }@if (Model.Village != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Village)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Village)
+            </dd>
+        }@if (Model.Web != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Web)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Web)
+            </dd>
+        }@if (Model.Weight != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Weight)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Weight)
+            </dd>
+        }@if (Model.Width != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Width)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Width)
+            </dd>
+        }@if (Model.Workshop != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Workshop)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Workshop)
+            </dd>
+        }@if (Model.Workshoplist != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Workshoplist)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Workshoplist)
+            </dd>
+        }@if (Model.Yaleid != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Yaleid)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Yaleid)
+            </dd>
+        }@if (Model.Unit != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Unit)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Unit)
+            </dd>
+        }@if (Model.Associatfeatures != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Associatfeatures)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Associatfeatures)
+            </dd>
+        }@if (Model.Multiline != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Multiline)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Multiline)
+            </dd>
+        }@if (Model.Langsubgroup != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Langsubgroup)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Langsubgroup)
+            </dd>
+        }@if (Model.Aquisitiondate != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Aquisitiondate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Aquisitiondate)
+            </dd>
+        }
+        @if (Model.Medwoodinfo != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Medwoodinfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Medwoodinfo)
+            </dd>
+        }
+        @if (Model.Reacttmp != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Reacttmp)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Reacttmp)
+            </dd>
+        }
     </dl>
 </div>
 <div>
