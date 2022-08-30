@@ -14,10 +14,14 @@
         background-position: center;
         background-size: cover;
     }
+    .container{
+        /*margin-bottom: 100px;*/
+    }
 
     header{
         width: 100%;
     }
+
     .navbar-logo {
         position: absolute;
         left: 20px;
@@ -54,16 +58,30 @@
     
     .footer-text{
         font-size: 12px;
+width:100%;
+display:block;
+background-color:red;
+color:#fff;
+bottom:0;
+top:100%;
+height:100%;
+text-decoration: none;
+text-align: center;
+width: 100%;
+position: fixed;
+vertical-align: baseline;
+bottom: 0px; 
+padding:10px;
     }
 
     .footer-text a {
         color: inherit;
         text-decoration: inherit;
     }
+
         </style>
+        <div class="card-overlay">
 <body>
-    
-<div class="card-overlay">
     <header>
         <div id="custom-bootstrap-menu">
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
@@ -117,7 +135,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    </div>
+    
 </body>
 
 </html>
@@ -128,6 +146,7 @@
         background photo: info | <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a> | <a asp-area="" asp-controller="Home" asp-action="Terms">Terms of use</a> | <a asp-area="" asp-controller="Home" asp-action="Disclaimer">Disclaimer</a> | &copy; 2021 - AHDRC NPO. All rights reserved
     </div>
 </footer>
+</div>
 
 
 
