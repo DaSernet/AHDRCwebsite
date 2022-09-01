@@ -6,899 +6,991 @@
 
 <link rel="stylesheet" href="~/css/Information-pages.css">
 <style>
-.info-div{
-      display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-      display: flex;
-      flex-direction: row;
-      width: 90vw;
-      position: relative;
-      left: calc(-40vw + 48.5%);
-}
-.button-group {
-   display: flex;
-   flex-direction: column;
-}
-</style>
+    .info-div {
+        width: 90vw;
+        position: relative;
+        left: calc(-40vw + 48.5%);
+    }
 
+        .info-div img {
+            width: 100%;
+        }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .button-group img {
+            margin-bottom: 10px;
+            width: 60px;
+            height: 60px;
+        }
+
+        #custCarousel .carousel-indicators {
+    position: static;
+    margin-top:20px;
+}
+
+#custCarousel .carousel-indicators > li {
+  width:100px;
+  height: 100px;
+}
+
+ #custCarousel .carousel-indicators li img {
+    display: block;
+    z-index: 100;
+ }
+
+    dl.inline-flex {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        width: auto; /* set the container width*/
+        overflow: visible;
+    }
+
+        dl.inline-flex dt {
+            flex: 0 0 50%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        dl.inline-flex dd {
+            flex: 0 0 50%;
+            margin-left: auto;
+            text-align: left;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+</style>
+<div>
+    <a asp-action="Index">Back to search results</a>
+</div>
 <div class="text-light row info-div">
-    
+    <div class="col-6">
         @if (Model.ArtworkImage != null)
         {
-            <div class="col-5">
-                @foreach (var item in Model.ArtworkImage)
-                {
-                    <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) height-max="750" width="700"></a>
-                }
+            <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+                <div class="carousel-inner">
+                    @foreach (var item in Model.ArtworkImage)
+                    {
+                        var totalAmount = Model.ArtworkImage.Count();
+                        var itemList = Model.ArtworkImage.ToList();
+                        if (Model.ArtworkImage.First() == item)
+                        {
+                            <div class="carousel-item active">
+                                <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
+                            </div>
+                        }
+                        if (Model.ArtworkImage.Last() == item)
+                        {
+                            for (int i = 0; i < totalAmount; i++)
+                            {
+                                var itemThumbnail = itemList[i];
+                                <ol class="carousel-indicators list-inline">
+                                    @if (i == 0)
+                                    {
+                                        
+                                        <li class="list-inline-item active">
+                                        <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
+                                            <img src=@("/uploads/" + @itemThumbnail.ImageURL) class="img-fluid">
+                                        </a>
+                                    </li>
+                                    } else {
+                                    <li class="list-inline-item">
+                                        <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
+                                            <img src=@("/uploads/" + @itemThumbnail.ImageURL) class="img-fluid">
+                                        </a>
+                                     </li>
+                                    }
+                                </ol>
+                            }
+                        }
+                    }
+
+                </div>
             </div>
-        }
-        <div class="col-1 button-group">
-            Buttons
-        </div>
-        <dl>
-        <div class="col-6">
-        @if (Model.Acquiredfrom != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Acquiredfrom)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Acquiredfrom)
-            </dd>
-        }
-        @if (Model.Acquisitiondate != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Acquisitiondate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Acquisitiondate)
-            </dd>
-        }
-        @if (Model.Additionalfeatures != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Additionalfeatures)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Additionalfeatures)
-            </dd>
-        }
-        @if (Model.Artist != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Artist)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Artist)
-            </dd>
-        }
-        @if (Model.Artistgender != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Artistgender)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Artistgender)
-            </dd>
-        }
-        @if (Model.Artistsg != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Artistsg)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Artistsg)
-            </dd>
-        }
-        @if (Model.Associatefeatures != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Associatefeatures)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Associatefeatures)
-            </dd>
-        }
-        @if (Model.Auctions != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Auctions)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Auctions)
-            </dd>
-        }
-        @if (Model.Calabashinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Calabashinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Calabashinfo)
-            </dd>
-        }
-        @if (Model.Certificate != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Certificate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Certificate)
-            </dd>
-        }
-        @if (Model.Chefferie != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Chefferie)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Chefferie)
-            </dd>
-        }
-        @if (Model.Clan != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Clan)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Clan)
-            </dd>
-        }
-        @if (Model.Collectedby != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Collectedby)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Collectedby)
-            </dd>
-        }
-        @if (Model.Collectedwhen != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Collectedwhen)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Collectedwhen)
-            </dd>
-        }
-        @if (Model.Collection != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Collection)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Collection)
-            </dd>
-        }
-        @if (Model.Commanditaire != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Commanditaire)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Commanditaire)
-            </dd>
-        }
-        @if (Model.Comments != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Comments)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Comments)
-            </dd>
-        }
-        @if (Model.Commgender != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Commgender)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Commgender)
-            </dd>
-        }
-        @if (Model.Commonfeatures != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Commonfeatures)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Commonfeatures)
-            </dd>
-        }
-        @if (Model.Commsg != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Commsg)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Commsg)
-            </dd>
-        }
-        @if (Model.Condition != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Condition)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Condition)
-            </dd>
-        }
-        @if (Model.Confidential != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Confidential)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Confidential)
-            </dd>
-        }
-        @if (Model.Country != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Country)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Country)
-            </dd>
-        }
-        @if (Model.Createdate != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Createdate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Createdate)
-            </dd>
-        }
-        @if (Model.Createdatemax != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Createdatemax)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Createdatemax)
-            </dd>
-        }
-        @if (Model.Createdatemin != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Createdatemin)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Createdatemin)
-            </dd>
-        }
-        @if (Model.Creditline != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Creditline)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Creditline)
-            </dd>
-        }
-        @if (Model.Depth != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Depth)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Depth)
-            </dd>
-        }
-        @if (Model.Diameter != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Diameter)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Diameter)
-            </dd>
-        }
-        @if (Model.Donationfrom != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Donationfrom)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Donationfrom)
-            </dd>
-        }
-        @if (Model.Ethnicgroup != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Ethnicgroup)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Ethnicgroup)
-            </dd>
-        }
-        @if (Model.Exhibition != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Exhibition)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Exhibition)
-            </dd>
-        }
-        @if (Model.Features != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Features)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Features)
-            </dd>
-        }
-        @if (Model.Groups != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Groups)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Groups)
-            </dd>
-        }
-        @if (Model.Hairinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Hairinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Hairinfo)
-            </dd>
-        }
-        @if (Model.Height != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Height)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Height)
-            </dd>
-        }
-        @if (Model.Identifier != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Identifier)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Identifier)
-            </dd>
-        }
-        @if (Model.Inventory != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Inventory)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Inventory)
-            </dd>
-        }
-        @if (Model.Kingdom != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Kingdom)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Kingdom)
-            </dd>
-        }
-        @if (Model.Langgroup != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Langgroup)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Langgroup)
-            </dd>
-        }
-        @if (Model.Length != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Length)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Length)
-            </dd>
-        }
-        @if (Model.Medbeinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medbeinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medbeinfo)
-            </dd>
-        }
-        @if (Model.Medbkinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medbkinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medbkinfo)
-            </dd>
-        }
-        @if (Model.Medboinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medboinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medboinfo)
-            </dd>
-        }
-        @if (Model.Medceinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medceinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medceinfo)
-            </dd>
-        }
-        @if (Model.Medclinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medclinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medclinfo)
-            </dd>
-        }
-        @if (Model.Medfeinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medfeinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medfeinfo)
-            </dd>
-        }
-        @if (Model.Medfiinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medfiinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medfiinfo)
-            </dd>
-        }
-        @if (Model.Medglinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medglinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medglinfo)
-            </dd>
-        }
-        @if (Model.Medhoinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medhoinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medhoinfo)
-            </dd>
-        }
-        @if (Model.Medirinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medirinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medirinfo)
-            </dd>
-        }
-        @if (Model.Medium != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medium)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medium)
-            </dd>
-        }
-        @if (Model.Medivinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medivinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medivinfo)
-            </dd>
-        }
-        @if (Model.Medmainfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medmainfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medmainfo)
-            </dd>
-        }
-        @if (Model.Medotinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medotinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medotinfo)
-            </dd>
-        }
-        @if (Model.Medrainfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medrainfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medrainfo)
-            </dd>
-        }
-        @if (Model.Medreinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medreinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medreinfo)
-            </dd>
-        }
-        @if (Model.Medseedpodsinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medseedpodsinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medseedpodsinfo)
-            </dd>
-        }
-        @if (Model.Medshinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medshinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medshinfo)
-            </dd>
-        }
-        @if (Model.Medskinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medskinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medskinfo)
-            </dd>
-        }
-        @if (Model.Medstinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medstinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medstinfo)
-            </dd>
-        }@if (Model.Medwoinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medwoinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medwoinfo)
-            </dd>
-        }@if (Model.Needbetter != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Needbetter)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Needbetter)
-            </dd>
-        }@if (Model.Objectgender != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Objectgender)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Objectgender)
-            </dd>
-        }@if (Model.Objectjanus != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Objectjanus)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Objectjanus)
-            </dd>
-        }@if (Model.Objectname != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Objectname)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Objectname)
-            </dd>
-        }@if (Model.Objectnameex != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Objectnameex)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Objectnameex)
-            </dd>
-        }@if (Model.Objectnamegn != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Objectnamegn)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Objectnamegn)
-            </dd>
-        }@if (Model.Objectposture != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Objectposture)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Objectposture)
-            </dd>
-        }@if (Model.Photocopy != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Photocopy)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Photocopy)
-            </dd>
-        }@if (Model.Photographer != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Photographer)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Photographer)
-            </dd>
-        }@if (Model.Photoinvnr != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Photoinvnr)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Photoinvnr)
-            </dd>
-        }@if (Model.Photoprov != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Photoprov)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Photoprov)
-            </dd>
-        }@if (Model.Pigmentinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Pigmentinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Pigmentinfo)
-            </dd>
-        }@if (Model.Provenance != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Provenance)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Provenance)
-            </dd>
-        }@if (Model.Ispublic != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Ispublic)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Ispublic)
-            </dd>
-        }@if (Model.Publication != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Publication)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Publication)
-            </dd>
-        }@if (Model.Raaiid != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Raaiid)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Raaiid)
-            </dd>
-        }@if (Model.Region != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Region)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Region)
-            </dd>
-        }@if (Model.Restoration != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Restoration)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Restoration)
-            </dd>
-        }@if (Model.Ritualassoc != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Ritualassoc)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Ritualassoc)
-            </dd>
-        }@if (Model.Sitearcheo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Sitearcheo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Sitearcheo)
-            </dd>
-        }@if (Model.Structuralfeatures != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Structuralfeatures)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Structuralfeatures)
-            </dd>
-        }@if (Model.Tms != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Tms)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Tms)
-            </dd>
-        }@if (Model.Usage != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Usage)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Usage)
-            </dd>
-        }@if (Model.Village != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Village)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Village)
-            </dd>
-        }@if (Model.Web != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Web)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Web)
-            </dd>
-        }@if (Model.Weight != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Weight)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Weight)
-            </dd>
-        }@if (Model.Width != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Width)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Width)
-            </dd>
-        }@if (Model.Workshop != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Workshop)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Workshop)
-            </dd>
-        }@if (Model.Workshoplist != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Workshoplist)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Workshoplist)
-            </dd>
-        }@if (Model.Yaleid != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Yaleid)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Yaleid)
-            </dd>
-        }@if (Model.Unit != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Unit)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Unit)
-            </dd>
-        }@if (Model.Associatfeatures != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Associatfeatures)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Associatfeatures)
-            </dd>
-        }@if (Model.Multiline != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Multiline)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Multiline)
-            </dd>
-        }@if (Model.Langsubgroup != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Langsubgroup)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Langsubgroup)
-            </dd>
-        }@if (Model.Aquisitiondate != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Aquisitiondate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Aquisitiondate)
-            </dd>
-        }
-        @if (Model.Medwoodinfo != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Medwoodinfo)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Medwoodinfo)
-            </dd>
-        }
-        @if (Model.Reacttmp != null)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.Reacttmp)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Reacttmp)
-            </dd>
-        }
-        </div>
-    </dl>
+
+        }
+    </div>
+
+    <div class="col-1 button-group">
+        <img src=@("/images/comment.png")>
+        <img src=@("/images/page_new.png")>
+        <img src=@("/images/page_delete.png")>
+        <img src=@("/images/page_move.png")>
+        <img src=@("/images/book.png")>
+    </div>
+    <div class="col-5">
+        <dl class="inline">
+
+            @if (Model.Acquiredfrom != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Acquiredfrom)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Acquiredfrom)
+                </dd>
+            }
+            @if (Model.Acquisitiondate != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Acquisitiondate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Acquisitiondate)
+                </dd>
+            }
+            @if (Model.Additionalfeatures != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Additionalfeatures)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Additionalfeatures)
+                </dd>
+            }
+            @if (Model.Artist != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Artist)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Artist)
+                </dd>
+            }
+            @if (Model.Artistgender != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Artistgender)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Artistgender)
+                </dd>
+            }
+            @if (Model.Artistsg != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Artistsg)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Artistsg)
+                </dd>
+            }
+            @if (Model.Associatefeatures != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Associatefeatures)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Associatefeatures)
+                </dd>
+            }
+            @if (Model.Auctions != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Auctions)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Auctions)
+                </dd>
+            }
+            @if (Model.Calabashinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Calabashinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Calabashinfo)
+                </dd>
+            }
+            @if (Model.Certificate != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Certificate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Certificate)
+                </dd>
+            }
+            @if (Model.Chefferie != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Chefferie)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Chefferie)
+                </dd>
+            }
+            @if (Model.Clan != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Clan)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Clan)
+                </dd>
+            }
+            @if (Model.Collectedby != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Collectedby)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Collectedby)
+                </dd>
+            }
+            @if (Model.Collectedwhen != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Collectedwhen)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Collectedwhen)
+                </dd>
+            }
+            @if (Model.Collection != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Collection)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Collection)
+                </dd>
+            }
+            @if (Model.Commanditaire != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Commanditaire)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Commanditaire)
+                </dd>
+            }
+            @if (Model.Comments != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Comments)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Comments)
+                </dd>
+            }
+            @if (Model.Commgender != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Commgender)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Commgender)
+                </dd>
+            }
+            @if (Model.Commonfeatures != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Commonfeatures)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Commonfeatures)
+                </dd>
+            }
+            @if (Model.Commsg != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Commsg)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Commsg)
+                </dd>
+            }
+            @if (Model.Condition != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Condition)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Condition)
+                </dd>
+            }
+            @if (Model.Confidential != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Confidential)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Confidential)
+                </dd>
+            }
+            @if (Model.Country != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+            }
+            @if (Model.Createdate != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Createdate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Createdate)
+                </dd>
+            }
+            @if (Model.Createdatemax != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Createdatemax)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Createdatemax)
+                </dd>
+            }
+            @if (Model.Createdatemin != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Createdatemin)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Createdatemin)
+                </dd>
+            }
+            @if (Model.Creditline != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Creditline)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Creditline)
+                </dd>
+            }
+            @if (Model.Depth != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Depth)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Depth)
+                </dd>
+            }
+            @if (Model.Diameter != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Diameter)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Diameter)
+                </dd>
+            }
+            @if (Model.Donationfrom != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Donationfrom)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Donationfrom)
+                </dd>
+            }
+            @if (Model.Ethnicgroup != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ethnicgroup)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ethnicgroup)
+                </dd>
+            }
+            @if (Model.Exhibition != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Exhibition)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Exhibition)
+                </dd>
+            }
+            @if (Model.Features != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Features)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Features)
+                </dd>
+            }
+            @if (Model.Groups != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Groups)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Groups)
+                </dd>
+            }
+            @if (Model.Hairinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Hairinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Hairinfo)
+                </dd>
+            }
+            @if (Model.Height != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Height)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Height)
+                </dd>
+            }
+            @if (Model.Identifier != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Identifier)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Identifier)
+                </dd>
+            }
+            @if (Model.Inventory != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Inventory)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Inventory)
+                </dd>
+            }
+            @if (Model.Kingdom != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Kingdom)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Kingdom)
+                </dd>
+            }
+            @if (Model.Langgroup != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Langgroup)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Langgroup)
+                </dd>
+            }
+            @if (Model.Length != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Length)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Length)
+                </dd>
+            }
+            @if (Model.Medbeinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medbeinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medbeinfo)
+                </dd>
+            }
+            @if (Model.Medbkinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medbkinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medbkinfo)
+                </dd>
+            }
+            @if (Model.Medboinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medboinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medboinfo)
+                </dd>
+            }
+            @if (Model.Medceinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medceinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medceinfo)
+                </dd>
+            }
+            @if (Model.Medclinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medclinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medclinfo)
+                </dd>
+            }
+            @if (Model.Medfeinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medfeinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medfeinfo)
+                </dd>
+            }
+            @if (Model.Medfiinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medfiinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medfiinfo)
+                </dd>
+            }
+            @if (Model.Medglinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medglinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medglinfo)
+                </dd>
+            }
+            @if (Model.Medhoinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medhoinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medhoinfo)
+                </dd>
+            }
+            @if (Model.Medirinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medirinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medirinfo)
+                </dd>
+            }
+            @if (Model.Medium != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medium)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medium)
+                </dd>
+            }
+            @if (Model.Medivinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medivinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medivinfo)
+                </dd>
+            }
+            @if (Model.Medmainfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medmainfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medmainfo)
+                </dd>
+            }
+            @if (Model.Medotinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medotinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medotinfo)
+                </dd>
+            }
+            @if (Model.Medrainfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medrainfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medrainfo)
+                </dd>
+            }
+            @if (Model.Medreinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medreinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medreinfo)
+                </dd>
+            }
+            @if (Model.Medseedpodsinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medseedpodsinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medseedpodsinfo)
+                </dd>
+            }
+            @if (Model.Medshinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medshinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medshinfo)
+                </dd>
+            }
+            @if (Model.Medskinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medskinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medskinfo)
+                </dd>
+            }
+            @if (Model.Medstinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medstinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medstinfo)
+                </dd>
+            }@if (Model.Medwoinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medwoinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medwoinfo)
+                </dd>
+            }@if (Model.Needbetter != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Needbetter)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Needbetter)
+                </dd>
+            }@if (Model.Objectgender != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Objectgender)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Objectgender)
+                </dd>
+            }@if (Model.Objectjanus != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Objectjanus)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Objectjanus)
+                </dd>
+            }@if (Model.Objectname != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Objectname)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Objectname)
+                </dd>
+            }@if (Model.Objectnameex != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Objectnameex)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Objectnameex)
+                </dd>
+            }@if (Model.Objectnamegn != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Objectnamegn)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Objectnamegn)
+                </dd>
+            }@if (Model.Objectposture != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Objectposture)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Objectposture)
+                </dd>
+            }@if (Model.Photocopy != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Photocopy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Photocopy)
+                </dd>
+            }@if (Model.Photographer != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Photographer)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Photographer)
+                </dd>
+            }@if (Model.Photoinvnr != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Photoinvnr)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Photoinvnr)
+                </dd>
+            }@if (Model.Photoprov != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Photoprov)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Photoprov)
+                </dd>
+            }@if (Model.Pigmentinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Pigmentinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Pigmentinfo)
+                </dd>
+            }@if (Model.Provenance != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Provenance)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Provenance)
+                </dd>
+            }@if (Model.Ispublic != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ispublic)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ispublic)
+                </dd>
+            }@if (Model.Publication != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Publication)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Publication)
+                </dd>
+            }@if (Model.Raaiid != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Raaiid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Raaiid)
+                </dd>
+            }@if (Model.Region != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Region)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Region)
+                </dd>
+            }@if (Model.Restoration != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Restoration)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Restoration)
+                </dd>
+            }@if (Model.Ritualassoc != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ritualassoc)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ritualassoc)
+                </dd>
+            }@if (Model.Sitearcheo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sitearcheo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Sitearcheo)
+                </dd>
+            }@if (Model.Structuralfeatures != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Structuralfeatures)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Structuralfeatures)
+                </dd>
+            }@if (Model.Tms != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tms)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Tms)
+                </dd>
+            }@if (Model.Usage != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Usage)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Usage)
+                </dd>
+            }@if (Model.Village != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Village)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Village)
+                </dd>
+            }@if (Model.Web != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Web)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Web)
+                </dd>
+            }@if (Model.Weight != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Weight)
+                </dd>
+            }@if (Model.Width != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Width)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Width)
+                </dd>
+            }@if (Model.Workshop != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Workshop)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Workshop)
+                </dd>
+            }@if (Model.Workshoplist != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Workshoplist)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Workshoplist)
+                </dd>
+            }@if (Model.Yaleid != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Yaleid)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Yaleid)
+                </dd>
+            }@if (Model.Unit != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Unit)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Unit)
+                </dd>
+            }@if (Model.Associatfeatures != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Associatfeatures)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Associatfeatures)
+                </dd>
+            }@if (Model.Multiline != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Multiline)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Multiline)
+                </dd>
+            }@if (Model.Langsubgroup != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Langsubgroup)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Langsubgroup)
+                </dd>
+            }@if (Model.Aquisitiondate != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Aquisitiondate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Aquisitiondate)
+                </dd>
+            }
+            @if (Model.Medwoodinfo != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Medwoodinfo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Medwoodinfo)
+                </dd>
+            }
+            @if (Model.Reacttmp != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Reacttmp)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Reacttmp)
+                </dd>
+            }
+
+        </dl>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
 </div>
