@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="~/css/Information-pages.css">
 <style>
     .info-div {
-        width: 90vw;
+        width: 100vw;
         position: relative;
-        left: calc(-40vw + 48.5%);
+        left: calc(-50vw + 50%);
     }
 
         .info-div img {
@@ -19,11 +19,13 @@
     .button-group {
         display: flex;
         flex-direction: column;
+        padding: 0 0 0 0;
     }
 
         .button-group img {
             width: 60px;
             height: 60px;
+            margin-bottom:10px;
         }
 
     #custCarousel .carousel-indicators {
@@ -51,27 +53,7 @@
             border: 2px solid grey;
         }
 
-    dl.inline-flex {
-        display: flex;
-        flex-flow: row;
-        flex-wrap: wrap;
-        width: auto; /* set the container width*/
-        overflow: visible;
-    }
-
-        dl.inline-flex dt {
-            flex: 0 0 50%;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-
-        dl.inline-flex dd {
-            flex: 0 0 50%;
-            margin-left: auto;
-            text-align: left;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
+    
 
     h1 {
         font-size: 20px;
@@ -149,8 +131,8 @@
 <div>
     <a asp-action="Index">Back to search results</a>
 </div>
-<div class="text-light row info-div">
-    <div class="col-6">
+<div class="text-light row info-div justify-content-center">
+    <div class="col-6 image-col">
         @if (Model.ArtworkImage != null)
         {
             <div id="custCarousel" class="carousel slide" data-interval="false" align="center">
@@ -205,7 +187,7 @@
         }
     </div>
 
-    <div class="col-1 button-group">
+    <div class="col-auto button-group">
         <img src=@("/images/comment.png")>
         <img src=@("/images/page_new.png")>
         <img src=@("/images/page_delete.png")>
