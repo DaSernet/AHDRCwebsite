@@ -44,7 +44,7 @@
         }
 
         #custCarousel .carousel-indicators li img {
-            height:100%;
+            height: 100%;
             width: 100%;
             display: block;
             z-index: 100;
@@ -72,7 +72,80 @@
             text-overflow: ellipsis;
             overflow: hidden;
         }
+
+    h1 {
+        font-size: 20px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+        h1:before,
+        h1:after {
+            background-color: white;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        h1:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        h1:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
 </style>
+<script>
+    function hideObjectInfo() {
+        var divName = "myDIV";
+        hideDiv(divName);
+    }
+
+    function hidePhysicalInfo() {
+        var divName = "physicalInfo";
+        hideDiv(divName);
+    }
+    function hideGeographicalInfo() {
+        var divName = "geographicalInfo";
+        hideDiv(divName);
+    }
+    function hideAuthorshipInfo() {
+        var divName = "authorshipInfo";
+        hideDiv(divName);
+    }
+    function hideHistoryInfo() {
+        var divName = "historyInfo";
+        hideDiv(divName);
+    }
+    function hideNotesInfo() {
+        var divName = "notesInfo";
+        hideDiv(divName);
+    }
+    function hideClassificationInfo() {
+        var divName = "classificationInfo";
+        hideDiv(divName);
+    }
+    function hideAuthorityInfo() {
+        var divName = "authorityInfo";
+        hideDiv(divName);
+    }
+
+    function hideDiv(divName) {
+        var x = document.getElementById(divName);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+    
+</script>
 <div>
     <a asp-action="Index">Back to search results</a>
 </div>
@@ -98,33 +171,33 @@
                                 <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
                             </div>
                         }
-                        
-                            @if (Model.ArtworkImage.Last() == item)
-                            {
-                                <ol class="carousel-indicators list-inline">
-                                    @for (int i = 0; i < totalAmount; i++)
-                                    {
-                                        var itemThumbnail = itemList[i];
-                                        @if (i == 0)
-                                        {
 
-                                            <li class="list-inline-item">
-                                                <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
-                                                    <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
-                                                </a>
-                                            </li>
-                                        }
-                                        else
-                                        {
-                                            <li>
-                                                <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
-                                                    <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
-                                                </a>
-                                            </li>
-                                        }
+                        @if (Model.ArtworkImage.Last() == item)
+                        {
+                            <ol class="carousel-indicators list-inline">
+                                @for (int i = 0; i < totalAmount; i++)
+                                {
+                                    var itemThumbnail = itemList[i];
+                                    @if (i == 0)
+                                    {
+
+                                        <li class="list-inline-item">
+                                            <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
+                                                <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
+                                            </a>
+                                        </li>
                                     }
-                                </ol>
-                            }
+                                    else
+                                    {
+                                        <li>
+                                            <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
+                                                <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        }
                     }
                 </div>
             </div>
@@ -141,7 +214,38 @@
     </div>
     <div class="col-5">
         <dl class="inline">
+            <h1 onclick="hideObjectInfo()">@Model.Identifier</h1>
+            <div id="objectInfo">
 
+            </div>
+            <h1 onclick="hidePhysicalInfo()">Physical information</h1>
+            <div id="physicalInfo">
+
+            </div>
+            <h1 onclick="hideGeographicalInfo()">Geographical / tribal information</h1>
+            <div id="geographicalInfo">
+
+            </div>
+            <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+            <div id="authorshipInfo">
+
+            </div>
+            <h1 onclick="hideHistoryInfo()">History of object</h1>
+            <div id="historyInfo">
+
+            </div>
+            <h1 onclick="hideNotesInfo()">Notes</h1>
+            <div id="notesInfo()">
+
+            </div>
+            <h1 onclick="hideClassificationInfo()">Classification</h1>
+            <div id="classificationInfo">
+
+            </div>
+            <h1 onclick="hideAuthorityInfo()">Authority</h1>
+            <div id="authorityInfo">
+
+            </div>
             @if (Model.Acquiredfrom != null)
             {
                 <dt>
