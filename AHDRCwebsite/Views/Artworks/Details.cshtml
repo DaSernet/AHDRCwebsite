@@ -22,25 +22,34 @@
     }
 
         .button-group img {
-            margin-bottom: 10px;
             width: 60px;
             height: 60px;
         }
 
-        #custCarousel .carousel-indicators {
-    position: static;
-    margin-top:20px;
-}
+    #custCarousel .carousel-indicators {
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 0;
+        right: 0;
+    }
 
-#custCarousel .carousel-indicators > li {
-  width:100px;
-  height: 100px;
-}
+        #custCarousel .carousel-indicators > li {
+            border-bottom: 1px solid transparent;
+            border-top: 1px solid transparent;
+            width: 40px;
+            height: 40px;
+            opacity: 1;
+        }
 
- #custCarousel .carousel-indicators li img {
-    display: block;
-    z-index: 100;
- }
+        #custCarousel .carousel-indicators li img {
+            height:100%;
+            width: 100%;
+            display: block;
+            z-index: 100;
+            border: 2px solid grey;
+        }
 
     dl.inline-flex {
         display: flex;
@@ -71,13 +80,13 @@
     <div class="col-6">
         @if (Model.ArtworkImage != null)
         {
-            <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+            <div id="custCarousel" class="carousel slide" data-interval="false" align="center">
                 <div class="carousel-inner">
                     @foreach (var item in Model.ArtworkImage)
                     {
                         var totalAmount = Model.ArtworkImage.Count();
                         var itemList = Model.ArtworkImage.ToList();
-                        if (Model.ArtworkImage.First() == item)
+                        @if (Model.ArtworkImage.First() == item)
                         {
                             <div class="carousel-item active">
                                 <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
@@ -89,32 +98,34 @@
                                 <a href="@("/uploads/" + @item.ImageURL)"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
                             </div>
                         }
-                        if (Model.ArtworkImage.Last() == item)
-                        {
-                            for (int i = 0; i < totalAmount; i++)
+                        
+                            @if (Model.ArtworkImage.Last() == item)
                             {
-                                var itemThumbnail = itemList[i];
                                 <ol class="carousel-indicators list-inline">
-                                    @if (i == 0)
+                                    @for (int i = 0; i < totalAmount; i++)
                                     {
-                                        
-                                        <li class="list-inline-item active">
-                                        <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
-                                            <img src=@("/uploads/" + @itemThumbnail.ImageURL) class="img-fluid">
-                                        </a>
-                                    </li>
-                                    } else {
-                                    <li class="list-inline-item">
-                                        <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
-                                            <img src=@("/uploads/" + @itemThumbnail.ImageURL) class="img-fluid">
-                                        </a>
-                                     </li>
+                                        var itemThumbnail = itemList[i];
+                                        @if (i == 0)
+                                        {
+
+                                            <li class="list-inline-item">
+                                                <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
+                                                    <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
+                                                </a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
+                                                    <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
+                                                </a>
+                                            </li>
+                                        }
                                     }
                                 </ol>
                             }
-                        }
                     }
-
                 </div>
             </div>
 
