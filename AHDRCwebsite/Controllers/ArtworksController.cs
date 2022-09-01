@@ -1,13 +1,12 @@
-﻿using System;
+﻿using AHDRCwebsite.Data;
+using AHDRCwebsite.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using AHDRCwebsite.Data;
-using AHDRCwebsite.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AHDRCwebsite.Controllers
 {
@@ -25,7 +24,6 @@ namespace AHDRCwebsite.Controllers
         {
             var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
                            select s;
-
 
             //confidentials
             if (!User.IsInRole("Administrator"))
@@ -88,12 +86,15 @@ namespace AHDRCwebsite.Controllers
                     case "identifier_desc":
                         artworks = artworks.OrderByDescending(s => s.Identifier);
                         break;
+
                     case "Size":
                         artworks = artworks.OrderBy(s => s.Height);
                         break;
+
                     case "size_desc":
                         artworks = artworks.OrderByDescending(s => s.Height);
                         break;
+
                     default:
                         artworks = artworks.OrderBy(s => s.Identifier);
                         break;
@@ -153,7 +154,6 @@ namespace AHDRCwebsite.Controllers
                 {
                     identifierNumber = identifier.Substring(identifier.IndexOf('-') + 1);
                 }
-
 
                 var newIdentifierNumber = int.Parse(identifierNumber) + 1;
                 var newIdentifier = category + "-" + newIdentifierNumber.ToString("D7");

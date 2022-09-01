@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AHDRCwebsite.Data;
+using AHDRCwebsite.Models;
+using AHDRCwebsite.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AHDRCwebsite.Data;
-using AHDRCwebsite.Models;
-using Microsoft.AspNetCore.Hosting;
-using AHDRCwebsite.ViewModel;
+using System;
 using System.IO;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AHDRCwebsite.Controllers
 {
@@ -69,27 +68,25 @@ namespace AHDRCwebsite.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create(ArtImages vm)
         {
-            if(vm.Images != null && vm.Artwork != null) { 
-            foreach (var item in vm.Images)
+            if (vm.Images != null && vm.Artwork != null)
             {
-                string stringFileName = UploadFile(item);
-                var artworkImage = new ArtworkImage
+                foreach (var item in vm.Images)
                 {
-                    ImageURL = stringFileName,
-                    Artwork = vm.Artwork
-                };
+                    string stringFileName = UploadFile(item);
+                    var artworkImage = new ArtworkImage
+                    {
+                        ImageURL = stringFileName,
+                        Artwork = vm.Artwork
+                    };
 
+                    var artwork = _context.Artworks.Find(vm.Artwork.Id);
+                    artworkImage.Artwork = artwork;
+                    _context.ArtworkImages.Add(artworkImage);
+                }
 
-                var artwork = _context.Artworks.Find(vm.Artwork.Id);
-                artworkImage.Artwork = artwork;
-                _context.ArtworkImages.Add(artworkImage);
+                await _context.SaveChangesAsync();
             }
-
-
-            await _context.SaveChangesAsync();
-            }
-            return RedirectToAction("Index","Artworks");
-            
+            return RedirectToAction("Index", "Artworks");
         }
 
         private string UploadFile(IFormFile file)
@@ -203,14 +200,14 @@ namespace AHDRCwebsite.Controllers
                     System.IO.File.Delete(filePath);
                 }
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Artworks");
         }
 
         private bool ArtworkImageExists(int id)
         {
-          return _context.ArtworkImages.Any(e => e.Id == id);
+            return _context.ArtworkImages.Any(e => e.Id == id);
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using AHDRCwebsite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AHDRCwebsite.Controllers
 {
@@ -32,30 +28,37 @@ namespace AHDRCwebsite.Controllers
         {
             return View();
         }
+
         public IActionResult Archive()
         {
             return View();
         }
+
         public IActionResult Contact()
         {
             return View();
         }
+
         public IActionResult Disclaimer()
         {
             return View();
         }
+
         public IActionResult Help()
         {
             return View();
         }
+
         public IActionResult News()
         {
             return View();
         }
+
         public IActionResult Partnerships()
         {
             return View();
         }
+
         public IActionResult Terms()
         {
             return View();

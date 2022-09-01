@@ -1,5 +1,3 @@
-using System;
-
 namespace AHDRCwebsite.Models
 {
     public class ErrorViewModel
