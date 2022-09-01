@@ -12,3 +12,23 @@ SELECT [Identifier]
 From [AHDRC].[dbo].[Artworks]
 
 2) DisplayConfirmAccountLink = false; should be set to true on production
+
+
+
+
+Drop tables:
+Needbetter (object < Information Photo)
+Objectgender (Object < What is it?)
+Objectjanus (Object < What is it?)
+Objectname (Object < What is it?)
+Objectnameex (Object < What is it?)
+Objectnamegn (Object < What is it?)
+Objectposture (Object < What is it?)
+Raaiid (Mag weg)
+Structuralfeatures
+Tms (Mag weg)
+Web (Mag weg)
+Yaleid (Mag weg)
+Unit Geen idee
+Multiline Geen idee
+Reacttmp Geen idee
