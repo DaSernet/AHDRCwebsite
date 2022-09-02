@@ -64,8 +64,96 @@ namespace AHDRCwebsite.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                artworks = artworks.Where(s => s.Identifier.Contains(searchString)
-                                       || s.Country.Contains(searchString));
+                artworks = artworks.Where(s => s.Acquiredfrom.Contains(searchString) ||
+s.Acquisitiondate.Contains(searchString) ||
+s.Additionalfeatures.Contains(searchString) ||
+s.Artist.Contains(searchString) ||
+s.Artistgender.Contains(searchString) ||
+s.Artistsg.Contains(searchString) ||
+s.Associatefeatures.Contains(searchString) ||
+s.Auctions.Contains(searchString) ||
+s.Calabashinfo.Contains(searchString) ||
+s.Certificate.Contains(searchString) ||
+s.Chefferie.Contains(searchString) ||
+s.Clan.Contains(searchString) ||
+s.Collectedby.Contains(searchString) ||
+s.Collectedwhen.Contains(searchString) ||
+s.Collection.Contains(searchString) ||
+s.Commanditaire.Contains(searchString) ||
+s.Comments.Contains(searchString) ||
+s.Commgender.Contains(searchString) ||
+s.Commonfeatures.Contains(searchString) ||
+s.Commsg.Contains(searchString) ||
+s.Condition.Contains(searchString) ||
+s.Country.Contains(searchString) ||
+s.Createdate.Contains(searchString) ||
+s.Createdatemax.Contains(searchString) ||
+s.Createdatemin.Contains(searchString) ||
+s.Creditline.Contains(searchString) ||
+s.Depth.Contains(searchString) ||
+s.Diameter.Contains(searchString) ||
+s.Donationfrom.Contains(searchString) ||
+s.Ethnicgroup.Contains(searchString) ||
+s.Exhibition.Contains(searchString) ||
+s.Features.Contains(searchString) ||
+s.Groups.Contains(searchString) ||
+s.Hairinfo.Contains(searchString) ||
+s.Height.Contains(searchString) ||
+s.Identifier.Contains(searchString) ||
+s.Inventory.Contains(searchString) ||
+s.Kingdom.Contains(searchString) ||
+s.Langgroup.Contains(searchString) ||
+s.Length.Contains(searchString) ||
+s.Medbeinfo.Contains(searchString) ||
+s.Medbkinfo.Contains(searchString) ||
+s.Medboinfo.Contains(searchString) ||
+s.Medceinfo.Contains(searchString) ||
+s.Medclinfo.Contains(searchString) ||
+s.Medfeinfo.Contains(searchString) ||
+s.Medfiinfo.Contains(searchString) ||
+s.Medglinfo.Contains(searchString) ||
+s.Medhoinfo.Contains(searchString) ||
+s.Medirinfo.Contains(searchString) ||
+s.Medium.Contains(searchString) ||
+s.Medivinfo.Contains(searchString) ||
+s.Medmainfo.Contains(searchString) ||
+s.Medotinfo.Contains(searchString) ||
+s.Medrainfo.Contains(searchString) ||
+s.Medreinfo.Contains(searchString) ||
+s.Medseedpodsinfo.Contains(searchString) ||
+s.Medshinfo.Contains(searchString) ||
+s.Medskinfo.Contains(searchString) ||
+s.Medstinfo.Contains(searchString) ||
+s.Medwoinfo.Contains(searchString) ||
+s.Needbetter.Contains(searchString) ||
+s.Objectgender.Contains(searchString) ||
+s.Objectjanus.Contains(searchString) ||
+s.Objectname.Contains(searchString) ||
+s.Objectnameex.Contains(searchString) ||
+s.Objectnamegn.Contains(searchString) ||
+s.Objectposture.Contains(searchString) ||
+s.Photocopy.Contains(searchString) ||
+s.Photographer.Contains(searchString) ||
+s.Photoinvnr.Contains(searchString) ||
+s.Photoprov.Contains(searchString) ||
+s.Pigmentinfo.Contains(searchString) ||
+s.Provenance.Contains(searchString) ||
+s.Publication.Contains(searchString) ||
+s.Region.Contains(searchString) ||
+s.Restoration.Contains(searchString) ||
+s.Ritualassoc.Contains(searchString) ||
+s.Sitearcheo.Contains(searchString) ||
+s.Structuralfeatures.Contains(searchString) ||
+s.Usage.Contains(searchString) ||
+s.Village.Contains(searchString) ||
+s.Weight.Contains(searchString) ||
+s.Width.Contains(searchString) ||
+s.Workshop.Contains(searchString) ||
+s.Workshoplist.Contains(searchString) ||
+s.Associatfeatures.Contains(searchString) ||
+s.Langsubgroup.Contains(searchString) ||
+s.Aquisitiondate.Contains(searchString) ||
+s.Medwoodinfo.Contains(searchString));
 
                 if (!User.IsInRole("Administrator") || !User.IsInRole("Subscriber"))
                 {
