@@ -45,7 +45,7 @@ namespace AHDRCwebsite.Controllers
                 if (!User.Identity.IsAuthenticated)
                 {
                     //non authenticated users can't search?
-                    artworks = artworks.Where(s => s.Category == null);
+                    //artworks = artworks.Where(s => s.Category == null);
                 }
             }
             else

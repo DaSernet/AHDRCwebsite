@@ -195,20 +195,333 @@
     </div>
 
     <div class="col-auto button-group">
+        @if(User.Identity.IsAuthenticated)
+        {
+        <img src=@("/images/download.png")>
         <img src=@("/images/comment.png")>
+        <img src=@("/images/pic_add.png")>
+        }
+        @if(User.IsInRole("Administrator"))
+        {
         <img src=@("/images/page_new.png")>
         <img src=@("/images/page_delete.png")>
         <img src=@("/images/page_move.png")>
         <img src=@("/images/book.png")>
+        //we are still missing some buttons!
+        }
     </div>
     <div class="col-5">
-        <h1 onclick="hideObjectInfo()">@Model.Identifier</h1>
-        <div id="objectInfo">
+        
+        <h1 onclick="hideGeographicalInfo()">Geographical / tribal information</h1>
+        <div id="geographicalInfo">
             <table>
                 <tbody>
+                    @if (Model.Chefferie != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Chefferie)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Chefferie)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Clan != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Clan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Clan)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Country != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Country)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Ethnicgroup != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Ethnicgroup)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Ethnicgroup)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Kingdom != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Kingdom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Kingdom)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Langgroup != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Langgroup)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Langgroup)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Region != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Region)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Region)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Sitearcheo != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Sitearcheo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Sitearcheo)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Village != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Village)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Village)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Langsubgroup != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Langsubgroup)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Langsubgroup)
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
+       
+         <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+        <div id="authorshipInfo">
+            <table>
+                <tbody>
+                    @if (Model.Artist != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artist)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artist)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Artistgender != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistgender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artistgender)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Artistsg != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistsg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artistsg)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commgender != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commgender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commgender)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commsg != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commsg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commsg)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdate != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdate)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdatemax != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdatemax)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdatemax)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdatemin != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdatemin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdatemin)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Workshop != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Workshop)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Workshop)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Workshoplist != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Workshoplist)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Workshoplist)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        <h1 onclick="hideObjectInfo()">@Model.Identifier.Substring(Model.Identifier.LastIndexOf('-') + 1)</h1>
+        <div id="objectInfo">
+            <table>
+                <tbody>
+                    @if (Model.Objectgender != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectgender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectgender)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectjanus != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectjanus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectjanus)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectname != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectname)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectnameex != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectnameex)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectnameex)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectnamegn != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectnamegn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectnamegn)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectposture != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectposture)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectposture)
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        
         <h1 onclick="hidePhysicalInfo()">Physical information</h1>
         <div id="physicalInfo" class="text-info-div">
             <table>
@@ -590,240 +903,7 @@
                 </tbody>
             </table>
         </div>
-        <h1 onclick="hideGeographicalInfo()">Geographical / tribal information</h1>
-        <div id="geographicalInfo">
-            <table>
-                <tbody>
-                    @if (Model.Chefferie != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Chefferie)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Chefferie)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Clan != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Clan)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Clan)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Country != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Country)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Country)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Ethnicgroup != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Ethnicgroup)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Ethnicgroup)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Kingdom != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Kingdom)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Kingdom)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Langgroup != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Langgroup)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Langgroup)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Region != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Region)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Region)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Sitearcheo != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Sitearcheo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Sitearcheo)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Village != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Village)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Village)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Langsubgroup != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Langsubgroup)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Langsubgroup)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
-        <div id="authorshipInfo">
-            <table>
-                <tbody>
-                    @if (Model.Artist != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artist)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artist)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Artistgender != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artistgender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artistgender)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Artistsg != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artistsg)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artistsg)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commgender != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commgender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commgender)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commsg != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commsg)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commsg)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Createdate != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Createdate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Createdate)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Createdatemax != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Createdatemax)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Createdatemax)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Createdatemin != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Createdatemin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Createdatemin)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Workshop != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Workshop)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Workshop)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Workshoplist != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Workshoplist)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Workshoplist)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+       
         <h1 onclick="hideHistoryInfo()">History of object</h1>
         <div id="historyInfo">
             <table>
@@ -996,6 +1076,7 @@
                 </tbody>
             </table>
         </div>
+       
         <h1 onclick="hideNotesInfo()">Notes</h1>
         <div id="notesInfo">
             <table>
@@ -1110,16 +1191,21 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Structuralfeatures != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Structuralfeatures)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Structuralfeatures)
+                        </td>
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
-        <h1 onclick="hideClassificationInfo()">Classification</h1>
-        <div id="classificationInfo">
-            <table>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+        
         <h1 onclick="hideAuthorityInfo()">Authority</h1>
         <div id="authorityInfo">
             <table>
@@ -1193,83 +1279,6 @@
         <h1>Delete / unknown</h1>
         <table>
             <tbody>
-                @if (Model.Objectgender != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectgender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectgender)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectjanus != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectjanus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectjanus)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectname != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectname)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectnameex != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectnameex)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectnameex)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectnamegn != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectnamegn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectnamegn)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectposture != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectposture)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectposture)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Structuralfeatures != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Structuralfeatures)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Structuralfeatures)
-                        </td>
-                    </tr>
-                }
                 @if (Model.Tms != null)
                 {
                     <tr>
