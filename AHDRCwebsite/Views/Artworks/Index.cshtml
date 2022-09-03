@@ -66,8 +66,8 @@
                 <span class="text-light">co</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="pc-checkbox" />
-                <span class="text-light">pc</span>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" />
+                <span class="text-light">ao</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
@@ -97,8 +97,8 @@
                 <span class="text-light">co</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="pc-checkbox" disabled />
-                <span class="text-light">pc</span>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled />
+                <span class="text-light">ao</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled />
@@ -161,8 +161,9 @@
         <div class="image-list">
         @foreach (var item in Model)
         {
-            <div class="img-with-text">
-            <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+                <div class="img-with-text">
+            @*<a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>*@
+            <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
             <figcaption class="text-light">@Html.DisplayFor(modelItem => item.Identifier)</figcaption>
             </div>
         }

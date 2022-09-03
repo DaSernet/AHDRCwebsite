@@ -22,6 +22,9 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks
         public async Task<IActionResult> Index(string currentSelectedCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
+
+            //var artworks = from s in _context.Artworks
+                           //select s;
             var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
                            select s;
 
@@ -155,10 +158,12 @@ s.Langsubgroup.Contains(searchString) ||
 s.Aquisitiondate.Contains(searchString) ||
 s.Medwoodinfo.Contains(searchString));
 
-                if (!User.IsInRole("Administrator") || !User.IsInRole("Subscriber"))
+                if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
                 {
                     var list = new List<string>(selectedCategory);
-                    list.Remove("bk");
+                    list.Remove("ph");
+                    list.Remove("co");
+                    list.Remove("au");
                     selectedCategory = list.ToArray();
                 }
             }

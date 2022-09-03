@@ -140,7 +140,7 @@
 </div>
 <div class="text-light row info-div justify-content-center">
     <div class="col-6 image-col">
-        @if (Model.ArtworkImage != null)
+        @*if (Model.ArtworkImage != null)
         {
             <div id="custCarousel" class="carousel slide" data-interval="false" align="center">
                 <div class="carousel-inner">
@@ -191,7 +191,56 @@
                 </div>
             </div>
 
-        }
+        } else
+        {*@
+            <div id="custCarousel" class="carousel slide" data-interval="false" align="center">
+                <div class="carousel-inner">
+                    @foreach (var item in Model.ArtworkImage)
+                    {
+                        var totalAmount = Model.ArtworkImage.Count();
+                        var itemList = Model.ArtworkImage.ToList();
+                        @if (Model.ArtworkImage.First() == item)
+                        {
+                            <div class="carousel-item active">
+                                <a href="@("/Images/defaultimage")"><img src=@("/Images/defaultimage.png") class="img-fluid"></a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <a href="@("/uploads/defaultimage2")"><img src=@("/Images/defaultimage2.png") class="img-fluid"></a>
+                            </div>
+                        }
+
+                        @if (Model.ArtworkImage.Last() == item)
+                        {
+                            <ol class="carousel-indicators list-inline">
+                                @for (int i = 0; i < totalAmount; i++)
+                                {
+                                    var itemThumbnail = itemList[i];
+                                    @if (i == 0)
+                                    {
+
+                                        <li class="list-inline-item">
+                                            <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
+                                                <img src=@("/Images/defaultimage.png")>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
+                                                <img src=@("/Images/defaultimage2.png")>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        }
+                    }
+                </div>
+            </div>
     </div>
 
     <div class="col-auto button-group">

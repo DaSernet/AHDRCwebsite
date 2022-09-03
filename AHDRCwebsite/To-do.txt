@@ -13,7 +13,14 @@ From [AHDRC].[dbo].[Artworks]
 
 2) DisplayConfirmAccountLink = false; should be set to true on production
 
+3) After conversion of database if  data = null in sql:
+SELECT [a].[Id], [a].[Category]
+FROM [AHDRC].[dbo].[Artworks] as [a]
+where [a].[Category] IS NULL
 
+DELETE
+FROM [AHDRC].[dbo].[Artworks] 
+where [Category] IS NULL
 
 
 Drop tables:
