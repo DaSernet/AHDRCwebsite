@@ -28,6 +28,16 @@ namespace AHDRCwebsite.Controllers
             var artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
                            select s;
 
+            //working
+            /*var categoryArtworkList = from s in publicArtworkList
+                                      join x in _context.Artworks on s.Id equals x.Id
+                                      select x.Category;*/
+
+            //working
+            /*var publicArtworkList = from y in _context.Artworks
+                                    .Select (i => new { i.Id, i.Ispublic })
+                                    select y;*/
+
             //confidentials
             if (!User.IsInRole("Administrator"))
             {
@@ -68,10 +78,10 @@ namespace AHDRCwebsite.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 artworks = artworks.Where(s => s.Acquiredfrom.Contains(searchString) ||
-s.Acquisitiondate.Contains(searchString) ||
-s.Additionalfeatures.Contains(searchString) ||
-s.Artist.Contains(searchString) ||
-s.Artistgender.Contains(searchString) ||
+                s.Acquisitiondate.Contains(searchString) ||
+                s.Additionalfeatures.Contains(searchString) ||
+                s.Artist.Contains(searchString) ||
+                s.Artistgender.Contains(searchString) ||
 s.Artistsg.Contains(searchString) ||
 s.Associatefeatures.Contains(searchString) ||
 s.Auctions.Contains(searchString) ||
