@@ -65,63 +65,63 @@
         @if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
-                <span class="text-light">au</span>
-            </label>
-            <label>
-                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-                <span class="text-light">bk</span>
-            </label>
-            <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
-                <span class="text-light">co</span>
-            </label>
-            <label>
                 <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" />
-                <span class="text-light">ao</span>
+                <span class="text-light">Objects</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
-                <span class="text-light">ph</span>
+                <span class="text-light">Field photos</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-                <span class="text-light">wh</span>
+                <span class="text-light">Who's who'</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
+                <span class="text-light">Publications</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-                <span class="text-light">xp</span>
+                <span class="text-light">Exhibitions</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
+                <span class="text-light">Collections</span>
+            </label>
+            <label>
+                <span class="text-light">Auctions</span>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
             </label>
         }
         else
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
-                <span class="text-light">au</span>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled/>
+                <span class="text-light">Objects</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-                <span class="text-light">bk</span>
-            </label>
-            <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled />
-                <span class="text-light">co</span>
-            </label>
-            <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled />
-                <span class="text-light">ao</span>
-            </label>
-            <label>
-                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled />
-                <span class="text-light">ph</span>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled/>
+                <span class="text-light">Field photos</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-                <span class="text-light">wh</span>
+                <span class="text-light">Who's who'</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
+                <span class="text-light">Publications</span>
             </label>
             <label>
                 <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-                <span class="text-light">xp</span>
+                <span class="text-light">Exhibitions</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled/>
+                <span class="text-light">Collections</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox"/>
+                <span>Auctions</span>
             </label>
         }
     </div>
@@ -186,5 +186,11 @@
         $.each(checkboxValues, function(key, value) {
             $("#" + key).prop('checked', value);
         });
+
+        const span = document.querySelector('span');
+        const input = document.querySelector('input[type=checkbox]');
+            input.addEventListener('change', function() {
+             span.style.color = input.checked ? "green" : "black";
+               })
     </script>
 }

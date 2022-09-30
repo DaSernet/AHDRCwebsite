@@ -220,80 +220,8 @@
         }
     </div>
     <div class="col-5">
-        <h1 onclick="hideObjectInfo()">@Model.IdentifierNoCategory</h1>
-        <div id="objectInfo">
-            <table>
-                <tbody>
-                    @if (Model.Objectgender != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectgender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectgender)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectjanus != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectjanus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectjanus)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectname != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectname)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectnameex != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectnameex)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectnameex)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectnamegn != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectnamegn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectnamegn)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectposture != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectposture)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectposture)
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        </div>
-
+        
+        <h1>@Model.IdentifierNoCategory</h1>
         <h1 onclick="hideGeographicalInfo()">Geographical / tribal information</h1>
         <div id="geographicalInfo">
             <table>
@@ -411,125 +339,81 @@
                 </tbody>
             </table>
         </div>
-       
-         <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
-        <div id="authorshipInfo">
+
+        <h1 onclick="hideObjectInfo()">Object Information</h1>
+        <div id="objectInfo">
             <table>
                 <tbody>
-                    @if (Model.Artist != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artist)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artist)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Artistgender != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artistgender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artistgender)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Artistsg != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artistsg)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artistsg)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commgender != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commgender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commgender)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commsg != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commsg)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commsg)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Createdate != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Createdate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Createdate)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Createdatemax != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Createdatemax)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Createdatemax)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Createdatemin != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Createdatemin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Createdatemin)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Workshop != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Workshop)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Workshop)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Workshoplist != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Workshoplist)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Workshoplist)
-                            </td>
-                        </tr>
-                    }
+                    @if (Model.Objectgender != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectgender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectgender)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectjanus != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectjanus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectjanus)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectname != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectname)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectnameex != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectnameex)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectnameex)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectnamegn != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectnamegn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectnamegn)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectposture != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectposture)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectposture)
+                        </td>
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
-        
+       
         <h1 onclick="hidePhysicalInfo()">Physical information</h1>
         <div id="physicalInfo" class="text-info-div">
             <table>
@@ -1084,7 +968,187 @@
                 </tbody>
             </table>
         </div>
-       
+
+        <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+        <div id="authorshipInfo">
+            <table>
+                <tbody>
+                    @if (Model.Artist != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artist)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artist)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Artistgender != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistgender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artistgender)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Artistsg != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistsg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artistsg)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commgender != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commgender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commgender)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commsg != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commsg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commsg)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdate != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdate)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdatemax != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdatemax)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdatemax)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdatemin != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdatemin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdatemin)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Workshop != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Workshop)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Workshop)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Workshoplist != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Workshoplist)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Workshoplist)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <h1>Photo info</h1>
+        <table>
+            <tbody>
+
+                @if (Model.Needbetter != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Needbetter)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Needbetter)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Photocopy != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Photocopy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Photocopy)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Photographer != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Photographer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Photographer)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Photoinvnr != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Photoinvnr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Photoinvnr)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Photoprov != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Photoprov)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Photoprov)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
         <h1 onclick="hideNotesInfo()">Notes</h1>
         <div id="notesInfo">
             <table>
@@ -1222,68 +1286,7 @@
             </table>
         </div>
 
-        <h1>Photo info (to-do)</h1>
-        <table>
-            <tbody>
-
-                @if (Model.Needbetter != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Needbetter)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Needbetter)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photocopy != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photocopy)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Photocopy)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photographer != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photographer)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Photographer)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photoinvnr != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photoinvnr)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Photoinvnr)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photoprov != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photoprov)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Photoprov)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
+        
         <h1>Delete / unknown</h1>
         <table>
             <tbody>

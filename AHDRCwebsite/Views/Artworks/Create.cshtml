@@ -4,12 +4,12 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="text-light">Create</h1>
 
-<h4>Artwork</h4>
+<h4 class="text-light">Artwork</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12 text-light">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
@@ -20,14 +20,13 @@
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
                 <select asp-for="Category" class="form-control">
-                    <option selected value="">No category</option>
-                    <option value="au">au</option>
-                    <option value="bk">bk</option>
-                    <option value="ph">ph</option>
-                    <option value="xp">xp</option>
-                    <option value="co">co</option>
-                    <option value="pc">pc</option>
-                    <option value="wh">wh</option>
+                    <option value="ao">Objects</option>
+                    <option value="ph">Field Photos</option>
+                    <option value="wh">Who's who</option>
+                    <option value="bk">Publications</option>
+                    <option value="xp">Exhibitions</option>
+                    <option value="co">Collections</option>
+                    <option value="au">Auctions</option>
                     </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
