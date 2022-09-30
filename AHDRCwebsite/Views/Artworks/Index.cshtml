@@ -130,42 +130,11 @@
 
 @if (Model.Count > 0)
 {
-    @if (User.IsInRole("Administrator"))
+    @if (!User.Identity.IsAuthenticated)
     {
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["IdentifierSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-currentSelectedCategory="@ViewData["CurrentSelectedCategory"]">Identifier</a>
-                    </th>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["SizeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-currentSelectedCategory="@ViewData["CurrentSelectedCategory"]">Size</a>
-                    </th>
-                    <th>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Identifier)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Height)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                        <td><a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-circle" height="40" width="40"></a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="text-light">
+        <p style="font-size: 30px;">Please register and login to browse our archive</p>
+        </div>
     }
     else
     {
@@ -175,11 +144,12 @@
                 <div class="img-with-text">
             @*<a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>*@
             <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
-            <figcaption class="text-light">@Html.DisplayFor(modelItem => item.Identifier)</figcaption>
+            <figcaption class="text-light">@Html.DisplayFor(modelItem => item.IdentifierNoCategory)
+            </figcaption>
             </div>
         }
         </div>
-    }
+    
 
     <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
@@ -193,6 +163,7 @@
    class="btn btn-primary @nextDisabled">
         Next
     </a>
+    }
 }
 
 

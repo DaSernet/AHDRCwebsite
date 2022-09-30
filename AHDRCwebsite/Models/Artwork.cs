@@ -46,6 +46,10 @@ namespace AHDRCwebsite.Models
         public string Hairinfo { get; set; }
         public string Height { get; set; }
         public string Identifier { get; set; }
+        public string IdentifierNoCategory
+        {
+            get { return Identifier != null ? Identifier.Substring(Identifier.LastIndexOf('-') + 1) : ""; } 
+        }
         public string Inventory { get; set; }
         public string Kingdom { get; set; }
         public string Langgroup { get; set; }
