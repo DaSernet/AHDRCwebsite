@@ -22,18 +22,16 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks
         public async Task<IActionResult> Index(string currentSelectedCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
-
             //var artworks = from s in _context.Artworks
             //select s;
 
             var artworks = (from s in _context.Artworks.Include(i => i.ArtworkImage)
-                        select s).Take(100);
+                            select s).Take(100);
             if (currentFilter != null || searchString != null)
             {
                 artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
-                               select s;
+                           select s;
             }
-            
 
             //working
             /*var categoryArtworkList = from s in publicArtworkList
