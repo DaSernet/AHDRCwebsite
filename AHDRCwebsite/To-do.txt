@@ -36,6 +36,7 @@ Structuralfeatures
 Tms (Mag weg)
 Web (Mag weg)
 Yaleid (Mag weg)
+Groups(mag weg?)
 Unit Geen idee
 Multiline Geen idee
 Reacttmp Geen idee

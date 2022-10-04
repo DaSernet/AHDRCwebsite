@@ -25,26 +25,31 @@ namespace AHDRCwebsite.Controllers
             //var artworks = from s in _context.Artworks
             //select s;
 
-            var artworks = (from s in _context.Artworks.Include(i => i.ArtworkImage)
-                            select s).Take(100);
+            var artworks = (from s in _context.Artworks
+                            select s).Take(1);
+            
             if (currentFilter != null || searchString != null)
             {
-                artworks = from s in _context.Artworks.Include(i => i.ArtworkImage)
+                artworks = from s in _context.Artworks
                            select s;
+            } else if (currentFilter == null && searchString == null)
+            {
+                artworks = (from s in _context.Artworks
+                                select s).Take(0);
             }
 
-            //working
-            /*var categoryArtworkList = from s in publicArtworkList
-                                      join x in _context.Artworks on s.Id equals x.Id
-                                      select x.Category;*/
+                //working
+                /*var categoryArtworkList = from s in publicArtworkList
+                                          join x in _context.Artworks on s.Id equals x.Id
+                                          select x.Category;*/
 
-            //working
-            /*var publicArtworkList = from y in _context.Artworks
-                                    .Select (i => new { i.Id, i.Ispublic })
-                                    select y;*/
+                //working
+                /*var publicArtworkList = from y in _context.Artworks
+                                        .Select (i => new { i.Id, i.Ispublic })
+                                        select y;*/
 
-            //confidentials
-            if (!User.IsInRole("Administrator"))
+                //confidentials
+                if (!User.IsInRole("Administrator"))
             {
                 artworks = artworks.Except(artworks.Where(i => i.Ispublic == "false"));
             }
@@ -210,6 +215,7 @@ s.Medwoodinfo.Contains(searchString));
                 }
             }
 
+            artworks = artworks.Include(i => i.ArtworkImage);
             int pageSize = 50;
             return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize));
         }

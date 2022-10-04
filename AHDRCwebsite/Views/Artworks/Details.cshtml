@@ -226,7 +226,7 @@
     <div class="col-5">
         
         <h1>@Model.IdentifierNoCategory</h1>
-        <h1 onclick="hideGeographicalInfo()">Geographical / tribal information</h1>
+        <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
         <div id="geographicalInfo">
             <table>
                 <tbody>
@@ -418,7 +418,7 @@
             </table>
         </div>
        
-        <h1 onclick="hidePhysicalInfo()">Physical information</h1>
+        <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
         <div id="physicalInfo" class="text-info-div">
             <table>
                 <tbody>
@@ -463,17 +463,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Diameter)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Groups != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Groups)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Groups)
                             </td>
                         </tr>
                     }
@@ -800,7 +789,7 @@
             </table>
         </div>
        
-        <h1 onclick="hideHistoryInfo()">History of object</h1>
+        <h1 onclick="hideHistoryInfo()">History of Object</h1>
         <div id="historyInfo">
             <table>
                 <tbody>
@@ -1091,7 +1080,7 @@
             </table>
         </div>
 
-        <h1>Photo info</h1>
+        <h1>Photographic Information</h1>
         <table>
             <tbody>
 
@@ -1324,6 +1313,17 @@
                         </td>
                         <td>
                             @Html.DisplayFor(model => model.Yaleid)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Unit != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Groups)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Groups)
                         </td>
                     </tr>
                 }

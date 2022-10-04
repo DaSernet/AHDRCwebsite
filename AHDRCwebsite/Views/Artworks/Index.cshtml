@@ -19,6 +19,13 @@
         line-height: 0px;
     }
 
+    input[type=checkbox]:checked + span{
+  color:white !important;
+}
+.text-grey{
+    color:grey;
+}
+
     .search-bar {
         width: 100%;
         height: 40px;
@@ -30,7 +37,7 @@
     }
 
         .search-bar:focus {
-            outline-width: 0;
+            
         }
 
     .search-bar-form {
@@ -54,6 +61,11 @@
         min-width: 50px;
         text-align: center;
     }
+
+    .checkbox-container
+    {
+        line-height: 42px;
+    }
 </style>
 
 <form class="search-bar-form" asp-action="Index" method="get">
@@ -61,74 +73,75 @@
         <p class="text-light">
             <div class="input-icons">
                 <i class="fa fa-search icon"></i>
-                <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="search-bar search-text-light" placeholder="Search...">
+                <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="search-bar  search-text-light" placeholder="Search...">
             </div>
         </p>
-    </div>
-    <div id="checkbox-container">
+        <div id="checkbox-container" class="cbeckbox-container">
         @if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" />
-                <span class="text-light">Objects</span>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" hidden/>
+                <span class="text-grey">Objects</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" />
-                <span class="text-light">Field photos</span>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" hidden/>
+                <span class="text-grey">Field Photos</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-                <span class="text-light">Who's who'</span>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden/>
+                <span class="text-grey">Who's Who</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-                <span class="text-light">Publications</span>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden/>
+                <span class="text-grey">Publications</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-                <span class="text-light">Exhibitions</span>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden/>
+                <span class="text-grey">Exhibitions</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" />
-                <span class="text-light">Collections</span>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" hidden/>
+                <span class="text-grey">Collections</span>
             </label>
             <label>
-                <span class="text-light">Auctions</span>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden/>
+                <span class="text-grey">Auctions</span>
             </label>
         }
         else
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled />
-                <span class="text-light">Objects</span>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled hidden/>
+                <span class="text-grey">Objects</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled />
-                <span class="text-light">Field photos</span>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled hidden/>
+                <span class="text-grey">Field Photos</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" />
-                <span class="text-light">Who's who'</span>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden/>
+                <span class="text-grey">Who's Who</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" />
-                <span class="text-light">Publications</span>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden/>
+                <span class="text-grey">Publications</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" />
-                <span class="text-light">Exhibitions</span>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden/>
+                <span class="text-grey">Exhibitions</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled />
-                <span class="text-light">Collections</span>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled hidden/>
+                <span class="text-grey">Collections</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" />
-                <span>Auctions</span>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden/>
+                <span class="text-grey">Auctions</span>
             </label>
         }
     </div>
+    </div>
+   
 
 </form>
 
@@ -142,6 +155,11 @@
     }
     else
     {
+        <div class="image-list">
+            <div class="text-light">
+            <p>@Model.Count() results found</p>
+            </div>
+        </div>
         <div class="image-list">
             @foreach (var item in Model)
             {
@@ -165,15 +183,15 @@
 
         <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-primary @prevDisabled">
-            Previous
+   asp-route-currentFilter="@ViewData["CurrentFilter"]" 
+        class="@prevDisabled">
+            <img src=@("/images/arrowleft.png")>
         </a>
         <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-primary @nextDisabled">
-            Next
+   class="@prevDisabled">
+            <img src=@("/images/arrowright.png")>
         </a>
     }
 }
@@ -198,11 +216,5 @@
         $.each(checkboxValues, function(key, value) {
             $("#" + key).prop('checked', value);
         });
-
-        const span = document.querySelector('span');
-        const input = document.querySelector('input[type=checkbox]');
-        input.addEventListener('change', function() {
-            span.style.color = input.checked ? "green" : "black";
-        })
     </script>
 }
