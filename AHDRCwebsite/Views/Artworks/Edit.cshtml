@@ -242,6 +242,15 @@
                     </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
+            <div hidden>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Identifier)
+                            </td>
+                            <td>
+                                <input asp-for="Identifier" class="form-control" />
+                            </td>
+                        </tr>
+                        </div>
             <h1>@Model.IdentifierNoCategory</h1>
             <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
             <div id="geographicalInfo">
