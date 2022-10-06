@@ -3,583 +3,1374 @@
 @{
     ViewData["Title"] = "Edit";
 }
+@*same styling as details*@
+<style>
+    .info-div {
+        width: 100vw;
+        position: relative;
+        left: calc(-50vw + 50%);
+    }
+
+        .info-div img {
+            width: 100%;
+        }
+
+    tbody tr td:first-child {
+        width: 8em;
+        min-width: 8em;
+        max-width: 8em;
+        word-break: break-all;
+    }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0 0;
+    }
+
+        .button-group img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+    #custCarousel .carousel-indicators {
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 0;
+        right: 0;
+    }
+
+        #custCarousel .carousel-indicators > li {
+            border-bottom: 1px solid transparent;
+            border-top: 1px solid transparent;
+            width: 40px;
+            height: 40px;
+            opacity: 1;
+        }
+
+        #custCarousel .carousel-indicators li img {
+            height: 100%;
+            width: 100%;
+            display: block;
+            z-index: 100;
+            border: 2px solid grey;
+        }
+
+
+
+    h1 {
+        font-size: 20px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+        h1:before,
+        h1:after {
+            background-color: white;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        h1:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+
+        h1:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+
+    td {
+        vertical-align: top;
+    }
+</style>
+<link rel="stylesheet" href="~/css/cardoverlay.css">
+@*Same javascript as details*@
+<script>
+    function hideObjectInfo() {
+        var divName = "objectInfo";
+        hideDiv(divName);
+    }
+
+    function hidePhysicalInfo() {
+        var divName = "physicalInfo";
+        hideDiv(divName);
+    }
+    function hideGeographicalInfo() {
+        var divName = "geographicalInfo";
+        hideDiv(divName);
+    }
+    function hideAuthorshipInfo() {
+        var divName = "authorshipInfo";
+        hideDiv(divName);
+    }
+    function hideHistoryInfo() {
+        var divName = "historyInfo";
+        hideDiv(divName);
+    }
+    function hideNotesInfo() {
+        var divName = "notesInfo";
+        hideDiv(divName);
+    }
+    function hideClassificationInfo() {
+        var divName = "classificationInfo";
+        hideDiv(divName);
+    }
+    function hideAuthorityInfo() {
+        var divName = "authorityInfo";
+        hideDiv(divName);
+    }
+
+    function hideDiv(divName) {
+        var x = document.getElementById(divName);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 <h1 class="text-light">Edit</h1>
 
-<a asp-controller="ArtworkImages" asp-action="Create" asp-route-id="@Model.Id">Add images</a>
-@if(Model.ArtworkImage != null)
-{
-@foreach (var item in Model.ArtworkImage)
+<div class="text-light row info-div justify-content-center">
+    <div class="col-5 image-col">
+        @if (Model.ArtworkImage.Count >= 1 && Model.ArtworkImage != null)
         {
-            <a asp-controller="ArtworkImages" asp-action="delete" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="rounded-circle"height="40" width="40"></a>
+            <div id="custCarousel" class="carousel slide" data-interval="false" align="center">
+                <div class="carousel-inner">
+                    @foreach (var item in Model.ArtworkImage)
+                    {
+                        var totalAmount = Model.ArtworkImage.Count();
+                        var itemList = Model.ArtworkImage.ToList();
+                        @if (Model.ArtworkImage.First() == item)
+                        {
+                            <div class="carousel-item active">
+                                <a asp-controller="ArtworkImages" asp-action="delete" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <a asp-controller="ArtworkImages" asp-action="delete" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
+                            </div>
+                        }
+
+                        @if (Model.ArtworkImage.Last() == item)
+                        {
+                            <ol class="carousel-indicators list-inline">
+                                @for (int i = 0; i < totalAmount; i++)
+                                {
+                                    var itemThumbnail = itemList[i];
+                                    @if (i == 0)
+                                    {
+
+                                        <li class="list-inline-item">
+                                            <a id="@("carousel-selector-" + i)" class="selected" data-slide-to="@(i)" data-target="#custCarousel">
+                                                <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a id="@("carousel-selector-" + i)" data-slide-to="@(i)" data-target="#custCarousel">
+                                                <img src=@("/uploads/" + @itemThumbnail.ImageURL)>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        }
+                    }
+                </div>
+            </div>
+
         }
-}
-<h4 class="text-light">Artwork</h4>
-<hr />
-<div class="row">
-    <div class="col-md-12 text-light">
+        else
+        {
+            <div id="custCarousel" class="carousel slide" data-interval="false" align="center">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="@("/Images/defaultimage")"><img src=@("/Images/defaultimage.jpg") class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-auto button-group">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <img src=@("/images/download.png")>
+            <img src=@("/images/comment.png")>
+            <a asp-controller="ArtworkImages" asp-action="Create" asp-route-id="@Model.Id"><img src=@("/images/pic_add.png")></a>
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id"><img src=@("/images/page_edit.png")></a>
+            <a asp-action="Create"><img src=@("/images/page_new.png")></a>
+            <a asp-action="Delete" asp-route-id="@Model.Id"><img src=@("/images/page_delete.png")></a>
+            <img src=@("/images/page_move.png")>
+            <img src=@("/images/book.png")>
+            //we are still missing some buttons!
+        }
+    </div>
+    <div class="col-5">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id"/>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="form-control">
-                    <option value="ao">Objects</option>
-                    <option value="ph">Field Photos</option>
-                    <option value="wh">Who's who</option>
-                    <option value="bk">Publications</option>
-                    <option value="xp">Exhibitions</option>
-                    <option value="co">Collections</option>
-                    <option value="au">Auctions</option>
-                    </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Identifier" class="control-label"></label>
-                <input asp-for="Identifier" class="form-control" readonly="readonly"/>
-                <span asp-validation-for="Identifier" class="text-danger"></span>
-            </div>
-            <h1>Geographical / tribal information</h1>
-            <div>
-                <div class="form-group">
-                <label asp-for="Chefferie" class="control-label"></label>
-                <input asp-for="Chefferie" class="form-control" />
-                <span asp-validation-for="Chefferie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Clan" class="control-label"></label>
-                <input asp-for="Clan" class="form-control" />
-                <span asp-validation-for="Clan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Country" class="control-label"></label>
-                <input asp-for="Country" class="form-control" />
-                <span asp-validation-for="Country" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ethnicgroup" class="control-label"></label>
-                <input asp-for="Ethnicgroup" class="form-control" />
-                <span asp-validation-for="Ethnicgroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Kingdom" class="control-label"></label>
-                <input asp-for="Kingdom" class="form-control" />
-                <span asp-validation-for="Kingdom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Langgroup" class="control-label"></label>
-                <input asp-for="Langgroup" class="form-control" />
-                <span asp-validation-for="Langgroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Region" class="control-label"></label>
-                <input asp-for="Region" class="form-control" />
-                <span asp-validation-for="Region" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sitearcheo" class="control-label"></label>
-                <input asp-for="Sitearcheo" class="form-control" />
-                <span asp-validation-for="Sitearcheo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Village" class="control-label"></label>
-                <input asp-for="Village" class="form-control" />
-                <span asp-validation-for="Village" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Langsubgroup" class="control-label"></label>
-                <input asp-for="Langsubgroup" class="form-control" />
-                <span asp-validation-for="Langsubgroup" class="text-danger"></span>
-            </div>
+            <div class="theForm">
+            <h1>@Model.IdentifierNoCategory</h1>
+            <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
+            <div id="geographicalInfo">
+                <table>
+                    <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Chefferie)
+                                </td>
+                                <td>
+                                    <input asp-for="Chefferie" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Clan)
+                                </td>
+                                <td>
+                                    <input asp-for="Clan" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </td>
+                                <td>
+                                    <input asp-for="Country" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Ethnicgroup)
+                                </td>
+                                <td>
+                                    <input asp-for="Ethnicgroup" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Kingdom)
+                                </td>
+                                <td>
+                                    <input asp-for="Kingdom" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Langgroup)
+                                </td>
+                                <td>
+                                    <input asp-for="Langgroup" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Region)
+                                </td>
+                                <td>
+                                    <input asp-for="Region" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Sitearcheo)
+                                </td>
+                                <td>
+                                    <input asp-for="Sitearcheo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Village)
+                                </td>
+                                <td>
+                                    <input asp-for="Village" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Langsubgroup)
+                                </td>
+                                <td>
+                                    <input asp-for="Langsubgroup" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
             </div>
 
-            <h1>Object Information</h1>
-            <div>
-                <div class="form-group">
-                <label asp-for="Objectgender" class="control-label"></label>
-                <input asp-for="Objectgender" class="form-control" />
-                <span asp-validation-for="Objectgender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectjanus" class="control-label"></label>
-                <input asp-for="Objectjanus" class="form-control" />
-                <span asp-validation-for="Objectjanus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectname" class="control-label"></label>
-                <input asp-for="Objectname" class="form-control" />
-                <span asp-validation-for="Objectname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectnameex" class="control-label"></label>
-                <input asp-for="Objectnameex" class="form-control" />
-                <span asp-validation-for="Objectnameex" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectnamegn" class="control-label"></label>
-                <input asp-for="Objectnamegn" class="form-control" />
-                <span asp-validation-for="Objectnamegn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectposture" class="control-label"></label>
-                <input asp-for="Objectposture" class="form-control" />
-                <span asp-validation-for="Objectposture" class="text-danger"></span>
-            </div>
+            <h1 onclick="hideObjectInfo()">Object Information</h1>
+            <div id="objectInfo">
+                <table>
+                    <tbody>
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectgender)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectgender" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectjanus)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectjanus" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectname)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectname" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectnameex)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectnameex" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectnamegn)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectnamegn" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectposture)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectposture" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
             </div>
 
-            <h1>Physical Information</h1>
-            <div>
-                <div class="form-group">
-                <label asp-for="Calabashinfo" class="control-label"></label>
-                <input asp-for="Calabashinfo" class="form-control" />
-                <span asp-validation-for="Calabashinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Condition" class="control-label"></label>
-                <input asp-for="Condition" class="form-control" />
-                <span asp-validation-for="Condition" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Depth" class="control-label"></label>
-                <input asp-for="Depth" class="form-control" />
-                <span asp-validation-for="Depth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Diameter" class="control-label"></label>
-                <input asp-for="Diameter" class="form-control" />
-                <span asp-validation-for="Diameter" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Groups" class="control-label"></label>
-                <input asp-for="Groups" class="form-control" />
-                <span asp-validation-for="Groups" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hairinfo" class="control-label"></label>
-                <input asp-for="Hairinfo" class="form-control" />
-                <span asp-validation-for="Hairinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Height" class="control-label"></label>
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Length" class="control-label"></label>
-                <input asp-for="Length" class="form-control" />
-                <span asp-validation-for="Length" class="text-danger"></span>
-            </div>
-<div class="form-group">
-                <label asp-for="Medbeinfo" class="control-label"></label>
-                <input asp-for="Medbeinfo" class="form-control" />
-                <span asp-validation-for="Medbeinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medbkinfo" class="control-label"></label>
-                <input asp-for="Medbkinfo" class="form-control" />
-                <span asp-validation-for="Medbkinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medboinfo" class="control-label"></label>
-                <input asp-for="Medboinfo" class="form-control" />
-                <span asp-validation-for="Medboinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medceinfo" class="control-label"></label>
-                <input asp-for="Medceinfo" class="form-control" />
-                <span asp-validation-for="Medceinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medclinfo" class="control-label"></label>
-                <input asp-for="Medclinfo" class="form-control" />
-                <span asp-validation-for="Medclinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medfeinfo" class="control-label"></label>
-                <input asp-for="Medfeinfo" class="form-control" />
-                <span asp-validation-for="Medfeinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medfiinfo" class="control-label"></label>
-                <input asp-for="Medfiinfo" class="form-control" />
-                <span asp-validation-for="Medfiinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medglinfo" class="control-label"></label>
-                <input asp-for="Medglinfo" class="form-control" />
-                <span asp-validation-for="Medglinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medhoinfo" class="control-label"></label>
-                <input asp-for="Medhoinfo" class="form-control" />
-                <span asp-validation-for="Medhoinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medirinfo" class="control-label"></label>
-                <input asp-for="Medirinfo" class="form-control" />
-                <span asp-validation-for="Medirinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medium" class="control-label"></label>
-                <input asp-for="Medium" class="form-control" />
-                <span asp-validation-for="Medium" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medivinfo" class="control-label"></label>
-                <input asp-for="Medivinfo" class="form-control" />
-                <span asp-validation-for="Medivinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medmainfo" class="control-label"></label>
-                <input asp-for="Medmainfo" class="form-control" />
-                <span asp-validation-for="Medmainfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medotinfo" class="control-label"></label>
-                <input asp-for="Medotinfo" class="form-control" />
-                <span asp-validation-for="Medotinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medrainfo" class="control-label"></label>
-                <input asp-for="Medrainfo" class="form-control" />
-                <span asp-validation-for="Medrainfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medreinfo" class="control-label"></label>
-                <input asp-for="Medreinfo" class="form-control" />
-                <span asp-validation-for="Medreinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medseedpodsinfo" class="control-label"></label>
-                <input asp-for="Medseedpodsinfo" class="form-control" />
-                <span asp-validation-for="Medseedpodsinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medshinfo" class="control-label"></label>
-                <input asp-for="Medshinfo" class="form-control" />
-                <span asp-validation-for="Medshinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medskinfo" class="control-label"></label>
-                <input asp-for="Medskinfo" class="form-control" />
-                <span asp-validation-for="Medskinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medstinfo" class="control-label"></label>
-                <input asp-for="Medstinfo" class="form-control" />
-                <span asp-validation-for="Medstinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medwoinfo" class="control-label"></label>
-                <input asp-for="Medwoinfo" class="form-control" />
-                <span asp-validation-for="Medwoinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pigmentinfo" class="control-label"></label>
-                <input asp-for="Pigmentinfo" class="form-control" />
-                <span asp-validation-for="Pigmentinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restoration" class="control-label"></label>
-                <input asp-for="Restoration" class="form-control" />
-                <span asp-validation-for="Restoration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Width" class="control-label"></label>
-                <input asp-for="Width" class="form-control" />
-                <span asp-validation-for="Width" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medwoodinfo" class="control-label"></label>
-                <input asp-for="Medwoodinfo" class="form-control" />
-                <span asp-validation-for="Medwoodinfo" class="text-danger"></span>
-            </div>
-            </div>
-            
-            <h1>History of object</h1>
-            <div>
-                 <div class="form-group">
-                <label asp-for="Acquiredfrom" class="control-label"></label>
-                <input asp-for="Acquiredfrom" class="form-control" />
-                <span asp-validation-for="Acquiredfrom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Acquisitiondate" class="control-label"></label>
-                <input asp-for="Acquisitiondate" class="form-control" />
-                <span asp-validation-for="Acquisitiondate" class="text-danger"></span>
-            </div>
-             <div class="form-group">
-                <label asp-for="Auctions" class="control-label"></label>
-                <input asp-for="Auctions" class="form-control" />
-                <span asp-validation-for="Auctions" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Certificate" class="control-label"></label>
-                <input asp-for="Certificate" class="form-control" />
-                <span asp-validation-for="Certificate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Collectedby" class="control-label"></label>
-                <input asp-for="Collectedby" class="form-control" />
-                <span asp-validation-for="Collectedby" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Collectedwhen" class="control-label"></label>
-                <input asp-for="Collectedwhen" class="form-control" />
-                <span asp-validation-for="Collectedwhen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Collection" class="control-label"></label>
-                <input asp-for="Collection" class="form-control" />
-                <span asp-validation-for="Collection" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Donationfrom" class="control-label"></label>
-                <input asp-for="Donationfrom" class="form-control" />
-                <span asp-validation-for="Donationfrom" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Exhibition" class="control-label"></label>
-                <input asp-for="Exhibition" class="form-control" />
-                <span asp-validation-for="Exhibition" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Inventory" class="control-label"></label>
-                <input asp-for="Inventory" class="form-control" />
-                <span asp-validation-for="Inventory" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Provenance" class="control-label"></label>
-                <input asp-for="Provenance" class="form-control" />
-                <span asp-validation-for="Provenance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ispublic" class="control-label"></label>
-                <select asp-for="Ispublic" class="form-control">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-                <span asp-validation-for="Ispublic" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Publication" class="control-label"></label>
-                <input asp-for="Publication" class="form-control" />
-                <span asp-validation-for="Publication" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Aquisitiondate" class="control-label"></label>
-                <input asp-for="Aquisitiondate" class="form-control" />
-                <span asp-validation-for="Aquisitiondate" class="text-danger"></span>
-            </div>
-            </div>
-            
-            <h1>Authorship</h1>
-            <div>
-                <div class="form-group">
-                <label asp-for="Artist" class="control-label"></label>
-                <input asp-for="Artist" class="form-control" />
-                <span asp-validation-for="Artist" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Artistgender" class="control-label"></label>
-                <input asp-for="Artistgender" class="form-control" />
-                <span asp-validation-for="Artistgender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Artistsg" class="control-label"></label>
-                <input asp-for="Artistsg" class="form-control" />
-                <span asp-validation-for="Artistsg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commgender" class="control-label"></label>
-                <input asp-for="Commgender" class="form-control" />
-                <span asp-validation-for="Commgender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commsg" class="control-label"></label>
-                <input asp-for="Commsg" class="form-control" />
-                <span asp-validation-for="Commsg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Createdate" class="control-label"></label>
-                <input asp-for="Createdate" class="form-control" />
-                <span asp-validation-for="Createdate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Createdatemax" class="control-label"></label>
-                <input asp-for="Createdatemax" class="form-control" />
-                <span asp-validation-for="Createdatemax" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Createdatemin" class="control-label"></label>
-                <input asp-for="Createdatemin" class="form-control" />
-                <span asp-validation-for="Createdatemin" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commonfeatures" class="control-label"></label>
-                <input asp-for="Commonfeatures" class="form-control" />
-                <span asp-validation-for="Commonfeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Workshop" class="control-label"></label>
-                <input asp-for="Workshop" class="form-control" />
-                <span asp-validation-for="Workshop" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Workshoplist" class="control-label"></label>
-                <input asp-for="Workshoplist" class="form-control" />
-                <span asp-validation-for="Workshoplist" class="text-danger"></span>
-            </div>
-            </div>
-           
-            <h1>Photo info</h1>
-            <div>
-            <div class="form-group">
-                <label asp-for="Needbetter" class="control-label"></label>
-                <input asp-for="Needbetter" class="form-control" />
-                <span asp-validation-for="Needbetter" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Photocopy" class="control-label"></label>
-                <input asp-for="Photocopy" class="form-control" />
-                <span asp-validation-for="Photocopy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photographer" class="control-label"></label>
-                <input asp-for="Photographer" class="form-control" />
-                <span asp-validation-for="Photographer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photoinvnr" class="control-label"></label>
-                <input asp-for="Photoinvnr" class="form-control" />
-                <span asp-validation-for="Photoinvnr" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photoprov" class="control-label"></label>
-                <input asp-for="Photoprov" class="form-control" />
-                <span asp-validation-for="Photoprov" class="text-danger"></span>
-            </div>
+            <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
+            <div id="physicalInfo" class="text-info-div">
+                <table>
+                    <tbody>
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Calabashinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Calabashinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Condition)
+                                </td>
+                                <td>
+                                    <input asp-for="Condition" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Depth)
+                                </td>
+                                <td>
+                                    <input asp-for="Depth" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Diameter)
+                                </td>
+                                <td>
+                                    <input asp-for="Diameter" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Hairinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Hairinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Height)
+                                </td>
+                                <td>
+                                    <input asp-for="Height" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Length)
+                                </td>
+                                <td>
+                                    <input asp-for="Length" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medbeinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medbeinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medbkinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medbkinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medboinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medboinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medceinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medceinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medclinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medclinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medfeinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medfeinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medfiinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medfiinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medglinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medglinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medhoinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medhoinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medirinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medirinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medium)
+                                </td>
+                                <td>
+                                    <input asp-for="Medium" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medivinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medivinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medmainfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medmainfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medotinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medotinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medrainfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medrainfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medreinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medreinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medseedpodsinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medseedpodsinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medshinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medshinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medskinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medskinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medstinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medstinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medwoinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medwoinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Pigmentinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Pigmentinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Restoration)
+                                </td>
+                                <td>
+                                    <input asp-for="Restoration" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Weight)
+                                </td>
+                                <td>
+                                    <input asp-for="Weight" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Width)
+                                </td>
+                                <td>
+                                    <input asp-for="Width" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medwoodinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medwoodinfo" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
             </div>
 
-            
-            <h1>Notes</h1>
-            <div>
-            <div class="form-group">
-                <label asp-for="Additionalfeatures" class="control-label"></label>
-                <input asp-for="Additionalfeatures" class="form-control" />
-                <span asp-validation-for="Additionalfeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Associatefeatures" class="control-label"></label>
-                <input asp-for="Associatefeatures" class="form-control" />
-                <span asp-validation-for="Associatefeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commanditaire" class="control-label"></label>
-                <input asp-for="Commanditaire" class="form-control" />
-                <span asp-validation-for="Commanditaire" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Comments" class="control-label"></label>
-                <input asp-for="Comments" class="form-control" />
-                <span asp-validation-for="Comments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Confidential" class="control-label"></label>
-                <input asp-for="Confidential" class="form-control" />
-                <span asp-validation-for="Confidential" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Features" class="control-label"></label>
-                <input asp-for="Features" class="form-control" />
-                <span asp-validation-for="Features" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ritualassoc" class="control-label"></label>
-                <input asp-for="Ritualassoc" class="form-control" />
-                <span asp-validation-for="Ritualassoc" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usage" class="control-label"></label>
-                <input asp-for="Usage" class="form-control" />
-                <span asp-validation-for="Usage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Associatfeatures" class="control-label"></label>
-                <input asp-for="Associatfeatures" class="form-control" />
-                <span asp-validation-for="Associatfeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Structuralfeatures" class="control-label"></label>
-                <input asp-for="Structuralfeatures" class="form-control" />
-                <span asp-validation-for="Structuralfeatures" class="text-danger"></span>
-            </div>
+            <h1 onclick="hideHistoryInfo()">History of Object</h1>
+            <div id="historyInfo">
+                <table>
+                    <tbody>
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Acquiredfrom)
+                                </td>
+                                <td>
+                                    <input asp-for="Acquiredfrom" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Acquisitiondate)
+                                </td>
+                                <td>
+                                    <input asp-for="Acquisitiondate" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Auctions)
+                                </td>
+                                <td>
+                                    <input asp-for="Auctions" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Certificate)
+                                </td>
+                                <td>
+                                    <input asp-for="Certificate" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collectedby)
+                                </td>
+                                <td>
+                                    <input asp-for="Collectedby" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collectedwhen)
+                                </td>
+                                <td>
+                                    <input asp-for="Collectedwhen" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collection)
+                                </td>
+                                <td>
+                                    <input asp-for="Collection" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Creditline)
+                                </td>
+                                <td>
+                                    <input asp-for="Creditline" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Donationfrom)
+                                </td>
+                                <td>
+                                    <input asp-for="Donationfrom" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Exhibition)
+                                </td>
+                                <td>
+                                    <input asp-for="Exhibition" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Inventory)
+                                </td>
+                                <td>
+                                    <input asp-for="Inventory" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Provenance)
+                                </td>
+                                <td>
+                                    <input asp-for="Provenance" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Ispublic)
+                                </td>
+                                <td>
+                                    <input asp-for="Ispublic" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Publication)
+                                </td>
+                                <td>
+                                    <input asp-for="Publication" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Aquisitiondate)
+                                </td>
+                                <td>
+                                    <input asp-for="Aquisitiondate" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
             </div>
 
-            <h1> Unknown / Delete</h1>
-            <div>
-            <div class="form-group">
-                <label asp-for="Creditline" class="control-label"></label>
-                <input asp-for="Creditline" class="form-control" />
-                <span asp-validation-for="Creditline" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Raaiid" class="control-label"></label>
-                <input asp-for="Raaiid" class="form-control" />
-                <span asp-validation-for="Raaiid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tms" class="control-label"></label>
-                <input asp-for="Tms" class="form-control" />
-                <span asp-validation-for="Tms" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Web" class="control-label"></label>
-                <input asp-for="Web" class="form-control" />
-                <span asp-validation-for="Web" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Yaleid" class="control-label"></label>
-                <input asp-for="Yaleid" class="form-control" />
-                <span asp-validation-for="Yaleid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Unit" class="control-label"></label>
-                <input asp-for="Unit" class="form-control" />
-                <span asp-validation-for="Unit" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Multiline" class="control-label"></label>
-                <input asp-for="Multiline" class="form-control" />
-                <span asp-validation-for="Multiline" class="text-danger"></span>
+            <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+            <div id="authorshipInfo">
+                <table>
+                    <tbody>
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Artist)
+                                </td>
+                                <td>
+                                    <input asp-for="Artist" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Artistgender)
+                                </td>
+                                <td>
+                                    <input asp-for="Artistgender" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Artistsg)
+                                </td>
+                                <td>
+                                    <input asp-for="Artistsg" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commgender)
+                                </td>
+                                <td>
+                                    <input asp-for="Commgender" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commsg)
+                                </td>
+                                <td>
+                                    <input asp-for="Commsg" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Createdate)
+                                </td>
+                                <td>
+                                    <input asp-for="Createdate" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Createdatemax)
+                                </td>
+                                <td>
+                                    <input asp-for="Createdatemax" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Createdatemin)
+                                </td>
+                                <td>
+                                    <input asp-for="Createdatemin" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Workshop)
+                                </td>
+                                <td>
+                                    <input asp-for="Workshop" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Workshoplist)
+                                </td>
+                                <td>
+                                    <input asp-for="Workshoplist" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Reacttmp" class="control-label"></label>
-                <input asp-for="Reacttmp" class="form-control" />
-                <span asp-validation-for="Reacttmp" class="text-danger"></span>
+            <h1>Photographic Information</h1>
+            <table>
+                <tbody>
+
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Needbetter)
+                            </td>
+                            <td>
+                                <input asp-for="Needbetter" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photocopy)
+                            </td>
+                            <td>
+                                <input asp-for="Photocopy" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photographer)
+                            </td>
+                            <td>
+                                <input asp-for="Photographer" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoinvnr)
+                            </td>
+                            <td>
+                                <input asp-for="Photoinvnr" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoprov)
+                            </td>
+                            <td>
+                                <input asp-for="Photoprov" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+
+            <h1 onclick="hideNotesInfo()">Notes</h1>
+            <div id="notesInfo">
+                <table>
+                    <tbody>
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Additionalfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Additionalfeatures" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Associatefeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Associatefeatures" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commanditaire)
+                                </td>
+                                <td>
+                                    <input asp-for="Commanditaire" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Comments)
+                                </td>
+                                <td>
+                                    <input asp-for="Comments" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commonfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Commonfeatures" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Confidential)
+                                </td>
+                                <td>
+                                    <input asp-for="Confidential" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Features)
+                                </td>
+                                <td>
+                                    <input asp-for="Features" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Ritualassoc)
+                                </td>
+                                <td>
+                                    <input asp-for="Ritualassoc" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Usage)
+                                </td>
+                                <td>
+                                    <input asp-for="Usage" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Associatfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Associatfeatures" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Structuralfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Structuralfeatures" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
             </div>
+
+
+            <h1>Delete / unknown</h1>
+            <table>
+                <tbody>
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Tms)
+                            </td>
+                            <td>
+                                <input asp-for="Tms" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Web)
+                            </td>
+                            <td>
+                                <input asp-for="Web" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Yaleid)
+                            </td>
+                            <td>
+                                <input asp-for="Yaleid" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Groups)
+                            </td>
+                            <td>
+                                <input asp-for="Groups" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Unit)
+                            </td>
+                            <td>
+                                <input asp-for="Unit" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Multiline)
+                            </td>
+                            <td>
+                                <input asp-for="Multiline" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Reacttmp)
+                            </td>
+                            <td>
+                                <input asp-for="Reacttmp" class="form-control" />
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+
             </div>
-            
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            @foreach(var item in Model.ArtworkImage)
+            {
+                <p>@item.ImageURL</p>
+            }
+            <input type="submit" value="Save" class="btn btn-primary"/>
+            </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to archive</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

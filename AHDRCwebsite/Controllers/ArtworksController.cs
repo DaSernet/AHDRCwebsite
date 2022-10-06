@@ -312,6 +312,7 @@ s.Medwoodinfo.Contains(searchString));
             {
                 return NotFound();
             }
+            
 
             if (ModelState.IsValid)
             {
@@ -333,7 +334,7 @@ s.Medwoodinfo.Contains(searchString));
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(artwork);
+            return View("index");
         }
 
         // GET: Artworks/Delete/5
