@@ -956,7 +956,10 @@
                                     @Html.DisplayNameFor(model => model.Ispublic)
                                 </td>
                                 <td>
-                                    <input asp-for="Ispublic" class="form-control" />
+                                    <select asp-for="Ispublic" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
                                 </td>
                             </tr>
                         

@@ -22,11 +22,8 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks
         public async Task<IActionResult> Index(string currentSelectedCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
-            //var artworks = from s in _context.Artworks
-            //select s;
-
             var artworks = (from s in _context.Artworks
-                            select s).Take(1);
+                            select s);
             
             if (currentFilter != null || searchString != null)
             {
@@ -38,18 +35,35 @@ namespace AHDRCwebsite.Controllers
                                 select s).Take(0);
             }
 
-                //working
-                /*var categoryArtworkList = from s in publicArtworkList
-                                          join x in _context.Artworks on s.Id equals x.Id
-                                          select x.Category;*/
+            
 
-                //working
-                /*var publicArtworkList = from y in _context.Artworks
-                                        .Select (i => new { i.Id, i.Ispublic })
-                                        select y;*/
+            //working
+            var publicArtworkList = from y in _context.Artworks
+                                    .Select(i => new { i.Id, i.Ispublic, i.Category })
+                                    select y;
 
-                //confidentials
-                if (!User.IsInRole("Administrator"))
+            //working
+            /*var FilteredArtworkList = from s in publicArtworkList
+                                      join x in _context.Artworks on s.Id equals x.Id
+                                      select x.Category;*/
+
+
+            //confidentials v2
+            if (!User.IsInRole("Administrator"))
+            {
+                publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(b => b.Ispublic == "false"));
+            }
+
+            //not logged in v2
+            if (!User.Identity.IsAuthenticated)
+            {
+                publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(i => i.Category == "ph"));
+                publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(i => i.Category == "co"));
+                publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(i => i.Category == "ao"));
+            }
+
+            //confidentials
+            if (!User.IsInRole("Administrator"))
             {
                 artworks = artworks.Except(artworks.Where(i => i.Ispublic == "false"));
             }
@@ -84,6 +98,28 @@ namespace AHDRCwebsite.Controllers
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentSelectedCategory"] = String.Join(",", selectedCategory);
+
+
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
+            {
+                var list = new List<string>(selectedCategory);
+                list.Remove("ph");
+                list.Remove("co");
+                list.Remove("au");
+                selectedCategory = list.ToArray();
+            }
+
+            if (selectedCategory.Length >= 1)
+            {
+                artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
+            }
+
+            if (selectedCategory.Length >= 1)
+            {
+                publicArtworkList = publicArtworkList.Where(s => selectedCategory.Contains(s.Category));
+            }
+
+            artworks = artworks.Where(a => publicArtworkList.Any(a2 => a2.Id == a.Id));
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -178,19 +214,7 @@ s.Langsubgroup.Contains(searchString) ||
 s.Aquisitiondate.Contains(searchString) ||
 s.Medwoodinfo.Contains(searchString));
 
-                if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
-                {
-                    var list = new List<string>(selectedCategory);
-                    list.Remove("ph");
-                    list.Remove("co");
-                    list.Remove("au");
-                    selectedCategory = list.ToArray();
-                }
-            }
 
-            if (selectedCategory.Length >= 1)
-            {
-                artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
             }
 
             if (artworks != null)
@@ -370,6 +394,7 @@ s.Medwoodinfo.Contains(searchString));
             if (artwork != null)
             {
                 _context.Artworks.Remove(artwork);
+                //_context.ArtworkImages.Remove((ArtworkImage)artwork.ArtworkImage.Where(m => m.Artwork == artwork));
             }
 
             await _context.SaveChangesAsync();
