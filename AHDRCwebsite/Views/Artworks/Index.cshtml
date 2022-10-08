@@ -19,12 +19,13 @@
         line-height: 0px;
     }
 
-    input[type=checkbox]:checked + span{
-  color:white !important;
-}
-.text-grey{
-    color:grey;
-}
+    input[type=checkbox]:checked + span {
+        color: white !important;
+    }
+
+    .text-grey {
+        color: grey;
+    }
 
     .search-bar {
         width: 100%;
@@ -58,17 +59,16 @@
         text-align: center;
     }
 
-    .checkbox-container
-    {
+    .checkbox-container {
         position: absolute;
-        top:7px;
+        top: 7px;
         right: 0px;
         padding-right: 0px;
     }
-    .checkbox-container label
-    {
-        margin-right: 25px;
-    }
+
+        .checkbox-container label {
+            margin-right: 25px;
+        }
 </style>
 
 <form class="search-bar-form" asp-action="Index" method="get">
@@ -80,66 +80,66 @@
             </div>
         </p>
     </div>
-   <div id="checkbox-container" class="checkbox-container">
+    <div id="checkbox-container" class="checkbox-container">
         @if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" hidden />
                 <span class="text-grey">Objects</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" hidden />
                 <span class="text-grey">Field Photos</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden />
                 <span class="text-grey">Who's Who</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden />
                 <span class="text-grey">Publications</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden />
                 <span class="text-grey">Exhibitions</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" hidden />
                 <span class="text-grey">Collections</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden />
                 <span class="text-grey">Auctions</span>
             </label>
         }
         else
         {
             <label>
-                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled hidden/>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled hidden />
                 <span class="text-grey">Objects</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled hidden/>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled hidden />
                 <span class="text-grey">Field Photos</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden />
                 <span class="text-grey">Who's Who</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden />
                 <span class="text-grey">Publications</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden />
                 <span class="text-grey">Exhibitions</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled hidden/>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled hidden />
                 <span class="text-grey">Collections</span>
             </label>
             <label>
-                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden/>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden />
                 <span class="text-grey">Auctions</span>
             </label>
         }
@@ -160,7 +160,7 @@
     {
         <div class="image-list">
             <div class="text-light">
-            <p>@Model.Count() results found</p>
+                <p>@Model.Count() results found</p>
             </div>
         </div>
         <div class="image-list">
@@ -183,31 +183,45 @@
             }
         </div>
 
-
-        <a asp-action="Index"
+        @if (prevDisabled != "disabled")
+        {
+            <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]" 
-        class="@prevDisabled">
-            <img src=@("/images/arrowleft.png")>
-        </a>
-        @for(int a = -4; a<= 4; a++)
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="@prevDisabled">
+                <img src=@("/images/arrowleft.png")>
+            </a>
+        }
+        @for (int a = -4; a <= 4; a++)
         {
-            @if(Model.PageIndex + a > 0)
-        {
-            @if(@nextDisabled != "disabled" && Model.TotalPages >= Model.PageIndex + a)
+            @if (Model.PageIndex + a > 0)
             {
-           <a a asp-action="Index"
-   asp-route-pageNumber="@(Model.PageIndex + a)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]">@(Model.PageIndex + a) </a>
-           }
+                @if (@nextDisabled != "disabled" && Model.TotalPages >= Model.PageIndex + a)
+                {
+                    <a a asp-action="Index"
+                    asp-route-pageNumber="@(Model.PageIndex + a)"
+                    asp-route-currentFilter="@ViewData["CurrentFilter"]">@(Model.PageIndex + a)</a>
+                } else if (@nextDisabled == "disabled")
+                {
+                   @if(Model.TotalPages >= Model.PageIndex +a)
+                    {
+                        <a a asp-action="Index"
+                    asp-route-pageNumber="@(Model.PageIndex + a)"
+                    asp-route-currentFilter="@ViewData["CurrentFilter"]">@(Model.PageIndex + a) </a>
+                    }
+                    
+                }
+            }
         }
-        }
+        @if(nextDisabled != "disabled")
+        {
         <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="@prevDisabled">
             <img src=@("/images/arrowright.png")>
         </a>
+        }
     }
 }
 

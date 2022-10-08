@@ -35,14 +35,11 @@ namespace AHDRCwebsite.Controllers
                                 select s).Take(0);
             }
 
-            
-
-            //working
             var publicArtworkList = from y in _context.Artworks
                                     .Select(i => new { i.Id, i.Ispublic, i.Category })
                                     select y;
 
-            //working
+            //working BUT ONLY RETURNS CATEGORY & NOTHING ELSE
             /*var FilteredArtworkList = from s in publicArtworkList
                                       join x in _context.Artworks on s.Id equals x.Id
                                       select x.Category;*/
@@ -62,18 +59,13 @@ namespace AHDRCwebsite.Controllers
                 publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(i => i.Category == "ao"));
             }
 
-            //confidentials
-            if (!User.IsInRole("Administrator"))
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
             {
-                artworks = artworks.Except(artworks.Where(i => i.Ispublic == "false"));
-            }
-
-            //not logged in
-            if (!User.Identity.IsAuthenticated)
-            {
-                artworks = artworks.Except(artworks.Where(i => i.Category == "ph"));
-                artworks = artworks.Except(artworks.Where(i => i.Category == "co"));
-                artworks = artworks.Except(artworks.Where(i => i.Category == "ao"));
+                var list = new List<string>(selectedCategory);
+                list.Remove("ph");
+                list.Remove("co");
+                list.Remove("au");
+                selectedCategory = list.ToArray();
             }
 
             if (searchString != null)
@@ -94,25 +86,19 @@ namespace AHDRCwebsite.Controllers
                 }
             }
 
+
+
             ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentSelectedCategory"] = String.Join(",", selectedCategory);
 
 
-            if (!User.IsInRole("Administrator") && !User.IsInRole("Subscriber"))
-            {
-                var list = new List<string>(selectedCategory);
-                list.Remove("ph");
-                list.Remove("co");
-                list.Remove("au");
-                selectedCategory = list.ToArray();
-            }
 
-            if (selectedCategory.Length >= 1)
+            /*if (selectedCategory.Length >= 1)
             {
                 artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
-            }
+            }*/
 
             if (selectedCategory.Length >= 1)
             {
