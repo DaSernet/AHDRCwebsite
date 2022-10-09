@@ -139,7 +139,8 @@
 
 </script>
 <div>
-    <a asp-action="Index">Back to search results</a>
+    <a a asp-action="Index" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" asp-route-pageNumber="@ViewData["pageNumber"]">Back to search results</a>
 </div>
 <div class="text-light row info-div justify-content-center">
     <div class="col-5 image-col">

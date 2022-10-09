@@ -20,22 +20,26 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: Artworks
-        public async Task<IActionResult> Index(string currentSelectedCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
+        public async Task<IActionResult> Index(string currentCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
         {
             var artworks = (from s in _context.Artworks
                             select s);
             
-            if (currentFilter != null || searchString != null)
+            if (currentFilter != null || searchString != null && searchString.Length > 2)
             {
-                artworks = from s in _context.Artworks
-                           select s;
+                artworks = (from s in _context.Artworks
+                           select s);
             } else if (currentFilter == null && searchString == null)
             {
                 artworks = (from s in _context.Artworks
                                 select s).Take(0);
+            } else if (currentFilter == null && searchString.Length <= 2)
+            {
+                artworks = (from s in _context.Artworks
+                            select s).Take(0);
             }
 
-            var publicArtworkList = from y in _context.Artworks
+                var publicArtworkList = from y in _context.Artworks
                                     .Select(i => new { i.Id, i.Ispublic, i.Category })
                                     select y;
 
@@ -80,9 +84,9 @@ namespace AHDRCwebsite.Controllers
             else
             {
                 searchString = currentFilter;
-                if (currentSelectedCategory != null)
+                if (currentCategory != null)
                 {
-                    selectedCategory = currentSelectedCategory.Split(',');
+                    selectedCategory = currentCategory.Split(',');
                 }
             }
 
@@ -92,6 +96,7 @@ namespace AHDRCwebsite.Controllers
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentSelectedCategory"] = String.Join(",", selectedCategory);
+            ViewData["pageNumber"] = pageNumber;
 
 
 
@@ -100,10 +105,9 @@ namespace AHDRCwebsite.Controllers
                 artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
             }*/
 
-            if (selectedCategory.Length >= 1)
-            {
-                publicArtworkList = publicArtworkList.Where(s => selectedCategory.Contains(s.Category));
-            }
+
+            publicArtworkList = publicArtworkList.Where(s => selectedCategory.Contains(s.Category));
+            
 
             artworks = artworks.Where(a => publicArtworkList.Any(a2 => a2.Id == a.Id));
 
@@ -199,8 +203,6 @@ s.Associatfeatures.Contains(searchString) ||
 s.Langsubgroup.Contains(searchString) ||
 s.Aquisitiondate.Contains(searchString) ||
 s.Medwoodinfo.Contains(searchString));
-
-
             }
 
             if (artworks != null)
@@ -227,11 +229,12 @@ s.Medwoodinfo.Contains(searchString));
 
             artworks = artworks.Include(i => i.ArtworkImage);
             int pageSize = 50;
-            return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize));
+            int totalArtworks = artworks.Count();
+            return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize, totalArtworks));
         }
 
         // GET: Artworks/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string currentCategory, string currentFilter, int? pageNumber)
         {
             if (id == null || _context.Artworks == null)
             {
@@ -244,6 +247,10 @@ s.Medwoodinfo.Contains(searchString));
             {
                 return NotFound();
             }
+
+            ViewData["CurrentFilter"] = currentFilter;
+            ViewData["CurrentSelectedCategory"] = String.Join(",", currentCategory);
+            ViewData["pageNumber"] = pageNumber;
 
             return View(artwork);
         }

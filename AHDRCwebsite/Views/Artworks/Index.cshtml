@@ -160,7 +160,7 @@
     {
         <div class="image-list">
             <div class="text-light">
-                <p>@Model.Count() results found</p>
+                <p>@Model.TotalArtworks results found, currently displaying @Model.Count()</p>
             </div>
         </div>
         <div class="image-list">
@@ -169,11 +169,13 @@
                 <div class="img-with-text">
                     @if (item.ArtworkImage.Count >= 1)
                     {
-                        <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+                        <a asp-action="Details" asp-route-id="@item.Id" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" asp-route-pageNumber="@ViewData["pageNumber"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
                     }
                     else
                     {
-                        <a asp-action="Details" asp-route-id="@item.Id"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+                        <a asp-action="Details" asp-route-id="@item.Id" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" asp-route-pageNumber="@ViewData["pageNumber"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
                     }
 
                     <figcaption class="text-light">
@@ -188,26 +190,29 @@
             <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
    class="@prevDisabled">
                 <img src=@("/images/arrowleft.png")>
             </a>
         }
         @for (int a = -4; a <= 4; a++)
         {
-            @if (Model.PageIndex + a > 0)
+            @if (Model.PageIndex + a >= 1)
             {
                 @if (@nextDisabled != "disabled" && Model.TotalPages >= Model.PageIndex + a)
                 {
                     <a a asp-action="Index"
                     asp-route-pageNumber="@(Model.PageIndex + a)"
-                    asp-route-currentFilter="@ViewData["CurrentFilter"]">@(Model.PageIndex + a)</a>
+                    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">@(Model.PageIndex + a)</a>
                 } else if (@nextDisabled == "disabled")
                 {
-                   @if(Model.TotalPages >= Model.PageIndex +a)
+                   @if(Model.TotalPages >= Model.PageIndex +a && Model.PageIndex != 1)
                     {
                         <a a asp-action="Index"
                     asp-route-pageNumber="@(Model.PageIndex + a)"
-                    asp-route-currentFilter="@ViewData["CurrentFilter"]">@(Model.PageIndex + a) </a>
+                    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                        asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">@(Model.PageIndex + a) </a>
                     }
                     
                 }
@@ -218,6 +223,7 @@
         <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
    class="@prevDisabled">
             <img src=@("/images/arrowright.png")>
         </a>
