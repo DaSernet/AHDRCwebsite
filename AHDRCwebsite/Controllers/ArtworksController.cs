@@ -24,30 +24,31 @@ namespace AHDRCwebsite.Controllers
         {
             var artworks = (from s in _context.Artworks
                             select s);
-            
+
             if (currentFilter != null || searchString != null && searchString.Length > 2)
             {
                 artworks = (from s in _context.Artworks
-                           select s).AsNoTracking();
-            } else if (currentFilter == null && searchString == null)
+                            select s).AsNoTracking();
+            }
+            else if (currentFilter == null && searchString == null)
             {
                 artworks = (from s in _context.Artworks
-                                select s).Take(0);
-            } else if (currentFilter == null && searchString.Length <= 2)
+                            select s).Take(0);
+            }
+            else if (currentFilter == null && searchString.Length <= 2)
             {
                 artworks = (from s in _context.Artworks
                             select s).Take(0);
             }
 
-                var publicArtworkList = from y in _context.Artworks
-                                    .Select(i => new { i.Id, i.Ispublic, i.Category })
+            var publicArtworkList = from y in _context.Artworks
+                                .Select(i => new { i.Id, i.Ispublic, i.Category })
                                     select y;
 
             //working BUT ONLY RETURNS CATEGORY & NOTHING ELSE
             /*var FilteredArtworkList = from s in publicArtworkList
                                       join x in _context.Artworks on s.Id equals x.Id
                                       select x.Category;*/
-
 
             //confidentials v2
             if (!User.IsInRole("Administrator"))
@@ -90,25 +91,18 @@ namespace AHDRCwebsite.Controllers
                 }
             }
 
-
-
             ViewData["IdentifierSortParm"] = String.IsNullOrEmpty(sortOrder) ? "identifier_desc" : "";
             ViewData["SizeSortParm"] = sortOrder == "Size" ? "size_desc" : "Size";
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentSelectedCategory"] = String.Join(",", selectedCategory);
             ViewData["pageNumber"] = pageNumber;
 
-
-
-
             /*if (selectedCategory.Length >= 1)
             {
                 artworks = artworks.Where(s => selectedCategory.Contains(s.Category));
             }*/
 
-
             publicArtworkList = publicArtworkList.Where(s => selectedCategory.Contains(s.Category));
-            
 
             artworks = artworks.Where(a => publicArtworkList.Any(a2 => a2.Id == a.Id));
 
@@ -227,7 +221,7 @@ s.Medwoodinfo.Contains(searchString));
                         break;
                 }
             }
-            artworkQueryString = String.Join(",",artworks.OrderBy(s => s.Id).Select(a => a.Id).AsEnumerable());
+            artworkQueryString = String.Join(",", artworks.OrderBy(s => s.Id).Select(a => a.Id).AsEnumerable());
             ViewData["artworkQueryString"] = artworkQueryString;
 
             artworks = artworks.Include(i => i.ArtworkImage);
@@ -256,28 +250,28 @@ s.Medwoodinfo.Contains(searchString));
             ViewData["pageNumber"] = pageNumber;
             ViewData["artworkQueryString"] = artworkQueryString;
             if (artworkQueryString != null)
-            { 
-            string[] artworkQueryArray = artworkQueryString.Split(',');
-            
-
-            var index = Array.FindIndex(artworkQueryArray, row => row == id.ToString());
-
-            if(index < artworkQueryArray.Length - 1)
-            {  
-            ViewData["artworkQueryStringNext"] = artworkQueryArray[index+1];
-            } else
             {
-                ViewData["artworkQueryStringNext"] = null;
-            }
+                string[] artworkQueryArray = artworkQueryString.Split(',');
 
-            if (index > 0)
-            {
-                ViewData["artworkQueryStringPrev"] = artworkQueryArray[index - 1];
-            }
-            else 
-            {
-                ViewData["artworkQueryStringPrev"] = null;
-            }
+                var index = Array.FindIndex(artworkQueryArray, row => row == id.ToString());
+
+                if (index < artworkQueryArray.Length - 1)
+                {
+                    ViewData["artworkQueryStringNext"] = artworkQueryArray[index + 1];
+                }
+                else
+                {
+                    ViewData["artworkQueryStringNext"] = null;
+                }
+
+                if (index > 0)
+                {
+                    ViewData["artworkQueryStringPrev"] = artworkQueryArray[index - 1];
+                }
+                else
+                {
+                    ViewData["artworkQueryStringPrev"] = null;
+                }
             }
 
             return View(artwork);
@@ -357,7 +351,6 @@ s.Medwoodinfo.Contains(searchString));
             {
                 return NotFound();
             }
-            
 
             if (ModelState.IsValid)
             {
