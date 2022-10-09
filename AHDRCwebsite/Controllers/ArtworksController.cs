@@ -20,7 +20,7 @@ namespace AHDRCwebsite.Controllers
         }
 
         // GET: Artworks
-        public async Task<IActionResult> Index(string currentCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder)
+        public async Task<IActionResult> Index(string currentCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder, string artworkQueryString)
         {
             var artworks = (from s in _context.Artworks
                             select s);
@@ -28,7 +28,7 @@ namespace AHDRCwebsite.Controllers
             if (currentFilter != null || searchString != null && searchString.Length > 2)
             {
                 artworks = (from s in _context.Artworks
-                           select s);
+                           select s).AsNoTracking();
             } else if (currentFilter == null && searchString == null)
             {
                 artworks = (from s in _context.Artworks
@@ -97,6 +97,7 @@ namespace AHDRCwebsite.Controllers
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentSelectedCategory"] = String.Join(",", selectedCategory);
             ViewData["pageNumber"] = pageNumber;
+
 
 
 
@@ -210,7 +211,7 @@ s.Medwoodinfo.Contains(searchString));
                 switch (sortOrder)
                 {
                     case "identifier_desc":
-                        artworks = artworks.OrderByDescending(s => s.Identifier);
+                        artworks = artworks.OrderByDescending(s => s.Id);
                         break;
 
                     case "Size":
@@ -222,10 +223,12 @@ s.Medwoodinfo.Contains(searchString));
                         break;
 
                     default:
-                        artworks = artworks.OrderBy(s => s.Identifier);
+                        artworks = artworks.OrderBy(s => s.Id);
                         break;
                 }
             }
+            artworkQueryString = String.Join(",",artworks.OrderBy(s => s.Id).Select(a => a.Id).AsEnumerable());
+            ViewData["artworkQueryString"] = artworkQueryString;
 
             artworks = artworks.Include(i => i.ArtworkImage);
             int pageSize = 50;
@@ -234,7 +237,7 @@ s.Medwoodinfo.Contains(searchString));
         }
 
         // GET: Artworks/Details/5
-        public async Task<IActionResult> Details(int? id, string currentCategory, string currentFilter, int? pageNumber)
+        public async Task<IActionResult> Details(int? id, string currentCategory, string currentFilter, int? pageNumber, string artworkQueryString)
         {
             if (id == null || _context.Artworks == null)
             {
@@ -251,6 +254,28 @@ s.Medwoodinfo.Contains(searchString));
             ViewData["CurrentFilter"] = currentFilter;
             ViewData["CurrentSelectedCategory"] = String.Join(",", currentCategory);
             ViewData["pageNumber"] = pageNumber;
+            ViewData["artworkQueryString"] = artworkQueryString;
+
+            string[] artworkQueryArray = artworkQueryString.Split(',');
+
+            var index = Array.FindIndex(artworkQueryArray, row => row == id.ToString());
+
+            if(index < artworkQueryArray.Length - 1)
+            {  
+            ViewData["artworkQueryStringNext"] = artworkQueryArray[index+1];
+            } else
+            {
+                ViewData["artworkQueryStringNext"] = null;
+            }
+
+            if (index > 0)
+            {
+                ViewData["artworkQueryStringPrev"] = artworkQueryArray[index - 1];
+            }
+            else 
+            {
+                ViewData["artworkQueryStringPrev"] = null;
+            }
 
             return View(artwork);
         }

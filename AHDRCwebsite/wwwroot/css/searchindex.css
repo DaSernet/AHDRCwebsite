@@ -22,3 +22,62 @@
         margin: 0 auto;
         max-width: 160px;
     }
+
+.navbar ul {
+    padding: 0px;
+}
+
+.navbar {
+    line-height: 0px;
+}
+
+input[type=checkbox]:checked + span {
+    color: white !important;
+}
+
+.text-grey {
+    color: grey;
+}
+
+.search-bar {
+    width: 100%;
+    height: 40px;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    outline-width: 0;
+    padding-left: 50px;
+}
+
+.search-bar-form {
+    width: 90vw;
+    position: relative;
+    left: calc(-40vw + 40.5%);
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 13px;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.checkbox-container {
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    padding-right: 0px;
+}
+
+    .checkbox-container label {
+        margin-right: 25px;
+    }

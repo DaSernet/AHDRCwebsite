@@ -9,67 +9,7 @@
 <link rel="stylesheet" href="~/css/cardoverlay.css">
 <link rel="stylesheet" href="~/css/searchindex.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<style>
-    .navbar ul {
-        padding: 0px;
-    }
-
-    .navbar {
-        line-height: 0px;
-    }
-
-    input[type=checkbox]:checked + span {
-        color: white !important;
-    }
-
-    .text-grey {
-        color: grey;
-    }
-
-    .search-bar {
-        width: 100%;
-        height: 40px;
-        color: white;
-        background: rgba(255,255,255,0.2);
-        border: none;
-        outline-width: 0;
-        padding-left: 50px;
-    }
-
-    .search-bar-form {
-        width: 90vw;
-        position: relative;
-        left: calc(-40vw + 40.5%);
-    }
-
-    .input-icons i {
-        position: absolute;
-    }
-
-    .input-icons {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .icon {
-        padding: 13px;
-        color: white;
-        min-width: 50px;
-        text-align: center;
-    }
-
-    .checkbox-container {
-        position: absolute;
-        top: 7px;
-        right: 0px;
-        padding-right: 0px;
-    }
-
-        .checkbox-container label {
-            margin-right: 25px;
-        }
-</style>
+<script type="text/javascript" src="searchindex.js"></script>
 
 <form class="search-bar-form" asp-action="Index" method="get">
     <div class="form-actions no-color">
@@ -170,12 +110,16 @@
                     @if (item.ArtworkImage.Count >= 1)
                     {
                         <a asp-action="Details" asp-route-id="@item.Id" asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" asp-route-pageNumber="@ViewData["pageNumber"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
+   asp-route-pageNumber="@ViewData["pageNumber"]" 
+   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
                     }
                     else
                     {
                         <a asp-action="Details" asp-route-id="@item.Id" asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" asp-route-pageNumber="@ViewData["pageNumber"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
+   asp-route-pageNumber="@ViewData["pageNumber"]" 
+   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
                     }
 
                     <figcaption class="text-light">
@@ -191,6 +135,7 @@
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"
    class="@prevDisabled">
                 <img src=@("/images/arrowleft.png")>
             </a>
@@ -204,7 +149,8 @@
                     <a a asp-action="Index"
                     asp-route-pageNumber="@(Model.PageIndex + a)"
                     asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">@(Model.PageIndex + a)</a>
+                    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+                    asp-route-artworkQueryString="@ViewData["artworkQueryString"]">@(Model.PageIndex + a)</a>
                 } else if (@nextDisabled == "disabled")
                 {
                    @if(Model.TotalPages >= Model.PageIndex +a && Model.PageIndex != 1)
@@ -212,7 +158,8 @@
                         <a a asp-action="Index"
                     asp-route-pageNumber="@(Model.PageIndex + a)"
                     asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                        asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">@(Model.PageIndex + a) </a>
+                        asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+                        asp-route-artworkQueryString="@ViewData["artworkQueryString"]">@(Model.PageIndex + a) </a>
                     }
                     
                 }
@@ -224,32 +171,10 @@
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"
    class="@prevDisabled">
             <img src=@("/images/arrowright.png")>
         </a>
         }
     }
-}
-
-
-
-@section Scripts
-    {
-    <script>
-        var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
-            $checkboxes = $("#checkbox-container :checkbox");
-
-        $checkboxes.on("change", function() {
-            $checkboxes.each(function() {
-                checkboxValues[this.id] = this.checked;
-            });
-
-            sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-        });
-
-        // On page load
-        $.each(checkboxValues, function(key, value) {
-            $("#" + key).prop('checked', value);
-        });
-    </script>
 }
