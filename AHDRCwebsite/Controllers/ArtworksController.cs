@@ -255,8 +255,10 @@ s.Medwoodinfo.Contains(searchString));
             ViewData["CurrentSelectedCategory"] = String.Join(",", currentCategory);
             ViewData["pageNumber"] = pageNumber;
             ViewData["artworkQueryString"] = artworkQueryString;
-
+            if (artworkQueryString != null)
+            { 
             string[] artworkQueryArray = artworkQueryString.Split(',');
+            
 
             var index = Array.FindIndex(artworkQueryArray, row => row == id.ToString());
 
@@ -275,6 +277,7 @@ s.Medwoodinfo.Contains(searchString));
             else 
             {
                 ViewData["artworkQueryStringPrev"] = null;
+            }
             }
 
             return View(artwork);

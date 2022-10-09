@@ -7,9 +7,8 @@
 }
 
 <link rel="stylesheet" href="~/css/cardoverlay.css">
-<link rel="stylesheet" href="~/css/searchindex.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="searchindex.js"></script>
+<link rel="stylesheet" href="~/css/searchindex.css">
 
 <form class="search-bar-form" asp-action="Index" method="get">
     <div class="form-actions no-color">
@@ -177,4 +176,22 @@
         </a>
         }
     }
+}
+
+@section Scripts
+    {
+    <script>
+        var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
+            $checkboxes = $("#checkbox-container :checkbox");
+        $checkboxes.on("change", function() {
+            $checkboxes.each(function() {
+                checkboxValues[this.id] = this.checked;
+            });
+            sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+        // On page load
+        $.each(checkboxValues, function(key, value) {
+            $("#" + key).prop('checked', value);
+        });
+    </script>
 }
