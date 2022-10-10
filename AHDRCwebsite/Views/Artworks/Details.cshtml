@@ -115,6 +115,8 @@
     <div class="col-5">
         
         <h1>@Model.IdentifierNoCategory</h1>
+        @if(@Model.Category == "ao")
+        {
         <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
         <div id="geographicalInfo">
             <table>
@@ -1160,15 +1162,6 @@
             </table>
         </div>
         
-        <h1 onclick="hideAuthorityInfo()">Authority</h1>
-        <div id="authorityInfo">
-            <table>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-
-        
         <h1>Delete / unknown</h1>
         <table>
             <tbody>
@@ -1251,6 +1244,203 @@
                 }
             </tbody>
         </table>
-    
+        }
+        @if(@Model.Category == "co")
+        {
+        <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
+        <div id="geographicalInfo">
+            <table>
+                <tbody>
+                    @if (Model.Country != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Country)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Ethnicgroup != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Ethnicgroup)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Ethnicgroup)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+        <div id="whatisitInfo">
+            <table>
+                <tbody>
+                    @if (Model.Createdatemin != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdatemin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdatemin)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Createdatemax != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Createdatemax)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Createdatemax)
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+        </div>
+
+        <h1 onclick="hideWhatIsItInfo()">What is it?</h1>
+        <div id="whatIsItInfo">
+            <table>
+                <tbody>
+                    @if (Model.Acquiredfrom != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Objectname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Objectname)
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+        </div>
+
+        <h1 onclick="hideHistoryInfo()">History of Object</h1>
+        <div id="historyInfo">
+            <table>
+                <tbody>
+                    @if (Model.Auctions != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Auctions)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Auctions)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Collectedby != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Collectedby)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Collectedby)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Collectedwhen != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Collectedwhen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Collectedwhen)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Collection != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Collection)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Collection)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Exhibition != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Exhibition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Exhibition)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Provenance != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Provenance)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Provenance)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Ispublic != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Ispublic)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Ispublic)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <h1 onclick="hideNotesInfo()">Notes</h1>
+        <div id="notesInfo">
+            <table>
+                <tbody>
+                    @if (Model.Comments != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Comments)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Comments)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Confidential != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Confidential)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Confidential)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        }
     </div>
 </div>

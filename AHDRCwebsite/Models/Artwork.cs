@@ -43,16 +43,16 @@ namespace AHDRCwebsite.Models
         [Display(Name = "Clan")]
         public string Clan { get; set; }
 
-        [Display(Name = "Field collected by")]
+        [Display(Name = "Collected by")]
         public string Collectedby { get; set; }
 
         [Display(Name = "Collected date")]
         public string Collectedwhen { get; set; }
 
-        [Display(Name = "collection")]
+        [Display(Name = "Collection")]
         public string Collection { get; set; }
 
-        [Display(Name = "commanditaire")]
+        [Display(Name = "Commanditaire")]
         public string Commanditaire { get; set; }
 
         [Display(Name = "Authoritative comments")]
@@ -237,7 +237,7 @@ namespace AHDRCwebsite.Models
         [Display(Name = "Provenance")]
         public string Provenance { get; set; }
 
-        [Display(Name = "Public")]
+        [Display(Name = "Public collection")]
         public string Ispublic { get; set; }
 
         [Display(Name = "Publications")]
