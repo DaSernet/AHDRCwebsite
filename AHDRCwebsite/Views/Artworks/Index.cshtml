@@ -108,14 +108,14 @@
                 <div class="img-with-text">
                     @if (item.ArtworkImage.Count >= 1)
                     {
-                        <a asp-action="Details" asp-route-id="@item.Id" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                        <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
    asp-route-pageNumber="@ViewData["pageNumber"]" 
    asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
                     }
                     else
                     {
-                        <a asp-action="Details" asp-route-id="@item.Id" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                        <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
    asp-route-pageNumber="@ViewData["pageNumber"]" 
    asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>

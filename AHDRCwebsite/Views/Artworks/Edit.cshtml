@@ -23,13 +23,13 @@
                         @if (Model.ArtworkImage.First() == item)
                         {
                             <div class="carousel-item active">
-                                <a asp-controller="ArtworkImages" asp-action="delete" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
+                                <a asp-controller="ArtworkImages" asp-action="delete" asp-route-artworkimageid="@item.ArtworkImageId"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
                             </div>
                         }
                         else
                         {
                             <div class="carousel-item">
-                                <a asp-controller="ArtworkImages" asp-action="delete" asp-route-id="@item.Id"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
+                                <a asp-controller="ArtworkImages" asp-action="delete" asp-route-artworkimageid="@item.ArtworkImageId"><img src=@("/uploads/" + @item.ImageURL) class="img-fluid"></a>
                             </div>
                         }
 
@@ -81,13 +81,13 @@
         {
             <img src=@("/images/download.png")>
             <img src=@("/images/comment.png")>
-            <a asp-controller="ArtworkImages" asp-action="Create" asp-route-id="@Model.Id"><img src=@("/images/pic_add.png")></a>
+            <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
         }
         @if (User.IsInRole("Administrator"))
         {
-            <a asp-action="Edit" asp-route-id="@Model.Id"><img src=@("/images/page_edit.png")></a>
+            <a asp-action="Edit" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_edit.png")></a>
             <a asp-action="Create"><img src=@("/images/page_new.png")></a>
-            <a asp-action="Delete" asp-route-id="@Model.Id"><img src=@("/images/page_delete.png")></a>
+            <a asp-action="Delete" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_delete.png")></a>
             <img src=@("/images/page_move.png")>
             <img src=@("/images/book.png")>
             //we are still missing some buttons!
@@ -97,7 +97,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="theForm">
-                 <input type="hidden" asp-for="Id"/>
+                 <input type="hidden" asp-for="ArtworkId"/>
             <div class="form-group" hidden>
                 <label asp-for="Category" class="control-label"></label>
                 <select asp-for="Category" class="form-control">

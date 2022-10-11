@@ -5,7 +5,7 @@ namespace AHDRCwebsite.Models
 {
     public class Artwork
     {
-        public int Id { get; set; }
+        public int ArtworkId { get; set; }
 
         [Display(Name = "Acquired from")]
         public string Acquiredfrom { get; set; }
@@ -284,7 +284,6 @@ namespace AHDRCwebsite.Models
 
         [Display(Name = "Objects in the same workshop")]
         public string Workshoplist { get; set; }
-
         public string Yaleid { get; set; }
         public string Unit { get; set; }
         public string Associatfeatures { get; set; }
@@ -296,6 +295,31 @@ namespace AHDRCwebsite.Models
 
         [Required]
         public string Category { get; set; }
+        public string Author { get; set; }
+        public string Collections { get; set; }
+        public string Date { get; set; }
+        public string ISBN { get; set; }
+        public string Publisher { get; set; }
+        public string Title { get; set; }
+        public string Year { get; set; }
+        public string Reprints { get; set; }
+        public string Datemax { get; set; }
+        public string Datemin { get; set; }
+        public string medriinfo { get; set; }
+        public string Bio2 { get; set; }
+        public string Biography { get; set; }
+        public string Book_about { get; set; }
+        public string Born { get; set; }
+        public string Dead { get; set; }
+        public string First_Name { get; set; }
+        public string Full_name { get; set; }
+        public string Last_name { get; set; }
+        public string Catalogue { get; set; }
+        public string City { get; set; }
+        public string Commercial { get; set; }
+        public string Curator { get; set; }
+        public string Location { get; set; }
+        public string Categoryofobject { get; set; }
 
         public ICollection<ArtworkImage> ArtworkImage { get; set; }
     }

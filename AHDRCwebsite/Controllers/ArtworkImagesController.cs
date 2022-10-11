@@ -34,15 +34,15 @@ namespace AHDRCwebsite.Controllers
 
         // GET: ArtworkImages/Details/5
         [Authorize]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? ArtworkImageId)
         {
-            if (id == null || _context.ArtworkImages == null)
+            if (ArtworkImageId == null || _context.ArtworkImages == null)
             {
                 return NotFound();
             }
 
             var artworkImage = await _context.ArtworkImages
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ArtworkImageId == ArtworkImageId);
             if (artworkImage == null)
             {
                 return NotFound();
@@ -53,10 +53,10 @@ namespace AHDRCwebsite.Controllers
 
         // GET: ArtworkImages/Create
         [Authorize(Roles = "Administrator")]
-        public IActionResult Create(int id)
+        public IActionResult Create(int ArtworkId)
         {
             ArtImages vm = new ArtImages();
-            ViewBag.images = new SelectList(_context.Artworks.Where(m => m.Id == id).ToList(), "Id", "Identifier");
+            ViewBag.images = new SelectList(_context.Artworks.Where(m => m.ArtworkId == ArtworkId).ToList(), "ArtworkId", "Identifier");
             return View(vm);
         }
 
@@ -79,7 +79,7 @@ namespace AHDRCwebsite.Controllers
                         Artwork = vm.Artwork
                     };
 
-                    var artwork = _context.Artworks.Find(vm.Artwork.Id);
+                    var artwork = _context.Artworks.Find(vm.Artwork.ArtworkId);
                     artworkImage.Artwork = artwork;
                     _context.ArtworkImages.Add(artworkImage);
                 }
@@ -128,9 +128,9 @@ namespace AHDRCwebsite.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ImageURL")] ArtworkImage artworkImage)
+        public async Task<IActionResult> Edit(int ArtworkImageId, [Bind("ArtworkImageId,ImageURL")] ArtworkImage artworkImage)
         {
-            if (id != artworkImage.Id)
+            if (ArtworkImageId != artworkImage.ArtworkImageId)
             {
                 return NotFound();
             }
@@ -144,7 +144,7 @@ namespace AHDRCwebsite.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ArtworkImageExists(artworkImage.Id))
+                    if (!ArtworkImageExists(artworkImage.ArtworkImageId))
                     {
                         return NotFound();
                     }
@@ -160,15 +160,15 @@ namespace AHDRCwebsite.Controllers
 
         // GET: ArtworkImages/Delete/5
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? ArtworkImageId)
         {
-            if (id == null || _context.ArtworkImages == null)
+            if (ArtworkImageId == null || _context.ArtworkImages == null)
             {
                 return NotFound();
             }
 
             var artworkImage = await _context.ArtworkImages
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ArtworkImageId == ArtworkImageId);
             if (artworkImage == null)
             {
                 return NotFound();
@@ -181,14 +181,14 @@ namespace AHDRCwebsite.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int ArtworkImageId)
         {
             string fileName = null;
             if (_context.ArtworkImages == null)
             {
                 return Problem("Entity set 'ArtworkContext.ArtworkImages'  is null.");
             }
-            var artworkImage = await _context.ArtworkImages.FindAsync(id);
+            var artworkImage = await _context.ArtworkImages.FindAsync(ArtworkImageId);
             if (artworkImage != null)
             {
                 _context.ArtworkImages.Remove(artworkImage);
@@ -205,9 +205,9 @@ namespace AHDRCwebsite.Controllers
             return RedirectToAction("Index", "Artworks");
         }
 
-        private bool ArtworkImageExists(int id)
+        private bool ArtworkImageExists(int ArtworkImageId)
         {
-            return _context.ArtworkImages.Any(e => e.Id == id);
+            return _context.ArtworkImages.Any(e => e.ArtworkImageId == ArtworkImageId);
         }
     }
 }

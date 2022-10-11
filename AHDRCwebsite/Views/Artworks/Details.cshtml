@@ -18,14 +18,14 @@
 
 @if(ViewData["artworkQueryStringPrev"] != null)
 {
-<a asp-action="Details" asp-route-id="@ViewData["artworkQueryStringPrev"]"
+<a asp-action="Details" asp-route-artworkid="@ViewData["artworkQueryStringPrev"]"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
    asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/arrowleft.png")></a>
 }
 @if(ViewData["artworkQueryStringNext"] != null)
 {
-<a asp-action="Details" asp-route-id="@ViewData["artworkQueryStringNext"]"
+<a asp-action="Details" asp-route-artworkid="@ViewData["artworkQueryStringNext"]"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
    asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/arrowright.png")></a>
@@ -100,13 +100,13 @@
         {
         <img src=@("/images/download.png")>
         <img src=@("/images/comment.png")>
-        <a asp-controller="ArtworkImages" asp-action="Create" asp-route-id="@Model.Id"><img src=@("/images/pic_add.png")></a>
+        <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
         }
         @if(User.IsInRole("Administrator"))
         {
-        <a asp-action="Edit" asp-route-id="@Model.Id"><img src=@("/images/page_edit.png")></a>
+        <a asp-action="Edit" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_edit.png")></a>
         <a asp-action="Create"><img src=@("/images/page_new.png")></a>
-        <a asp-action="Delete" asp-route-id="@Model.Id"><img src=@("/images/page_delete.png")></a>
+        <a asp-action="Delete" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_delete.png")></a>
         <img src=@("/images/page_move.png")>
         <img src=@("/images/book.png")>
         //we are still missing some buttons!
@@ -1317,14 +1317,14 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.First_name != null)
+                    @if (Model.First_Name != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.First_name)
+                                @Html.DisplayNameFor(model => model.First_Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.First_name)
+                                @Html.DisplayFor(model => model.First_Name)
                             </td>
                         </tr>
                     }
@@ -1350,14 +1350,14 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Deceased != null)
+                    @if (Model.Dead != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Deceased)
+                                @Html.DisplayNameFor(model => model.Dead)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Deceased)
+                                @Html.DisplayFor(model => model.Dead)
                             </td>
                         </tr>
                     }

@@ -42,7 +42,7 @@ namespace AHDRCwebsite.Controllers
             }
 
             var publicArtworkList = from y in _context.Artworks
-                                .Select(i => new { i.Id, i.Ispublic, i.Category })
+                                .Select(i => new { i.ArtworkId, i.Ispublic, i.Category })
                                     select y;
 
             //working BUT ONLY RETURNS CATEGORY & NOTHING ELSE
@@ -104,7 +104,7 @@ namespace AHDRCwebsite.Controllers
 
             publicArtworkList = publicArtworkList.Where(s => selectedCategory.Contains(s.Category));
 
-            artworks = artworks.Where(a => publicArtworkList.Any(a2 => a2.Id == a.Id));
+            artworks = artworks.Where(a => publicArtworkList.Any(a2 => a2.ArtworkId == a.ArtworkId));
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -205,7 +205,7 @@ s.Medwoodinfo.Contains(searchString));
                 switch (sortOrder)
                 {
                     case "identifier_desc":
-                        artworks = artworks.OrderByDescending(s => s.Id);
+                        artworks = artworks.OrderByDescending(s => s.ArtworkId);
                         break;
 
                     case "Size":
@@ -217,11 +217,11 @@ s.Medwoodinfo.Contains(searchString));
                         break;
 
                     default:
-                        artworks = artworks.OrderBy(s => s.Id);
+                        artworks = artworks.OrderBy(s => s.ArtworkId);
                         break;
                 }
             }
-            artworkQueryString = String.Join(",", artworks.OrderBy(s => s.Id).Select(a => a.Id).AsEnumerable());
+            artworkQueryString = String.Join(",", artworks.OrderBy(s => s.ArtworkId).Select(a => a.ArtworkId).AsEnumerable());
             ViewData["artworkQueryString"] = artworkQueryString;
 
             artworks = artworks.Include(i => i.ArtworkImage);
@@ -231,15 +231,15 @@ s.Medwoodinfo.Contains(searchString));
         }
 
         // GET: Artworks/Details/5
-        public async Task<IActionResult> Details(int? id, string currentCategory, string currentFilter, int? pageNumber, string artworkQueryString)
+        public async Task<IActionResult> Details(int? ArtworkId, string currentCategory, string currentFilter, int? pageNumber, string artworkQueryString)
         {
-            if (id == null || _context.Artworks == null)
+            if (ArtworkId == null || _context.Artworks == null)
             {
                 return NotFound();
             }
 
             var artwork = await _context.Artworks.Include(i => i.ArtworkImage)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ArtworkId == ArtworkId);
             if (artwork == null)
             {
                 return NotFound();
@@ -253,7 +253,7 @@ s.Medwoodinfo.Contains(searchString));
             {
                 string[] artworkQueryArray = artworkQueryString.Split(',');
 
-                var index = Array.FindIndex(artworkQueryArray, row => row == id.ToString());
+                var index = Array.FindIndex(artworkQueryArray, row => row == ArtworkId.ToString());
 
                 if (index < artworkQueryArray.Length - 1)
                 {
@@ -290,7 +290,7 @@ s.Medwoodinfo.Contains(searchString));
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Create([Bind("Id,Acquiredfrom,Category,Acquisitiondate,Additionalfeatures,Artist,Artistgender,Artistsg,Associatefeatures,Auctions,Calabashinfo,Certificate,Chefferie,Clan,Collectedby,Collectedwhen,Collection,Commanditaire,Comments,Commgender,Commonfeatures,Commsg,Condition,Confidential,Country,Createdate,Createdatemax,Createdatemin,Creditline,Depth,Diameter,Donationfrom,Ethnicgroup,Exhibition,Features,Groups,Hairinfo,Height,Inventory,Kingdom,Langgroup,Length,Medbeinfo,Medbkinfo,Medboinfo,Medceinfo,Medclinfo,Medfeinfo,Medfiinfo,Medglinfo,Medhoinfo,Medirinfo,Medium,Medivinfo,Medmainfo,Medotinfo,Medrainfo,Medreinfo,Medseedpodsinfo,Medshinfo,Medskinfo,Medstinfo,Medwoinfo,Needbetter,Objectgender,Objectjanus,Objectname,Objectnameex,Objectnamegn,Objectposture,Photocopy,Photographer,Photoinvnr,Photoprov,Pigmentinfo,Provenance,Ispublic,Publication,Raaiid,Region,Restoration,Ritualassoc,Sitearcheo,Structuralfeatures,Tms,Usage,Village,Web,Weight,Width,Workshop,Workshoplist,Yaleid,Unit,Associatfeatures,Multiline,Langsubgroup,Aquisitiondate,Medwoodinfo,Reacttmp")] Artwork artwork)
+        public async Task<IActionResult> Create([Bind("ArtworkId,Acquiredfrom,Category,Acquisitiondate,Additionalfeatures,Artist,Artistgender,Artistsg,Associatefeatures,Auctions,Calabashinfo,Certificate,Chefferie,Clan,Collectedby,Collectedwhen,Collection,Commanditaire,Comments,Commgender,Commonfeatures,Commsg,Condition,Confidential,Country,Createdate,Createdatemax,Createdatemin,Creditline,Depth,Diameter,Donationfrom,Ethnicgroup,Exhibition,Features,Groups,Hairinfo,Height,Inventory,Kingdom,Langgroup,Length,Medbeinfo,Medbkinfo,Medboinfo,Medceinfo,Medclinfo,Medfeinfo,Medfiinfo,Medglinfo,Medhoinfo,Medirinfo,Medium,Medivinfo,Medmainfo,Medotinfo,Medrainfo,Medreinfo,Medseedpodsinfo,Medshinfo,Medskinfo,Medstinfo,Medwoinfo,Needbetter,Objectgender,Objectjanus,Objectname,Objectnameex,Objectnamegn,Objectposture,Photocopy,Photographer,Photoinvnr,Photoprov,Pigmentinfo,Provenance,Ispublic,Publication,Raaiid,Region,Restoration,Ritualassoc,Sitearcheo,Structuralfeatures,Tms,Usage,Village,Web,Weight,Width,Workshop,Workshoplist,Yaleid,Unit,Associatfeatures,Multiline,Langsubgroup,Aquisitiondate,Medwoodinfo,Reacttmp")] Artwork artwork)
         {
             if (ModelState.IsValid)
             {
@@ -300,7 +300,7 @@ s.Medwoodinfo.Contains(searchString));
 
                 artworks = artworks.Where(s => s.Category.Contains(category));
                 string identifier = "0";
-                identifier = artworks.OrderBy(s => s.Id).LastOrDefault().Identifier;
+                identifier = artworks.OrderBy(s => s.ArtworkId).LastOrDefault().Identifier;
                 var identifierNumber = "0";
 
                 // get everything after -
@@ -323,15 +323,15 @@ s.Medwoodinfo.Contains(searchString));
 
         // GET: Artworks/Edit/5
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? artworkid)
         {
-            if (id == null || _context.Artworks == null)
+            if (artworkid == null || _context.Artworks == null)
             {
                 return NotFound();
             }
 
             //var artwork = await _context.Artworks.FindAsync(id);
-            var artwork = await _context.Artworks.Include(i => i.ArtworkImage).FirstOrDefaultAsync(m => m.Id == id);
+            var artwork = await _context.Artworks.Include(i => i.ArtworkImage).FirstOrDefaultAsync(m => m.ArtworkId == artworkid);
             if (artwork == null)
             {
                 return NotFound();
@@ -345,9 +345,9 @@ s.Medwoodinfo.Contains(searchString));
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Edit(int id, [Bind("ArtworkImage,Id,Category,Identifier,Acquiredfrom,Acquisitiondate,Additionalfeatures,Artist,Artistgender,Artistsg,Associatefeatures,Auctions,Calabashinfo,Certificate,Chefferie,Clan,Collectedby,Collectedwhen,Collection,Commanditaire,Comments,Commgender,Commonfeatures,Commsg,Condition,Confidential,Country,Createdate,Createdatemax,Createdatemin,Creditline,Depth,Diameter,Donationfrom,Ethnicgroup,Exhibition,Features,Groups,Hairinfo,Height,Inventory,Kingdom,Langgroup,Length,Medbeinfo,Medbkinfo,Medboinfo,Medceinfo,Medclinfo,Medfeinfo,Medfiinfo,Medglinfo,Medhoinfo,Medirinfo,Medium,Medivinfo,Medmainfo,Medotinfo,Medrainfo,Medreinfo,Medseedpodsinfo,Medshinfo,Medskinfo,Medstinfo,Medwoinfo,Needbetter,Objectgender,Objectjanus,Objectname,Objectnameex,Objectnamegn,Objectposture,Photocopy,Photographer,Photoinvnr,Photoprov,Pigmentinfo,Provenance,Ispublic,Publication,Raaiid,Region,Restoration,Ritualassoc,Sitearcheo,Structuralfeatures,Tms,Usage,Village,Web,Weight,Width,Workshop,Workshoplist,Yaleid,Unit,Associatfeatures,Multiline,Langsubgroup,Aquisitiondate,Medwoodinfo,Reacttmp")] Artwork artwork)
+        public async Task<IActionResult> Edit(int artworkid, [Bind("ArtworkImage,ArtworkId,Category,Identifier,Acquiredfrom,Acquisitiondate,Additionalfeatures,Artist,Artistgender,Artistsg,Associatefeatures,Auctions,Calabashinfo,Certificate,Chefferie,Clan,Collectedby,Collectedwhen,Collection,Commanditaire,Comments,Commgender,Commonfeatures,Commsg,Condition,Confidential,Country,Createdate,Createdatemax,Createdatemin,Creditline,Depth,Diameter,Donationfrom,Ethnicgroup,Exhibition,Features,Groups,Hairinfo,Height,Inventory,Kingdom,Langgroup,Length,Medbeinfo,Medbkinfo,Medboinfo,Medceinfo,Medclinfo,Medfeinfo,Medfiinfo,Medglinfo,Medhoinfo,Medirinfo,Medium,Medivinfo,Medmainfo,Medotinfo,Medrainfo,Medreinfo,Medseedpodsinfo,Medshinfo,Medskinfo,Medstinfo,Medwoinfo,Needbetter,Objectgender,Objectjanus,Objectname,Objectnameex,Objectnamegn,Objectposture,Photocopy,Photographer,Photoinvnr,Photoprov,Pigmentinfo,Provenance,Ispublic,Publication,Raaiid,Region,Restoration,Ritualassoc,Sitearcheo,Structuralfeatures,Tms,Usage,Village,Web,Weight,Width,Workshop,Workshoplist,Yaleid,Unit,Associatfeatures,Multiline,Langsubgroup,Aquisitiondate,Medwoodinfo,Reacttmp")] Artwork artwork)
         {
-            if (id != artwork.Id)
+            if (artworkid != artwork.ArtworkId)
             {
                 return NotFound();
             }
@@ -361,7 +361,7 @@ s.Medwoodinfo.Contains(searchString));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ArtworkExists(artwork.Id))
+                    if (!ArtworkExists(artwork.ArtworkId))
                     {
                         return NotFound();
                     }
@@ -377,15 +377,15 @@ s.Medwoodinfo.Contains(searchString));
 
         // GET: Artworks/Delete/5
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? ArtworkId)
         {
-            if (id == null || _context.Artworks == null)
+            if (ArtworkId == null || _context.Artworks == null)
             {
                 return NotFound();
             }
 
             var artwork = await _context.Artworks
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ArtworkId == ArtworkId);
             if (artwork == null)
             {
                 return NotFound();
@@ -398,13 +398,13 @@ s.Medwoodinfo.Contains(searchString));
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int artworkid)
         {
             if (_context.Artworks == null)
             {
                 return Problem("Entity set 'ArtworkContext.Artworks'  is null.");
             }
-            var artwork = await _context.Artworks.FindAsync(id);
+            var artwork = await _context.Artworks.FindAsync(artworkid);
             if (artwork != null)
             {
                 _context.Artworks.Remove(artwork);
@@ -415,9 +415,9 @@ s.Medwoodinfo.Contains(searchString));
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ArtworkExists(int id)
+        private bool ArtworkExists(int artworkid)
         {
-            return _context.Artworks.Any(e => e.Id == id);
+            return _context.Artworks.Any(e => e.ArtworkId == artworkid);
         }
     }
 }
