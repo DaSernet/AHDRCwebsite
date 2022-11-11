@@ -22,6 +22,8 @@ namespace AHDRCwebsite.Controllers
         // GET: Artworks
         public async Task<IActionResult> Index(string currentCategory, string currentFilter, string searchString, int? pageNumber, string[] selectedCategory, string sortOrder, string artworkQueryString)
         {
+
+
             var artworks = (from s in _context.Artworks
                             select s);
 
@@ -199,6 +201,8 @@ s.Langsubgroup.Contains(searchString) ||
 s.Aquisitiondate.Contains(searchString) ||
 s.Medwoodinfo.Contains(searchString));
             }
+
+            artworks = artworks.Take(500);
 
             if (artworks != null)
             {

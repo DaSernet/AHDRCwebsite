@@ -8,29 +8,109 @@
 
 <link rel="stylesheet" href="~/css/cardoverlay.css">
 <link rel="stylesheet" href="~/css/detailpage.css">
+<link rel="stylesheet" href="~/css/searchindex.css">
 <script type="text/javascript" src="~/js/detailpage.js"></script>
 
-<div>
+<form class="search-bar-form" asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p class="text-light">
+            <div class="input-icons">
+                <i class="fa fa-search icon"></i>
+                <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="search-bar  search-text-light" placeholder="Search...">
+            </div>
+        </p>
+    </div>
+    <div id="checkbox-container" class="checkbox-container">
+        @if (User.IsInRole("Administrator") || User.IsInRole("Subscriber"))
+        {
+            <label>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" hidden />
+                <span class="text-grey">Objects</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" hidden />
+                <span class="text-grey">Field Photos</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden />
+                <span class="text-grey">Who's Who</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden />
+                <span class="text-grey">Publications</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden />
+                <span class="text-grey">Exhibitions</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" hidden />
+                <span class="text-grey">Collections</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden />
+                <span class="text-grey">Auctions</span>
+            </label>
+        }
+        else
+        {
+            <label>
+                <input type="checkbox" name="selectedCategory" value="ao" id="ao-checkbox" disabled hidden />
+                <span class="text-grey">Objects</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="ph" id="ph-checkbox" disabled hidden />
+                <span class="text-grey">Field Photos</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="wh" id="wh-checkbox" hidden />
+                <span class="text-grey">Who's Who</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="bk" id="bk-checkbox" hidden />
+                <span class="text-grey">Publications</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="xp" id="xp-checkbox" hidden />
+                <span class="text-grey">Exhibitions</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="co" id="co-checkbox" disabled hidden />
+                <span class="text-grey">Collections</span>
+            </label>
+            <label>
+                <input type="checkbox" name="selectedCategory" value="au" id="au-checkbox" hidden />
+                <span class="text-grey">Auctions</span>
+            </label>
+        }
+    </div>
+
+</form>
+
+
+<div class="text-light row info-div justify-content-center">
+    <div class="col-5 text-center">
     <a a asp-action="Index" asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
    asp-route-pageNumber="@ViewData["pageNumber"]">Back to search results</a>
 </div>
-
+<div class="col-auto"></div>
+<div class="col-5">
 @if(ViewData["artworkQueryStringPrev"] != null)
 {
 <a asp-action="Details" asp-route-artworkid="@ViewData["artworkQueryStringPrev"]"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/arrowleft.png")></a>
+   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img style="width: 30px;height: 30px;" src=@("/images/arrowleft.png")></a>
 }
 @if(ViewData["artworkQueryStringNext"] != null)
 {
 <a asp-action="Details" asp-route-artworkid="@ViewData["artworkQueryStringNext"]"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/arrowright.png")></a>
+   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img style="width: 30px;height: 30px; float:right;" src=@("/images/arrowright.png")></a>
 }
-<div class="text-light row info-div justify-content-center">
+</div>
     <div class="col-5 image-col">
         @if (Model.ArtworkImage.Count >= 1)
         {
@@ -375,7 +455,7 @@
                                 @Html.DisplayNameFor(model => model.Height)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Height)
+                                @Html.DisplayFor(model => model.Height) (cm)
                             </td>
                         </tr>
                     }
@@ -649,8 +729,8 @@
                             <td>
                                 @Html.DisplayNameFor(model => model.Weight)
                             </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Weight)
+                            <td> 
+                                @Html.DisplayFor(model => model.Weight) (g)
                             </td>
                         </tr>
                     }
