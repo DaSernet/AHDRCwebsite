@@ -97,7 +97,7 @@ namespace AHDRCwebsite.Models
         [Display(Name = "Donation from")]
         public string Donationfrom { get; set; }
 
-        [Display(Name = "Tribe")]
+        [Display(Name = "Culture")]
         public string Ethnicgroup { get; set; }
 
         [Display(Name = "Exhibitions")]
@@ -147,7 +147,7 @@ namespace AHDRCwebsite.Models
         [Display(Name = "T.Cotta")]
         public string Medceinfo { get; set; }
 
-        [Display(Name = "Cloth")]
+        [Display(Name = "Cloth/Fabric")]
         public string Medclinfo { get; set; }
 
         [Display(Name = "Feather")]
@@ -171,7 +171,7 @@ namespace AHDRCwebsite.Models
         [Display(Name = "Ivory")]
         public string Medivinfo { get; set; }
 
-        [Display(Name = "Magical subst.")]
+        [Display(Name = "Magical Substances")]
         public string Medmainfo { get; set; }
 
         [Display(Name = "Other")]
@@ -204,31 +204,31 @@ namespace AHDRCwebsite.Models
         [Display(Name = "Object gender")]
         public string Objectgender { get; set; }
 
-        [Display(Name = "Acephalous")]
+        [Display(Name = "Representation")]
         public string Objectjanus { get; set; }
 
         [Display(Name = "Name")]
         public string Objectname { get; set; }
 
-        [Display(Name = "Excl. name")]
+        [Display(Name = "Exclusive Name")]
         public string Objectnameex { get; set; }
 
-        [Display(Name = "Ethn. name")]
+        [Display(Name = "Ethnic Name")]
         public string Objectnamegn { get; set; }
 
-        [Display(Name = "Object posture")]
+        [Display(Name = "Object Posture")]
         public string Objectposture { get; set; }
 
-        [Display(Name = "copyright photo")]
+        [Display(Name = "Copyright Photo")]
         public string Photocopy { get; set; }
 
-        [Display(Name = "photographer")]
+        [Display(Name = "Photographer")]
         public string Photographer { get; set; }
 
         [Display(Name = "Photo inventory nr")]
         public string Photoinvnr { get; set; }
 
-        [Display(Name = "courtesy of")]
+        [Display(Name = "Courtesy of")]
         public string Photoprov { get; set; }
 
         [Display(Name = "Pigment")]
@@ -237,7 +237,7 @@ namespace AHDRCwebsite.Models
         [Display(Name = "Provenance")]
         public string Provenance { get; set; }
 
-        [Display(Name = "Public collection")]
+        [Display(Name = "Collection Status")]
         public string Ispublic { get; set; }
 
         [Display(Name = "Publications")]
@@ -284,17 +284,20 @@ namespace AHDRCwebsite.Models
 
         [Display(Name = "Objects in the same workshop")]
         public string Workshoplist { get; set; }
+
         public string Yaleid { get; set; }
         public string Unit { get; set; }
         public string Associatfeatures { get; set; }
         public string Multiline { get; set; }
         public string Langsubgroup { get; set; }
         public string Aquisitiondate { get; set; }
+        [Display(Name = "Wood")]
         public string Medwoodinfo { get; set; }
         public string Reacttmp { get; set; }
 
         [Required]
         public string Category { get; set; }
+
         public string Author { get; set; }
         public string Collections { get; set; }
         public string Date { get; set; }

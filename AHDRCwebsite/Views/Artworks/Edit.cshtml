@@ -126,39 +126,14 @@
             <div id="geographicalInfo">
                 <table>
                     <tbody>
-                            <tr>
+                        <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Chefferie)
+                                    @Html.DisplayNameFor(model => model.Kingdom)
                                 </td>
                                 <td>
-                                    <input asp-for="Chefferie" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Clan)
-                                </td>
-                                <td>
-                                    <input asp-for="Clan" class="form-control" />
+                                    <input asp-for="Kingdom" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Country)
-                                </td>
-                                <td>
-                                    <input asp-for="Country" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Ethnicgroup)
@@ -167,20 +142,22 @@
                                     <input asp-for="Ethnicgroup" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Kingdom)
+                                    @Html.DisplayNameFor(model => model.Chefferie)
                                 </td>
                                 <td>
-                                    <input asp-for="Kingdom" class="form-control" />
+                                    <input asp-for="Chefferie" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Clan)
+                                </td>
+                                <td>
+                                    <input asp-for="Clan" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Langgroup)
@@ -189,9 +166,14 @@
                                     <input asp-for="Langgroup" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </td>
+                                <td>
+                                    <input asp-for="Country" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Region)
@@ -200,20 +182,6 @@
                                     <input asp-for="Region" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Sitearcheo)
-                                </td>
-                                <td>
-                                    <input asp-for="Sitearcheo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Village)
@@ -222,9 +190,14 @@
                                     <input asp-for="Village" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Sitearcheo)
+                                </td>
+                                <td>
+                                    <input asp-for="Sitearcheo" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Langsubgroup)
@@ -233,7 +206,6 @@
                                     <input asp-for="Langsubgroup" class="form-control" />
                                 </td>
                             </tr>
-                        
                     </tbody>
                 </table>
             </div>
@@ -242,31 +214,7 @@
             <div id="objectInfo">
                 <table>
                     <tbody>
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectgender)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectgender" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectjanus)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectjanus" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
+                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Objectname)
                                 </td>
@@ -274,9 +222,6 @@
                                     <input asp-for="Objectname" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Objectnameex)
@@ -285,9 +230,6 @@
                                     <input asp-for="Objectnameex" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Objectnamegn)
@@ -296,9 +238,23 @@
                                     <input asp-for="Objectnamegn" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectjanus)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectjanus" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Objectgender)
+                                </td>
+                                <td>
+                                    <input asp-for="Objectgender" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Objectposture)
@@ -307,7 +263,6 @@
                                     <input asp-for="Objectposture" class="form-control" />
                                 </td>
                             </tr>
-                        
                     </tbody>
                 </table>
             </div>
@@ -316,63 +271,6 @@
             <div id="physicalInfo" class="text-info-div">
                 <table>
                     <tbody>
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Calabashinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Calabashinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Condition)
-                                </td>
-                                <td>
-                                    <input asp-for="Condition" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Depth)
-                                </td>
-                                <td>
-                                    <input asp-for="Depth" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Diameter)
-                                </td>
-                                <td>
-                                    <input asp-for="Diameter" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Hairinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Hairinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Height)
@@ -381,9 +279,6 @@
                                     <input asp-for="Height" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Length)
@@ -392,273 +287,14 @@
                                     <input asp-for="Length" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Medbeinfo)
+                                    @Html.DisplayNameFor(model => model.Depth)
                                 </td>
                                 <td>
-                                    <input asp-for="Medbeinfo" class="form-control" />
+                                    <input asp-for="Depth" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medbkinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medbkinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medboinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medboinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medceinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medceinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medclinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medclinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medfeinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medfeinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medfiinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medfiinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medglinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medglinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medhoinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medhoinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medirinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medirinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medium)
-                                </td>
-                                <td>
-                                    <input asp-for="Medium" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medivinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medivinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medmainfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medmainfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medotinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medotinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medrainfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medrainfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medreinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medreinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medseedpodsinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medseedpodsinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medshinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medshinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medskinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medskinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medstinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medstinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medwoinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medwoinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Pigmentinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Pigmentinfo" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Restoration)
-                                </td>
-                                <td>
-                                    <input asp-for="Restoration" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Weight)
-                                </td>
-                                <td>
-                                    <input asp-for="Weight" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Width)
@@ -667,9 +303,230 @@
                                     <input asp-for="Width" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Diameter)
+                                </td>
+                                <td>
+                                    <input asp-for="Diameter" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Weight)
+                                </td>
+                                <td>
+                                    <input asp-for="Weight" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medium)
+                                </td>
+                                <td>
+                                    <input asp-for="Medium" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medbkinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medbkinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medbeinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medbeinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medboinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medboinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Calabashinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Calabashinfo" class="form-control" />
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medclinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medclinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medfeinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medfeinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medfiinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medfiinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medglinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medglinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Hairinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Hairinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medhoinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medhoinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medivinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medivinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medmainfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medmainfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medirinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medirinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Pigmentinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Pigmentinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medrainfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medrainfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medreinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medreinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medseedpodsinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medseedpodsinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medshinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medshinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medskinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medskinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medstinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medstinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medceinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medceinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medwoinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medwoinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Medotinfo)
+                                </td>
+                                <td>
+                                    <input asp-for="Medotinfo" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Condition)
+                                </td>
+                                <td>
+                                    <input asp-for="Condition" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Restoration)
+                                </td>
+                                <td>
+                                    <input asp-for="Restoration" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Medwoodinfo)
@@ -687,52 +544,6 @@
             <div id="historyInfo">
                 <table>
                     <tbody>
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Acquiredfrom)
-                                </td>
-                                <td>
-                                    <input asp-for="Acquiredfrom" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Acquisitiondate)
-                                </td>
-                                <td>
-                                    <input asp-for="Acquisitiondate" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Auctions)
-                                </td>
-                                <td>
-                                    <input asp-for="Auctions" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Certificate)
-                                </td>
-                                <td>
-                                    <input asp-for="Certificate" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Collectedby)
@@ -741,9 +552,6 @@
                                     <input asp-for="Collectedby" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Collectedwhen)
@@ -752,9 +560,6 @@
                                     <input asp-for="Collectedwhen" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Collection)
@@ -763,42 +568,17 @@
                                     <input asp-for="Collection" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Creditline)
+                                    @Html.DisplayNameFor(model => model.Ispublic)
                                 </td>
                                 <td>
-                                    <input asp-for="Creditline" class="form-control" />
+                                    <select asp-for="Ispublic" class="form-control">
+                                        <option value="true">Public collection</option>
+                                        <option value="false">Private collection</option>
+                                    </select>
                                 </td>
                             </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Donationfrom)
-                                </td>
-                                <td>
-                                    <input asp-for="Donationfrom" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Exhibition)
-                                </td>
-                                <td>
-                                    <input asp-for="Exhibition" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Inventory)
@@ -807,9 +587,46 @@
                                     <input asp-for="Inventory" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Acquiredfrom)
+                                </td>
+                                <td>
+                                    <input asp-for="Acquiredfrom" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Acquisitiondate)
+                                </td>
+                                <td>
+                                    <input asp-for="Acquisitiondate" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Donationfrom)
+                                </td>
+                                <td>
+                                    <input asp-for="Donationfrom" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Creditline)
+                                </td>
+                                <td>
+                                    <input asp-for="Creditline" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Certificate)
+                                </td>
+                                <td>
+                                    <input asp-for="Certificate" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Provenance)
@@ -818,23 +635,6 @@
                                     <input asp-for="Provenance" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Ispublic)
-                                </td>
-                                <td>
-                                    <select asp-for="Ispublic" class="form-control">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Publication)
@@ -843,9 +643,22 @@
                                     <input asp-for="Publication" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Exhibition)
+                                </td>
+                                <td>
+                                    <input asp-for="Exhibition" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Auctions)
+                                </td>
+                                <td>
+                                    <input asp-for="Auctions" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Aquisitiondate)
@@ -854,7 +667,6 @@
                                     <input asp-for="Aquisitiondate" class="form-control" />
                                 </td>
                             </tr>
-                        
                     </tbody>
                 </table>
             </div>

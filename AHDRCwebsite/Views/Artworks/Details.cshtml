@@ -201,6 +201,28 @@
         <div id="geographicalInfo">
             <table>
                 <tbody>
+                    @if (Model.Kingdom != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Kingdom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Kingdom)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Ethnicgroup != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Ethnicgroup)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Ethnicgroup)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Chefferie != null)
                     {
                         <tr>
@@ -223,39 +245,6 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Country != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Country)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Country)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Ethnicgroup != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Ethnicgroup)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Ethnicgroup)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Kingdom != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Kingdom)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Kingdom)
-                            </td>
-                        </tr>
-                    }
                     @if (Model.Langgroup != null)
                     {
                         <tr>
@@ -264,6 +253,17 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Langgroup)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Country != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Country)
                             </td>
                         </tr>
                     }
@@ -278,17 +278,6 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Sitearcheo != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Sitearcheo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Sitearcheo)
-                            </td>
-                        </tr>
-                    }
                     @if (Model.Village != null)
                     {
                         <tr>
@@ -297,6 +286,17 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Village)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Sitearcheo != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Sitearcheo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Sitearcheo)
                             </td>
                         </tr>
                     }
@@ -319,28 +319,6 @@
         <div id="objectInfo">
             <table>
                 <tbody>
-                    @if (Model.Objectgender != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectgender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectgender)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Objectjanus != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Objectjanus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Objectjanus)
-                        </td>
-                    </tr>
-                }
                 @if (Model.Objectname != null)
                 {
                     <tr>
@@ -349,6 +327,17 @@
                         </td>
                         <td>
                             @Html.DisplayFor(model => model.Objectname)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectnamegn != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectnamegn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectnamegn)
                         </td>
                     </tr>
                 }
@@ -363,14 +352,25 @@
                         </td>
                     </tr>
                 }
-                @if (Model.Objectnamegn != null)
+                @if (Model.Objectjanus != null)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayNameFor(model => model.Objectnamegn)
+                            @Html.DisplayNameFor(model => model.Objectjanus)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => model.Objectnamegn)
+                            @Html.DisplayFor(model => model.Objectjanus)
+                        </td>
+                    </tr>
+                }
+                @if (Model.Objectgender != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Objectgender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Objectgender)
                         </td>
                     </tr>
                 }
@@ -393,25 +393,25 @@
         <div id="physicalInfo" class="text-info-div">
             <table>
                 <tbody>
-                    @if (Model.Calabashinfo != null)
+                    @if (Model.Height != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Calabashinfo)
+                                @Html.DisplayNameFor(model => model.Height)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Calabashinfo)
+                                @Html.DisplayFor(model => model.Height) (cm)
                             </td>
                         </tr>
-                    }
-                    @if (Model.Condition != null)
+                    }                
+                    @if (Model.Length != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Condition)
+                                @Html.DisplayNameFor(model => model.Length)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Condition)
+                                @Html.DisplayFor(model => model.Length)
                             </td>
                         </tr>
                     }
@@ -426,6 +426,17 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Width != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Width)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Width)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Diameter != null)
                     {
                         <tr>
@@ -437,47 +448,25 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Hairinfo != null)
+                    @if (Model.Weight != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Hairinfo)
+                                @Html.DisplayNameFor(model => model.Weight)
                             </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Hairinfo)
+                            <td> 
+                                @Html.DisplayFor(model => model.Weight) (g)
                             </td>
                         </tr>
                     }
-                    @if (Model.Height != null)
+                    @if (Model.Medium != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Height)
+                                @Html.DisplayNameFor(model => model.Medium)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Height) (cm)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Length != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Length)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Length)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Medbeinfo != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Medbeinfo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Medbeinfo)
+                                @Html.DisplayFor(model => model.Medium)
                             </td>
                         </tr>
                     }
@@ -492,6 +481,17 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Medbeinfo != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Medbeinfo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Medbeinfo)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Medboinfo != null)
                     {
                         <tr>
@@ -503,14 +503,14 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Medceinfo != null)
+                    @if (Model.Calabashinfo != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Medceinfo)
+                                @Html.DisplayNameFor(model => model.Calabashinfo)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Medceinfo)
+                                @Html.DisplayFor(model => model.Calabashinfo)
                             </td>
                         </tr>
                     }
@@ -558,6 +558,17 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Hairinfo != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Hairinfo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Hairinfo)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Medhoinfo != null)
                     {
                         <tr>
@@ -566,28 +577,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Medhoinfo)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Medirinfo != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Medirinfo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Medirinfo)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Medium != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Medium)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Medium)
                             </td>
                         </tr>
                     }
@@ -613,14 +602,25 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Medotinfo != null)
+                    @if (Model.Medirinfo != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Medotinfo)
+                                @Html.DisplayNameFor(model => model.Medirinfo)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Medotinfo)
+                                @Html.DisplayFor(model => model.Medirinfo)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Pigmentinfo != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Pigmentinfo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Pigmentinfo)
                             </td>
                         </tr>
                     }
@@ -690,6 +690,17 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Medceinfo != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Medceinfo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Medceinfo)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Medwoinfo != null)
                     {
                         <tr>
@@ -701,14 +712,25 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Pigmentinfo != null)
+                    @if (Model.Medotinfo != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Pigmentinfo)
+                                @Html.DisplayNameFor(model => model.Medotinfo)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Pigmentinfo)
+                                @Html.DisplayFor(model => model.Medotinfo)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Condition != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Condition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Condition)
                             </td>
                         </tr>
                     }
@@ -720,28 +742,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Restoration)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Weight != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Weight)
-                            </td>
-                            <td> 
-                                @Html.DisplayFor(model => model.Weight) (g)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Width != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Width)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Width)
                             </td>
                         </tr>
                     }
@@ -764,50 +764,6 @@
         <div id="historyInfo">
             <table>
                 <tbody>
-                    @if (Model.Acquiredfrom != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Acquiredfrom)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Acquiredfrom)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Acquisitiondate != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Acquisitiondate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Acquisitiondate)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Auctions != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Auctions)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Auctions)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Certificate != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Certificate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Certificate)
-                            </td>
-                        </tr>
-                    }
                     @if (Model.Collectedby != null)
                     {
                         <tr>
@@ -841,36 +797,14 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Creditline != null)
+                    @if (Model.Ispublic != null)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.Creditline)
+                                @Html.DisplayNameFor(model => model.Ispublic)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Creditline)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Donationfrom != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Donationfrom)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Donationfrom)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Exhibition != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Exhibition)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Exhibition)
+                                @Html.DisplayFor(model => model.Ispublic)
                             </td>
                         </tr>
                     }
@@ -885,6 +819,61 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Acquiredfrom != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Acquiredfrom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Acquiredfrom)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Acquisitiondate != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Acquisitiondate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Acquisitiondate)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Donationfrom != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Donationfrom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Donationfrom)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Creditline != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Creditline)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Creditline)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Certificate != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Certificate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Certificate)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Provenance != null)
                     {
                         <tr>
@@ -896,17 +885,6 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Ispublic != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Ispublic)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Ispublic)
-                            </td>
-                        </tr>
-                    }
                     @if (Model.Publication != null)
                     {
                         <tr>
@@ -915,6 +893,28 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Publication)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Exhibition != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Exhibition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Exhibition)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Auctions != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Auctions)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Auctions)
                             </td>
                         </tr>
                     }
@@ -1188,17 +1188,6 @@
         <div id="geographicalInfo">
             <table>
                 <tbody>
-                    @if (Model.Country != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Country)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Country)
-                            </td>
-                        </tr>
-                    }
                     @if (Model.Ethnicgroup != null)
                     {
                         <tr>
@@ -1207,6 +1196,17 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Ethnicgroup)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Country != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Country)
                             </td>
                         </tr>
                     }
