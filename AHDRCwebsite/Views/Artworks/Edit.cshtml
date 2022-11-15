@@ -10,6 +10,10 @@
 
 <h1 class="text-light">Edit</h1>
 
+<div>
+    <a asp-action="Index" class="text-light">Back to archive</a>
+</div>
+
 <div class="text-light row info-div justify-content-center">
     <div class="col-5 image-col">
         @if (Model.ArtworkImage != null && Model.ArtworkImage.Count() >= 1)
@@ -676,95 +680,6 @@
                 <table>
                     <tbody>
                         
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Artist)
-                                </td>
-                                <td>
-                                    <input asp-for="Artist" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Artistgender)
-                                </td>
-                                <td>
-                                    <input asp-for="Artistgender" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Artistsg)
-                                </td>
-                                <td>
-                                    <input asp-for="Artistsg" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commgender)
-                                </td>
-                                <td>
-                                    <input asp-for="Commgender" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commsg)
-                                </td>
-                                <td>
-                                    <input asp-for="Commsg" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Createdate)
-                                </td>
-                                <td>
-                                    <input asp-for="Createdate" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Createdatemax)
-                                </td>
-                                <td>
-                                    <input asp-for="Createdatemax" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Createdatemin)
-                                </td>
-                                <td>
-                                    <input asp-for="Createdatemin" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Workshop)
@@ -773,167 +688,49 @@
                                     <input asp-for="Workshop" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Workshoplist)
+                                    @Html.DisplayNameFor(model => model.Artist)
                                 </td>
                                 <td>
-                                    <input asp-for="Workshoplist" class="form-control" />
+                                    <input asp-for="Artist" class="form-control" />
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Createdate)
+                                </td>
+                                <td>
+                                    <input asp-for="Createdate" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Createdatemax)
+                                </td>
+                                <td>
+                                    <input asp-for="Createdatemax" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Createdatemin)
+                                </td>
+                                <td>
+                                    <input asp-for="Createdatemin" class="form-control" />
+                                </td>
+                            </tr>
+                            
                         
                     </tbody>
                 </table>
             </div>
 
-            <h1>Photographic Information</h1>
-            <table>
-                <tbody>
-
-                    
-                    
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Needbetter)
-                            </td>
-                            <td>
-                                <input asp-for="Needbetter" class="form-control" />
-                            </td>
-                        </tr>
-                    
-                    
-                    
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photocopy)
-                            </td>
-                            <td>
-                                <input asp-for="Photocopy" class="form-control" />
-                            </td>
-                        </tr>
-                    
-                    
-                    
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photographer)
-                            </td>
-                            <td>
-                                <input asp-for="Photographer" class="form-control" />
-                            </td>
-                        </tr>
-                    
-                    
-                    
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoinvnr)
-                            </td>
-                            <td>
-                                <input asp-for="Photoinvnr" class="form-control" />
-                            </td>
-                        </tr>
-                    
-                    
-                    
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoprov)
-                            </td>
-                            <td>
-                                <input asp-for="Photoprov" class="form-control" />
-                            </td>
-                        </tr>
-                    
-                </tbody>
-            </table>
-
+            
             <h1 onclick="hideNotesInfo()">Notes</h1>
             <div id="notesInfo">
                 <table>
                     <tbody>
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Additionalfeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Additionalfeatures" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Associatefeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Associatefeatures" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commanditaire)
-                                </td>
-                                <td>
-                                    <input asp-for="Commanditaire" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Comments)
-                                </td>
-                                <td>
-                                    <input asp-for="Comments" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commonfeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Commonfeatures" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Confidential)
-                                </td>
-                                <td>
-                                    <input asp-for="Confidential" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Features)
-                                </td>
-                                <td>
-                                    <input asp-for="Features" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Ritualassoc)
@@ -942,9 +739,6 @@
                                     <input asp-for="Ritualassoc" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Usage)
@@ -953,20 +747,62 @@
                                     <input asp-for="Usage" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Associatfeatures)
+                                    @Html.DisplayNameFor(model => model.Comments)
                                 </td>
                                 <td>
-                                    <input asp-for="Associatfeatures" class="form-control" />
+                                    <input asp-for="Comments" class="form-control" />
                                 </td>
                             </tr>
-                        
-                        
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Confidential)
+                                </td>
+                                <td>
+                                    <input asp-for="Confidential" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Workshoplist)
+                                </td>
+                                <td>
+                                    <input asp-for="Workshoplist" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Associatefeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Associatefeatures" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commonfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Commonfeatures" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Features)
+                                </td>
+                                <td>
+                                    <input asp-for="Features" class="form-control" />
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Additionalfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Additionalfeatures" class="form-control" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Structuralfeatures)
@@ -975,10 +811,74 @@
                                     <input asp-for="Structuralfeatures" class="form-control" />
                                 </td>
                             </tr>
-                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Associatfeatures)
+                                </td>
+                                <td>
+                                    <input asp-for="Associatfeatures" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commanditaire)
+                                </td>
+                                <td>
+                                    <input asp-for="Commanditaire" class="form-control" />
+                                </td>
+                            </tr>
                     </tbody>
                 </table>
             </div>
+
+            <h1>Photographic Information</h1>
+            <table>
+                <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photographer)
+                            </td>
+                            <td>
+                                <input asp-for="Photographer" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photocopy)
+                            </td>
+                            <td>
+                                <input asp-for="Photocopy" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoprov)
+                            </td>
+                            <td>
+                                <input asp-for="Photoprov" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoinvnr)
+                            </td>
+                            <td>
+                                <input asp-for="Photoinvnr" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Needbetter)
+                            </td>
+                            <td>
+                                <select asp-for="Needbetter" class="form-control">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                 </select>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
 
 
             <h1>Delete / unknown</h1>
@@ -1060,17 +960,58 @@
                                 <input asp-for="Reacttmp" class="form-control" />
                             </td>
                         </tr>
+
+                        <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Artistgender)
+                                </td>
+                                <td>
+                                    <input asp-for="Artistgender" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Artistsg)
+                                </td>
+                                <td>
+                                    <input asp-for="Artistsg" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commgender)
+                                </td>
+                                <td>
+                                    <input asp-for="Commgender" class="form-control" />
+                                </td>
+                            </tr>
+                        
+                        
+                        
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Commsg)
+                                </td>
+                                <td>
+                                    <input asp-for="Commsg" class="form-control" />
+                                </td>q
+                            </tr>
                     
                 </tbody>
             </table>
+            
             </div>
             <input type="submit" value="Save" class="btn btn-primary"/>
             </form>
     </div>
 </div>
-<div>
-    <a asp-action="Index">Back to archive</a>
-</div>
+
 
 @section Scripts {
     @{

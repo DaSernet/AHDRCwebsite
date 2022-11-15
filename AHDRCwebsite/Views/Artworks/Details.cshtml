@@ -90,7 +90,7 @@
 
 <div class="text-light row info-div justify-content-center">
     <div class="col-5 text-center">
-    <a a asp-action="Index" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+    <a a asp-action="Index"  class="text-light" asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
    asp-route-pageNumber="@ViewData["pageNumber"]">Back to search results</a>
 </div>
@@ -937,6 +937,17 @@
         <div id="authorshipInfo">
             <table>
                 <tbody>
+                    @if (Model.Workshop != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Workshop)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Workshop)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Artist != null)
                     {
                         <tr>
@@ -945,50 +956,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(model => model.Artist)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Artistgender != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artistgender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artistgender)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Artistsg != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Artistsg)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Artistsg)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commgender != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commgender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commgender)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commsg != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commsg)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commsg)
                             </td>
                         </tr>
                     }
@@ -1025,28 +992,6 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Workshop != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Workshop)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Workshop)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Workshoplist != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Workshoplist)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Workshoplist)
-                            </td>
-                        </tr>
-                    }
                 </tbody>
             </table>
         </div>
@@ -1055,83 +1000,6 @@
         <div id="notesInfo">
             <table>
                 <tbody>
-                    @if (Model.Additionalfeatures != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Additionalfeatures)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Additionalfeatures)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Associatefeatures != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Associatefeatures)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Associatefeatures)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commanditaire != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commanditaire)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commanditaire)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Comments != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Comments)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Comments)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Commonfeatures != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Commonfeatures)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Commonfeatures)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Confidential != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Confidential)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Confidential)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Features != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Features)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Features)
-                            </td>
-                        </tr>
-                    }
                     @if (Model.Ritualassoc != null)
                     {
                         <tr>
@@ -1154,6 +1022,94 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Comments != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Comments)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Comments)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Confidential != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Confidential)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Confidential)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Workshoplist != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Workshoplist)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Workshoplist)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Associatefeatures != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Associatefeatures)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Associatefeatures)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commonfeatures != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commonfeatures)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commonfeatures)
+                            </td>
+                        </tr>
+                    }                  
+                    @if (Model.Features != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Features)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Features)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Additionalfeatures != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Additionalfeatures)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Additionalfeatures)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Structuralfeatures != null)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Structuralfeatures)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Structuralfeatures)
+                        </td>
+                    </tr>
+                    }
                     @if (Model.Associatfeatures != null)
                     {
                         <tr>
@@ -1165,17 +1121,17 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Structuralfeatures != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Structuralfeatures)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.Structuralfeatures)
-                        </td>
-                    </tr>
-                }
+                    @if (Model.Commanditaire != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commanditaire)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commanditaire)
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -1379,7 +1335,6 @@
         </div>
         
         }
-
         @if(@Model.Category == "wh")
         {
         <h1 onclick="hideGeographicalInfo()">Information on person</h1>
@@ -1773,15 +1728,14 @@
         <h1>Photographic Information</h1>
         <table>
             <tbody>
-
-                @if (Model.Needbetter != null)
+                @if (Model.Photographer != null)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayNameFor(model => model.Needbetter)
+                            @Html.DisplayNameFor(model => model.Photographer)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => model.Needbetter)
+                            @Html.DisplayFor(model => model.Photographer)
                         </td>
                     </tr>
                 }
@@ -1796,14 +1750,14 @@
                         </td>
                     </tr>
                 }
-                @if (Model.Photographer != null)
+                @if (Model.Photoprov != null)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayNameFor(model => model.Photographer)
+                            @Html.DisplayNameFor(model => model.Photoprov)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => model.Photographer)
+                            @Html.DisplayFor(model => model.Photoprov)
                         </td>
                     </tr>
                 }
@@ -1818,14 +1772,14 @@
                         </td>
                     </tr>
                 }
-                @if (Model.Photoprov != null)
+                @if (Model.Needbetter != null)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayNameFor(model => model.Photoprov)
+                            @Html.DisplayNameFor(model => model.Needbetter)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => model.Photoprov)
+                            @Html.DisplayFor(model => model.Needbetter)
                         </td>
                     </tr>
                 }
@@ -1912,6 +1866,50 @@
                         </td>
                     </tr>
                 }
+                @if (Model.Artistgender != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistgender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artistgender)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Artistsg != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistsg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Artistsg)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commgender != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commgender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commgender)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commsg != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commsg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commsg)
+                            </td>
+                        </tr>
+                    }
             </tbody>
         </table>
 
