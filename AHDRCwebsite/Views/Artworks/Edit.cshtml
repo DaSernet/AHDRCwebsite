@@ -85,10 +85,11 @@
         {
             <img src=@("/images/download.png")>
             <img src=@("/images/comment.png")>
-            <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
         }
         @if (User.IsInRole("Administrator"))
         {
+            
+            <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
             <a asp-action="Edit" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_edit.png")></a>
             <a asp-action="Create"><img src=@("/images/page_new.png")></a>
             <a asp-action="Delete" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_delete.png")></a>

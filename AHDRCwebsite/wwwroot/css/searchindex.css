@@ -17,11 +17,15 @@
     margin-right: 8px;
 }
 
-    .img-with-text img {
-        display: block;
-        margin: 0 auto;
-        max-width: 160px;
-    }
+.pageNumbers{
+   text-align: center;
+}
+
+.img-with-text img {
+    display: block;
+    margin: 0 auto;
+    max-width: 160px;
+}
 
 .navbar ul {
     padding: 0px;
