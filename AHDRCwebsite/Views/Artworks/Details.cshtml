@@ -1033,6 +1033,8 @@
                             </td>
                         </tr>
                     }
+                    @if(User.IsInRole("Administrator"))
+                    {
                     @if (Model.Confidential != null)
                     {
                         <tr>
@@ -1043,6 +1045,7 @@
                                 @Html.DisplayFor(model => model.Confidential)
                             </td>
                         </tr>
+                    }
                     }
                     @if (Model.Workshoplist != null)
                     {
@@ -1915,3 +1918,20 @@
 
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
+            $checkboxes = $("#checkbox-container :checkbox");
+        $checkboxes.on("change", function() {
+            $checkboxes.each(function() {
+                checkboxValues[this.id] = this.checked;
+            });
+            sessionStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+        // On page load
+        $.each(checkboxValues, function(key, value) {
+            $("#" + key).prop('checked', value);
+        });
+    </script>
+}
