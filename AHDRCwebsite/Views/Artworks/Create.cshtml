@@ -550,8 +550,9 @@
             <div class="form-group">
                 <label asp-for="Ispublic" class="control-label"></label>
                 <select asp-for="Ispublic" class="form-control">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option>Public Collection</option>
+                    <option>Private Collection</option>
+                    <option>Unknown Collection</option>
                 </select>
                 <span asp-validation-for="Ispublic" class="text-danger"></span>
             </div>
