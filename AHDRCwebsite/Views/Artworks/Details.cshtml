@@ -1035,17 +1035,17 @@
                     }
                     @if(User.IsInRole("Administrator"))
                     {
-                    @if (Model.Confidential != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Confidential)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Confidential)
-                            </td>
-                        </tr>
-                    }
+                        @if (Model.Confidential != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Confidential)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Confidential)
+                                </td>
+                            </tr>
+                        }
                     }
                     @if (Model.Workshoplist != null)
                     {
@@ -1322,18 +1322,21 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Confidential != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Confidential)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.Confidential)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            @if (Model.Confidential != null)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Confidential)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.Confidential)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
             </table>
         </div>
         
@@ -1461,6 +1464,20 @@
                                 @Html.DisplayFor(model => model.Book_about)
                             </td>
                         </tr>
+                    }
+                    @if(User.IsInRole("Administrator"))
+                    {
+                        @if (Model.Confidential != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Confidential)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Confidential)
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>

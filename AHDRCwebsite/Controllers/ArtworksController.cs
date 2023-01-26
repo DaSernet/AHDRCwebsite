@@ -229,7 +229,7 @@ s.Medwoodinfo.Contains(searchString));
             ViewData["artworkQueryString"] = artworkQueryString;
 
             artworks = artworks.Include(i => i.ArtworkImage);
-            int pageSize = 50;
+            int pageSize = 100;
             int totalArtworks = artworks.Count();
             return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize, totalArtworks));
         }
@@ -320,7 +320,7 @@ s.Medwoodinfo.Contains(searchString));
 
                 _context.Add(artwork);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { artworkid = artwork.ArtworkId });
             }
             return View(artwork);
         }
@@ -374,7 +374,7 @@ s.Medwoodinfo.Contains(searchString));
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { artworkid = artworkid });
             }
             return View(artwork);
         }
