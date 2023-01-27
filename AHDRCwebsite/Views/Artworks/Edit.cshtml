@@ -128,6 +128,97 @@
                 </div>
                 <h1>@Model.IdentifierNoCategory</h1>
 
+                @if(@Model.Category == "co") //collections
+                {
+                <h1 onclick="hideObjectInfo()">Objects Information</h1>
+                <div id="objectInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collection)
+                                </td>
+                                <td>
+                                    <input asp-for="Collection" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collections)
+                                </td>
+                                <td>
+                                    <input asp-for="Collections" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </td>
+                                <td>
+                                    <input asp-for="Date" class="form-control" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Location)
+                                </td>
+                                <td>
+                                    <input asp-for="Location" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Provenance)
+                                </td>
+                                <td>
+                                    <input asp-for="Provenance" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Publication)
+                                </td>
+                                <td>
+                                    <input asp-for="Publication" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Exhibition)
+                                </td>
+                                <td>
+                                    <input asp-for="Exhibition" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h1 onclick="hideNotesInfo()">Notes</h1>
+                <div id="notesInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Missing</p>
+                                </td>
+                                <td>
+                                    <p>Keuze tussen: Exhibition photo OF Interior photo</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Missing</p>
+                                </td>
+                                <td>
+                                    <p>List of objects</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                }
 
                 <h1>Photographic Information</h1>
                 <table>
@@ -179,9 +270,9 @@
                 </table>
 
 
-                @if(@Model.Category == "au")
+                @if(@Model.Category == "au") //auctions
                 {
-                <h1 onclick="hideEventInfo()">Notes</h1>
+                <h1 onclick="hideEventInfo()">Information on event</h1>
                 <div id="eventInfo">
                     <table>
                         <tbody>
@@ -277,7 +368,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 }
 
 
