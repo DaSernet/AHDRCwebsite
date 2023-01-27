@@ -514,7 +514,100 @@
                 </div>
                 }
 
+                @if(@Model.Category == "wh") //who's who
+                {
+                <h1 onclick="hideEventsInfo()">Information on person</h1>
+                <div id="eventsInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Last_name)
+                                </td>
+                                <td>
+                                    <input asp-for="Last_name" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.First_Name)
+                                </td>
+                                <td>
+                                    <input asp-for="First_Name" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Full_name)
+                                </td>
+                                <td>
+                                    <input asp-for="Full_name" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Born)
+                                </td>
+                                <td>
+                                    <input asp-for="Born" class="form-control" />
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Dead)
+                                </td>
+                                <td>
+                                    <input asp-for="Dead" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
+
+                <h1 onclick="hideNotesInfo()">Notes</h1>
+                <div id="notesInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Biography)
+                                </td>
+                                <td>
+                                    <input asp-for="Biography" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Bio2)
+                                </td>
+                                <td>
+                                    <input asp-for="Bio2" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>author of:</p>
+                                </td>
+                                <td>
+                                    <p>missing</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Book_about)
+                                </td>
+                                <td>
+                                    <input asp-for="Book_about" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                }
+
+                @if(@Model.Category != "wh" && @Model.Category != "bk" && @Model.Category != "xp" && @Model.Category != "wh" && @Model.Category != "au" && @Model.Category != "co")
+                {
                 <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
                 <div id="geographicalInfo">
                     <table>
@@ -857,7 +950,8 @@
                         </tbody>
                     </table>
                 </div>
-
+                @if(@Model.Category != "ph")
+                {
                 <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
                 <div id="physicalInfo" class="text-info-div">
                     <table>
@@ -1130,7 +1224,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                }
                 <h1 onclick="hideHistoryInfo()">History of Object</h1>
                 <div id="historyInfo">
                     <table>
@@ -1417,6 +1511,7 @@
                         </tbody>
                     </table>
                 </div>
+                }
 
                 @if(@Model.Category != "xp")
                 {
