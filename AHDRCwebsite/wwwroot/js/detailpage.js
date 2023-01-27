@@ -23,6 +23,10 @@ function hideNotesInfo() {
     var divName = "notesInfo";
     hideDiv(divName);
 }
+function hideEventsInfo() {
+    var divName = "eventsInfo";
+    hideDiv(divName);
+}
 function hideClassificationInfo() {
     var divName = "classificationInfo";
     hideDiv(divName);

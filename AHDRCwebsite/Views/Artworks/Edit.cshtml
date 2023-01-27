@@ -40,7 +40,7 @@
                         @if (Model.ArtworkImage.Last() == item)
                         {
                             <ol class="carousel-indicators list-inline">
-                                @for (int i = 0; i <totalAmount; i++)
+                                @for (int i = 0; i < totalAmount; i++)
                                 {
                                     var itemThumbnail = itemList[i];
                                     @if (i == 0)
@@ -88,7 +88,7 @@
         }
         @if (User.IsInRole("Administrator"))
         {
-            
+
             <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
             <a asp-action="Edit" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_edit.png")></a>
             <a asp-action="Create"><img src=@("/images/page_new.png")></a>
@@ -102,36 +102,190 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="theForm">
-                 <input type="hidden" asp-for="ArtworkId"/>
-            <div class="form-group" hidden>
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="form-control">
-                    <option value="ao">Objects</option>
-                    <option value="ph">Field Photos</option>
-                    <option value="wh">Who's who</option>
-                    <option value="bk">Publications</option>
-                    <option value="xp">Exhibitions</option>
-                    <option value="co">Collections</option>
-                    <option value="au">Auctions</option>
+                <input type="hidden" asp-for="ArtworkId" />
+                <div class="form-group" hidden>
+                    <label asp-for="Category" class="control-label"></label>
+                    <select asp-for="Category" class="form-control">
+                        <option value="ao">Objects</option>
+                        <option value="ph">Field Photos</option>
+                        <option value="wh">Who's who</option>
+                        <option value="bk">Publications</option>
+                        <option value="xp">Exhibitions</option>
+                        <option value="co">Collections</option>
+                        <option value="au">Auctions</option>
                     </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div hidden>
-                <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Identifier)
-                            </td>
-                            <td>
-                                <input asp-for="Identifier" class="form-control" />
-                            </td>
-                        </tr>
-                        </div>
-            <h1>@Model.IdentifierNoCategory</h1>
-            <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
-            <div id="geographicalInfo">
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div hidden>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Identifier)
+                        </td>
+                        <td>
+                            <input asp-for="Identifier" class="form-control" />
+                        </td>
+                    </tr>
+                </div>
+                <h1>@Model.IdentifierNoCategory</h1>
+
+
+                <h1>Photographic Information</h1>
                 <table>
                     <tbody>
                         <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photographer)
+                            </td>
+                            <td>
+                                <input asp-for="Photographer" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photocopy)
+                            </td>
+                            <td>
+                                <input asp-for="Photocopy" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoprov)
+                            </td>
+                            <td>
+                                <input asp-for="Photoprov" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoinvnr)
+                            </td>
+                            <td>
+                                <input asp-for="Photoinvnr" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Needbetter)
+                            </td>
+                            <td>
+                                <select asp-for="Needbetter" class="form-control">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                @if(@Model.Category == "au")
+                {
+                <h1 onclick="hideEventInfo()">Notes</h1>
+                <div id="eventInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </td>
+                                <td>
+                                    <input asp-for="Title" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Author)
+                                </td>
+                                <td>
+                                    <input asp-for="Author" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Publisher)
+                                </td>
+                                <td>
+                                    <input asp-for="Publisher" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Year)
+                                </td>
+                                <td>
+                                    <input asp-for="Year" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </td>
+                                <td>
+                                    <input asp-for="Date" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ISBN)
+                                </td>
+                                <td>
+                                    <input asp-for="ISBN" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </td>
+                                <td>
+                                    <input asp-for="Country" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </td>
+                                <td>
+                                   <p>This text is missing? :(</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collections)
+                                </td>
+                                <td>
+                                    <input asp-for="Collections" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h1 onclick="hideNotesInfo()">Notes</h1>
+                <div id="notesInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Comments)
+                                </td>
+                                <td>
+                                    <input asp-for="Comments" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                }
+
+
+                <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
+                <div id="geographicalInfo">
+                    <table>
+                        <tbody>
+                            <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Kingdom)
                                 </td>
@@ -177,203 +331,203 @@
                                 </td>
                                 <td>
                                     <select asp-for="Country" class="form-control">
-                                                <option>Afghanistan</option>
-                                                <option>Albania</option>
-                                                <option>Algeria</option>
-                                                <option>Andorra</option>
-                                                <option>Angola</option>
-                                                <option>Antigua & Deps</option>
-                                                <option>Argentina</option>
-                                                <option>Armenia</option>
-                                                <option>Australia</option>
-                                                <option>Austria</option>
-                                                <option>Azerbaijan</option>
-                                                <option>Bahamas</option>
-                                                <option>Bahrain</option>
-                                                <option>Bangladesh</option>
-                                                <option>Barbados</option>
-                                                <option>Belarus</option>
-                                                <option>Belgium</option>
-                                                <option>Belize</option>
-                                                <option>Benin</option>
-                                                <option>Bhutan</option>
-                                                <option>Bolivia</option>
-                                                <option>Bosnia Herzegovina</option>
-                                                <option>Botswana</option>
-                                                <option>Brazil</option>
-                                                <option>Brunei</option>
-                                                <option>Bulgaria</option>
-                                                <option>Burkina</option>
-                                                <option>Burundi</option>
-                                                <option>Cambodia</option>
-                                                <option>Cameroon</option>
-                                                <option>Canada</option>
-                                                <option>Cape Verde</option>
-                                                <option>Central African Rep</option>
-                                                <option>Chad</option>
-                                                <option>Chile</option>
-                                                <option>China</option>
-                                                <option>Colombia</option>
-                                                <option>Comoros</option>
-                                                <option>Congo</option>
-                                                <option>Congo {Democratic Rep}</option>
-                                                <option>Costa Rica</option>
-                                                <option>Croatia</option>
-                                                <option>Cuba</option>
-                                                <option>Cyprus</option>
-                                                <option>Czech Republic</option>
-                                                <option>Denmark</option>
-                                                <option>Djibouti</option>
-                                                <option>Dominica</option>
-                                                <option>Dominican Republic</option>
-                                                <option>East Timor</option>
-                                                <option>Ecuador</option>
-                                                <option>Egypt</option>
-                                                <option>El Salvador</option>
-                                                <option>Equatorial Guinea</option>
-                                                <option>Eritrea</option>
-                                                <option>Estonia</option>
-                                                <option>Ethiopia</option>
-                                                <option>Fiji</option>
-                                                <option>Finland</option>
-                                                <option>France</option>
-                                                <option>Gabon</option>
-                                                <option>Gambia</option>
-                                                <option>Georgia</option>
-                                                <option>Germany</option>
-                                                <option>Ghana</option>
-                                                <option>Greece</option>
-                                                <option>Grenada</option>
-                                                <option>Guatemala</option>
-                                                <option>Guinea</option>
-                                                <option>Guinea-Bissau</option>
-                                                <option>Guyana</option>
-                                                <option>Haiti</option>
-                                                <option>Honduras</option>
-                                                <option>Hungary</option>
-                                                <option>Iceland</option>
-                                                <option>India</option>
-                                                <option>Indonesia</option>
-                                                <option>Iran</option>
-                                                <option>Iraq</option>
-                                                <option>Ireland {Republic}</option>
-                                                <option>Israel</option>
-                                                <option>Italy</option>
-                                                <option>Ivory Coast</option>
-                                                <option>Jamaica</option>
-                                                <option>Japan</option>
-                                                <option>Jordan</option>
-                                                <option>Kazakhstan</option>
-                                                <option>Kenya</option>
-                                                <option>Kiribati</option>
-                                                <option>Korea North</option>
-                                                <option>Korea South</option>
-                                                <option>Kosovo</option>
-                                                <option>Kuwait</option>
-                                                <option>Kyrgyzstan</option>
-                                                <option>Laos</option>
-                                                <option>Latvia</option>
-                                                <option>Lebanon</option>
-                                                <option>Lesotho</option>
-                                                <option>Liberia</option>
-                                                <option>Libya</option>
-                                                <option>Liechtenstein</option>
-                                                <option>Lithuania</option>
-                                                <option>Luxembourg</option>
-                                                <option>Macedonia</option>
-                                                <option>Madagascar</option>
-                                                <option>Malawi</option>
-                                                <option>Malaysia</option>
-                                                <option>Maldives</option>
-                                                <option>Mali</option>
-                                                <option>Malta</option>
-                                                <option>Marshall Islands</option>
-                                                <option>Mauritania</option>
-                                                <option>Mauritius</option>
-                                                <option>Mexico</option>
-                                                <option>Micronesia</option>
-                                                <option>Moldova</option>
-                                                <option>Monaco</option>
-                                                <option>Mongolia</option>
-                                                <option>Montenegro</option>
-                                                <option>Morocco</option>
-                                                <option>Mozambique</option>
-                                                <option>Myanmar, {Burma}</option>
-                                                <option>Namibia</option>
-                                                <option>Nauru</option>
-                                                <option>Nepal</option>
-                                                <option>Netherlands</option>
-                                                <option>New Zealand</option>
-                                                <option>Nicaragua</option>
-                                                <option>Niger</option>
-                                                <option>Nigeria</option>
-                                                <option>Norway</option>
-                                                <option>Oman</option>
-                                                <option>Pakistan</option>
-                                                <option>Palau</option>
-                                                <option>Panama</option>
-                                                <option>Papua New Guinea</option>
-                                                <option>Paraguay</option>
-                                                <option>Peru</option>
-                                                <option>Philippines</option>
-                                                <option>Poland</option>
-                                                <option>Portugal</option>
-                                                <option>Qatar</option>
-                                                <option>Romania</option>
-                                                <option>Russian Federation</option>
-                                                <option>Rwanda</option>
-                                                <option>St Kitts & Nevis</option>
-                                                <option>St Lucia</option>
-                                                <option>Saint Vincent & the Grenadines</option>
-                                                <option>Samoa</option>
-                                                <option>San Marino</option>
-                                                <option>Sao Tome & Principe</option>
-                                                <option>Saudi Arabia</option>
-                                                <option>Senegal</option>
-                                                <option>Serbia</option>
-                                                <option>Seychelles</option>
-                                                <option>Sierra Leone</option>
-                                                <option>Singapore</option>
-                                                <option>Slovakia</option>
-                                                <option>Slovenia</option>
-                                                <option>Solomon Islands</option>
-                                                <option>Somalia</option>
-                                                <option>South Africa</option>
-                                                <option>South Sudan</option>
-                                                <option>Spain</option>
-                                                <option>Sri Lanka</option>
-                                                <option>Sudan</option>
-                                                <option>Suriname</option>
-                                                <option>Swaziland</option>
-                                                <option>Sweden</option>
-                                                <option>Switzerland</option>
-                                                <option>Syria</option>
-                                                <option>Taiwan</option>
-                                                <option>Tajikistan</option>
-                                                <option>Tanzania</option>
-                                                <option>Thailand</option>
-                                                <option>Togo</option>
-                                                <option>Tonga</option>
-                                                <option>Trinidad & Tobago</option>
-                                                <option>Tunisia</option>
-                                                <option>Turkey</option>
-                                                <option>Turkmenistan</option>
-                                                <option>Tuvalu</option>
-                                                <option>Uganda</option>
-                                                <option>Ukraine</option>
-                                                <option>United Arab Emirates</option>
-                                                <option>United Kingdom</option>
-                                                <option>United States</option>
-                                                <option>Uruguay</option>
-                                                <option>Uzbekistan</option>
-                                                <option>Vanuatu</option>
-                                                <option>Vatican City</option>
-                                                <option>Venezuela</option>
-                                                <option>Vietnam</option>
-                                                <option>Yemen</option>
-                                                <option>Zambia</option>
-                                                <option>Zimbabwe</option>
-                                            </select>
+                                        <option>Afghanistan</option>
+                                        <option>Albania</option>
+                                        <option>Algeria</option>
+                                        <option>Andorra</option>
+                                        <option>Angola</option>
+                                        <option>Antigua & Deps</option>
+                                        <option>Argentina</option>
+                                        <option>Armenia</option>
+                                        <option>Australia</option>
+                                        <option>Austria</option>
+                                        <option>Azerbaijan</option>
+                                        <option>Bahamas</option>
+                                        <option>Bahrain</option>
+                                        <option>Bangladesh</option>
+                                        <option>Barbados</option>
+                                        <option>Belarus</option>
+                                        <option>Belgium</option>
+                                        <option>Belize</option>
+                                        <option>Benin</option>
+                                        <option>Bhutan</option>
+                                        <option>Bolivia</option>
+                                        <option>Bosnia Herzegovina</option>
+                                        <option>Botswana</option>
+                                        <option>Brazil</option>
+                                        <option>Brunei</option>
+                                        <option>Bulgaria</option>
+                                        <option>Burkina</option>
+                                        <option>Burundi</option>
+                                        <option>Cambodia</option>
+                                        <option>Cameroon</option>
+                                        <option>Canada</option>
+                                        <option>Cape Verde</option>
+                                        <option>Central African Rep</option>
+                                        <option>Chad</option>
+                                        <option>Chile</option>
+                                        <option>China</option>
+                                        <option>Colombia</option>
+                                        <option>Comoros</option>
+                                        <option>Congo</option>
+                                        <option>Congo {Democratic Rep}</option>
+                                        <option>Costa Rica</option>
+                                        <option>Croatia</option>
+                                        <option>Cuba</option>
+                                        <option>Cyprus</option>
+                                        <option>Czech Republic</option>
+                                        <option>Denmark</option>
+                                        <option>Djibouti</option>
+                                        <option>Dominica</option>
+                                        <option>Dominican Republic</option>
+                                        <option>East Timor</option>
+                                        <option>Ecuador</option>
+                                        <option>Egypt</option>
+                                        <option>El Salvador</option>
+                                        <option>Equatorial Guinea</option>
+                                        <option>Eritrea</option>
+                                        <option>Estonia</option>
+                                        <option>Ethiopia</option>
+                                        <option>Fiji</option>
+                                        <option>Finland</option>
+                                        <option>France</option>
+                                        <option>Gabon</option>
+                                        <option>Gambia</option>
+                                        <option>Georgia</option>
+                                        <option>Germany</option>
+                                        <option>Ghana</option>
+                                        <option>Greece</option>
+                                        <option>Grenada</option>
+                                        <option>Guatemala</option>
+                                        <option>Guinea</option>
+                                        <option>Guinea-Bissau</option>
+                                        <option>Guyana</option>
+                                        <option>Haiti</option>
+                                        <option>Honduras</option>
+                                        <option>Hungary</option>
+                                        <option>Iceland</option>
+                                        <option>India</option>
+                                        <option>Indonesia</option>
+                                        <option>Iran</option>
+                                        <option>Iraq</option>
+                                        <option>Ireland {Republic}</option>
+                                        <option>Israel</option>
+                                        <option>Italy</option>
+                                        <option>Ivory Coast</option>
+                                        <option>Jamaica</option>
+                                        <option>Japan</option>
+                                        <option>Jordan</option>
+                                        <option>Kazakhstan</option>
+                                        <option>Kenya</option>
+                                        <option>Kiribati</option>
+                                        <option>Korea North</option>
+                                        <option>Korea South</option>
+                                        <option>Kosovo</option>
+                                        <option>Kuwait</option>
+                                        <option>Kyrgyzstan</option>
+                                        <option>Laos</option>
+                                        <option>Latvia</option>
+                                        <option>Lebanon</option>
+                                        <option>Lesotho</option>
+                                        <option>Liberia</option>
+                                        <option>Libya</option>
+                                        <option>Liechtenstein</option>
+                                        <option>Lithuania</option>
+                                        <option>Luxembourg</option>
+                                        <option>Macedonia</option>
+                                        <option>Madagascar</option>
+                                        <option>Malawi</option>
+                                        <option>Malaysia</option>
+                                        <option>Maldives</option>
+                                        <option>Mali</option>
+                                        <option>Malta</option>
+                                        <option>Marshall Islands</option>
+                                        <option>Mauritania</option>
+                                        <option>Mauritius</option>
+                                        <option>Mexico</option>
+                                        <option>Micronesia</option>
+                                        <option>Moldova</option>
+                                        <option>Monaco</option>
+                                        <option>Mongolia</option>
+                                        <option>Montenegro</option>
+                                        <option>Morocco</option>
+                                        <option>Mozambique</option>
+                                        <option>Myanmar, {Burma}</option>
+                                        <option>Namibia</option>
+                                        <option>Nauru</option>
+                                        <option>Nepal</option>
+                                        <option>Netherlands</option>
+                                        <option>New Zealand</option>
+                                        <option>Nicaragua</option>
+                                        <option>Niger</option>
+                                        <option>Nigeria</option>
+                                        <option>Norway</option>
+                                        <option>Oman</option>
+                                        <option>Pakistan</option>
+                                        <option>Palau</option>
+                                        <option>Panama</option>
+                                        <option>Papua New Guinea</option>
+                                        <option>Paraguay</option>
+                                        <option>Peru</option>
+                                        <option>Philippines</option>
+                                        <option>Poland</option>
+                                        <option>Portugal</option>
+                                        <option>Qatar</option>
+                                        <option>Romania</option>
+                                        <option>Russian Federation</option>
+                                        <option>Rwanda</option>
+                                        <option>St Kitts & Nevis</option>
+                                        <option>St Lucia</option>
+                                        <option>Saint Vincent & the Grenadines</option>
+                                        <option>Samoa</option>
+                                        <option>San Marino</option>
+                                        <option>Sao Tome & Principe</option>
+                                        <option>Saudi Arabia</option>
+                                        <option>Senegal</option>
+                                        <option>Serbia</option>
+                                        <option>Seychelles</option>
+                                        <option>Sierra Leone</option>
+                                        <option>Singapore</option>
+                                        <option>Slovakia</option>
+                                        <option>Slovenia</option>
+                                        <option>Solomon Islands</option>
+                                        <option>Somalia</option>
+                                        <option>South Africa</option>
+                                        <option>South Sudan</option>
+                                        <option>Spain</option>
+                                        <option>Sri Lanka</option>
+                                        <option>Sudan</option>
+                                        <option>Suriname</option>
+                                        <option>Swaziland</option>
+                                        <option>Sweden</option>
+                                        <option>Switzerland</option>
+                                        <option>Syria</option>
+                                        <option>Taiwan</option>
+                                        <option>Tajikistan</option>
+                                        <option>Tanzania</option>
+                                        <option>Thailand</option>
+                                        <option>Togo</option>
+                                        <option>Tonga</option>
+                                        <option>Trinidad & Tobago</option>
+                                        <option>Tunisia</option>
+                                        <option>Turkey</option>
+                                        <option>Turkmenistan</option>
+                                        <option>Tuvalu</option>
+                                        <option>Uganda</option>
+                                        <option>Ukraine</option>
+                                        <option>United Arab Emirates</option>
+                                        <option>United Kingdom</option>
+                                        <option>United States</option>
+                                        <option>Uruguay</option>
+                                        <option>Uzbekistan</option>
+                                        <option>Vanuatu</option>
+                                        <option>Vatican City</option>
+                                        <option>Venezuela</option>
+                                        <option>Vietnam</option>
+                                        <option>Yemen</option>
+                                        <option>Zambia</option>
+                                        <option>Zimbabwe</option>
+                                    </select>
                                     <span asp-validation-for="Country" class="text-danger"></span>
                                 </td>
                             </tr>
@@ -409,15 +563,15 @@
                                     <input asp-for="Langsubgroup" class="form-control" />
                                 </td>
                             </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
-            <h1 onclick="hideObjectInfo()">Object Information</h1>
-            <div id="objectInfo">
-                <table>
-                    <tbody>
-                             <tr>
+                <h1 onclick="hideObjectInfo()">Object Information</h1>
+                <div id="objectInfo">
+                    <table>
+                        <tbody>
+                            <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Objectname)
                                 </td>
@@ -441,7 +595,7 @@
                                     <input asp-for="Objectnamegn" class="form-control" />
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Objectjanus)
@@ -466,14 +620,14 @@
                                     <input asp-for="Objectposture" class="form-control" />
                                 </td>
                             </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
-            <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
-            <div id="physicalInfo" class="text-info-div">
-                <table>
-                    <tbody>
+                <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
+                <div id="physicalInfo" class="text-info-div">
+                    <table>
+                        <tbody>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Height)
@@ -562,7 +716,7 @@
                                     <input asp-for="Calabashinfo" class="form-control" />
                                 </td>
                             </tr>
-                             <tr>
+                            <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Medclinfo)
                                 </td>
@@ -738,15 +892,15 @@
                                     <input asp-for="Medwoodinfo" class="form-control" />
                                 </td>
                             </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
 
-            <h1 onclick="hideHistoryInfo()">History of Object</h1>
-            <div id="historyInfo">
-                <table>
-                    <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h1 onclick="hideHistoryInfo()">History of Object</h1>
+                <div id="historyInfo">
+                    <table>
+                        <tbody>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Collectedby)
@@ -870,15 +1024,15 @@
                                     <input asp-for="Aquisitiondate" class="form-control" />
                                 </td>
                             </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
-            <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
-            <div id="authorshipInfo">
-                <table>
-                    <tbody>
-                        
+                <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+                <div id="authorshipInfo">
+                    <table>
+                        <tbody>
+
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Workshop)
@@ -919,17 +1073,17 @@
                                     <input asp-for="Createdatemin" class="form-control" />
                                 </td>
                             </tr>
-                            
-                        
-                    </tbody>
-                </table>
-            </div>
 
-            
-            <h1 onclick="hideNotesInfo()">Notes</h1>
-            <div id="notesInfo">
-                <table>
-                    <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h1 onclick="hideNotesInfo()">Notes</h1>
+                <div id="notesInfo">
+                    <table>
+                        <tbody>
                             <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Ritualassoc)
@@ -994,7 +1148,7 @@
                                     <input asp-for="Features" class="form-control" />
                                 </td>
                             </tr>
-                                                        <tr>
+                            <tr>
                                 <td>
                                     @Html.DisplayNameFor(model => model.Additionalfeatures)
                                 </td>
@@ -1026,65 +1180,17 @@
                                     <input asp-for="Commanditaire" class="form-control" />
                                 </td>
                             </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
-            <h1>Photographic Information</h1>
-            <table>
-                <tbody>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photographer)
-                            </td>
-                            <td>
-                                <input asp-for="Photographer" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photocopy)
-                            </td>
-                            <td>
-                                <input asp-for="Photocopy" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoprov)
-                            </td>
-                            <td>
-                                <input asp-for="Photoprov" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoinvnr)
-                            </td>
-                            <td>
-                                <input asp-for="Photoinvnr" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Needbetter)
-                            </td>
-                            <td>
-                                <select asp-for="Needbetter" class="form-control">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                 </select>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
+                
+
+                <h1>Delete / unknown</h1>
+                <table>
+                    <tbody>
 
 
-            <h1>Delete / unknown</h1>
-            <table>
-                <tbody>
-                    
-                    
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Tms)
@@ -1093,9 +1199,9 @@
                                 <input asp-for="Tms" class="form-control" />
                             </td>
                         </tr>
-                    
-                    
-                    
+
+
+
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Web)
@@ -1104,9 +1210,9 @@
                                 <input asp-for="Web" class="form-control" />
                             </td>
                         </tr>
-                    
-                    
-                    
+
+
+
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Yaleid)
@@ -1115,9 +1221,9 @@
                                 <input asp-for="Yaleid" class="form-control" />
                             </td>
                         </tr>
-                    
-                    
-                    
+
+
+
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Groups)
@@ -1126,9 +1232,9 @@
                                 <input asp-for="Groups" class="form-control" />
                             </td>
                         </tr>
-                    
-                    
-                    
+
+
+
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Unit)
@@ -1137,9 +1243,9 @@
                                 <input asp-for="Unit" class="form-control" />
                             </td>
                         </tr>
-                    
-                    
-                    
+
+
+
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Multiline)
@@ -1148,9 +1254,9 @@
                                 <input asp-for="Multiline" class="form-control" />
                             </td>
                         </tr>
-                    
-                    
-                    
+
+
+
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Reacttmp)
@@ -1161,53 +1267,53 @@
                         </tr>
 
                         <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Artistgender)
-                                </td>
-                                <td>
-                                    <input asp-for="Artistgender" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Artistsg)
-                                </td>
-                                <td>
-                                    <input asp-for="Artistsg" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commgender)
-                                </td>
-                                <td>
-                                    <input asp-for="Commgender" class="form-control" />
-                                </td>
-                            </tr>
-                        
-                        
-                        
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commsg)
-                                </td>
-                                <td>
-                                    <input asp-for="Commsg" class="form-control" />
-                                </td>q
-                            </tr>
-                    
-                </tbody>
-            </table>
-            
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistgender)
+                            </td>
+                            <td>
+                                <input asp-for="Artistgender" class="form-control" />
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Artistsg)
+                            </td>
+                            <td>
+                                <input asp-for="Artistsg" class="form-control" />
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commgender)
+                            </td>
+                            <td>
+                                <input asp-for="Commgender" class="form-control" />
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commsg)
+                            </td>
+                            <td>
+                                <input asp-for="Commsg" class="form-control" />
+                            </td>q
+                        </tr>
+
+                    </tbody>
+                </table>
+
             </div>
-            <input type="submit" value="Save" class="btn btn-primary"/>
-            </form>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </form>
     </div>
 </div>
 
@@ -1216,4 +1322,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+    }
