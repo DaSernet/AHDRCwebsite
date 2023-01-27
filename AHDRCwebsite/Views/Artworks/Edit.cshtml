@@ -219,111 +219,12 @@
                     </table>
                 </div>
                 
-                <h1>Photographic Information</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photographer)
-                            </td>
-                            <td>
-                                <input asp-for="Photographer" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photocopy)
-                            </td>
-                            <td>
-                                <input asp-for="Photocopy" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoprov)
-                            </td>
-                            <td>
-                                <input asp-for="Photoprov" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoinvnr)
-                            </td>
-                            <td>
-                                <input asp-for="Photoinvnr" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Needbetter)
-                            </td>
-                            <td>
-                                <select asp-for="Needbetter" class="form-control">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
                 }
 
                 @if(@Model.Category == "au") //auctions
                 {
-                <h1>Photographic Information</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photographer)
-                            </td>
-                            <td>
-                                <input asp-for="Photographer" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photocopy)
-                            </td>
-                            <td>
-                                <input asp-for="Photocopy" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoprov)
-                            </td>
-                            <td>
-                                <input asp-for="Photoprov" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoinvnr)
-                            </td>
-                            <td>
-                                <input asp-for="Photoinvnr" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Needbetter)
-                            </td>
-                            <td>
-                                <select asp-for="Needbetter" class="form-control">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-                <h1 onclick="hideEventInfo()">Information on event</h1>
-                <div id="eventInfo">
+                <h1 onclick="hideEventsInfo()">Information on event</h1>
+                <div id="eventsInfo">
                     <table>
                         <tbody>
                             <tr>
@@ -422,8 +323,8 @@
 
                 @if(@Model.Category == "xp") //exhibitions
                 {
-                <h1 onclick="hideEventInfo()">Information on event</h1>
-                <div id="eventInfo">
+                <h1 onclick="hideEventsInfo()">Information on event</h1>
+                <div id="eventsInfo">
                     <table>
                         <tbody>
                             <tr>
@@ -496,6 +397,99 @@
                                 </td>
                                 <td>
                                     <p>Missing</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h1 onclick="hideNotesInfo()">Notes</h1>
+                <div id="notesInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Comments)
+                                </td>
+                                <td>
+                                    <input asp-for="Comments" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                }
+                
+
+                @if(@Model.Category == "bk") //publications
+                {
+                <h1 onclick="hideEventsInfo()">Information on book</h1>
+                <div id="eventsInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </td>
+                                <td>
+                                    <input asp-for="Title" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Author)
+                                </td>
+                                <td>
+                                    <input asp-for="Author" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Publisher)
+                                </td>
+                                <td>
+                                    <input asp-for="Publisher" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Year)
+                                </td>
+                                <td>
+                                    <input asp-for="Year" class="form-control" />
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </td>
+                                <td>
+                                    <input asp-for="Date" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Reprints)
+                                </td>
+                                <td>
+                                    <input asp-for="Reprints" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ISBN)
+                                </td>
+                                <td>
+                                    <input asp-for="ISBN" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </td>
+                                <td>
+                                    <input asp-for="Country" class="form-control" />
                                 </td>
                             </tr>
                         </tbody>
@@ -1424,7 +1418,57 @@
                     </table>
                 </div>
 
-                
+                @if(@Model.Category != "xp")
+                {
+                <h1>Photographic Information</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photographer)
+                            </td>
+                            <td>
+                                <input asp-for="Photographer" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photocopy)
+                            </td>
+                            <td>
+                                <input asp-for="Photocopy" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoprov)
+                            </td>
+                            <td>
+                                <input asp-for="Photoprov" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoinvnr)
+                            </td>
+                            <td>
+                                <input asp-for="Photoinvnr" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Needbetter)
+                            </td>
+                            <td>
+                                <select asp-for="Needbetter" class="form-control">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                }
 
                 <h1>Delete / unknown</h1>
                 <table>

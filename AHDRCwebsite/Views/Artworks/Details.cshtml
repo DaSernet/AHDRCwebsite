@@ -195,7 +195,7 @@
     <div class="col-5">
         
         <h1>@Model.IdentifierNoCategory</h1>
-        @if(@Model.Category != "co" && @Model.Category != "wh" && @Model.Category != "au" && @Model.Category != "bk")
+        @if(@Model.Category != "co" && @Model.Category != "wh" && @Model.Category != "au" && @Model.Category != "bk" && @Model.Category != "xp")
         {
         <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
         <div id="geographicalInfo">
@@ -1744,7 +1744,139 @@
         </div>
         
         }
+        @if(@Model.Category != "xp")
+        {
+        <h1 onclick="hideEventsInfo()">Information on event</h1>
+        <div id="eventsInfo">
+            <table>
+                <tbody>
+                    @if (Model.Title != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Title)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Year != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Year)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Year)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Date != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Date)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Country != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Country)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.City != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.City)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.City)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Location != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Location)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Location)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Catalogue != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Catalogue)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Catalogue)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Commercial != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Commercial)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Commercial)
+                            </td>
+                        </tr>
+                    }
+                    @*@if (Model.Curators != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Curators)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Curators)
+                            </td>
+                        </tr>
+                    }*@
+                </tbody>
+            </table>
+        </div>
 
+
+        <h1 onclick="hideNotesInfo()">Notes</h1>
+        <div id="notesInfo">
+            <table>
+                <tbody>
+                    @if (Model.Comments != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Comments)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Comments)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        }
+
+        @if(@Model.Category != "xp")
+        {
         <h1>Photographic Information</h1>
         <table>
             <tbody>
@@ -1805,6 +1937,7 @@
                 }
             </tbody>
         </table>
+        }
 
         <h1>Delete / unknown</h1>
         <table>
