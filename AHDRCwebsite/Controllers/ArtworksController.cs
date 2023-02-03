@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AHDRCwebsite.Controllers
@@ -278,6 +279,23 @@ s.Medwoodinfo.Contains(searchString));
                 }
             }
 
+
+            var properties = artwork.GetType().GetProperties();
+            foreach (var p in properties)
+            {
+                if (p.PropertyType.Name.Equals("String"))
+                {
+                    if(p.Name != "IdentifierNoCategory")
+                    {
+                        if (p.GetValue(artwork, null) != null)
+                        {
+                            var value2 = p.GetValue(artwork, null).ToString();
+                            var value = value2.Replace("&#39;","'").Replace(@"\n", "<br/>");
+                            p.SetValue(artwork, value, null);
+                        }
+                    }
+                }
+            }
             return View(artwork);
         }
 
