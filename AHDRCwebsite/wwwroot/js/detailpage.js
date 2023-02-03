@@ -1,4 +1,18 @@
-﻿function hideObjectInfo() {
+﻿var hyperLinkString = "";
+
+window.onload = function matchString() {
+    var string = document.getElementById("otherObjects").innerText;
+    var result = string.match(/[A-Za-z0-9]+-[0-9]+-[0-9]+/g);
+    result.forEach(addHyperLinks)
+    document.getElementById("otherObjects").innerHTML = hyperLinkString;
+}
+
+function addHyperLinks(item) {
+    item = "<a href='../Artworks?SearchString=" + item + "&selectedCategory=ao&selectedCategory=ph&selectedCategory=wh&selectedCategory=bk&selectedCategory=xp&selectedCategory=co&selectedCategory=au'>" + item + "</a>,"
+    hyperLinkString = hyperLinkString.concat(item)
+}
+
+function hideObjectInfo() {
     var divName = "objectInfo";
     hideDiv(divName);
 }
