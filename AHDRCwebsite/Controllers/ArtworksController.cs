@@ -321,9 +321,9 @@ s.Medwoodinfo.Contains(searchString));
                                select s;
 
                 artworks = artworks.Where(s => s.Category.Contains(category));
-                string identifier = "0";
+                string identifier = "";
                 identifier = artworks.OrderBy(s => s.ArtworkId).LastOrDefault().Identifier;
-                var identifierNumber = "0";
+                var identifierNumber = "";
 
                 // get everything after -
                 if (identifier != null)

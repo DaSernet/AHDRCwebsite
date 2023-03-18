@@ -1,4 +1,5 @@
-﻿@model PaginatedList<AHDRCwebsite.Models.Artwork>
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@model PaginatedList<AHDRCwebsite.Models.Artwork>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,7 +16,7 @@
         <p class="text-light">
             <div class="input-icons">
                 <i class="fa fa-search icon"></i>
-                <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="search-bar  search-text-light" placeholder="Search...">
+                <input type="text" v-model="inputValue" name="SearchString" value="@ViewData["CurrentFilter"]" class="search-bar  search-text-light" placeholder="Search...">
             </div>
         </p>
     </div>
@@ -178,11 +179,18 @@
         }
         </div>
     }
+} 
+@if (Model.Count == 0 && Context.Request.GetDisplayUrl().Contains("SearchString="))
+{
+    <div class="text-light">
+            <p style="font-size: 30px;">No results found</p>
+    </div>
 }
 
 @section Scripts
     {
     <script>
+        console.log(this.URL);
         var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
             $checkboxes = $("#checkbox-container :checkbox");
         $checkboxes.on("change", function() {
@@ -195,5 +203,8 @@
         $.each(checkboxValues, function(key, value) {
             $("#" + key).prop('checked', value);
         });
+
+
+
     </script>
 }
