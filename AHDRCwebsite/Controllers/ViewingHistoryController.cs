@@ -48,8 +48,9 @@ namespace AHDRCwebsite.Controllers
                                         select s);
                 viewingHistories = viewingHistories.Include(i => i.Artwork);
                 viewingHistories = viewingHistories.Include(x => x.Artwork.ArtworkImage);
-                viewingHistories.OrderBy(s => s.ViewedDateTime);
-                return View(viewingHistories);
+                viewingHistories = viewingHistories.OrderByDescending(s => s.ViewedDateTime);
+                viewingHistories = viewingHistories.Take(50);
+            return View(viewingHistories);
             }
 
             // GET
@@ -62,7 +63,8 @@ namespace AHDRCwebsite.Controllers
                                             select s);
                     viewingHistories = viewingHistories.Include(i => i.Artwork);
                     viewingHistories = viewingHistories.Include(x => x.Artwork.ArtworkImage);
-                    viewingHistories.OrderBy(s => s.ViewedDateTime);
+                    viewingHistories = viewingHistories.OrderByDescending(s => s.ViewedDateTime);
+                    viewingHistories = viewingHistories.Take(50);
                     return View(viewingHistories);
                 }
                 else
