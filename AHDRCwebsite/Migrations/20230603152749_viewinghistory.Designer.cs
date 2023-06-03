@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AHDRCwebsite.Migrations
 {
     [DbContext(typeof(ArtworkContext))]
-    [Migration("20220823082845_imagedetails")]
-    partial class imagedetails
+    [Migration("20230603152749_viewinghistory")]
+    partial class viewinghistory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,11 @@ namespace AHDRCwebsite.Migrations
 
             modelBuilder.Entity("AHDRCwebsite.Models.Artwork", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ArtworkId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtworkId"), 1L, 1);
 
                     b.Property<string>("Acquiredfrom")
                         .HasColumnType("nvarchar(max)");
@@ -62,17 +62,41 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Auctions")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bio2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Book_about")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Born")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Calabashinfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Catalogue")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Categoryofobject")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Certificate")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Chefferie")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Clan")
@@ -87,10 +111,16 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Collection")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Collections")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Commanditaire")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Commercial")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Commgender")
@@ -123,6 +153,21 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Creditline")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Curator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Datemax")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Datemin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dead")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Depth")
                         .HasColumnType("nvarchar(max)");
 
@@ -141,6 +186,12 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Features")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("First_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Full_name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Groups")
                         .HasColumnType("nvarchar(max)");
 
@@ -148,6 +199,9 @@ namespace AHDRCwebsite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Height")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISBN")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Identifier")
@@ -168,7 +222,13 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Langsubgroup")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Last_name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Length")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Medbeinfo")
@@ -282,6 +342,9 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Publication")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Publisher")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Raaiid")
                         .HasColumnType("nvarchar(max)");
 
@@ -289,6 +352,9 @@ namespace AHDRCwebsite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Region")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reprints")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Restoration")
@@ -301,6 +367,9 @@ namespace AHDRCwebsite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Structuralfeatures")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tms")
@@ -333,27 +402,27 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("Yaleid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Year")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("medriinfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArtworkId");
 
                     b.ToTable("Artworks");
                 });
 
             modelBuilder.Entity("AHDRCwebsite.Models.ArtworkImage", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ArtworkImageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtworkImageId"), 1L, 1);
 
                     b.Property<int?>("ArtworkId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Copyright")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Courtesy")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageSize")
                         .HasColumnType("nvarchar(max)");
@@ -361,14 +430,33 @@ namespace AHDRCwebsite.Migrations
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photographer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("ArtworkImageId");
 
                     b.HasIndex("ArtworkId");
 
                     b.ToTable("ArtworkImages");
+                });
+
+            modelBuilder.Entity("AHDRCwebsite.Models.ViewingHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ArtworkId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ViewedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ViewingHistories");
                 });
 
             modelBuilder.Entity("AHDRCwebsite.Models.ArtworkImage", b =>
