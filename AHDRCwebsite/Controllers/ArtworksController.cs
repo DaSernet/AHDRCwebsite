@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -14,10 +15,13 @@ namespace AHDRCwebsite.Controllers
     public class ArtworksController : Controller
     {
         private readonly ArtworkContext _context;
+        private readonly HttpClient _httpClient;
 
-        public ArtworksController(ArtworkContext context)
+        public ArtworksController(ArtworkContext context, HttpClient httpClient)
         {
             _context = context;
+
+            _httpClient = httpClient;
         }
 
         // GET: Artworks
@@ -296,6 +300,21 @@ s.Medwoodinfo.Contains(searchString));
                     }
                 }
             }
+
+            //Viewing history
+            var userId = User.Identity.Name;
+            var viewingHistory = new ViewingHistory
+            {
+                UserId = userId,
+                Artwork = artwork,
+                ViewedDateTime = DateTime.Now
+            };
+
+            //var artwork2 = _context.Artworks.Find(artwork.ArtworkId);
+            //viewingHistory.Artwork = artwork2;
+            _context.ViewingHistories.Add(viewingHistory);
+            await _context.SaveChangesAsync();
+
             return View(artwork);
         }
 

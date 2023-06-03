@@ -158,7 +158,7 @@ namespace AHDRCwebsite.Controllers
             return View(artworkImage);
         }
 
-        // GET: ArtworkImages/Delete/5
+        // GET: rAArtworkImages/Delete/5
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? ArtworkImageId)
         {

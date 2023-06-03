@@ -40,3 +40,11 @@ Groups(mag weg?)
 Unit Geen idee
 Multiline Geen idee
 Reacttmp Geen idee
+
+
+
+
+
+
+
+SET IDENTITY_INSERT [ViewingHistories] ON;

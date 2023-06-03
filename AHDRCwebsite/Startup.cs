@@ -29,6 +29,8 @@ namespace AHDRCwebsite
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            services.AddHttpClient();
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -68,6 +70,11 @@ namespace AHDRCwebsite
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                    name: "viewingHistory",
+                    pattern: "ViewingHistory/Add",
+                    defaults: new { controller = "ViewingHistory", action = "AddViewingHistory" });
             });
         }
     }
