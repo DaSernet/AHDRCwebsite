@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AHDRCwebsite.Models.ViewingHistory>
+
+
+<link rel="stylesheet" href="~/css/cardoverlay.css">
+<link rel="stylesheet" href="~/css/viewinghistory.css">
+
+@{
+    ViewData["Title"] = "Everyone viewer history";
+}
+<div class="text-light">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                Artwork Image
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Artwork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ViewedDateTime)
+            </th>
+            <th>Additional Info</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+            @if (item.Artwork.ArtworkImage.Count >= 1)
+            {
+                <a asp-controller="Artworks" asp-action="Details" asp-route-artworkid="@item.Artwork.ArtworkId"><img src=@("/uploads/" + @item.Artwork.ArtworkImage.Where(i => i.Artwork == item.Artwork).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+            }
+            else
+            {
+                <a asp-controller="Artworks" asp-action="Details" asp-route-artworkid="@item.Artwork.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+            }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artwork.Identifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ViewedDateTime)
+            </td>
+
+            <td>
+                @*<a asp-action="Edit" asp-route-artworkimageid="@item.ArtworkImageId">Edit</a> |
+                <a asp-action="Details" asp-route-artworkimageid="@item.ArtworkImageId">Details</a> |
+                <a asp-action="Delete" asp-route-artworkimageid="@item.ArtworkImageId">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,37 @@
+﻿.info-div {
+    width: 100vw;
+    position: relative;
+    left: calc(-50vw + 50%);
+}
+
+.info-div img {
+    width: 100%;
+}
+
+tbody tr td:first-child {
+    width: 10em;
+    min-width: 10em;
+    max-width: 10em;
+}
+
+.card-overlay {
+    color: white;
+}
+
+.text-light {
+    color: white;
+}
+
+.table {
+    color: white;
+}
+
+.rounded-square {
+    max-height: 50px;
+    width: auto;
+}
+
+.table td,
+.table th {
+    text-align: center;
+}

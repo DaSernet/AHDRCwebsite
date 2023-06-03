@@ -39,5 +39,37 @@ namespace AHDRCwebsite.Controllers
 
                 return Ok(); // Return an HTTP 200 OK status
             }
+
+            // GET
+            [Authorize(Roles = "Administrator")]
+            public async Task<IActionResult> Everyone()
+            {
+                var viewingHistories = (from s in _context.ViewingHistories
+                                        select s);
+                viewingHistories = viewingHistories.Include(i => i.Artwork);
+                viewingHistories = viewingHistories.Include(x => x.Artwork.ArtworkImage);
+                viewingHistories.OrderBy(s => s.ViewedDateTime);
+                return View(viewingHistories);
+            }
+
+            // GET
+            public async Task<IActionResult> Single()
+            {
+                if(User.Identity.IsAuthenticated)
+                {
+                    var viewingHistories = (from s in _context.ViewingHistories
+                                            where s.UserId == User.Identity.Name
+                                            select s);
+                    viewingHistories = viewingHistories.Include(i => i.Artwork);
+                    viewingHistories = viewingHistories.Include(x => x.Artwork.ArtworkImage);
+                    viewingHistories.OrderBy(s => s.ViewedDateTime);
+                    return View(viewingHistories);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Artworks");
+                }
+            }
+
         }
     }

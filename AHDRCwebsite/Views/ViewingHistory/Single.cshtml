@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AHDRCwebsite.Models.ViewingHistory>
+
+
+<link rel="stylesheet" href="~/css/cardoverlay.css">
+<link rel="stylesheet" href="~/css/viewinghistory.css">
+
+@{
+    ViewData["Title"] = "Everyone viewer history";
+}
+<div class="text-light">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Artwork Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ViewedDateTime)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+            @if (item.Artwork.ArtworkImage.Count >= 1)
+            {
+                <a asp-controller="Artworks" asp-action="Details" asp-route-artworkid="@item.Artwork.ArtworkId"><img src=@("/uploads/" + @item.Artwork.ArtworkImage.Where(i => i.Artwork == item.Artwork).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+            }
+            else
+            {
+                <a asp-controller="Artworks" asp-action="Details" asp-route-artworkid="@item.Artwork.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+            }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ViewedDateTime)
+            </td>
+            <td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
