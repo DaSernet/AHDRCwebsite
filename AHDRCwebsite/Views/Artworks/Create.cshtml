@@ -285,12 +285,74 @@
             <div>
                 <div class="form-group">
                 <label asp-for="Objectgender" class="control-label"></label>
-                <input asp-for="Objectgender" class="form-control" />
+                    <select asp-for="Objectgender" class="form-control">
+                        <option value="Unknown">Unknown</option>
+                        <option value="Abstract">Abstract</option>
+                        <option value="Anthropomorphic">Anthropomorphic</option>
+                        <option value="Anthropomorphic male">Anthropomorphic male</option>
+                        <option value="Anthropomorphic female">Anthropomorphic female</option>
+                        <option value="Anthropomorphic male & female">Anthropomorphic male & female</option>
+                        <option value="Anthropozoomorphic">Anthropozoomorphic</option>
+                        <option value="Anthropozoomorphic male">Anthropozoomorphic male</option>
+                        <option value="Anthropozoomorphic female">Anthropozoomorphic female</option>
+                        <option value="Anthropozoomorphic male & female">Anthropozoomorphic male & female</option>
+                        <option value="Female">Female</option>
+                        <option value="Vegetal">Vegetal</option>
+                        <option value="Hermaphrodite">Hermaphrodite</option>
+                        <option value="Male">Male</option>
+                        <option value="Male & female">Male & female</option>
+                        <option value="Mineral">Mineral</option>
+                        <option value="Ornitomorphic">Ornitomorphic</option>
+                        <option value="Polymorphic">Polymorphic</option>
+                        <option value="Skeuomorphic">Skeuomorphic</option>
+                        <option value="Zoomorphic">Zoomorphic</option>
+                        <option value="Zoomorphic male">Zoomorphic male</option>
+                        <option value="Zoomorphic female">Zoomorphic female</option>
+                        <option value="Zoomorphic male & female">Zoomorphic male & female</option>
+                        <option value="Zoomorphic composite">Zoomorphic composite</option>
+                        <option value="Anoitomorphic">Anoitomorphic</option>
+                    </select>
                 <span asp-validation-for="Objectgender" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Objectjanus" class="control-label"></label>
-                <input asp-for="Objectjanus" class="form-control" />
+                <select asp-for="Objectjanus" class="form-control">
+                                            <option value="Unknown">Unknown</option>
+                                            <option value="Acephalous">Acephalous</option>
+                                            <option value="Articulated lower jaw">Articulated lower jaw</option>
+                                            <option value="Back-to-back">Back-to-back</option>
+                                            <option value="Colonial">Colonial</option>
+                                            <option value="Couple">Couple</option>
+                                            <option value="Court">Court</option>
+                                            <option value="Scene">Scene</option>
+                                            <option value="Crafts">Crafts</option>
+                                            <option value="Cult scene">Cult scene</option>
+                                            <option value="Deformity">Deformity</option>
+                                            <option value="Equestrian">Equestrian</option>
+                                            <option value="Erotic">Erotic</option>
+                                            <option value="Face-a-face">Face-a-face</option>
+                                            <option value="Food related">Food related</option>
+                                            <option value="Group">Group</option>
+                                            <option value="Half figure">Half figure</option>
+                                            <option value="Hunting scene">Hunting scene</option>
+                                            <option value="Intercourse">Intercourse</option>
+                                            <option value="Janus">Janus</option>
+                                            <option value="Masked">Masked</option>
+                                            <option value="Maternity">Maternity</option>
+                                            <option value="Multiple faces">Multiple faces</option>
+                                            <option value="Multiple figures">Multiple figures</option>
+                                            <option value="Multiple heads">Multiple heads</option>
+                                            <option value="Paternity">Paternity</option>
+                                            <option value="Pregnant">Pregnant</option>
+                                            <option value="Single face">Single face</option>
+                                            <option value="Scene of life">Scene of life</option>
+                                            <option value="Threesome figures">Threesome figures</option>
+                                            <option value="Twin figures">Twin figures</option>
+                                            <option value="Two faces">Two faces</option>
+                                            <option value="Two heads">Two heads</option>
+                                            <option value="Two figures">Two figures</option>
+                                            <option value="War scene">War scene</option>
+                                        </select>
                 <span asp-validation-for="Objectjanus" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -310,7 +372,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="Objectposture" class="control-label"></label>
-                <input asp-for="Objectposture" class="form-control" />
+                    <select asp-for="Objectposture" class="form-control">
+                        <option value="Unknown">Unknown</option>
+                        <option value="Horizontal">Horizontal</option>
+                        <option value="Kneeling">Kneeling</option>
+                        <option value="Lying">Lying</option>
+                        <option value="Piggyback">Piggyback</option>
+                        <option value="Seated">Seated</option>
+                        <option value="Seated with crossed legs">Seated with crossed legs</option>
+                        <option value="Squatting">Squatting</option>
+                        <option value="Standing">Standing</option>
+                        <option value="Standing with crossed legs">Standing with crossed legs</option>
+                        <option value="Superimposed">Superimposed</option>
+                        <option value="Truncated">Truncated</option>
+                        <option value="Twisted">Twisted</option>
+                        <option value="Upside down">Upside down</option>
+                        <option value="Vertical">Vertical</option>
+                    </select>
                 <span asp-validation-for="Objectposture" class="text-danger"></span>
             </div>
             </div>

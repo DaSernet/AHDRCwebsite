@@ -128,1442 +128,2115 @@
                 </div>
                 <h1>@Model.IdentifierNoCategory</h1>
 
-                @if(@Model.Category == "co") //collections
+                @if (@Model.Category == "co") //collections
                 {
-                <h1 onclick="hideObjectInfo()">Objects Information</h1>
-                <div id="objectInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Collection)
-                                </td>
-                                <td>
-                                    <input asp-for="Collection" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Collections)
-                                </td>
-                                <td>
-                                    <input asp-for="Collections" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Date)
-                                </td>
-                                <td>
-                                    <input asp-for="Date" class="form-control" />
-                                </td>
-                            </tr>
+                    <h1 onclick="hideObjectInfo()">Objects Information</h1>
+                    <div id="objectInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collection)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collection" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collections)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collections" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Date" class="form-control" />
+                                    </td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Location)
-                                </td>
-                                <td>
-                                    <input asp-for="Location" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Provenance)
-                                </td>
-                                <td>
-                                    <input asp-for="Provenance" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Publication)
-                                </td>
-                                <td>
-                                    <input asp-for="Publication" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Exhibition)
-                                </td>
-                                <td>
-                                    <input asp-for="Exhibition" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Location)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Location" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Provenance)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Provenance" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Publication)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Publication" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Exhibition)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Exhibition" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <h1 onclick="hideNotesInfo()">Notes</h1>
-                <div id="notesInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>Missing</p>
-                                </td>
-                                <td>
-                                    <p>Keuze tussen: Exhibition photo OF Interior photo</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Missing</p>
-                                </td>
-                                <td>
-                                    <p>List of objects</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
+                    <h1 onclick="hideNotesInfo()">Notes</h1>
+                    <div id="notesInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>Missing</p>
+                                    </td>
+                                    <td>
+                                        <p>Keuze tussen: Exhibition photo OF Interior photo</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Missing</p>
+                                    </td>
+                                    <td>
+                                        <p>List of objects</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 }
 
-                @if(@Model.Category == "au") //auctions
+                @if (@Model.Category == "au") //auctions
                 {
-                <h1 onclick="hideEventsInfo()">Information on event</h1>
-                <div id="eventsInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Title)
-                                </td>
-                                <td>
-                                    <input asp-for="Title" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Author)
-                                </td>
-                                <td>
-                                    <input asp-for="Author" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Publisher)
-                                </td>
-                                <td>
-                                    <input asp-for="Publisher" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Year)
-                                </td>
-                                <td>
-                                    <input asp-for="Year" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Date)
-                                </td>
-                                <td>
-                                    <input asp-for="Date" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.ISBN)
-                                </td>
-                                <td>
-                                    <input asp-for="ISBN" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Country)
-                                </td>
-                                <td>
-                                    <input asp-for="Country" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Category)
-                                </td>
-                                <td>
-                                   <p>This text is missing? :(</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Collections)
-                                </td>
-                                <td>
-                                    <input asp-for="Collections" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideEventsInfo()">Information on event</h1>
+                    <div id="eventsInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Title" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Author)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Author" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Publisher)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Publisher" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Year)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Year" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Date" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.ISBN)
+                                    </td>
+                                    <td>
+                                        <input asp-for="ISBN" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Country)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Country" class="form-control">
+                                            <option>Afghanistan</option>
+                                            <option>Albania</option>
+                                            <option>Algeria</option>
+                                            <option>Andorra</option>
+                                            <option>Angola</option>
+                                            <option>Antigua & Deps</option>
+                                            <option>Argentina</option>
+                                            <option>Armenia</option>
+                                            <option>Australia</option>
+                                            <option>Austria</option>
+                                            <option>Azerbaijan</option>
+                                            <option>Bahamas</option>
+                                            <option>Bahrain</option>
+                                            <option>Bangladesh</option>
+                                            <option>Barbados</option>
+                                            <option>Belarus</option>
+                                            <option>Belgium</option>
+                                            <option>Belize</option>
+                                            <option>Benin</option>
+                                            <option>Bhutan</option>
+                                            <option>Bolivia</option>
+                                            <option>Bosnia Herzegovina</option>
+                                            <option>Botswana</option>
+                                            <option>Brazil</option>
+                                            <option>Brunei</option>
+                                            <option>Bulgaria</option>
+                                            <option>Burkina</option>
+                                            <option>Burundi</option>
+                                            <option>Cambodia</option>
+                                            <option>Cameroon</option>
+                                            <option>Canada</option>
+                                            <option>Cape Verde</option>
+                                            <option>Central African Rep</option>
+                                            <option>Chad</option>
+                                            <option>Chile</option>
+                                            <option>China</option>
+                                            <option>Colombia</option>
+                                            <option>Comoros</option>
+                                            <option>Republic of the Congo (Congo Kinshasa)</option>
+                                            <option>Republic of the Congo (Congo Brazzaville)</option>
+                                            <option>Costa Rica</option>
+                                            <option>Croatia</option>
+                                            <option>Cuba</option>
+                                            <option>Cyprus</option>
+                                            <option>Czech Republic</option>
+                                            <option>Denmark</option>
+                                            <option>Djibouti</option>
+                                            <option>Dominica</option>
+                                            <option>Dominican Republic</option>
+                                            <option>East Timor</option>
+                                            <option>Ecuador</option>
+                                            <option>Egypt</option>
+                                            <option>El Salvador</option>
+                                            <option>Equatorial Guinea</option>
+                                            <option>Eritrea</option>
+                                            <option>Estonia</option>
+                                            <option>Ethiopia</option>
+                                            <option>Fiji</option>
+                                            <option>Finland</option>
+                                            <option>France</option>
+                                            <option>Gabon</option>
+                                            <option>Gambia</option>
+                                            <option>Georgia</option>
+                                            <option>Germany</option>
+                                            <option>Ghana</option>
+                                            <option>Greece</option>
+                                            <option>Grenada</option>
+                                            <option>Guatemala</option>
+                                            <option>Guinea</option>
+                                            <option>Guinea-Bissau</option>
+                                            <option>Guyana</option>
+                                            <option>Haiti</option>
+                                            <option>Honduras</option>
+                                            <option>Hungary</option>
+                                            <option>Iceland</option>
+                                            <option>India</option>
+                                            <option>Indonesia</option>
+                                            <option>Iran</option>
+                                            <option>Iraq</option>
+                                            <option>Ireland {Republic}</option>
+                                            <option>Israel</option>
+                                            <option>Italy</option>
+                                            <option>Ivory Coast</option>
+                                            <option>Jamaica</option>
+                                            <option>Japan</option>
+                                            <option>Jordan</option>
+                                            <option>Kazakhstan</option>
+                                            <option>Kenya</option>
+                                            <option>Kiribati</option>
+                                            <option>Korea North</option>
+                                            <option>Korea South</option>
+                                            <option>Kosovo</option>
+                                            <option>Kuwait</option>
+                                            <option>Kyrgyzstan</option>
+                                            <option>Laos</option>
+                                            <option>Latvia</option>
+                                            <option>Lebanon</option>
+                                            <option>Lesotho</option>
+                                            <option>Liberia</option>
+                                            <option>Libya</option>
+                                            <option>Liechtenstein</option>
+                                            <option>Lithuania</option>
+                                            <option>Luxembourg</option>
+                                            <option>Macedonia</option>
+                                            <option>Madagascar</option>
+                                            <option>Malawi</option>
+                                            <option>Malaysia</option>
+                                            <option>Maldives</option>
+                                            <option>Mali</option>
+                                            <option>Malta</option>
+                                            <option>Marshall Islands</option>
+                                            <option>Mauritania</option>
+                                            <option>Mauritius</option>
+                                            <option>Mexico</option>
+                                            <option>Micronesia</option>
+                                            <option>Moldova</option>
+                                            <option>Monaco</option>
+                                            <option>Mongolia</option>
+                                            <option>Montenegro</option>
+                                            <option>Morocco</option>
+                                            <option>Mozambique</option>
+                                            <option>Myanmar, {Burma}</option>
+                                            <option>Namibia</option>
+                                            <option>Nauru</option>
+                                            <option>Nepal</option>
+                                            <option>Netherlands</option>
+                                            <option>New Zealand</option>
+                                            <option>Nicaragua</option>
+                                            <option>Niger</option>
+                                            <option>Nigeria</option>
+                                            <option>Norway</option>
+                                            <option>Oman</option>
+                                            <option>Pakistan</option>
+                                            <option>Palau</option>
+                                            <option>Panama</option>
+                                            <option>Papua New Guinea</option>
+                                            <option>Paraguay</option>
+                                            <option>Peru</option>
+                                            <option>Philippines</option>
+                                            <option>Poland</option>
+                                            <option>Portugal</option>
+                                            <option>Qatar</option>
+                                            <option>Romania</option>
+                                            <option>Russian Federation</option>
+                                            <option>Rwanda</option>
+                                            <option>St Kitts & Nevis</option>
+                                            <option>St Lucia</option>
+                                            <option>Saint Vincent & the Grenadines</option>
+                                            <option>Samoa</option>
+                                            <option>San Marino</option>
+                                            <option>Sao Tome & Principe</option>
+                                            <option>Saudi Arabia</option>
+                                            <option>Senegal</option>
+                                            <option>Serbia</option>
+                                            <option>Seychelles</option>
+                                            <option>Sierra Leone</option>
+                                            <option>Singapore</option>
+                                            <option>Slovakia</option>
+                                            <option>Slovenia</option>
+                                            <option>Solomon Islands</option>
+                                            <option>Somalia</option>
+                                            <option>South Africa</option>
+                                            <option>South Sudan</option>
+                                            <option>Spain</option>
+                                            <option>Sri Lanka</option>
+                                            <option>Sudan</option>
+                                            <option>Suriname</option>
+                                            <option>Swaziland</option>
+                                            <option>Sweden</option>
+                                            <option>Switzerland</option>
+                                            <option>Syria</option>
+                                            <option>Taiwan</option>
+                                            <option>Tajikistan</option>
+                                            <option>Tanzania</option>
+                                            <option>Thailand</option>
+                                            <option>Togo</option>
+                                            <option>Tonga</option>
+                                            <option>Trinidad & Tobago</option>
+                                            <option>Tunisia</option>
+                                            <option>Turkey</option>
+                                            <option>Turkmenistan</option>
+                                            <option>Tuvalu</option>
+                                            <option>Uganda</option>
+                                            <option>Ukraine</option>
+                                            <option>United Arab Emirates</option>
+                                            <option>United Kingdom</option>
+                                            <option>United States</option>
+                                            <option>Uruguay</option>
+                                            <option>Uzbekistan</option>
+                                            <option>Vanuatu</option>
+                                            <option>Vatican City</option>
+                                            <option>Venezuela</option>
+                                            <option>Vietnam</option>
+                                            <option>Yemen</option>
+                                            <option>Zambia</option>
+                                            <option>Zimbabwe</option>
+                                        </select>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Category)
+                                    </td>
+                                    <td>
+                                        <p>This text is missing? :(</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collections)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collections" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
-                <h1 onclick="hideNotesInfo()">Notes</h1>
-                <div id="notesInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Comments)
-                                </td>
-                                <td>
-                                    <input asp-for="Comments" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideNotesInfo()">Notes</h1>
+                    <div id="notesInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Comments" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 }
 
-                @if(@Model.Category == "xp") //exhibitions
+                @if (@Model.Category == "xp") //exhibitions
                 {
-                <h1 onclick="hideEventsInfo()">Information on event</h1>
-                <div id="eventsInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Title)
-                                </td>
-                                <td>
-                                    <input asp-for="Title" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Year)
-                                </td>
-                                <td>
-                                    <input asp-for="Year" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Date)
-                                </td>
-                                <td>
-                                    <input asp-for="Date" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Country)
-                                </td>
-                                <td>
-                                    <input asp-for="Country" class="form-control" />
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.City)
-                                </td>
-                                <td>
-                                    <input asp-for="City" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Location)
-                                </td>
-                                <td>
-                                    <input asp-for="Location" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Catalogue)
-                                </td>
-                                <td>
-                                    <input asp-for="Catalogue" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commercial)
-                                </td>
-                                <td>
-                                    <input asp-for="Commercial" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Curators</p>
-                                </td>
-                                <td>
-                                    <p>Missing</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideEventsInfo()">Information on event</h1>
+                    <div id="eventsInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Title" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Year)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Year" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Date" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Country)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Country" class="form-control">
+                                            <option>Afghanistan</option>
+                                            <option>Albania</option>
+                                            <option>Algeria</option>
+                                            <option>Andorra</option>
+                                            <option>Angola</option>
+                                            <option>Antigua & Deps</option>
+                                            <option>Argentina</option>
+                                            <option>Armenia</option>
+                                            <option>Australia</option>
+                                            <option>Austria</option>
+                                            <option>Azerbaijan</option>
+                                            <option>Bahamas</option>
+                                            <option>Bahrain</option>
+                                            <option>Bangladesh</option>
+                                            <option>Barbados</option>
+                                            <option>Belarus</option>
+                                            <option>Belgium</option>
+                                            <option>Belize</option>
+                                            <option>Benin</option>
+                                            <option>Bhutan</option>
+                                            <option>Bolivia</option>
+                                            <option>Bosnia Herzegovina</option>
+                                            <option>Botswana</option>
+                                            <option>Brazil</option>
+                                            <option>Brunei</option>
+                                            <option>Bulgaria</option>
+                                            <option>Burkina</option>
+                                            <option>Burundi</option>
+                                            <option>Cambodia</option>
+                                            <option>Cameroon</option>
+                                            <option>Canada</option>
+                                            <option>Cape Verde</option>
+                                            <option>Central African Rep</option>
+                                            <option>Chad</option>
+                                            <option>Chile</option>
+                                            <option>China</option>
+                                            <option>Colombia</option>
+                                            <option>Comoros</option>
+                                            <option>Republic of the Congo (Congo Kinshasa)</option>
+                                            <option>Republic of the Congo (Congo Brazzaville)</option>
+                                            <option>Costa Rica</option>
+                                            <option>Croatia</option>
+                                            <option>Cuba</option>
+                                            <option>Cyprus</option>
+                                            <option>Czech Republic</option>
+                                            <option>Denmark</option>
+                                            <option>Djibouti</option>
+                                            <option>Dominica</option>
+                                            <option>Dominican Republic</option>
+                                            <option>East Timor</option>
+                                            <option>Ecuador</option>
+                                            <option>Egypt</option>
+                                            <option>El Salvador</option>
+                                            <option>Equatorial Guinea</option>
+                                            <option>Eritrea</option>
+                                            <option>Estonia</option>
+                                            <option>Ethiopia</option>
+                                            <option>Fiji</option>
+                                            <option>Finland</option>
+                                            <option>France</option>
+                                            <option>Gabon</option>
+                                            <option>Gambia</option>
+                                            <option>Georgia</option>
+                                            <option>Germany</option>
+                                            <option>Ghana</option>
+                                            <option>Greece</option>
+                                            <option>Grenada</option>
+                                            <option>Guatemala</option>
+                                            <option>Guinea</option>
+                                            <option>Guinea-Bissau</option>
+                                            <option>Guyana</option>
+                                            <option>Haiti</option>
+                                            <option>Honduras</option>
+                                            <option>Hungary</option>
+                                            <option>Iceland</option>
+                                            <option>India</option>
+                                            <option>Indonesia</option>
+                                            <option>Iran</option>
+                                            <option>Iraq</option>
+                                            <option>Ireland {Republic}</option>
+                                            <option>Israel</option>
+                                            <option>Italy</option>
+                                            <option>Ivory Coast</option>
+                                            <option>Jamaica</option>
+                                            <option>Japan</option>
+                                            <option>Jordan</option>
+                                            <option>Kazakhstan</option>
+                                            <option>Kenya</option>
+                                            <option>Kiribati</option>
+                                            <option>Korea North</option>
+                                            <option>Korea South</option>
+                                            <option>Kosovo</option>
+                                            <option>Kuwait</option>
+                                            <option>Kyrgyzstan</option>
+                                            <option>Laos</option>
+                                            <option>Latvia</option>
+                                            <option>Lebanon</option>
+                                            <option>Lesotho</option>
+                                            <option>Liberia</option>
+                                            <option>Libya</option>
+                                            <option>Liechtenstein</option>
+                                            <option>Lithuania</option>
+                                            <option>Luxembourg</option>
+                                            <option>Macedonia</option>
+                                            <option>Madagascar</option>
+                                            <option>Malawi</option>
+                                            <option>Malaysia</option>
+                                            <option>Maldives</option>
+                                            <option>Mali</option>
+                                            <option>Malta</option>
+                                            <option>Marshall Islands</option>
+                                            <option>Mauritania</option>
+                                            <option>Mauritius</option>
+                                            <option>Mexico</option>
+                                            <option>Micronesia</option>
+                                            <option>Moldova</option>
+                                            <option>Monaco</option>
+                                            <option>Mongolia</option>
+                                            <option>Montenegro</option>
+                                            <option>Morocco</option>
+                                            <option>Mozambique</option>
+                                            <option>Myanmar, {Burma}</option>
+                                            <option>Namibia</option>
+                                            <option>Nauru</option>
+                                            <option>Nepal</option>
+                                            <option>Netherlands</option>
+                                            <option>New Zealand</option>
+                                            <option>Nicaragua</option>
+                                            <option>Niger</option>
+                                            <option>Nigeria</option>
+                                            <option>Norway</option>
+                                            <option>Oman</option>
+                                            <option>Pakistan</option>
+                                            <option>Palau</option>
+                                            <option>Panama</option>
+                                            <option>Papua New Guinea</option>
+                                            <option>Paraguay</option>
+                                            <option>Peru</option>
+                                            <option>Philippines</option>
+                                            <option>Poland</option>
+                                            <option>Portugal</option>
+                                            <option>Qatar</option>
+                                            <option>Romania</option>
+                                            <option>Russian Federation</option>
+                                            <option>Rwanda</option>
+                                            <option>St Kitts & Nevis</option>
+                                            <option>St Lucia</option>
+                                            <option>Saint Vincent & the Grenadines</option>
+                                            <option>Samoa</option>
+                                            <option>San Marino</option>
+                                            <option>Sao Tome & Principe</option>
+                                            <option>Saudi Arabia</option>
+                                            <option>Senegal</option>
+                                            <option>Serbia</option>
+                                            <option>Seychelles</option>
+                                            <option>Sierra Leone</option>
+                                            <option>Singapore</option>
+                                            <option>Slovakia</option>
+                                            <option>Slovenia</option>
+                                            <option>Solomon Islands</option>
+                                            <option>Somalia</option>
+                                            <option>South Africa</option>
+                                            <option>South Sudan</option>
+                                            <option>Spain</option>
+                                            <option>Sri Lanka</option>
+                                            <option>Sudan</option>
+                                            <option>Suriname</option>
+                                            <option>Swaziland</option>
+                                            <option>Sweden</option>
+                                            <option>Switzerland</option>
+                                            <option>Syria</option>
+                                            <option>Taiwan</option>
+                                            <option>Tajikistan</option>
+                                            <option>Tanzania</option>
+                                            <option>Thailand</option>
+                                            <option>Togo</option>
+                                            <option>Tonga</option>
+                                            <option>Trinidad & Tobago</option>
+                                            <option>Tunisia</option>
+                                            <option>Turkey</option>
+                                            <option>Turkmenistan</option>
+                                            <option>Tuvalu</option>
+                                            <option>Uganda</option>
+                                            <option>Ukraine</option>
+                                            <option>United Arab Emirates</option>
+                                            <option>United Kingdom</option>
+                                            <option>United States</option>
+                                            <option>Uruguay</option>
+                                            <option>Uzbekistan</option>
+                                            <option>Vanuatu</option>
+                                            <option>Vatican City</option>
+                                            <option>Venezuela</option>
+                                            <option>Vietnam</option>
+                                            <option>Yemen</option>
+                                            <option>Zambia</option>
+                                            <option>Zimbabwe</option>
+                                        </select>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.City)
+                                    </td>
+                                    <td>
+                                        <input asp-for="City" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Location)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Location" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Catalogue)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Catalogue" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Commercial)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Commercial" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Curators</p>
+                                    </td>
+                                    <td>
+                                        <p>Missing</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
-                <h1 onclick="hideNotesInfo()">Notes</h1>
-                <div id="notesInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Comments)
-                                </td>
-                                <td>
-                                    <input asp-for="Comments" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideNotesInfo()">Notes</h1>
+                    <div id="notesInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Comments" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 }
-                
 
-                @if(@Model.Category == "bk") //publications
+
+                @if (@Model.Category == "bk") //publications
                 {
-                <h1 onclick="hideEventsInfo()">Information on book</h1>
-                <div id="eventsInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Title)
-                                </td>
-                                <td>
-                                    <input asp-for="Title" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Author)
-                                </td>
-                                <td>
-                                    <input asp-for="Author" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Publisher)
-                                </td>
-                                <td>
-                                    <input asp-for="Publisher" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Year)
-                                </td>
-                                <td>
-                                    <input asp-for="Year" class="form-control" />
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Date)
-                                </td>
-                                <td>
-                                    <input asp-for="Date" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Reprints)
-                                </td>
-                                <td>
-                                    <input asp-for="Reprints" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.ISBN)
-                                </td>
-                                <td>
-                                    <input asp-for="ISBN" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Country)
-                                </td>
-                                <td>
-                                    <input asp-for="Country" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideEventsInfo()">Information on book</h1>
+                    <div id="eventsInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Title" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Author)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Author" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Publisher)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Publisher" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Year)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Year" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Date" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Reprints)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Reprints" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.ISBN)
+                                    </td>
+                                    <td>
+                                        <input asp-for="ISBN" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Country)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Country" class="form-control">
+                                            <option>Afghanistan</option>
+                                            <option>Albania</option>
+                                            <option>Algeria</option>
+                                            <option>Andorra</option>
+                                            <option>Angola</option>
+                                            <option>Antigua & Deps</option>
+                                            <option>Argentina</option>
+                                            <option>Armenia</option>
+                                            <option>Australia</option>
+                                            <option>Austria</option>
+                                            <option>Azerbaijan</option>
+                                            <option>Bahamas</option>
+                                            <option>Bahrain</option>
+                                            <option>Bangladesh</option>
+                                            <option>Barbados</option>
+                                            <option>Belarus</option>
+                                            <option>Belgium</option>
+                                            <option>Belize</option>
+                                            <option>Benin</option>
+                                            <option>Bhutan</option>
+                                            <option>Bolivia</option>
+                                            <option>Bosnia Herzegovina</option>
+                                            <option>Botswana</option>
+                                            <option>Brazil</option>
+                                            <option>Brunei</option>
+                                            <option>Bulgaria</option>
+                                            <option>Burkina</option>
+                                            <option>Burundi</option>
+                                            <option>Cambodia</option>
+                                            <option>Cameroon</option>
+                                            <option>Canada</option>
+                                            <option>Cape Verde</option>
+                                            <option>Central African Rep</option>
+                                            <option>Chad</option>
+                                            <option>Chile</option>
+                                            <option>China</option>
+                                            <option>Colombia</option>
+                                            <option>Comoros</option>
+                                            <option>Republic of the Congo (Congo Kinshasa)</option>
+                                            <option>Republic of the Congo (Congo Brazzaville)</option>
+                                            <option>Costa Rica</option>
+                                            <option>Croatia</option>
+                                            <option>Cuba</option>
+                                            <option>Cyprus</option>
+                                            <option>Czech Republic</option>
+                                            <option>Denmark</option>
+                                            <option>Djibouti</option>
+                                            <option>Dominica</option>
+                                            <option>Dominican Republic</option>
+                                            <option>East Timor</option>
+                                            <option>Ecuador</option>
+                                            <option>Egypt</option>
+                                            <option>El Salvador</option>
+                                            <option>Equatorial Guinea</option>
+                                            <option>Eritrea</option>
+                                            <option>Estonia</option>
+                                            <option>Ethiopia</option>
+                                            <option>Fiji</option>
+                                            <option>Finland</option>
+                                            <option>France</option>
+                                            <option>Gabon</option>
+                                            <option>Gambia</option>
+                                            <option>Georgia</option>
+                                            <option>Germany</option>
+                                            <option>Ghana</option>
+                                            <option>Greece</option>
+                                            <option>Grenada</option>
+                                            <option>Guatemala</option>
+                                            <option>Guinea</option>
+                                            <option>Guinea-Bissau</option>
+                                            <option>Guyana</option>
+                                            <option>Haiti</option>
+                                            <option>Honduras</option>
+                                            <option>Hungary</option>
+                                            <option>Iceland</option>
+                                            <option>India</option>
+                                            <option>Indonesia</option>
+                                            <option>Iran</option>
+                                            <option>Iraq</option>
+                                            <option>Ireland {Republic}</option>
+                                            <option>Israel</option>
+                                            <option>Italy</option>
+                                            <option>Ivory Coast</option>
+                                            <option>Jamaica</option>
+                                            <option>Japan</option>
+                                            <option>Jordan</option>
+                                            <option>Kazakhstan</option>
+                                            <option>Kenya</option>
+                                            <option>Kiribati</option>
+                                            <option>Korea North</option>
+                                            <option>Korea South</option>
+                                            <option>Kosovo</option>
+                                            <option>Kuwait</option>
+                                            <option>Kyrgyzstan</option>
+                                            <option>Laos</option>
+                                            <option>Latvia</option>
+                                            <option>Lebanon</option>
+                                            <option>Lesotho</option>
+                                            <option>Liberia</option>
+                                            <option>Libya</option>
+                                            <option>Liechtenstein</option>
+                                            <option>Lithuania</option>
+                                            <option>Luxembourg</option>
+                                            <option>Macedonia</option>
+                                            <option>Madagascar</option>
+                                            <option>Malawi</option>
+                                            <option>Malaysia</option>
+                                            <option>Maldives</option>
+                                            <option>Mali</option>
+                                            <option>Malta</option>
+                                            <option>Marshall Islands</option>
+                                            <option>Mauritania</option>
+                                            <option>Mauritius</option>
+                                            <option>Mexico</option>
+                                            <option>Micronesia</option>
+                                            <option>Moldova</option>
+                                            <option>Monaco</option>
+                                            <option>Mongolia</option>
+                                            <option>Montenegro</option>
+                                            <option>Morocco</option>
+                                            <option>Mozambique</option>
+                                            <option>Myanmar, {Burma}</option>
+                                            <option>Namibia</option>
+                                            <option>Nauru</option>
+                                            <option>Nepal</option>
+                                            <option>Netherlands</option>
+                                            <option>New Zealand</option>
+                                            <option>Nicaragua</option>
+                                            <option>Niger</option>
+                                            <option>Nigeria</option>
+                                            <option>Norway</option>
+                                            <option>Oman</option>
+                                            <option>Pakistan</option>
+                                            <option>Palau</option>
+                                            <option>Panama</option>
+                                            <option>Papua New Guinea</option>
+                                            <option>Paraguay</option>
+                                            <option>Peru</option>
+                                            <option>Philippines</option>
+                                            <option>Poland</option>
+                                            <option>Portugal</option>
+                                            <option>Qatar</option>
+                                            <option>Romania</option>
+                                            <option>Russian Federation</option>
+                                            <option>Rwanda</option>
+                                            <option>St Kitts & Nevis</option>
+                                            <option>St Lucia</option>
+                                            <option>Saint Vincent & the Grenadines</option>
+                                            <option>Samoa</option>
+                                            <option>San Marino</option>
+                                            <option>Sao Tome & Principe</option>
+                                            <option>Saudi Arabia</option>
+                                            <option>Senegal</option>
+                                            <option>Serbia</option>
+                                            <option>Seychelles</option>
+                                            <option>Sierra Leone</option>
+                                            <option>Singapore</option>
+                                            <option>Slovakia</option>
+                                            <option>Slovenia</option>
+                                            <option>Solomon Islands</option>
+                                            <option>Somalia</option>
+                                            <option>South Africa</option>
+                                            <option>South Sudan</option>
+                                            <option>Spain</option>
+                                            <option>Sri Lanka</option>
+                                            <option>Sudan</option>
+                                            <option>Suriname</option>
+                                            <option>Swaziland</option>
+                                            <option>Sweden</option>
+                                            <option>Switzerland</option>
+                                            <option>Syria</option>
+                                            <option>Taiwan</option>
+                                            <option>Tajikistan</option>
+                                            <option>Tanzania</option>
+                                            <option>Thailand</option>
+                                            <option>Togo</option>
+                                            <option>Tonga</option>
+                                            <option>Trinidad & Tobago</option>
+                                            <option>Tunisia</option>
+                                            <option>Turkey</option>
+                                            <option>Turkmenistan</option>
+                                            <option>Tuvalu</option>
+                                            <option>Uganda</option>
+                                            <option>Ukraine</option>
+                                            <option>United Arab Emirates</option>
+                                            <option>United Kingdom</option>
+                                            <option>United States</option>
+                                            <option>Uruguay</option>
+                                            <option>Uzbekistan</option>
+                                            <option>Vanuatu</option>
+                                            <option>Vatican City</option>
+                                            <option>Venezuela</option>
+                                            <option>Vietnam</option>
+                                            <option>Yemen</option>
+                                            <option>Zambia</option>
+                                            <option>Zimbabwe</option>
+                                        </select>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
-                <h1 onclick="hideNotesInfo()">Notes</h1>
-                <div id="notesInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Comments)
-                                </td>
-                                <td>
-                                    <input asp-for="Comments" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideNotesInfo()">Notes</h1>
+                    <div id="notesInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Comments" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 }
 
-                @if(@Model.Category == "wh") //who's who
+                @if (@Model.Category == "wh") //who's who
                 {
-                <h1 onclick="hideEventsInfo()">Information on person</h1>
-                <div id="eventsInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Last_name)
-                                </td>
-                                <td>
-                                    <input asp-for="Last_name" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.First_Name)
-                                </td>
-                                <td>
-                                    <input asp-for="First_Name" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Full_name)
-                                </td>
-                                <td>
-                                    <input asp-for="Full_name" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Born)
-                                </td>
-                                <td>
-                                    <input asp-for="Born" class="form-control" />
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Dead)
-                                </td>
-                                <td>
-                                    <input asp-for="Dead" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideEventsInfo()">Information on person</h1>
+                    <div id="eventsInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Last_name)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Last_name" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.First_Name)
+                                    </td>
+                                    <td>
+                                        <input asp-for="First_Name" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Full_name)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Full_name" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Born)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Born" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Dead)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Dead" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
-                <h1 onclick="hideNotesInfo()">Notes</h1>
-                <div id="notesInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Biography)
-                                </td>
-                                <td>
-                                    <input asp-for="Biography" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Bio2)
-                                </td>
-                                <td>
-                                    <input asp-for="Bio2" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>author of:</p>
-                                </td>
-                                <td>
-                                    <p>missing</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Book_about)
-                                </td>
-                                <td>
-                                    <input asp-for="Book_about" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h1 onclick="hideNotesInfo()">Notes</h1>
+                    <div id="notesInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Biography)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Biography" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Bio2)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Bio2" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>author of:</p>
+                                    </td>
+                                    <td>
+                                        <p>missing</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Book_about)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Book_about" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 }
 
-                @if(@Model.Category != "wh" && @Model.Category != "bk" && @Model.Category != "xp" && @Model.Category != "wh" && @Model.Category != "au" && @Model.Category != "co")
+                @if (@Model.Category != "wh" && @Model.Category != "bk" && @Model.Category != "xp" && @Model.Category != "wh" && @Model.Category != "au" && @Model.Category != "co")
                 {
-                <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
-                <div id="geographicalInfo">
+                    <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
+                    <div id="geographicalInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Kingdom)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Kingdom" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Ethnicgroup)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Ethnicgroup" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Chefferie)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Chefferie" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Clan)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Clan" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Langgroup)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Langgroup" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Country)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Country" class="form-control">
+                                            <option>Afghanistan</option>
+                                            <option>Albania</option>
+                                            <option>Algeria</option>
+                                            <option>Andorra</option>
+                                            <option>Angola</option>
+                                            <option>Antigua & Deps</option>
+                                            <option>Argentina</option>
+                                            <option>Armenia</option>
+                                            <option>Australia</option>
+                                            <option>Austria</option>
+                                            <option>Azerbaijan</option>
+                                            <option>Bahamas</option>
+                                            <option>Bahrain</option>
+                                            <option>Bangladesh</option>
+                                            <option>Barbados</option>
+                                            <option>Belarus</option>
+                                            <option>Belgium</option>
+                                            <option>Belize</option>
+                                            <option>Benin</option>
+                                            <option>Bhutan</option>
+                                            <option>Bolivia</option>
+                                            <option>Bosnia Herzegovina</option>
+                                            <option>Botswana</option>
+                                            <option>Brazil</option>
+                                            <option>Brunei</option>
+                                            <option>Bulgaria</option>
+                                            <option>Burkina</option>
+                                            <option>Burundi</option>
+                                            <option>Cambodia</option>
+                                            <option>Cameroon</option>
+                                            <option>Canada</option>
+                                            <option>Cape Verde</option>
+                                            <option>Central African Rep</option>
+                                            <option>Chad</option>
+                                            <option>Chile</option>
+                                            <option>China</option>
+                                            <option>Colombia</option>
+                                            <option>Comoros</option>
+                                            <option>Republic of the Congo (Congo Kinshasa)</option>
+                                            <option>Republic of the Congo (Congo Brazzaville)</option>
+                                            <option>Costa Rica</option>
+                                            <option>Croatia</option>
+                                            <option>Cuba</option>
+                                            <option>Cyprus</option>
+                                            <option>Czech Republic</option>
+                                            <option>Denmark</option>
+                                            <option>Djibouti</option>
+                                            <option>Dominica</option>
+                                            <option>Dominican Republic</option>
+                                            <option>East Timor</option>
+                                            <option>Ecuador</option>
+                                            <option>Egypt</option>
+                                            <option>El Salvador</option>
+                                            <option>Equatorial Guinea</option>
+                                            <option>Eritrea</option>
+                                            <option>Estonia</option>
+                                            <option>Ethiopia</option>
+                                            <option>Fiji</option>
+                                            <option>Finland</option>
+                                            <option>France</option>
+                                            <option>Gabon</option>
+                                            <option>Gambia</option>
+                                            <option>Georgia</option>
+                                            <option>Germany</option>
+                                            <option>Ghana</option>
+                                            <option>Greece</option>
+                                            <option>Grenada</option>
+                                            <option>Guatemala</option>
+                                            <option>Guinea</option>
+                                            <option>Guinea-Bissau</option>
+                                            <option>Guyana</option>
+                                            <option>Haiti</option>
+                                            <option>Honduras</option>
+                                            <option>Hungary</option>
+                                            <option>Iceland</option>
+                                            <option>India</option>
+                                            <option>Indonesia</option>
+                                            <option>Iran</option>
+                                            <option>Iraq</option>
+                                            <option>Ireland {Republic}</option>
+                                            <option>Israel</option>
+                                            <option>Italy</option>
+                                            <option>Ivory Coast</option>
+                                            <option>Jamaica</option>
+                                            <option>Japan</option>
+                                            <option>Jordan</option>
+                                            <option>Kazakhstan</option>
+                                            <option>Kenya</option>
+                                            <option>Kiribati</option>
+                                            <option>Korea North</option>
+                                            <option>Korea South</option>
+                                            <option>Kosovo</option>
+                                            <option>Kuwait</option>
+                                            <option>Kyrgyzstan</option>
+                                            <option>Laos</option>
+                                            <option>Latvia</option>
+                                            <option>Lebanon</option>
+                                            <option>Lesotho</option>
+                                            <option>Liberia</option>
+                                            <option>Libya</option>
+                                            <option>Liechtenstein</option>
+                                            <option>Lithuania</option>
+                                            <option>Luxembourg</option>
+                                            <option>Macedonia</option>
+                                            <option>Madagascar</option>
+                                            <option>Malawi</option>
+                                            <option>Malaysia</option>
+                                            <option>Maldives</option>
+                                            <option>Mali</option>
+                                            <option>Malta</option>
+                                            <option>Marshall Islands</option>
+                                            <option>Mauritania</option>
+                                            <option>Mauritius</option>
+                                            <option>Mexico</option>
+                                            <option>Micronesia</option>
+                                            <option>Moldova</option>
+                                            <option>Monaco</option>
+                                            <option>Mongolia</option>
+                                            <option>Montenegro</option>
+                                            <option>Morocco</option>
+                                            <option>Mozambique</option>
+                                            <option>Myanmar, {Burma}</option>
+                                            <option>Namibia</option>
+                                            <option>Nauru</option>
+                                            <option>Nepal</option>
+                                            <option>Netherlands</option>
+                                            <option>New Zealand</option>
+                                            <option>Nicaragua</option>
+                                            <option>Niger</option>
+                                            <option>Nigeria</option>
+                                            <option>Norway</option>
+                                            <option>Oman</option>
+                                            <option>Pakistan</option>
+                                            <option>Palau</option>
+                                            <option>Panama</option>
+                                            <option>Papua New Guinea</option>
+                                            <option>Paraguay</option>
+                                            <option>Peru</option>
+                                            <option>Philippines</option>
+                                            <option>Poland</option>
+                                            <option>Portugal</option>
+                                            <option>Qatar</option>
+                                            <option>Romania</option>
+                                            <option>Russian Federation</option>
+                                            <option>Rwanda</option>
+                                            <option>St Kitts & Nevis</option>
+                                            <option>St Lucia</option>
+                                            <option>Saint Vincent & the Grenadines</option>
+                                            <option>Samoa</option>
+                                            <option>San Marino</option>
+                                            <option>Sao Tome & Principe</option>
+                                            <option>Saudi Arabia</option>
+                                            <option>Senegal</option>
+                                            <option>Serbia</option>
+                                            <option>Seychelles</option>
+                                            <option>Sierra Leone</option>
+                                            <option>Singapore</option>
+                                            <option>Slovakia</option>
+                                            <option>Slovenia</option>
+                                            <option>Solomon Islands</option>
+                                            <option>Somalia</option>
+                                            <option>South Africa</option>
+                                            <option>South Sudan</option>
+                                            <option>Spain</option>
+                                            <option>Sri Lanka</option>
+                                            <option>Sudan</option>
+                                            <option>Suriname</option>
+                                            <option>Swaziland</option>
+                                            <option>Sweden</option>
+                                            <option>Switzerland</option>
+                                            <option>Syria</option>
+                                            <option>Taiwan</option>
+                                            <option>Tajikistan</option>
+                                            <option>Tanzania</option>
+                                            <option>Thailand</option>
+                                            <option>Togo</option>
+                                            <option>Tonga</option>
+                                            <option>Trinidad & Tobago</option>
+                                            <option>Tunisia</option>
+                                            <option>Turkey</option>
+                                            <option>Turkmenistan</option>
+                                            <option>Tuvalu</option>
+                                            <option>Uganda</option>
+                                            <option>Ukraine</option>
+                                            <option>United Arab Emirates</option>
+                                            <option>United Kingdom</option>
+                                            <option>United States</option>
+                                            <option>Uruguay</option>
+                                            <option>Uzbekistan</option>
+                                            <option>Vanuatu</option>
+                                            <option>Vatican City</option>
+                                            <option>Venezuela</option>
+                                            <option>Vietnam</option>
+                                            <option>Yemen</option>
+                                            <option>Zambia</option>
+                                            <option>Zimbabwe</option>
+                                        </select>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Region)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Region" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Village)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Village" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Sitearcheo)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Sitearcheo" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Langsubgroup)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Langsubgroup" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h1 onclick="hideObjectInfo()">Object Information</h1>
+                    <div id="objectInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Objectname)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Objectname" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Objectnameex)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Objectnameex" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Objectnamegn)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Objectnamegn" class="form-control" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Objectjanus)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Objectjanus" class="form-control">
+                                            <option value="Unknown">Unknown</option>
+                                            <option value="Acephalous">Acephalous</option>
+                                            <option value="Articulated lower jaw">Articulated lower jaw</option>
+                                            <option value="Back-to-back">Back-to-back</option>
+                                            <option value="Colonial">Colonial</option>
+                                            <option value="Couple">Couple</option>
+                                            <option value="Court">Court</option>
+                                            <option value="Scene">Scene</option>
+                                            <option value="Crafts">Crafts</option>
+                                            <option value="Cult scene">Cult scene</option>
+                                            <option value="Deformity">Deformity</option>
+                                            <option value="Equestrian">Equestrian</option>
+                                            <option value="Erotic">Erotic</option>
+                                            <option value="Face-a-face">Face-a-face</option>
+                                            <option value="Food related">Food related</option>
+                                            <option value="Group">Group</option>
+                                            <option value="Half figure">Half figure</option>
+                                            <option value="Hunting scene">Hunting scene</option>
+                                            <option value="Intercourse">Intercourse</option>
+                                            <option value="Janus">Janus</option>
+                                            <option value="Masked">Masked</option>
+                                            <option value="Maternity">Maternity</option>
+                                            <option value="Multiple faces">Multiple faces</option>
+                                            <option value="Multiple figures">Multiple figures</option>
+                                            <option value="Multiple heads">Multiple heads</option>
+                                            <option value="Paternity">Paternity</option>
+                                            <option value="Pregnant">Pregnant</option>
+                                            <option value="Single face">Single face</option>
+                                            <option value="Scene of life">Scene of life</option>
+                                            <option value="Threesome figures">Threesome figures</option>
+                                            <option value="Twin figures">Twin figures</option>
+                                            <option value="Two faces">Two faces</option>
+                                            <option value="Two heads">Two heads</option>
+                                            <option value="Two figures">Two figures</option>
+                                            <option value="War scene">War scene</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Objectgender)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Objectgender" class="form-control">
+                                            <option value="Unknown">Unknown</option>
+                                            <option value="Abstract">Abstract</option>
+                                            <option value="Anthropomorphic">Anthropomorphic</option>
+                                            <option value="Anthropomorphic male">Anthropomorphic male</option>
+                                            <option value="Anthropomorphic female">Anthropomorphic female</option>
+                                            <option value="Anthropomorphic male & female">Anthropomorphic male & female</option>
+                                            <option value="Anthropozoomorphic">Anthropozoomorphic</option>
+                                            <option value="Anthropozoomorphic male">Anthropozoomorphic male</option>
+                                            <option value="Anthropozoomorphic female">Anthropozoomorphic female</option>
+                                            <option value="Anthropozoomorphic male & female">Anthropozoomorphic male & female</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Vegetal">Vegetal</option>
+                                            <option value="Hermaphrodite">Hermaphrodite</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Male & female">Male & female</option>
+                                            <option value="Mineral">Mineral</option>
+                                            <option value="Ornitomorphic">Ornitomorphic</option>
+                                            <option value="Polymorphic">Polymorphic</option>
+                                            <option value="Skeuomorphic">Skeuomorphic</option>
+                                            <option value="Zoomorphic">Zoomorphic</option>
+                                            <option value="Zoomorphic male">Zoomorphic male</option>
+                                            <option value="Zoomorphic female">Zoomorphic female</option>
+                                            <option value="Zoomorphic male & female">Zoomorphic male & female</option>
+                                            <option value="Zoomorphic composite">Zoomorphic composite</option>
+                                            <option value="Anoitomorphic">Anoitomorphic</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Objectposture)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Objectposture" class="form-control">
+                                            
+    <option value="Unknown">Unknown</option>
+    <option value="Horizontal">Horizontal</option>
+    <option value="Kneeling">Kneeling</option>
+    <option value="Lying">Lying</option>
+    <option value="Piggyback">Piggyback</option>
+    <option value="Seated">Seated</option>
+    <option value="Seated with crossed legs">Seated with crossed legs</option>
+    <option value="Squatting">Squatting</option>
+    <option value="Standing">Standing</option>
+    <option value="Standing with crossed legs">Standing with crossed legs</option>
+    <option value="Superimposed">Superimposed</option>
+    <option value="Truncated">Truncated</option>
+    <option value="Twisted">Twisted</option>
+    <option value="Upside down">Upside down</option>
+    <option value="Vertical">Vertical</option>
+</select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @if (@Model.Category != "ph")
+                    {
+                        <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
+                        <div id="physicalInfo" class="text-info-div">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Height)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Height" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Length)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Length" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Depth)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Depth" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Width)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Width" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Diameter)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Diameter" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Weight)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Weight" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medium)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medium" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medbkinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medbkinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medbeinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medbeinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medboinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medboinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Calabashinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Calabashinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medclinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medclinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medfeinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medfeinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medfiinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medfiinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medglinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medglinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Hairinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Hairinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medhoinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medhoinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medivinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medivinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medmainfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medmainfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medirinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medirinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Pigmentinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Pigmentinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medrainfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medrainfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medreinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medreinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medseedpodsinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medseedpodsinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medshinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medshinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medskinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medskinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medstinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medstinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medceinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medceinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medwoinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medwoinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medotinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medotinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Condition)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Condition" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Restoration)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Restoration" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Medwoodinfo)
+                                        </td>
+                                        <td>
+                                            <input asp-for="Medwoodinfo" class="form-control" />
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    <h1 onclick="hideHistoryInfo()">History of Object</h1>
+                    <div id="historyInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collectedby)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collectedby" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collectedwhen)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collectedwhen" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collection)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collection" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Ispublic)
+                                    </td>
+                                    <td>
+                                        <select asp-for="Ispublic" class="form-control">
+                                            <option>Public Collection</option>
+                                            <option>Private Collection</option>
+                                            <option>Unknown Collection</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Inventory)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Inventory" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Acquiredfrom)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Acquiredfrom" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Acquisitiondate)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Acquisitiondate" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Donationfrom)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Donationfrom" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Creditline)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Creditline" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Certificate)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Certificate" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Provenance)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Provenance" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Publication)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Publication" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Exhibition)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Exhibition" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Auctions)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Auctions" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Aquisitiondate)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Aquisitiondate" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+                    <div id="authorshipInfo">
+                        <table>
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Workshop)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Workshop" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Artist)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Artist" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Createdate)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Createdate" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Createdatemax)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Createdatemax" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Createdatemin)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Createdatemin" class="form-control" />
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <h1 onclick="hideNotesInfo()">Notes</h1>
+                    <div id="notesInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Ritualassoc)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Ritualassoc" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Usage)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Usage" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Comments" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Confidential)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Confidential" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Workshoplist)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Workshoplist" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Associatefeatures)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Associatefeatures" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Commonfeatures)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Commonfeatures" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Features)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Features" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Additionalfeatures)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Additionalfeatures" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Structuralfeatures)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Structuralfeatures" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Associatfeatures)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Associatfeatures" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Commanditaire)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Commanditaire" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
+
+                @if (@Model.Category != "xp")
+                {
+                    <h1>Photographic Information</h1>
                     <table>
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Kingdom)
+                                    @Html.DisplayNameFor(model => model.Photographer)
                                 </td>
                                 <td>
-                                    <input asp-for="Kingdom" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Ethnicgroup)
-                                </td>
-                                <td>
-                                    <input asp-for="Ethnicgroup" class="form-control" />
+                                    <input asp-for="Photographer" class="form-control" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Chefferie)
+                                    @Html.DisplayNameFor(model => model.Photocopy)
                                 </td>
                                 <td>
-                                    <input asp-for="Chefferie" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Clan)
-                                </td>
-                                <td>
-                                    <input asp-for="Clan" class="form-control" />
+                                    <input asp-for="Photocopy" class="form-control" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Langgroup)
+                                    @Html.DisplayNameFor(model => model.Photoprov)
                                 </td>
                                 <td>
-                                    <input asp-for="Langgroup" class="form-control" />
+                                    <input asp-for="Photoprov" class="form-control" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Country)
+                                    @Html.DisplayNameFor(model => model.Photoinvnr)
                                 </td>
                                 <td>
-                                    <select asp-for="Country" class="form-control">
-                                        <option>Afghanistan</option>
-                                        <option>Albania</option>
-                                        <option>Algeria</option>
-                                        <option>Andorra</option>
-                                        <option>Angola</option>
-                                        <option>Antigua & Deps</option>
-                                        <option>Argentina</option>
-                                        <option>Armenia</option>
-                                        <option>Australia</option>
-                                        <option>Austria</option>
-                                        <option>Azerbaijan</option>
-                                        <option>Bahamas</option>
-                                        <option>Bahrain</option>
-                                        <option>Bangladesh</option>
-                                        <option>Barbados</option>
-                                        <option>Belarus</option>
-                                        <option>Belgium</option>
-                                        <option>Belize</option>
-                                        <option>Benin</option>
-                                        <option>Bhutan</option>
-                                        <option>Bolivia</option>
-                                        <option>Bosnia Herzegovina</option>
-                                        <option>Botswana</option>
-                                        <option>Brazil</option>
-                                        <option>Brunei</option>
-                                        <option>Bulgaria</option>
-                                        <option>Burkina</option>
-                                        <option>Burundi</option>
-                                        <option>Cambodia</option>
-                                        <option>Cameroon</option>
-                                        <option>Canada</option>
-                                        <option>Cape Verde</option>
-                                        <option>Central African Rep</option>
-                                        <option>Chad</option>
-                                        <option>Chile</option>
-                                        <option>China</option>
-                                        <option>Colombia</option>
-                                        <option>Comoros</option>
-                                        <option>Republic of the Congo (Congo Kinshasa)</option>
-                                        <option>Republic of the Congo (Congo Brazzaville)</option>
-                                        <option>Costa Rica</option>
-                                        <option>Croatia</option>
-                                        <option>Cuba</option>
-                                        <option>Cyprus</option>
-                                        <option>Czech Republic</option>
-                                        <option>Denmark</option>
-                                        <option>Djibouti</option>
-                                        <option>Dominica</option>
-                                        <option>Dominican Republic</option>
-                                        <option>East Timor</option>
-                                        <option>Ecuador</option>
-                                        <option>Egypt</option>
-                                        <option>El Salvador</option>
-                                        <option>Equatorial Guinea</option>
-                                        <option>Eritrea</option>
-                                        <option>Estonia</option>
-                                        <option>Ethiopia</option>
-                                        <option>Fiji</option>
-                                        <option>Finland</option>
-                                        <option>France</option>
-                                        <option>Gabon</option>
-                                        <option>Gambia</option>
-                                        <option>Georgia</option>
-                                        <option>Germany</option>
-                                        <option>Ghana</option>
-                                        <option>Greece</option>
-                                        <option>Grenada</option>
-                                        <option>Guatemala</option>
-                                        <option>Guinea</option>
-                                        <option>Guinea-Bissau</option>
-                                        <option>Guyana</option>
-                                        <option>Haiti</option>
-                                        <option>Honduras</option>
-                                        <option>Hungary</option>
-                                        <option>Iceland</option>
-                                        <option>India</option>
-                                        <option>Indonesia</option>
-                                        <option>Iran</option>
-                                        <option>Iraq</option>
-                                        <option>Ireland {Republic}</option>
-                                        <option>Israel</option>
-                                        <option>Italy</option>
-                                        <option>Ivory Coast</option>
-                                        <option>Jamaica</option>
-                                        <option>Japan</option>
-                                        <option>Jordan</option>
-                                        <option>Kazakhstan</option>
-                                        <option>Kenya</option>
-                                        <option>Kiribati</option>
-                                        <option>Korea North</option>
-                                        <option>Korea South</option>
-                                        <option>Kosovo</option>
-                                        <option>Kuwait</option>
-                                        <option>Kyrgyzstan</option>
-                                        <option>Laos</option>
-                                        <option>Latvia</option>
-                                        <option>Lebanon</option>
-                                        <option>Lesotho</option>
-                                        <option>Liberia</option>
-                                        <option>Libya</option>
-                                        <option>Liechtenstein</option>
-                                        <option>Lithuania</option>
-                                        <option>Luxembourg</option>
-                                        <option>Macedonia</option>
-                                        <option>Madagascar</option>
-                                        <option>Malawi</option>
-                                        <option>Malaysia</option>
-                                        <option>Maldives</option>
-                                        <option>Mali</option>
-                                        <option>Malta</option>
-                                        <option>Marshall Islands</option>
-                                        <option>Mauritania</option>
-                                        <option>Mauritius</option>
-                                        <option>Mexico</option>
-                                        <option>Micronesia</option>
-                                        <option>Moldova</option>
-                                        <option>Monaco</option>
-                                        <option>Mongolia</option>
-                                        <option>Montenegro</option>
-                                        <option>Morocco</option>
-                                        <option>Mozambique</option>
-                                        <option>Myanmar, {Burma}</option>
-                                        <option>Namibia</option>
-                                        <option>Nauru</option>
-                                        <option>Nepal</option>
-                                        <option>Netherlands</option>
-                                        <option>New Zealand</option>
-                                        <option>Nicaragua</option>
-                                        <option>Niger</option>
-                                        <option>Nigeria</option>
-                                        <option>Norway</option>
-                                        <option>Oman</option>
-                                        <option>Pakistan</option>
-                                        <option>Palau</option>
-                                        <option>Panama</option>
-                                        <option>Papua New Guinea</option>
-                                        <option>Paraguay</option>
-                                        <option>Peru</option>
-                                        <option>Philippines</option>
-                                        <option>Poland</option>
-                                        <option>Portugal</option>
-                                        <option>Qatar</option>
-                                        <option>Romania</option>
-                                        <option>Russian Federation</option>
-                                        <option>Rwanda</option>
-                                        <option>St Kitts & Nevis</option>
-                                        <option>St Lucia</option>
-                                        <option>Saint Vincent & the Grenadines</option>
-                                        <option>Samoa</option>
-                                        <option>San Marino</option>
-                                        <option>Sao Tome & Principe</option>
-                                        <option>Saudi Arabia</option>
-                                        <option>Senegal</option>
-                                        <option>Serbia</option>
-                                        <option>Seychelles</option>
-                                        <option>Sierra Leone</option>
-                                        <option>Singapore</option>
-                                        <option>Slovakia</option>
-                                        <option>Slovenia</option>
-                                        <option>Solomon Islands</option>
-                                        <option>Somalia</option>
-                                        <option>South Africa</option>
-                                        <option>South Sudan</option>
-                                        <option>Spain</option>
-                                        <option>Sri Lanka</option>
-                                        <option>Sudan</option>
-                                        <option>Suriname</option>
-                                        <option>Swaziland</option>
-                                        <option>Sweden</option>
-                                        <option>Switzerland</option>
-                                        <option>Syria</option>
-                                        <option>Taiwan</option>
-                                        <option>Tajikistan</option>
-                                        <option>Tanzania</option>
-                                        <option>Thailand</option>
-                                        <option>Togo</option>
-                                        <option>Tonga</option>
-                                        <option>Trinidad & Tobago</option>
-                                        <option>Tunisia</option>
-                                        <option>Turkey</option>
-                                        <option>Turkmenistan</option>
-                                        <option>Tuvalu</option>
-                                        <option>Uganda</option>
-                                        <option>Ukraine</option>
-                                        <option>United Arab Emirates</option>
-                                        <option>United Kingdom</option>
-                                        <option>United States</option>
-                                        <option>Uruguay</option>
-                                        <option>Uzbekistan</option>
-                                        <option>Vanuatu</option>
-                                        <option>Vatican City</option>
-                                        <option>Venezuela</option>
-                                        <option>Vietnam</option>
-                                        <option>Yemen</option>
-                                        <option>Zambia</option>
-                                        <option>Zimbabwe</option>
+                                    <input asp-for="Photoinvnr" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Needbetter)
+                                </td>
+                                <td>
+                                    <select asp-for="Needbetter" class="form-control">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
-                                    <span asp-validation-for="Country" class="text-danger"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Region)
-                                </td>
-                                <td>
-                                    <input asp-for="Region" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Village)
-                                </td>
-                                <td>
-                                    <input asp-for="Village" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Sitearcheo)
-                                </td>
-                                <td>
-                                    <input asp-for="Sitearcheo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Langsubgroup)
-                                </td>
-                                <td>
-                                    <input asp-for="Langsubgroup" class="form-control" />
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <h1 onclick="hideObjectInfo()">Object Information</h1>
-                <div id="objectInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectname)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectname" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectnameex)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectnameex" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectnamegn)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectnamegn" class="form-control" />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectjanus)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectjanus" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectgender)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectgender" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Objectposture)
-                                </td>
-                                <td>
-                                    <input asp-for="Objectposture" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                @if(@Model.Category != "ph")
-                {
-                <h1 onclick="hidePhysicalInfo()">Physical Information</h1>
-                <div id="physicalInfo" class="text-info-div">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Height)
-                                </td>
-                                <td>
-                                    <input asp-for="Height" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Length)
-                                </td>
-                                <td>
-                                    <input asp-for="Length" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Depth)
-                                </td>
-                                <td>
-                                    <input asp-for="Depth" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Width)
-                                </td>
-                                <td>
-                                    <input asp-for="Width" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Diameter)
-                                </td>
-                                <td>
-                                    <input asp-for="Diameter" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Weight)
-                                </td>
-                                <td>
-                                    <input asp-for="Weight" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medium)
-                                </td>
-                                <td>
-                                    <input asp-for="Medium" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medbkinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medbkinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medbeinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medbeinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medboinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medboinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Calabashinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Calabashinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medclinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medclinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medfeinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medfeinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medfiinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medfiinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medglinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medglinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Hairinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Hairinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medhoinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medhoinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medivinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medivinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medmainfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medmainfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medirinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medirinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Pigmentinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Pigmentinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medrainfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medrainfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medreinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medreinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medseedpodsinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medseedpodsinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medshinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medshinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medskinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medskinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medstinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medstinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medceinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medceinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medwoinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medwoinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medotinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medotinfo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Condition)
-                                </td>
-                                <td>
-                                    <input asp-for="Condition" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Restoration)
-                                </td>
-                                <td>
-                                    <input asp-for="Restoration" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Medwoodinfo)
-                                </td>
-                                <td>
-                                    <input asp-for="Medwoodinfo" class="form-control" />
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                }
-                <h1 onclick="hideHistoryInfo()">History of Object</h1>
-                <div id="historyInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Collectedby)
-                                </td>
-                                <td>
-                                    <input asp-for="Collectedby" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Collectedwhen)
-                                </td>
-                                <td>
-                                    <input asp-for="Collectedwhen" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Collection)
-                                </td>
-                                <td>
-                                    <input asp-for="Collection" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Ispublic)
-                                </td>
-                                <td>
-                                    <select asp-for="Ispublic" class="form-control">
-                                        <option>Public Collection</option>
-                                        <option>Private Collection</option>
-                                        <option>Unknown Collection</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Inventory)
-                                </td>
-                                <td>
-                                    <input asp-for="Inventory" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Acquiredfrom)
-                                </td>
-                                <td>
-                                    <input asp-for="Acquiredfrom" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Acquisitiondate)
-                                </td>
-                                <td>
-                                    <input asp-for="Acquisitiondate" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Donationfrom)
-                                </td>
-                                <td>
-                                    <input asp-for="Donationfrom" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Creditline)
-                                </td>
-                                <td>
-                                    <input asp-for="Creditline" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Certificate)
-                                </td>
-                                <td>
-                                    <input asp-for="Certificate" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Provenance)
-                                </td>
-                                <td>
-                                    <input asp-for="Provenance" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Publication)
-                                </td>
-                                <td>
-                                    <input asp-for="Publication" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Exhibition)
-                                </td>
-                                <td>
-                                    <input asp-for="Exhibition" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Auctions)
-                                </td>
-                                <td>
-                                    <input asp-for="Auctions" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Aquisitiondate)
-                                </td>
-                                <td>
-                                    <input asp-for="Aquisitiondate" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
-                <div id="authorshipInfo">
-                    <table>
-                        <tbody>
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Workshop)
-                                </td>
-                                <td>
-                                    <input asp-for="Workshop" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Artist)
-                                </td>
-                                <td>
-                                    <input asp-for="Artist" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Createdate)
-                                </td>
-                                <td>
-                                    <input asp-for="Createdate" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Createdatemax)
-                                </td>
-                                <td>
-                                    <input asp-for="Createdatemax" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Createdatemin)
-                                </td>
-                                <td>
-                                    <input asp-for="Createdatemin" class="form-control" />
-                                </td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <h1 onclick="hideNotesInfo()">Notes</h1>
-                <div id="notesInfo">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Ritualassoc)
-                                </td>
-                                <td>
-                                    <input asp-for="Ritualassoc" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Usage)
-                                </td>
-                                <td>
-                                    <input asp-for="Usage" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Comments)
-                                </td>
-                                <td>
-                                    <input asp-for="Comments" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Confidential)
-                                </td>
-                                <td>
-                                    <input asp-for="Confidential" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Workshoplist)
-                                </td>
-                                <td>
-                                    <input asp-for="Workshoplist" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Associatefeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Associatefeatures" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commonfeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Commonfeatures" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Features)
-                                </td>
-                                <td>
-                                    <input asp-for="Features" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Additionalfeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Additionalfeatures" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Structuralfeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Structuralfeatures" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Associatfeatures)
-                                </td>
-                                <td>
-                                    <input asp-for="Associatfeatures" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Commanditaire)
-                                </td>
-                                <td>
-                                    <input asp-for="Commanditaire" class="form-control" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                }
-
-                @if(@Model.Category != "xp")
-                {
-                <h1>Photographic Information</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photographer)
-                            </td>
-                            <td>
-                                <input asp-for="Photographer" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photocopy)
-                            </td>
-                            <td>
-                                <input asp-for="Photocopy" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoprov)
-                            </td>
-                            <td>
-                                <input asp-for="Photoprov" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Photoinvnr)
-                            </td>
-                            <td>
-                                <input asp-for="Photoinvnr" class="form-control" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Needbetter)
-                            </td>
-                            <td>
-                                <select asp-for="Needbetter" class="form-control">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
                 }
 
                 <h1>Delete / unknown</h1>
