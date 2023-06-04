@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace AHDRCwebsite.Controllers
@@ -86,7 +88,7 @@ namespace AHDRCwebsite.Controllers
 
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction("Index", "Artworks");
+            return RedirectToAction("Details", "Artworks", new { artworkid = vm.Artwork.ArtworkId });
         }
 
         private string UploadFile(IFormFile file)
@@ -95,15 +97,29 @@ namespace AHDRCwebsite.Controllers
             if (file != null)
             {
                 string uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
-                fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
+                if (!Directory.Exists(uploadDir))
+                {
+                    Directory.CreateDirectory(uploadDir);
+                }
+
+                string originalFileName = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = Path.GetExtension(file.FileName);
+
+                // Replace reserved characters with underscores
+                char[] invalidChars = Path.GetInvalidFileNameChars();
+                string sanitizedFileName = string.Concat(originalFileName.Select(c => invalidChars.Contains(c) ? '_' : c));
+
+                fileName = $"{Guid.NewGuid()}-{sanitizedFileName}{extension}";
                 string filePath = Path.Combine(uploadDir, fileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     file.CopyTo(fileStream);
                 }
             }
+
             return fileName;
         }
+
 
         // GET: ArtworkImages/Edit/5
         [Authorize(Roles = "Administrator")]
@@ -158,7 +174,7 @@ namespace AHDRCwebsite.Controllers
             return View(artworkImage);
         }
 
-        // GET: rAArtworkImages/Delete/5
+        // GET: ArtworkImages/Delete/5
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? ArtworkImageId)
         {
@@ -188,7 +204,10 @@ namespace AHDRCwebsite.Controllers
             {
                 return Problem("Entity set 'ArtworkContext.ArtworkImages'  is null.");
             }
-            var artworkImage = await _context.ArtworkImages.FindAsync(ArtworkImageId);
+            var artworkImage = await _context.ArtworkImages
+                .FirstOrDefaultAsync(m => m.ArtworkImageId == ArtworkImageId);
+
+            var artworkId = artworkImage.Artwork.ArtworkId;
             if (artworkImage != null)
             {
                 _context.ArtworkImages.Remove(artworkImage);
@@ -200,9 +219,8 @@ namespace AHDRCwebsite.Controllers
                     System.IO.File.Delete(filePath);
                 }
             }
-
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Artworks");
+            return RedirectToAction("Details", "Artworks", new { artworkid = artworkId });
         }
 
         private bool ArtworkImageExists(int ArtworkImageId)

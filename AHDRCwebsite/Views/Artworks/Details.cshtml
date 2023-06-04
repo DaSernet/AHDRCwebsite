@@ -173,6 +173,69 @@
                 </div>
             </div>
         }
+        @if (@Model.Category != "xp")
+        {
+            <h1>Photographic Information</h1>
+            <table>
+                <tbody>
+                    @if (Model.Photographer != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photographer)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Photographer)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Photocopy != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photocopy)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Photocopy)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Photoprov != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoprov)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Photoprov)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Photoinvnr != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Photoinvnr)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Photoinvnr)
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Needbetter != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Needbetter)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Needbetter)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
 
     <div class="col-auto button-group">
@@ -1729,70 +1792,6 @@
             </table>
         </div>
         
-        }
-
-        @if(@Model.Category != "xp")
-        {
-        <h1>Photographic Information</h1>
-        <table>
-            <tbody>
-                @if (Model.Photographer != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photographer)
-                        </td>
-                        <td>
-                            @Html.Raw(Model.Photographer)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photocopy != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photocopy)
-                        </td>
-                        <td>
-                            @Html.Raw(Model.Photocopy)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photoprov != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photoprov)
-                        </td>
-                        <td>
-                            @Html.Raw(Model.Photoprov)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Photoinvnr != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Photoinvnr)
-                        </td>
-                        <td>
-                            @Html.Raw(Model.Photoinvnr)
-                        </td>
-                    </tr>
-                }
-                @if (Model.Needbetter != null)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.Needbetter)
-                        </td>
-                        <td>
-                            @Html.Raw(Model.Needbetter)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
         }
 
         <h1>Delete / unknown</h1>
