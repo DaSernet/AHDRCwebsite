@@ -13,9 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
+            <label asp-for="Category" class="control-label"></label>
+            <input asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category" class="text-danger"></span>
             </div>*@
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
@@ -27,264 +27,264 @@
                     <option value="xp">Exhibitions</option>
                     <option value="co">Collections</option>
                     <option value="au">Auctions</option>
-                    </select>
+                </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <h1>Geographical / tribal information</h1>
             <div>
                 <div class="form-group">
-                <label asp-for="Chefferie" class="control-label"></label>
-                <input asp-for="Chefferie" class="form-control" />
-                <span asp-validation-for="Chefferie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Clan" class="control-label"></label>
-                <input asp-for="Clan" class="form-control" />
-                <span asp-validation-for="Clan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Country" class="control-label"></label>
-                <select asp-for="Country" class="form-control">
-                                                <option>Afghanistan</option>
-                                                <option>Albania</option>
-                                                <option>Algeria</option>
-                                                <option>Andorra</option>
-                                                <option>Angola</option>
-                                                <option>Antigua & Deps</option>
-                                                <option>Argentina</option>
-                                                <option>Armenia</option>
-                                                <option>Australia</option>
-                                                <option>Austria</option>
-                                                <option>Azerbaijan</option>
-                                                <option>Bahamas</option>
-                                                <option>Bahrain</option>
-                                                <option>Bangladesh</option>
-                                                <option>Barbados</option>
-                                                <option>Belarus</option>
-                                                <option>Belgium</option>
-                                                <option>Belize</option>
-                                                <option>Benin</option>
-                                                <option>Bhutan</option>
-                                                <option>Bolivia</option>
-                                                <option>Bosnia Herzegovina</option>
-                                                <option>Botswana</option>
-                                                <option>Brazil</option>
-                                                <option>Brunei</option>
-                                                <option>Bulgaria</option>
-                                                <option>Burkina</option>
-                                                <option>Burundi</option>
-                                                <option>Cambodia</option>
-                                                <option>Cameroon</option>
-                                                <option>Canada</option>
-                                                <option>Cape Verde</option>
-                                                <option>Central African Rep</option>
-                                                <option>Chad</option>
-                                                <option>Chile</option>
-                                                <option>China</option>
-                                                <option>Colombia</option>
-                                                <option>Comoros</option>
-                                                <option>Republic of the Congo (Congo Kinshasa)</option>
-                                                <option>Republic of the Congo (Congo Brazzaville)</option>
-                                                <option>Costa Rica</option>
-                                                <option>Croatia</option>
-                                                <option>Cuba</option>
-                                                <option>Cyprus</option>
-                                                <option>Czech Republic</option>
-                                                <option>Denmark</option>
-                                                <option>Djibouti</option>
-                                                <option>Dominica</option>
-                                                <option>Dominican Republic</option>
-                                                <option>East Timor</option>
-                                                <option>Ecuador</option>
-                                                <option>Egypt</option>
-                                                <option>El Salvador</option>
-                                                <option>Equatorial Guinea</option>
-                                                <option>Eritrea</option>
-                                                <option>Estonia</option>
-                                                <option>Ethiopia</option>
-                                                <option>Fiji</option>
-                                                <option>Finland</option>
-                                                <option>France</option>
-                                                <option>Gabon</option>
-                                                <option>Gambia</option>
-                                                <option>Georgia</option>
-                                                <option>Germany</option>
-                                                <option>Ghana</option>
-                                                <option>Greece</option>
-                                                <option>Grenada</option>
-                                                <option>Guatemala</option>
-                                                <option>Guinea</option>
-                                                <option>Guinea-Bissau</option>
-                                                <option>Guyana</option>
-                                                <option>Haiti</option>
-                                                <option>Honduras</option>
-                                                <option>Hungary</option>
-                                                <option>Iceland</option>
-                                                <option>India</option>
-                                                <option>Indonesia</option>
-                                                <option>Iran</option>
-                                                <option>Iraq</option>
-                                                <option>Ireland {Republic}</option>
-                                                <option>Israel</option>
-                                                <option>Italy</option>
-                                                <option>Ivory Coast</option>
-                                                <option>Jamaica</option>
-                                                <option>Japan</option>
-                                                <option>Jordan</option>
-                                                <option>Kazakhstan</option>
-                                                <option>Kenya</option>
-                                                <option>Kiribati</option>
-                                                <option>Korea North</option>
-                                                <option>Korea South</option>
-                                                <option>Kosovo</option>
-                                                <option>Kuwait</option>
-                                                <option>Kyrgyzstan</option>
-                                                <option>Laos</option>
-                                                <option>Latvia</option>
-                                                <option>Lebanon</option>
-                                                <option>Lesotho</option>
-                                                <option>Liberia</option>
-                                                <option>Libya</option>
-                                                <option>Liechtenstein</option>
-                                                <option>Lithuania</option>
-                                                <option>Luxembourg</option>
-                                                <option>Macedonia</option>
-                                                <option>Madagascar</option>
-                                                <option>Malawi</option>
-                                                <option>Malaysia</option>
-                                                <option>Maldives</option>
-                                                <option>Mali</option>
-                                                <option>Malta</option>
-                                                <option>Marshall Islands</option>
-                                                <option>Mauritania</option>
-                                                <option>Mauritius</option>
-                                                <option>Mexico</option>
-                                                <option>Micronesia</option>
-                                                <option>Moldova</option>
-                                                <option>Monaco</option>
-                                                <option>Mongolia</option>
-                                                <option>Montenegro</option>
-                                                <option>Morocco</option>
-                                                <option>Mozambique</option>
-                                                <option>Myanmar, {Burma}</option>
-                                                <option>Namibia</option>
-                                                <option>Nauru</option>
-                                                <option>Nepal</option>
-                                                <option>Netherlands</option>
-                                                <option>New Zealand</option>
-                                                <option>Nicaragua</option>
-                                                <option>Niger</option>
-                                                <option>Nigeria</option>
-                                                <option>Norway</option>
-                                                <option>Oman</option>
-                                                <option>Pakistan</option>
-                                                <option>Palau</option>
-                                                <option>Panama</option>
-                                                <option>Papua New Guinea</option>
-                                                <option>Paraguay</option>
-                                                <option>Peru</option>
-                                                <option>Philippines</option>
-                                                <option>Poland</option>
-                                                <option>Portugal</option>
-                                                <option>Qatar</option>
-                                                <option>Romania</option>
-                                                <option>Russian Federation</option>
-                                                <option>Rwanda</option>
-                                                <option>St Kitts & Nevis</option>
-                                                <option>St Lucia</option>
-                                                <option>Saint Vincent & the Grenadines</option>
-                                                <option>Samoa</option>
-                                                <option>San Marino</option>
-                                                <option>Sao Tome & Principe</option>
-                                                <option>Saudi Arabia</option>
-                                                <option>Senegal</option>
-                                                <option>Serbia</option>
-                                                <option>Seychelles</option>
-                                                <option>Sierra Leone</option>
-                                                <option>Singapore</option>
-                                                <option>Slovakia</option>
-                                                <option>Slovenia</option>
-                                                <option>Solomon Islands</option>
-                                                <option>Somalia</option>
-                                                <option>South Africa</option>
-                                                <option>South Sudan</option>
-                                                <option>Spain</option>
-                                                <option>Sri Lanka</option>
-                                                <option>Sudan</option>
-                                                <option>Suriname</option>
-                                                <option>Swaziland</option>
-                                                <option>Sweden</option>
-                                                <option>Switzerland</option>
-                                                <option>Syria</option>
-                                                <option>Taiwan</option>
-                                                <option>Tajikistan</option>
-                                                <option>Tanzania</option>
-                                                <option>Thailand</option>
-                                                <option>Togo</option>
-                                                <option>Tonga</option>
-                                                <option>Trinidad & Tobago</option>
-                                                <option>Tunisia</option>
-                                                <option>Turkey</option>
-                                                <option>Turkmenistan</option>
-                                                <option>Tuvalu</option>
-                                                <option>Uganda</option>
-                                                <option>Ukraine</option>
-                                                <option>United Arab Emirates</option>
-                                                <option>United Kingdom</option>
-                                                <option>United States</option>
-                                                <option>Uruguay</option>
-                                                <option>Uzbekistan</option>
-                                                <option>Vanuatu</option>
-                                                <option>Vatican City</option>
-                                                <option>Venezuela</option>
-                                                <option>Vietnam</option>
-                                                <option>Yemen</option>
-                                                <option>Zambia</option>
-                                                <option>Zimbabwe</option>
-                                            </select>
-                                    <span asp-validation-for="Country" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ethnicgroup" class="control-label"></label>
-                <input asp-for="Ethnicgroup" class="form-control" />
-                <span asp-validation-for="Ethnicgroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Kingdom" class="control-label"></label>
-                <input asp-for="Kingdom" class="form-control" />
-                <span asp-validation-for="Kingdom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Langgroup" class="control-label"></label>
-                <input asp-for="Langgroup" class="form-control" />
-                <span asp-validation-for="Langgroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Region" class="control-label"></label>
-                <input asp-for="Region" class="form-control" />
-                <span asp-validation-for="Region" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sitearcheo" class="control-label"></label>
-                <input asp-for="Sitearcheo" class="form-control" />
-                <span asp-validation-for="Sitearcheo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Village" class="control-label"></label>
-                <input asp-for="Village" class="form-control" />
-                <span asp-validation-for="Village" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Langsubgroup" class="control-label"></label>
-                <input asp-for="Langsubgroup" class="form-control" />
-                <span asp-validation-for="Langsubgroup" class="text-danger"></span>
-            </div>
+                    <label asp-for="Chefferie" class="control-label"></label>
+                    <input asp-for="Chefferie" class="form-control" />
+                    <span asp-validation-for="Chefferie" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Clan" class="control-label"></label>
+                    <input asp-for="Clan" class="form-control" />
+                    <span asp-validation-for="Clan" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <select asp-for="Country" class="form-control">
+                        <option>Afghanistan</option>
+                        <option>Albania</option>
+                        <option>Algeria</option>
+                        <option>Andorra</option>
+                        <option>Angola</option>
+                        <option>Antigua & Deps</option>
+                        <option>Argentina</option>
+                        <option>Armenia</option>
+                        <option>Australia</option>
+                        <option>Austria</option>
+                        <option>Azerbaijan</option>
+                        <option>Bahamas</option>
+                        <option>Bahrain</option>
+                        <option>Bangladesh</option>
+                        <option>Barbados</option>
+                        <option>Belarus</option>
+                        <option>Belgium</option>
+                        <option>Belize</option>
+                        <option>Benin</option>
+                        <option>Bhutan</option>
+                        <option>Bolivia</option>
+                        <option>Bosnia Herzegovina</option>
+                        <option>Botswana</option>
+                        <option>Brazil</option>
+                        <option>Brunei</option>
+                        <option>Bulgaria</option>
+                        <option>Burkina</option>
+                        <option>Burundi</option>
+                        <option>Cambodia</option>
+                        <option>Cameroon</option>
+                        <option>Canada</option>
+                        <option>Cape Verde</option>
+                        <option>Central African Rep</option>
+                        <option>Chad</option>
+                        <option>Chile</option>
+                        <option>China</option>
+                        <option>Colombia</option>
+                        <option>Comoros</option>
+                        <option>Republic of the Congo (Congo Kinshasa)</option>
+                        <option>Republic of the Congo (Congo Brazzaville)</option>
+                        <option>Costa Rica</option>
+                        <option>Croatia</option>
+                        <option>Cuba</option>
+                        <option>Cyprus</option>
+                        <option>Czech Republic</option>
+                        <option>Denmark</option>
+                        <option>Djibouti</option>
+                        <option>Dominica</option>
+                        <option>Dominican Republic</option>
+                        <option>East Timor</option>
+                        <option>Ecuador</option>
+                        <option>Egypt</option>
+                        <option>El Salvador</option>
+                        <option>Equatorial Guinea</option>
+                        <option>Eritrea</option>
+                        <option>Estonia</option>
+                        <option>Ethiopia</option>
+                        <option>Fiji</option>
+                        <option>Finland</option>
+                        <option>France</option>
+                        <option>Gabon</option>
+                        <option>Gambia</option>
+                        <option>Georgia</option>
+                        <option>Germany</option>
+                        <option>Ghana</option>
+                        <option>Greece</option>
+                        <option>Grenada</option>
+                        <option>Guatemala</option>
+                        <option>Guinea</option>
+                        <option>Guinea-Bissau</option>
+                        <option>Guyana</option>
+                        <option>Haiti</option>
+                        <option>Honduras</option>
+                        <option>Hungary</option>
+                        <option>Iceland</option>
+                        <option>India</option>
+                        <option>Indonesia</option>
+                        <option>Iran</option>
+                        <option>Iraq</option>
+                        <option>Ireland {Republic}</option>
+                        <option>Israel</option>
+                        <option>Italy</option>
+                        <option>Ivory Coast</option>
+                        <option>Jamaica</option>
+                        <option>Japan</option>
+                        <option>Jordan</option>
+                        <option>Kazakhstan</option>
+                        <option>Kenya</option>
+                        <option>Kiribati</option>
+                        <option>Korea North</option>
+                        <option>Korea South</option>
+                        <option>Kosovo</option>
+                        <option>Kuwait</option>
+                        <option>Kyrgyzstan</option>
+                        <option>Laos</option>
+                        <option>Latvia</option>
+                        <option>Lebanon</option>
+                        <option>Lesotho</option>
+                        <option>Liberia</option>
+                        <option>Libya</option>
+                        <option>Liechtenstein</option>
+                        <option>Lithuania</option>
+                        <option>Luxembourg</option>
+                        <option>Macedonia</option>
+                        <option>Madagascar</option>
+                        <option>Malawi</option>
+                        <option>Malaysia</option>
+                        <option>Maldives</option>
+                        <option>Mali</option>
+                        <option>Malta</option>
+                        <option>Marshall Islands</option>
+                        <option>Mauritania</option>
+                        <option>Mauritius</option>
+                        <option>Mexico</option>
+                        <option>Micronesia</option>
+                        <option>Moldova</option>
+                        <option>Monaco</option>
+                        <option>Mongolia</option>
+                        <option>Montenegro</option>
+                        <option>Morocco</option>
+                        <option>Mozambique</option>
+                        <option>Myanmar, {Burma}</option>
+                        <option>Namibia</option>
+                        <option>Nauru</option>
+                        <option>Nepal</option>
+                        <option>Netherlands</option>
+                        <option>New Zealand</option>
+                        <option>Nicaragua</option>
+                        <option>Niger</option>
+                        <option>Nigeria</option>
+                        <option>Norway</option>
+                        <option>Oman</option>
+                        <option>Pakistan</option>
+                        <option>Palau</option>
+                        <option>Panama</option>
+                        <option>Papua New Guinea</option>
+                        <option>Paraguay</option>
+                        <option>Peru</option>
+                        <option>Philippines</option>
+                        <option>Poland</option>
+                        <option>Portugal</option>
+                        <option>Qatar</option>
+                        <option>Romania</option>
+                        <option>Russian Federation</option>
+                        <option>Rwanda</option>
+                        <option>St Kitts & Nevis</option>
+                        <option>St Lucia</option>
+                        <option>Saint Vincent & the Grenadines</option>
+                        <option>Samoa</option>
+                        <option>San Marino</option>
+                        <option>Sao Tome & Principe</option>
+                        <option>Saudi Arabia</option>
+                        <option>Senegal</option>
+                        <option>Serbia</option>
+                        <option>Seychelles</option>
+                        <option>Sierra Leone</option>
+                        <option>Singapore</option>
+                        <option>Slovakia</option>
+                        <option>Slovenia</option>
+                        <option>Solomon Islands</option>
+                        <option>Somalia</option>
+                        <option>South Africa</option>
+                        <option>South Sudan</option>
+                        <option>Spain</option>
+                        <option>Sri Lanka</option>
+                        <option>Sudan</option>
+                        <option>Suriname</option>
+                        <option>Swaziland</option>
+                        <option>Sweden</option>
+                        <option>Switzerland</option>
+                        <option>Syria</option>
+                        <option>Taiwan</option>
+                        <option>Tajikistan</option>
+                        <option>Tanzania</option>
+                        <option>Thailand</option>
+                        <option>Togo</option>
+                        <option>Tonga</option>
+                        <option>Trinidad & Tobago</option>
+                        <option>Tunisia</option>
+                        <option>Turkey</option>
+                        <option>Turkmenistan</option>
+                        <option>Tuvalu</option>
+                        <option>Uganda</option>
+                        <option>Ukraine</option>
+                        <option>United Arab Emirates</option>
+                        <option>United Kingdom</option>
+                        <option>United States</option>
+                        <option>Uruguay</option>
+                        <option>Uzbekistan</option>
+                        <option>Vanuatu</option>
+                        <option>Vatican City</option>
+                        <option>Venezuela</option>
+                        <option>Vietnam</option>
+                        <option>Yemen</option>
+                        <option>Zambia</option>
+                        <option>Zimbabwe</option>
+                    </select>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ethnicgroup" class="control-label"></label>
+                    <input asp-for="Ethnicgroup" class="form-control" />
+                    <span asp-validation-for="Ethnicgroup" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Kingdom" class="control-label"></label>
+                    <input asp-for="Kingdom" class="form-control" />
+                    <span asp-validation-for="Kingdom" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Langgroup" class="control-label"></label>
+                    <input asp-for="Langgroup" class="form-control" />
+                    <span asp-validation-for="Langgroup" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Region" class="control-label"></label>
+                    <input asp-for="Region" class="form-control" />
+                    <span asp-validation-for="Region" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sitearcheo" class="control-label"></label>
+                    <input asp-for="Sitearcheo" class="form-control" />
+                    <span asp-validation-for="Sitearcheo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Village" class="control-label"></label>
+                    <input asp-for="Village" class="form-control" />
+                    <span asp-validation-for="Village" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Langsubgroup" class="control-label"></label>
+                    <input asp-for="Langsubgroup" class="form-control" />
+                    <span asp-validation-for="Langsubgroup" class="text-danger"></span>
+                </div>
             </div>
 
             <h1>Object Information</h1>
             <div>
                 <div class="form-group">
-                <label asp-for="Objectgender" class="control-label"></label>
+                    <label asp-for="Objectgender" class="control-label"></label>
                     <select asp-for="Objectgender" class="form-control">
                         <option value="Unknown">Unknown</option>
                         <option value="Abstract">Abstract</option>
@@ -312,66 +312,66 @@
                         <option value="Zoomorphic composite">Zoomorphic composite</option>
                         <option value="Anoitomorphic">Anoitomorphic</option>
                     </select>
-                <span asp-validation-for="Objectgender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectjanus" class="control-label"></label>
-                <select asp-for="Objectjanus" class="form-control">
-                                            <option value="Unknown">Unknown</option>
-                                            <option value="Acephalous">Acephalous</option>
-                                            <option value="Articulated lower jaw">Articulated lower jaw</option>
-                                            <option value="Back-to-back">Back-to-back</option>
-                                            <option value="Colonial">Colonial</option>
-                                            <option value="Couple">Couple</option>
-                                            <option value="Court">Court</option>
-                                            <option value="Scene">Scene</option>
-                                            <option value="Crafts">Crafts</option>
-                                            <option value="Cult scene">Cult scene</option>
-                                            <option value="Deformity">Deformity</option>
-                                            <option value="Equestrian">Equestrian</option>
-                                            <option value="Erotic">Erotic</option>
-                                            <option value="Face-a-face">Face-a-face</option>
-                                            <option value="Food related">Food related</option>
-                                            <option value="Group">Group</option>
-                                            <option value="Half figure">Half figure</option>
-                                            <option value="Hunting scene">Hunting scene</option>
-                                            <option value="Intercourse">Intercourse</option>
-                                            <option value="Janus">Janus</option>
-                                            <option value="Masked">Masked</option>
-                                            <option value="Maternity">Maternity</option>
-                                            <option value="Multiple faces">Multiple faces</option>
-                                            <option value="Multiple figures">Multiple figures</option>
-                                            <option value="Multiple heads">Multiple heads</option>
-                                            <option value="Paternity">Paternity</option>
-                                            <option value="Pregnant">Pregnant</option>
-                                            <option value="Single face">Single face</option>
-                                            <option value="Scene of life">Scene of life</option>
-                                            <option value="Threesome figures">Threesome figures</option>
-                                            <option value="Twin figures">Twin figures</option>
-                                            <option value="Two faces">Two faces</option>
-                                            <option value="Two heads">Two heads</option>
-                                            <option value="Two figures">Two figures</option>
-                                            <option value="War scene">War scene</option>
-                                        </select>
-                <span asp-validation-for="Objectjanus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectname" class="control-label"></label>
-                <input asp-for="Objectname" class="form-control" />
-                <span asp-validation-for="Objectname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectnameex" class="control-label"></label>
-                <input asp-for="Objectnameex" class="form-control" />
-                <span asp-validation-for="Objectnameex" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectnamegn" class="control-label"></label>
-                <input asp-for="Objectnamegn" class="form-control" />
-                <span asp-validation-for="Objectnamegn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Objectposture" class="control-label"></label>
+                    <span asp-validation-for="Objectgender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Objectjanus" class="control-label"></label>
+                    <select asp-for="Objectjanus" class="form-control">
+                        <option value="Unknown">Unknown</option>
+                        <option value="Acephalous">Acephalous</option>
+                        <option value="Articulated lower jaw">Articulated lower jaw</option>
+                        <option value="Back-to-back">Back-to-back</option>
+                        <option value="Colonial">Colonial</option>
+                        <option value="Couple">Couple</option>
+                        <option value="Court">Court</option>
+                        <option value="Scene">Scene</option>
+                        <option value="Crafts">Crafts</option>
+                        <option value="Cult scene">Cult scene</option>
+                        <option value="Deformity">Deformity</option>
+                        <option value="Equestrian">Equestrian</option>
+                        <option value="Erotic">Erotic</option>
+                        <option value="Face-a-face">Face-a-face</option>
+                        <option value="Food related">Food related</option>
+                        <option value="Group">Group</option>
+                        <option value="Half figure">Half figure</option>
+                        <option value="Hunting scene">Hunting scene</option>
+                        <option value="Intercourse">Intercourse</option>
+                        <option value="Janus">Janus</option>
+                        <option value="Masked">Masked</option>
+                        <option value="Maternity">Maternity</option>
+                        <option value="Multiple faces">Multiple faces</option>
+                        <option value="Multiple figures">Multiple figures</option>
+                        <option value="Multiple heads">Multiple heads</option>
+                        <option value="Paternity">Paternity</option>
+                        <option value="Pregnant">Pregnant</option>
+                        <option value="Single face">Single face</option>
+                        <option value="Scene of life">Scene of life</option>
+                        <option value="Threesome figures">Threesome figures</option>
+                        <option value="Twin figures">Twin figures</option>
+                        <option value="Two faces">Two faces</option>
+                        <option value="Two heads">Two heads</option>
+                        <option value="Two figures">Two figures</option>
+                        <option value="War scene">War scene</option>
+                    </select>
+                    <span asp-validation-for="Objectjanus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Objectname" class="control-label"></label>
+                    <input asp-for="Objectname" class="form-control" />
+                    <span asp-validation-for="Objectname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Objectnameex" class="control-label"></label>
+                    <input asp-for="Objectnameex" class="form-control" />
+                    <span asp-validation-for="Objectnameex" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Objectnamegn" class="control-label"></label>
+                    <input asp-for="Objectnamegn" class="form-control" />
+                    <span asp-validation-for="Objectnamegn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Objectposture" class="control-label"></label>
                     <select asp-for="Objectposture" class="form-control">
                         <option value="Unknown">Unknown</option>
                         <option value="Horizontal">Horizontal</option>
@@ -389,453 +389,453 @@
                         <option value="Upside down">Upside down</option>
                         <option value="Vertical">Vertical</option>
                     </select>
-                <span asp-validation-for="Objectposture" class="text-danger"></span>
-            </div>
+                    <span asp-validation-for="Objectposture" class="text-danger"></span>
+                </div>
             </div>
 
             <h1>Physical Information</h1>
             <div>
                 <div class="form-group">
-                <label asp-for="Calabashinfo" class="control-label"></label>
-                <input asp-for="Calabashinfo" class="form-control" />
-                <span asp-validation-for="Calabashinfo" class="text-danger"></span>
+                    <label asp-for="Calabashinfo" class="control-label"></label>
+                    <input asp-for="Calabashinfo" class="form-control" />
+                    <span asp-validation-for="Calabashinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Condition" class="control-label"></label>
+                    <input asp-for="Condition" class="form-control" />
+                    <span asp-validation-for="Condition" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Depth" class="control-label"></label>
+                    <input asp-for="Depth" class="form-control" />
+                    <span asp-validation-for="Depth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Diameter" class="control-label"></label>
+                    <input asp-for="Diameter" class="form-control" />
+                    <span asp-validation-for="Diameter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Groups" class="control-label"></label>
+                    <input asp-for="Groups" class="form-control" />
+                    <span asp-validation-for="Groups" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hairinfo" class="control-label"></label>
+                    <input asp-for="Hairinfo" class="form-control" />
+                    <span asp-validation-for="Hairinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Height" class="control-label"></label>
+                    <input asp-for="Height" class="form-control" />
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Length" class="control-label"></label>
+                    <input asp-for="Length" class="form-control" />
+                    <span asp-validation-for="Length" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medbeinfo" class="control-label"></label>
+                    <input asp-for="Medbeinfo" class="form-control" />
+                    <span asp-validation-for="Medbeinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medbkinfo" class="control-label"></label>
+                    <input asp-for="Medbkinfo" class="form-control" />
+                    <span asp-validation-for="Medbkinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medboinfo" class="control-label"></label>
+                    <input asp-for="Medboinfo" class="form-control" />
+                    <span asp-validation-for="Medboinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medceinfo" class="control-label"></label>
+                    <input asp-for="Medceinfo" class="form-control" />
+                    <span asp-validation-for="Medceinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medclinfo" class="control-label"></label>
+                    <input asp-for="Medclinfo" class="form-control" />
+                    <span asp-validation-for="Medclinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medfeinfo" class="control-label"></label>
+                    <input asp-for="Medfeinfo" class="form-control" />
+                    <span asp-validation-for="Medfeinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medfiinfo" class="control-label"></label>
+                    <input asp-for="Medfiinfo" class="form-control" />
+                    <span asp-validation-for="Medfiinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medglinfo" class="control-label"></label>
+                    <input asp-for="Medglinfo" class="form-control" />
+                    <span asp-validation-for="Medglinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medhoinfo" class="control-label"></label>
+                    <input asp-for="Medhoinfo" class="form-control" />
+                    <span asp-validation-for="Medhoinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medirinfo" class="control-label"></label>
+                    <input asp-for="Medirinfo" class="form-control" />
+                    <span asp-validation-for="Medirinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medium" class="control-label"></label>
+                    <input asp-for="Medium" class="form-control" />
+                    <span asp-validation-for="Medium" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medivinfo" class="control-label"></label>
+                    <input asp-for="Medivinfo" class="form-control" />
+                    <span asp-validation-for="Medivinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medmainfo" class="control-label"></label>
+                    <input asp-for="Medmainfo" class="form-control" />
+                    <span asp-validation-for="Medmainfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medotinfo" class="control-label"></label>
+                    <input asp-for="Medotinfo" class="form-control" />
+                    <span asp-validation-for="Medotinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medrainfo" class="control-label"></label>
+                    <input asp-for="Medrainfo" class="form-control" />
+                    <span asp-validation-for="Medrainfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medreinfo" class="control-label"></label>
+                    <input asp-for="Medreinfo" class="form-control" />
+                    <span asp-validation-for="Medreinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medseedpodsinfo" class="control-label"></label>
+                    <input asp-for="Medseedpodsinfo" class="form-control" />
+                    <span asp-validation-for="Medseedpodsinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medshinfo" class="control-label"></label>
+                    <input asp-for="Medshinfo" class="form-control" />
+                    <span asp-validation-for="Medshinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medskinfo" class="control-label"></label>
+                    <input asp-for="Medskinfo" class="form-control" />
+                    <span asp-validation-for="Medskinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medstinfo" class="control-label"></label>
+                    <input asp-for="Medstinfo" class="form-control" />
+                    <span asp-validation-for="Medstinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medwoinfo" class="control-label"></label>
+                    <input asp-for="Medwoinfo" class="form-control" />
+                    <span asp-validation-for="Medwoinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Pigmentinfo" class="control-label"></label>
+                    <input asp-for="Pigmentinfo" class="form-control" />
+                    <span asp-validation-for="Pigmentinfo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restoration" class="control-label"></label>
+                    <input asp-for="Restoration" class="form-control" />
+                    <span asp-validation-for="Restoration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Weight" class="control-label"></label>
+                    <input asp-for="Weight" class="form-control" />
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Width" class="control-label"></label>
+                    <input asp-for="Width" class="form-control" />
+                    <span asp-validation-for="Width" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medwoodinfo" class="control-label"></label>
+                    <input asp-for="Medwoodinfo" class="form-control" />
+                    <span asp-validation-for="Medwoodinfo" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Condition" class="control-label"></label>
-                <input asp-for="Condition" class="form-control" />
-                <span asp-validation-for="Condition" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Depth" class="control-label"></label>
-                <input asp-for="Depth" class="form-control" />
-                <span asp-validation-for="Depth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Diameter" class="control-label"></label>
-                <input asp-for="Diameter" class="form-control" />
-                <span asp-validation-for="Diameter" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Groups" class="control-label"></label>
-                <input asp-for="Groups" class="form-control" />
-                <span asp-validation-for="Groups" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hairinfo" class="control-label"></label>
-                <input asp-for="Hairinfo" class="form-control" />
-                <span asp-validation-for="Hairinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Height" class="control-label"></label>
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Length" class="control-label"></label>
-                <input asp-for="Length" class="form-control" />
-                <span asp-validation-for="Length" class="text-danger"></span>
-            </div>
-<div class="form-group">
-                <label asp-for="Medbeinfo" class="control-label"></label>
-                <input asp-for="Medbeinfo" class="form-control" />
-                <span asp-validation-for="Medbeinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medbkinfo" class="control-label"></label>
-                <input asp-for="Medbkinfo" class="form-control" />
-                <span asp-validation-for="Medbkinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medboinfo" class="control-label"></label>
-                <input asp-for="Medboinfo" class="form-control" />
-                <span asp-validation-for="Medboinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medceinfo" class="control-label"></label>
-                <input asp-for="Medceinfo" class="form-control" />
-                <span asp-validation-for="Medceinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medclinfo" class="control-label"></label>
-                <input asp-for="Medclinfo" class="form-control" />
-                <span asp-validation-for="Medclinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medfeinfo" class="control-label"></label>
-                <input asp-for="Medfeinfo" class="form-control" />
-                <span asp-validation-for="Medfeinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medfiinfo" class="control-label"></label>
-                <input asp-for="Medfiinfo" class="form-control" />
-                <span asp-validation-for="Medfiinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medglinfo" class="control-label"></label>
-                <input asp-for="Medglinfo" class="form-control" />
-                <span asp-validation-for="Medglinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medhoinfo" class="control-label"></label>
-                <input asp-for="Medhoinfo" class="form-control" />
-                <span asp-validation-for="Medhoinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medirinfo" class="control-label"></label>
-                <input asp-for="Medirinfo" class="form-control" />
-                <span asp-validation-for="Medirinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medium" class="control-label"></label>
-                <input asp-for="Medium" class="form-control" />
-                <span asp-validation-for="Medium" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medivinfo" class="control-label"></label>
-                <input asp-for="Medivinfo" class="form-control" />
-                <span asp-validation-for="Medivinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medmainfo" class="control-label"></label>
-                <input asp-for="Medmainfo" class="form-control" />
-                <span asp-validation-for="Medmainfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medotinfo" class="control-label"></label>
-                <input asp-for="Medotinfo" class="form-control" />
-                <span asp-validation-for="Medotinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medrainfo" class="control-label"></label>
-                <input asp-for="Medrainfo" class="form-control" />
-                <span asp-validation-for="Medrainfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medreinfo" class="control-label"></label>
-                <input asp-for="Medreinfo" class="form-control" />
-                <span asp-validation-for="Medreinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medseedpodsinfo" class="control-label"></label>
-                <input asp-for="Medseedpodsinfo" class="form-control" />
-                <span asp-validation-for="Medseedpodsinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medshinfo" class="control-label"></label>
-                <input asp-for="Medshinfo" class="form-control" />
-                <span asp-validation-for="Medshinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medskinfo" class="control-label"></label>
-                <input asp-for="Medskinfo" class="form-control" />
-                <span asp-validation-for="Medskinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medstinfo" class="control-label"></label>
-                <input asp-for="Medstinfo" class="form-control" />
-                <span asp-validation-for="Medstinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medwoinfo" class="control-label"></label>
-                <input asp-for="Medwoinfo" class="form-control" />
-                <span asp-validation-for="Medwoinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pigmentinfo" class="control-label"></label>
-                <input asp-for="Pigmentinfo" class="form-control" />
-                <span asp-validation-for="Pigmentinfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restoration" class="control-label"></label>
-                <input asp-for="Restoration" class="form-control" />
-                <span asp-validation-for="Restoration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Width" class="control-label"></label>
-                <input asp-for="Width" class="form-control" />
-                <span asp-validation-for="Width" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Medwoodinfo" class="control-label"></label>
-                <input asp-for="Medwoodinfo" class="form-control" />
-                <span asp-validation-for="Medwoodinfo" class="text-danger"></span>
-            </div>
-            </div>
-            
+
             <h1>History of object</h1>
             <div>
-                 <div class="form-group">
-                <label asp-for="Acquiredfrom" class="control-label"></label>
-                <input asp-for="Acquiredfrom" class="form-control" />
-                <span asp-validation-for="Acquiredfrom" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Acquiredfrom" class="control-label"></label>
+                    <input asp-for="Acquiredfrom" class="form-control" />
+                    <span asp-validation-for="Acquiredfrom" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Acquisitiondate" class="control-label"></label>
+                    <input asp-for="Acquisitiondate" class="form-control" />
+                    <span asp-validation-for="Acquisitiondate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Auctions" class="control-label"></label>
+                    <input asp-for="Auctions" class="form-control" />
+                    <span asp-validation-for="Auctions" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Certificate" class="control-label"></label>
+                    <input asp-for="Certificate" class="form-control" />
+                    <span asp-validation-for="Certificate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Collectedby" class="control-label"></label>
+                    <input asp-for="Collectedby" class="form-control" />
+                    <span asp-validation-for="Collectedby" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Collectedwhen" class="control-label"></label>
+                    <input asp-for="Collectedwhen" class="form-control" />
+                    <span asp-validation-for="Collectedwhen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Collection" class="control-label"></label>
+                    <input asp-for="Collection" class="form-control" />
+                    <span asp-validation-for="Collection" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Donationfrom" class="control-label"></label>
+                    <input asp-for="Donationfrom" class="form-control" />
+                    <span asp-validation-for="Donationfrom" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Exhibition" class="control-label"></label>
+                    <input asp-for="Exhibition" class="form-control" />
+                    <span asp-validation-for="Exhibition" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Inventory" class="control-label"></label>
+                    <input asp-for="Inventory" class="form-control" />
+                    <span asp-validation-for="Inventory" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Provenance" class="control-label"></label>
+                    <input asp-for="Provenance" class="form-control" />
+                    <span asp-validation-for="Provenance" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ispublic" class="control-label"></label>
+                    <select asp-for="Ispublic" class="form-control">
+                        <option>Public Collection</option>
+                        <option>Private Collection</option>
+                        <option>Unknown Collection</option>
+                    </select>
+                    <span asp-validation-for="Ispublic" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Publication" class="control-label"></label>
+                    <input asp-for="Publication" class="form-control" />
+                    <span asp-validation-for="Publication" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Aquisitiondate" class="control-label"></label>
+                    <input asp-for="Aquisitiondate" class="form-control" />
+                    <span asp-validation-for="Aquisitiondate" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Acquisitiondate" class="control-label"></label>
-                <input asp-for="Acquisitiondate" class="form-control" />
-                <span asp-validation-for="Acquisitiondate" class="text-danger"></span>
-            </div>
-             <div class="form-group">
-                <label asp-for="Auctions" class="control-label"></label>
-                <input asp-for="Auctions" class="form-control" />
-                <span asp-validation-for="Auctions" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Certificate" class="control-label"></label>
-                <input asp-for="Certificate" class="form-control" />
-                <span asp-validation-for="Certificate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Collectedby" class="control-label"></label>
-                <input asp-for="Collectedby" class="form-control" />
-                <span asp-validation-for="Collectedby" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Collectedwhen" class="control-label"></label>
-                <input asp-for="Collectedwhen" class="form-control" />
-                <span asp-validation-for="Collectedwhen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Collection" class="control-label"></label>
-                <input asp-for="Collection" class="form-control" />
-                <span asp-validation-for="Collection" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Donationfrom" class="control-label"></label>
-                <input asp-for="Donationfrom" class="form-control" />
-                <span asp-validation-for="Donationfrom" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Exhibition" class="control-label"></label>
-                <input asp-for="Exhibition" class="form-control" />
-                <span asp-validation-for="Exhibition" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Inventory" class="control-label"></label>
-                <input asp-for="Inventory" class="form-control" />
-                <span asp-validation-for="Inventory" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Provenance" class="control-label"></label>
-                <input asp-for="Provenance" class="form-control" />
-                <span asp-validation-for="Provenance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ispublic" class="control-label"></label>
-                <select asp-for="Ispublic" class="form-control">
-                    <option>Public Collection</option>
-                    <option>Private Collection</option>
-                    <option>Unknown Collection</option>
-                </select>
-                <span asp-validation-for="Ispublic" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Publication" class="control-label"></label>
-                <input asp-for="Publication" class="form-control" />
-                <span asp-validation-for="Publication" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Aquisitiondate" class="control-label"></label>
-                <input asp-for="Aquisitiondate" class="form-control" />
-                <span asp-validation-for="Aquisitiondate" class="text-danger"></span>
-            </div>
-            </div>
-            
+
             <h1>Authorship</h1>
             <div>
                 <div class="form-group">
-                <label asp-for="Artist" class="control-label"></label>
-                <input asp-for="Artist" class="form-control" />
-                <span asp-validation-for="Artist" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Artistgender" class="control-label"></label>
-                <input asp-for="Artistgender" class="form-control" />
-                <span asp-validation-for="Artistgender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Artistsg" class="control-label"></label>
-                <input asp-for="Artistsg" class="form-control" />
-                <span asp-validation-for="Artistsg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commgender" class="control-label"></label>
-                <input asp-for="Commgender" class="form-control" />
-                <span asp-validation-for="Commgender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commsg" class="control-label"></label>
-                <input asp-for="Commsg" class="form-control" />
-                <span asp-validation-for="Commsg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Createdate" class="control-label"></label>
-                <input asp-for="Createdate" class="form-control" />
-                <span asp-validation-for="Createdate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Createdatemax" class="control-label"></label>
-                <input asp-for="Createdatemax" class="form-control" />
-                <span asp-validation-for="Createdatemax" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Createdatemin" class="control-label"></label>
-                <input asp-for="Createdatemin" class="form-control" />
-                <span asp-validation-for="Createdatemin" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commonfeatures" class="control-label"></label>
-                <input asp-for="Commonfeatures" class="form-control" />
-                <span asp-validation-for="Commonfeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Workshop" class="control-label"></label>
-                <input asp-for="Workshop" class="form-control" />
-                <span asp-validation-for="Workshop" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Workshoplist" class="control-label"></label>
-                <input asp-for="Workshoplist" class="form-control" />
-                <span asp-validation-for="Workshoplist" class="text-danger"></span>
-            </div>
-            </div>
-           
-            <h1>Photo info</h1>
-            <div>
-            <div class="form-group">
-                <label asp-for="Needbetter" class="control-label"></label>
-                <input asp-for="Needbetter" class="form-control" />
-                <span asp-validation-for="Needbetter" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Photocopy" class="control-label"></label>
-                <input asp-for="Photocopy" class="form-control" />
-                <span asp-validation-for="Photocopy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photographer" class="control-label"></label>
-                <input asp-for="Photographer" class="form-control" />
-                <span asp-validation-for="Photographer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photoinvnr" class="control-label"></label>
-                <input asp-for="Photoinvnr" class="form-control" />
-                <span asp-validation-for="Photoinvnr" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photoprov" class="control-label"></label>
-                <input asp-for="Photoprov" class="form-control" />
-                <span asp-validation-for="Photoprov" class="text-danger"></span>
-            </div>
+                    <label asp-for="Artist" class="control-label"></label>
+                    <input asp-for="Artist" class="form-control" />
+                    <span asp-validation-for="Artist" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Artistgender" class="control-label"></label>
+                    <input asp-for="Artistgender" class="form-control" />
+                    <span asp-validation-for="Artistgender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Artistsg" class="control-label"></label>
+                    <input asp-for="Artistsg" class="form-control" />
+                    <span asp-validation-for="Artistsg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Commgender" class="control-label"></label>
+                    <input asp-for="Commgender" class="form-control" />
+                    <span asp-validation-for="Commgender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Commsg" class="control-label"></label>
+                    <input asp-for="Commsg" class="form-control" />
+                    <span asp-validation-for="Commsg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Createdate" class="control-label"></label>
+                    <input asp-for="Createdate" class="form-control" />
+                    <span asp-validation-for="Createdate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Createdatemax" class="control-label"></label>
+                    <input asp-for="Createdatemax" class="form-control" />
+                    <span asp-validation-for="Createdatemax" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Createdatemin" class="control-label"></label>
+                    <input asp-for="Createdatemin" class="form-control" />
+                    <span asp-validation-for="Createdatemin" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Commonfeatures" class="control-label"></label>
+                    <input asp-for="Commonfeatures" class="form-control" />
+                    <span asp-validation-for="Commonfeatures" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Workshop" class="control-label"></label>
+                    <input asp-for="Workshop" class="form-control" />
+                    <span asp-validation-for="Workshop" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Workshoplist" class="control-label"></label>
+                    <input asp-for="Workshoplist" class="form-control" />
+                    <span asp-validation-for="Workshoplist" class="text-danger"></span>
+                </div>
             </div>
 
-            
+            <h1>Photo info</h1>
+            <div>
+                <div class="form-group">
+                    <label asp-for="Needbetter" class="control-label"></label>
+                    <input asp-for="Needbetter" class="form-control" />
+                    <span asp-validation-for="Needbetter" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Photocopy" class="control-label"></label>
+                    <input asp-for="Photocopy" class="form-control" />
+                    <span asp-validation-for="Photocopy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photographer" class="control-label"></label>
+                    <input asp-for="Photographer" class="form-control" />
+                    <span asp-validation-for="Photographer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photoinvnr" class="control-label"></label>
+                    <input asp-for="Photoinvnr" class="form-control" />
+                    <span asp-validation-for="Photoinvnr" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photoprov" class="control-label"></label>
+                    <input asp-for="Photoprov" class="form-control" />
+                    <span asp-validation-for="Photoprov" class="text-danger"></span>
+                </div>
+            </div>
+
+
             <h1>Notes</h1>
             <div>
-            <div class="form-group">
-                <label asp-for="Additionalfeatures" class="control-label"></label>
-                <input asp-for="Additionalfeatures" class="form-control" />
-                <span asp-validation-for="Additionalfeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Associatefeatures" class="control-label"></label>
-                <input asp-for="Associatefeatures" class="form-control" />
-                <span asp-validation-for="Associatefeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Commanditaire" class="control-label"></label>
-                <input asp-for="Commanditaire" class="form-control" />
-                <span asp-validation-for="Commanditaire" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Comments" class="control-label"></label>
-                <input asp-for="Comments" class="form-control" />
-                <span asp-validation-for="Comments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Confidential" class="control-label"></label>
-                <input asp-for="Confidential" class="form-control" />
-                <span asp-validation-for="Confidential" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Features" class="control-label"></label>
-                <input asp-for="Features" class="form-control" />
-                <span asp-validation-for="Features" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ritualassoc" class="control-label"></label>
-                <input asp-for="Ritualassoc" class="form-control" />
-                <span asp-validation-for="Ritualassoc" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usage" class="control-label"></label>
-                <input asp-for="Usage" class="form-control" />
-                <span asp-validation-for="Usage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Associatfeatures" class="control-label"></label>
-                <input asp-for="Associatfeatures" class="form-control" />
-                <span asp-validation-for="Associatfeatures" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Structuralfeatures" class="control-label"></label>
-                <input asp-for="Structuralfeatures" class="form-control" />
-                <span asp-validation-for="Structuralfeatures" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Additionalfeatures" class="control-label"></label>
+                    <input asp-for="Additionalfeatures" class="form-control" />
+                    <span asp-validation-for="Additionalfeatures" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Associatefeatures" class="control-label"></label>
+                    <input asp-for="Associatefeatures" class="form-control" />
+                    <span asp-validation-for="Associatefeatures" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Commanditaire" class="control-label"></label>
+                    <input asp-for="Commanditaire" class="form-control" />
+                    <span asp-validation-for="Commanditaire" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Comments" class="control-label"></label>
+                    <input asp-for="Comments" class="form-control" />
+                    <span asp-validation-for="Comments" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Confidential" class="control-label"></label>
+                    <input asp-for="Confidential" class="form-control" />
+                    <span asp-validation-for="Confidential" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Features" class="control-label"></label>
+                    <input asp-for="Features" class="form-control" />
+                    <span asp-validation-for="Features" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ritualassoc" class="control-label"></label>
+                    <input asp-for="Ritualassoc" class="form-control" />
+                    <span asp-validation-for="Ritualassoc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Usage" class="control-label"></label>
+                    <input asp-for="Usage" class="form-control" />
+                    <span asp-validation-for="Usage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Associatfeatures" class="control-label"></label>
+                    <input asp-for="Associatfeatures" class="form-control" />
+                    <span asp-validation-for="Associatfeatures" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Structuralfeatures" class="control-label"></label>
+                    <input asp-for="Structuralfeatures" class="form-control" />
+                    <span asp-validation-for="Structuralfeatures" class="text-danger"></span>
+                </div>
             </div>
 
             <h1> Unknown / Delete</h1>
             <div>
-            <div class="form-group">
-                <label asp-for="Creditline" class="control-label"></label>
-                <input asp-for="Creditline" class="form-control" />
-                <span asp-validation-for="Creditline" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Raaiid" class="control-label"></label>
-                <input asp-for="Raaiid" class="form-control" />
-                <span asp-validation-for="Raaiid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tms" class="control-label"></label>
-                <input asp-for="Tms" class="form-control" />
-                <span asp-validation-for="Tms" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Web" class="control-label"></label>
-                <input asp-for="Web" class="form-control" />
-                <span asp-validation-for="Web" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Yaleid" class="control-label"></label>
-                <input asp-for="Yaleid" class="form-control" />
-                <span asp-validation-for="Yaleid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Unit" class="control-label"></label>
-                <input asp-for="Unit" class="form-control" />
-                <span asp-validation-for="Unit" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Multiline" class="control-label"></label>
-                <input asp-for="Multiline" class="form-control" />
-                <span asp-validation-for="Multiline" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Creditline" class="control-label"></label>
+                    <input asp-for="Creditline" class="form-control" />
+                    <span asp-validation-for="Creditline" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Raaiid" class="control-label"></label>
+                    <input asp-for="Raaiid" class="form-control" />
+                    <span asp-validation-for="Raaiid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tms" class="control-label"></label>
+                    <input asp-for="Tms" class="form-control" />
+                    <span asp-validation-for="Tms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Web" class="control-label"></label>
+                    <input asp-for="Web" class="form-control" />
+                    <span asp-validation-for="Web" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Yaleid" class="control-label"></label>
+                    <input asp-for="Yaleid" class="form-control" />
+                    <span asp-validation-for="Yaleid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Unit" class="control-label"></label>
+                    <input asp-for="Unit" class="form-control" />
+                    <span asp-validation-for="Unit" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Multiline" class="control-label"></label>
+                    <input asp-for="Multiline" class="form-control" />
+                    <span asp-validation-for="Multiline" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Reacttmp" class="control-label"></label>
+                    <input asp-for="Reacttmp" class="form-control" />
+                    <span asp-validation-for="Reacttmp" class="text-danger"></span>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Reacttmp" class="control-label"></label>
-                <input asp-for="Reacttmp" class="form-control" />
-                <span asp-validation-for="Reacttmp" class="text-danger"></span>
-            </div>
-            </div>
-            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -844,5 +844,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -1200,6 +1200,17 @@
                             </td>
                         </tr>
                     }
+                    @if (Model.Publication != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Publication)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Publication)
+                            </td>
+                        </tr>
+                    }
                     @if (Model.Provenance != null)
                     {
                         <tr>
@@ -1663,7 +1674,7 @@
         </div>
         
         }
-        @if(@Model.Category != "xp")
+        @if(@Model.Category == "xp")
         {
         <h1 onclick="hideEventsInfo()">Information on event</h1>
         <div id="eventsInfo">
@@ -1757,17 +1768,6 @@
                             </td>
                         </tr>
                     }
-                    @*@if (Model.Curators != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Curators)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Curators)
-                            </td>
-                        </tr>
-                    }*@
                 </tbody>
             </table>
         </div>
