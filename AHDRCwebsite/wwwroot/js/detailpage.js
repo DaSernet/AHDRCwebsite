@@ -1,15 +1,30 @@
 ﻿var hyperLinkString = "";
 
 window.onload = function matchString() {
-    var string = document.getElementById("otherObjects").innerText;
-    var result = string.match(/[A-Za-z0-9]+-[0-9]+-[0-9]+/g);
-    result.forEach(addHyperLinks)
-    document.getElementById("otherObjects").innerHTML = hyperLinkString;
+    var parentDiv = document.getElementById("AllInformation");
+    var divs = parentDiv.getElementsByTagName("div");
+
+    for (var i = 0; i < divs.length; i++) {
+        var div = divs[i];
+        var string = div.innerText;
+
+        var result = string.match(/[A-Za-z]+-[0-9]+-[0-9]+/g);
+        var result2 = string.match(/[A-Za-z]+-[0-9]+/g);
+        if (result) {
+            console.log(result);
+            console.log(result2);
+            console.log(result.length);
+            result.forEach(function (result) {
+                var hyperlink = addHyperLinks(result,result2);
+                div.innerHTML = div.innerHTML.replace(result, hyperlink);
+                console.log(hyperlink)
+            });
+        }
+    }
 }
 
-function addHyperLinks(item) {
-    item = "<a href='../Artworks?SearchString=" + item + "&selectedCategory=ao&selectedCategory=ph&selectedCategory=wh&selectedCategory=bk&selectedCategory=xp&selectedCategory=co&selectedCategory=au'>" + item + "</a>,"
-    hyperLinkString = hyperLinkString.concat(item)
+function addHyperLinks(item,item2) {
+    return "<a href='../Artworks?SearchString=" + item2 + "&selectedCategory=ao&selectedCategory=ph&selectedCategory=wh&selectedCategory=bk&selectedCategory=xp&selectedCategory=co&selectedCategory=au'>" + item + "</a>,"
 }
 
 function hideObjectInfo() {

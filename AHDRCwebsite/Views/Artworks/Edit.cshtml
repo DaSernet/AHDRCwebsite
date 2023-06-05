@@ -130,10 +130,95 @@
 
                 @if (@Model.Category == "co") //collections
                 {
-                    <h1 onclick="hideObjectInfo()">Objects Information</h1>
+                    <h1 onclick="hideGeographicalInfo()">Geographical / Ethnic Information</h1>
+                    <div id="geographicalInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Ethnicgroup)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Ethnicgroup" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Country)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Country" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
+                    <div id="whatisitInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Datemin)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Datemin" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Datemax)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Datemax" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h1 onclick="hideObjectInfo()">What is it?</h1>
                     <div id="objectInfo">
                         <table>
                             <tbody>
+                                @if (Model.Objectname != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Objectname)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(Model.Objectname)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <h1 onclick="hideHistoryInfo()">History of Object</h1>
+                    <div id="historyInfo">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collectedby)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collectedby" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Collectedwhen)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Collectedwhen" class="form-control" />
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         @Html.DisplayNameFor(model => model.Collection)
@@ -144,19 +229,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        @Html.DisplayNameFor(model => model.Date)
+                                        @Html.DisplayNameFor(model => model.Ispublic)
                                     </td>
                                     <td>
-                                        <input asp-for="Date" class="form-control" />
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        @Html.DisplayNameFor(model => model.Location)
-                                    </td>
-                                    <td>
-                                        <input asp-for="Location" class="form-control" />
+                                        <input asp-for="Ispublic" class="form-control" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -183,9 +259,18 @@
                                         <input asp-for="Exhibition" class="form-control" />
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Auctions)
+                                    </td>
+                                    <td>
+                                        <input asp-for="Auctions" class="form-control" />
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
+
 
                     <h1 onclick="hideNotesInfo()">Notes</h1>
                     <div id="notesInfo">

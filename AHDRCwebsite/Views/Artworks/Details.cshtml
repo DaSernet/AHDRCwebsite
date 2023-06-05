@@ -255,7 +255,7 @@
         //we are still missing some buttons!
         }
     </div>
-    <div class="col-5">
+    <div id="AllInformation" class="col-5">
         
         <h1>@Model.IdentifierNoCategory</h1>
         @if(@Model.Category != "co" && @Model.Category != "wh" && @Model.Category != "au" && @Model.Category != "bk" && @Model.Category != "xp")
@@ -1126,14 +1126,14 @@
         <div id="objectInfo">
             <table>
                 <tbody>
-                    @if (Model.Acquiredfrom != null)
+                    @if (Model.Objectname != null)
                     {
                         <tr>
                             <td>
                                 @Html.DisplayNameFor(model => model.Objectname)
                             </td>
                             <td>
-                                @Html.Raw(Model.Objectname)
+                                    @Html.Raw(Model.Objectname)
                             </td>
                         </tr>
                     }
@@ -1145,29 +1145,18 @@
         <div id="historyInfo">
             <table>
                 <tbody>
-                    @if (Model.Auctions != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Auctions)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Auctions)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Collectedby != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Collectedby)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Collectedby)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Collectedwhen != null)
+                        @if (Model.Collectedby != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collectedby)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Collectedby)
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Collectedwhen != null)
                     {
                         <tr>
                             <td>
@@ -1178,50 +1167,18 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Collection != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Collection)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Collection)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Exhibition != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Exhibition)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Exhibition)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Publication != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Publication)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Publication)
-                            </td>
-                        </tr>
-                    }
-                    @if (Model.Provenance != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Provenance)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Provenance)
-                            </td>
-                        </tr>
-                    }
+                        @if (Model.Collection != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Collection)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Collection)
+                                </td>
+                            </tr>
+                        }
+                        
                     @if (Model.Ispublic != null)
                     {
                         <tr>
@@ -1233,6 +1190,51 @@
                             </td>
                         </tr>
                     }
+                        @if (Model.Provenance != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Provenance)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Provenance)
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Publication != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Publication)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Publication)
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Exhibition != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Exhibition)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Exhibition)
+                                </td>
+                            </tr>
+                        }
+
+                        @if (Model.Auctions != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Auctions)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Auctions)
+                                </td>
+                            </tr>
+                        }
                 </tbody>
             </table>
         </div>
