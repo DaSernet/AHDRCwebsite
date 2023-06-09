@@ -10,7 +10,30 @@
 <link rel="stylesheet" href="~/css/cardoverlay.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="~/css/searchindex.css">
+<style>
+    .square {
+        width: 160px;
+        height: 160px;
+        background-color: black;
+        position: relative;
+        box-shadow: 0 0 0 2px white; /* Add white outline */
+        /*overflow: hidden;*/
+    }
 
+    .text {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 14px;
+        word-wrap: break-word; /* Allow text to break on spaces */
+    }
+</style>
 <form class="search-bar-form" asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p class="text-light">
@@ -107,20 +130,33 @@
             @foreach (var item in Model)
             {
                 <div class="img-with-text">
-                    @if (item.ArtworkImage.Count >= 1)
+                    @if (item.Category != "xp")
                     {
-                        <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
-   asp-route-pageNumber="@ViewData["pageNumber"]" 
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+                        @if (item.ArtworkImage.Count >= 1)
+                        {
+                            <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                               asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+                               asp-route-pageNumber="@ViewData["pageNumber"]"
+                               asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                               asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+                               asp-route-pageNumber="@ViewData["pageNumber"]"
+                               asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+                        }
                     }
                     else
                     {
-                        <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]" 
-   asp-route-pageNumber="@ViewData["pageNumber"]" 
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+                        <div class="square">
+                            <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                               asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
+                               asp-route-pageNumber="@ViewData["pageNumber"]"
+                               asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><span class="text">@item.Title<br/><br/>(Exhibition @item.Year)</span></a>
+                        </div>
                     }
+                    
 
                     <figcaption class="text-light">
                         @Html.DisplayFor(modelItem => item.IdentifierNoCategory)
