@@ -114,15 +114,13 @@
                         {
                             <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
                                asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-                               asp-route-pageNumber="@ViewData["pageNumber"]"
-                               asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
+                               asp-route-pageNumber="@ViewData["pageNumber"]"><img src=@("/uploads/" + @item.ArtworkImage.Where(i => i.Artwork == item).Select(i => i.ImageURL).FirstOrDefault()) class="rounded-square" height="160"></a>
                         }
                         else
                         {
                             <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
                                asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-                               asp-route-pageNumber="@ViewData["pageNumber"]"
-                               asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
+                               asp-route-pageNumber="@ViewData["pageNumber"]"><img src=@("/images/defaultimage.jpg") class="rounded-square" height="160"></a>
                         }
                     }
                     else
@@ -130,8 +128,7 @@
                         <div class="square">
                             <a asp-action="Details" asp-route-artworkid="@item.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"
                                asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-                               asp-route-pageNumber="@ViewData["pageNumber"]"
-                               asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><span class="text">@item.Title<br/><br/>(Exhibition @item.Year)</span></a>
+                               asp-route-pageNumber="@ViewData["pageNumber"]"><span class="text">@item.Title<br/><br/>(Exhibition @item.Year)</span></a>
                         </div>
                     }
                     
@@ -150,7 +147,6 @@
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"
    class="@prevDisabled">
                 <img src=@("/images/arrowleft.png")>
             </a>
@@ -164,8 +160,7 @@
                     <a a asp-action="Index"
                     asp-route-pageNumber="@(Model.PageIndex + a)"
                     asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-                    asp-route-artworkQueryString="@ViewData["artworkQueryString"]">@(Model.PageIndex + a)</a>
+                    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">@(Model.PageIndex + a)</a>
                 } else if (@nextDisabled == "disabled")
                 {
                    @if(Model.TotalPages >= Model.PageIndex +a && Model.PageIndex != 1)
@@ -173,8 +168,7 @@
                         <a a asp-action="Index"
                     asp-route-pageNumber="@(Model.PageIndex + a)"
                     asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                        asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-                        asp-route-artworkQueryString="@ViewData["artworkQueryString"]">@(Model.PageIndex + a) </a>
+                        asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">@(Model.PageIndex + a) </a>
                     }
                     
                 }
@@ -186,7 +180,6 @@
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"
    class="@prevDisabled">
             <img src=@("/images/arrowright.png")>
         </a>
@@ -218,7 +211,11 @@
             $("#" + key).prop('checked', value);
         });
 
+        // Retrieve the artwork IDs from ViewBag or ViewData
+        var artworkIds = "@ViewBag.artworkQueryString".split(",");
 
+        // Store the artwork IDs in session storage
+        sessionStorage.setItem("ArtworkIds", JSON.stringify(artworkIds));
 
     </script>
 }

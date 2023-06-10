@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="~/css/searchindex.css">
 <script type="text/javascript" src="~/js/detailpage.js"></script>
 
+<script>
+    
+</script>
+
 <form class="search-bar-form" asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p class="text-light">
@@ -96,20 +100,20 @@
 </div>
 <div class="col-auto"></div>
 <div class="col-5">
-@if(ViewData["artworkQueryStringPrev"] != null)
-{
-<a asp-action="Details" asp-route-artworkid="@ViewData["artworkQueryStringPrev"]"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img style="width: 30px;height: 30px;" src=@("/images/arrowleft.png")></a>
-}
-@if(ViewData["artworkQueryStringNext"] != null)
-{
-<a asp-action="Details" asp-route-artworkid="@ViewData["artworkQueryStringNext"]"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]"
-   asp-route-artworkQueryString="@ViewData["artworkQueryString"]"><img style="width: 30px;height: 30px; float:right;" src=@("/images/arrowright.png")></a>
-}
+        <a id="prevLink" asp-action="Details" asp-route-artworkid="0"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">
+            <img style="width: 30px;height: 30px;" src="/images/arrowleft.png">
+        </a>
+        <a id="nextLink" asp-action="Details" asp-route-artworkid="0"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           asp-route-currentCategory="@ViewData["CurrentSelectedCategory"]">
+            <img style="width: 30px;height: 30px; float:right;" src="/images/arrowright.png">
+        </a>
+    
+
+    
+
 </div>
     <div class="col-5 image-col">
         @if (Model.ArtworkImage.Count >= 1)

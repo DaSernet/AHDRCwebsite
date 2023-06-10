@@ -30,6 +30,10 @@ namespace AHDRCwebsite
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddHttpClient();
+            services.AddSession();
+
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
@@ -60,6 +64,7 @@ namespace AHDRCwebsite
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
 
             //app.UseCoreAdminCustomUrl("Adminpanel");
             app.UseCoreAdminCustomTitle("AHDRC Admin panel");

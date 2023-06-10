@@ -39,6 +39,8 @@ namespace AHDRCwebsite
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //webBuilder.UseKestrel(); ChatGPT
+                    webBuilder.UseIIS();
                     webBuilder.UseStartup<Startup>();
                 });
     }

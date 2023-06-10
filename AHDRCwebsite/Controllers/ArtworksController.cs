@@ -1,8 +1,10 @@
 ﻿using AHDRCwebsite.Data;
 using AHDRCwebsite.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -231,7 +233,7 @@ s.Medwoodinfo.Contains(searchString));
                 }
             }
             artworkQueryString = String.Join(",", artworks.OrderBy(s => s.ArtworkId).Select(a => a.ArtworkId).AsEnumerable());
-            ViewData["artworkQueryString"] = artworkQueryString;
+            ViewBag.artworkQueryString = artworkQueryString;
 
             artworks = artworks.Include(i => i.ArtworkImage);
             int pageSize = 100;
@@ -240,15 +242,15 @@ s.Medwoodinfo.Contains(searchString));
         }
 
         // GET: Artworks/Details/5
-        public async Task<IActionResult> Details(int? ArtworkId, string currentCategory, string currentFilter, int? pageNumber, string artworkQueryString)
+        public async Task<IActionResult> Details(int artworkId, string currentCategory, string currentFilter, int? pageNumber)
         {
-            if (ArtworkId == null || _context.Artworks == null)
+            if (artworkId == null || _context.Artworks == null)
             {
                 return NotFound();
             }
 
             var artwork = await _context.Artworks.Include(i => i.ArtworkImage)
-                .FirstOrDefaultAsync(m => m.ArtworkId == ArtworkId);
+                .FirstOrDefaultAsync(m => m.ArtworkId == artworkId);
             if (artwork == null)
             {
                 return NotFound();
@@ -257,49 +259,35 @@ s.Medwoodinfo.Contains(searchString));
             ViewData["CurrentFilter"] = currentFilter;
             ViewData["CurrentSelectedCategory"] = String.Join(",", currentCategory);
             ViewData["pageNumber"] = pageNumber;
-            ViewData["artworkQueryString"] = artworkQueryString;
-            if (artworkQueryString != null)
-            {
-                string[] artworkQueryArray = artworkQueryString.Split(',');
 
-                var index = Array.FindIndex(artworkQueryArray, row => row == ArtworkId.ToString());
-
-                if (index < artworkQueryArray.Length - 1)
-                {
-                    ViewData["artworkQueryStringNext"] = artworkQueryArray[index + 1];
-                }
-                else
-                {
-                    ViewData["artworkQueryStringNext"] = null;
-                }
-
-                if (index > 0)
-                {
-                    ViewData["artworkQueryStringPrev"] = artworkQueryArray[index - 1];
-                }
-                else
-                {
-                    ViewData["artworkQueryStringPrev"] = null;
-                }
-            }
-
-
+            // Retrieve the properties of the artwork object
             var properties = artwork.GetType().GetProperties();
+
+            // Iterate through each property
             foreach (var p in properties)
             {
+                // Check if the property type is a string
                 if (p.PropertyType.Name.Equals("String"))
                 {
-                    if(p.Name != "IdentifierNoCategory")
+                    // Exclude the "IdentifierNoCategory" property
+                    if (p.Name != "IdentifierNoCategory")
                     {
+                        // Check if the property value is not null
                         if (p.GetValue(artwork, null) != null)
                         {
+                            // Retrieve the property value as a string
                             var value2 = p.GetValue(artwork, null).ToString();
-                            var value = value2.Replace("&#39;","'").Replace(@"\n", "<br/>");
+
+                            // Replace special characters in the string value
+                            var value = value2.Replace("&#39;", "'").Replace(@"\n", "<br/>");
+
+                            // Set the updated value back to the property
                             p.SetValue(artwork, value, null);
                         }
                     }
                 }
             }
+
 
             //Viewing history
             var userId = User.Identity.Name;
