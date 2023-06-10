@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Images" class="control-label"></label>
-                <input id="fileInput" type="file" class="form-control" multiple />
+                <input id="fileInput" asp-for="Images" class="form-control" multiple />
                 <span asp-validation-for="Images" class="text-danger"></span>
             </div>
             <div>
