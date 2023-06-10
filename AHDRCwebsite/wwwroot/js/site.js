@@ -8,10 +8,10 @@ function checkSize() {
     const containerHeight = containerElement.offsetHeight;
     const footer = document.querySelector('.footer');
 
-    console.log('Browser Width:', browserWidth);
-    console.log('Browser Height:', browserHeight);
-    console.log('Container Width:', containerWidth);
-    console.log('Container Height:', containerHeight);
+    
+    
+    
+    
 
     if (parseInt(containerHeight) >= 500)
     {

@@ -209,7 +209,10 @@ s.Aquisitiondate.Contains(searchString) ||
 s.Medwoodinfo.Contains(searchString));
             }
 
-            artworks = artworks.Take(500);
+            if (!User.IsInRole("Administrator"))
+            {
+                artworks = artworks.Take(1000);
+            }
 
             if (artworks != null)
             {

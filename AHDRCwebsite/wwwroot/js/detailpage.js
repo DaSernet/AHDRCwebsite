@@ -11,9 +11,9 @@ window.onload = function matchString() {
         var result = string.match(/[A-Za-z]+-[0-9]+-[0-9]+/g);
         var result2 = string.match(/[A-Za-z]+-[0-9]+/g);
         if (result) {
-            console.log(result);
-            console.log(result2);
-            console.log(result.length);
+            
+            
+            
             result.forEach(function (result) {
                 var hyperlink = addHyperLinks(result, result2);
                 div.innerHTML = div.innerHTML.replace(result, hyperlink);
@@ -76,29 +76,29 @@ function hideDiv(divName) {
 
 // Retrieve the artwork IDs from session storage
 var artworkIds = JSON.parse(sessionStorage.getItem("ArtworkIds"));
-console.log("Artwork IDs:", artworkIds);
+
 
 // Get the current artwork ID from the URL
 var urlParams = new URLSearchParams(window.location.search);
 var currentIndex = parseInt(urlParams.get("artworkid"));
-console.log("Current Index:", currentIndex);
+
 
 if (artworkIds && currentIndex && artworkIds.length > 0) {
     // Find the index of the current artwork ID
     var currentArtworkIndex = currentIndex;
-    console.log("Current Artwork Index:", currentArtworkIndex);
+    
 
     if (currentArtworkIndex !== -1 || currentArtworkIndex !== 0)
     {
         // Get the previous artwork ID
         var prevArtworkIndex = currentArtworkIndex - 1;
         var prevArtworkId = prevArtworkIndex >= 0 ? artworkIds[prevArtworkIndex-1] : null;
-        console.log("Previous Artwork ID:", prevArtworkId);
+        
 
         // Get the next artwork ID
         var nextArtworkIndex = currentArtworkIndex + 1;
         var nextArtworkId = nextArtworkIndex < artworkIds.length ? artworkIds[nextArtworkIndex-1] : null;
-        console.log("Next Artwork ID:", nextArtworkId);
+        
     }
 }
 
@@ -112,14 +112,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var prevUrlParams = getURLParams(prevLink.href);
             prevUrlParams.set("artworkid", prevArtworkId);
             prevLink.href = "/Artworks/Details?" + serializeURLParams(prevUrlParams);
-            console.log("Previous Link Href:", prevLink.href);
+            
         } else {
             prevLink.style.display = "none";
 
-            console.log("Previous Link Disabled");
+            
         }
     } else {
-        console.log("Previous Link Element Not Found");
+        
     }
 
     if (nextLink) {
@@ -127,14 +127,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var nextUrlParams = getURLParams(nextLink.href);
             nextUrlParams.set("artworkid", nextArtworkId);
             nextLink.href = "/Artworks/Details?" + serializeURLParams(nextUrlParams);
-            console.log("Next Link Href:", nextLink.href);
+            
         } else {
             nextLink.style.display = "none";
 
-            console.log("Next Link Disabled");
+            
         }
     } else {
-        console.log("Next Link Element Not Found");
+        
     }
 });
 
