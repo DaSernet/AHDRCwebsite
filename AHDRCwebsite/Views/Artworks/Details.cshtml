@@ -998,9 +998,9 @@
         </div>
 
         <h1 onclick="hideAuthorshipInfo()">Authorship</h1>
-        <div id="authorshipInfo">
-            <table>
-                <tbody>
+            <div id="authorshipInfo">
+                <table>
+                    <tbody>
                     @if (Model.Workshop != null)
                     {
                         <tr>
@@ -1056,9 +1056,42 @@
                             </td>
                         </tr>
                     }
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table>
+            </div>
+
+            <h1 onclick="hideNotesInfo()">Notes</h1>
+            <div id="notesInfo">
+                <table>
+                    <tbody>
+                    @if (Model.Comments != null)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Comments)
+                            </td>
+                            <td>
+                                @Html.Raw(Model.Comments)
+                            </td>
+                        </tr>
+                    }
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        @if (Model.Confidential != null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Confidential)
+                                </td>
+                                <td>
+                                    @Html.Raw(Model.Confidential)
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
         }
 
         @if(@Model.Category == "co")

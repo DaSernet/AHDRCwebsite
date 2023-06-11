@@ -160,9 +160,6 @@ $(document).ready(function () {
     cardOverlay.on("scroll", function () {
         var scrollTop = $(this).scrollTop();
         var distance = infoDivOffset - scrollTop;
-        console.log(scrollTop);
-        console.log(distance);
-        console.log(infoImage);
         if (distance <= 0) {
             $("div.carousel-item.active > a > img").css({
                 position: "fixed",
