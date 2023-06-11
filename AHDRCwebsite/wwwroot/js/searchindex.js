@@ -1,6 +1,4 @@
-﻿alert('hey');
-
-var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
+﻿var checkboxValues = JSON.parse(sessionStorage.getItem('checkboxValues')) || {},
     $checkboxes = $("#checkbox-container :checkbox");
 
 $checkboxes.on("change", function () {

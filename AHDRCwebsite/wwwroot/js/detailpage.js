@@ -2,23 +2,24 @@
 
 window.onload = function matchString() {
     var parentDiv = document.getElementById("AllInformation");
-    var divs = parentDiv.getElementsByTagName("div");
+    if (parentDiv !== null && parentDiv !== undefined) {
+        var divs = parentDiv.getElementsByTagName("div");
 
-    for (var i = 0; i < divs.length; i++) {
-        var div = divs[i];
-        var string = div.innerText;
+        for (var i = 0; i < divs.length; i++) {
+            var div = divs[i];
+            var string = div.innerText;
 
-        var result = string.match(/[A-Za-z]+-[0-9]+-[0-9]+/g);
-        var result2 = string.match(/[A-Za-z]+-[0-9]+/g);
-        if (result) {
-            
-            
-            
-            result.forEach(function (result) {
-                var hyperlink = addHyperLinks(result, result2);
-                div.innerHTML = div.innerHTML.replace(result, hyperlink);
-                console.log(hyperlink)
-            });
+            var result = string.match(/[A-Za-z]+-[0-9]+-[0-9]+/g);
+            var result2 = string.match(/[A-Za-z]+-[0-9]+/g);
+            if (result) {
+
+
+
+                result.forEach(function (result) {
+                    var hyperlink = addHyperLinks(result, result2);
+                    div.innerHTML = div.innerHTML.replace(result, hyperlink);
+                });
+            }
         }
     }
 }
@@ -86,19 +87,18 @@ var currentIndex = parseInt(urlParams.get("artworkid"));
 if (artworkIds && currentIndex && artworkIds.length > 0) {
     // Find the index of the current artwork ID
     var currentArtworkIndex = currentIndex;
-    
 
-    if (currentArtworkIndex !== -1 || currentArtworkIndex !== 0)
-    {
+
+    if (currentArtworkIndex !== -1 || currentArtworkIndex !== 0) {
         // Get the previous artwork ID
         var prevArtworkIndex = currentArtworkIndex - 1;
-        var prevArtworkId = prevArtworkIndex >= 0 ? artworkIds[prevArtworkIndex-1] : null;
-        
+        var prevArtworkId = prevArtworkIndex >= 0 ? artworkIds[prevArtworkIndex - 1] : null;
+
 
         // Get the next artwork ID
         var nextArtworkIndex = currentArtworkIndex + 1;
-        var nextArtworkId = nextArtworkIndex < artworkIds.length ? artworkIds[nextArtworkIndex-1] : null;
-        
+        var nextArtworkId = nextArtworkIndex < artworkIds.length ? artworkIds[nextArtworkIndex - 1] : null;
+
     }
 }
 
@@ -112,14 +112,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var prevUrlParams = getURLParams(prevLink.href);
             prevUrlParams.set("artworkid", prevArtworkId);
             prevLink.href = "/Artworks/Details?" + serializeURLParams(prevUrlParams);
-            
+
         } else {
             prevLink.style.display = "none";
 
-            
+
         }
     } else {
-        
+
     }
 
     if (nextLink) {
@@ -127,14 +127,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var nextUrlParams = getURLParams(nextLink.href);
             nextUrlParams.set("artworkid", nextArtworkId);
             nextLink.href = "/Artworks/Details?" + serializeURLParams(nextUrlParams);
-            
+
         } else {
             nextLink.style.display = "none";
 
-            
+
         }
     } else {
-        
+
     }
 });
 
@@ -152,4 +152,34 @@ function serializeURLParams(urlParams) {
     return serializedParams;
 }
 
+$(document).ready(function () {
+    var infoImage = $("#info-image");
+    var infoDivOffset = $(".info-div").offset().top;
+    var cardOverlay = $(".card-overlay");
 
+    cardOverlay.on("scroll", function () {
+        var scrollTop = $(this).scrollTop();
+        var distance = infoDivOffset - scrollTop;
+        console.log(scrollTop);
+        console.log(distance);
+        console.log(infoImage);
+        if (distance <= 0) {
+            $("div.carousel-item.active > a > img").css({
+                position: "fixed",
+                top: "5px",
+                left: "75px",
+                width: "40vw"
+            });
+            $("#carousel-thumbnails").css({
+                position: "fixed",
+                top: "-50px",
+                left: "75px",
+                width: "40px"
+            });
+
+        } else {
+            $("div.carousel-item.active > a  > img").removeAttr("style");
+            $("#carousel-thumbnails").removeAttr("style");
+        }
+    });
+});

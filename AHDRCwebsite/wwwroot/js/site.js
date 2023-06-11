@@ -8,18 +8,14 @@ function checkSize() {
     const containerHeight = containerElement.offsetHeight;
     const footer = document.querySelector('.footer');
 
-    
-    
-    
-    
 
-    if (parseInt(containerHeight) >= 500)
-    {
-        console.log("relative")
+
+
+
+
+    if (parseInt(containerHeight) >= 500) {
         footer.style.position = 'relative';
-    } else
-    {
-        console.log("fixed")
+    } else {
         footer.style.position = 'fixed';
         footer.style.bottom = '0';
     }
@@ -34,3 +30,5 @@ window.addEventListener('resize', function () {
 window.addEventListener('DOMContentLoaded', function () {
     checkSize();
 });
+
+
