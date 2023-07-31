@@ -204,7 +204,7 @@ namespace AHDRCwebsite.Controllers
             {
                 return Problem("Entity set 'ArtworkContext.ArtworkImages'  is null.");
             }
-            var artworkImage = await _context.ArtworkImages
+            var artworkImage = await _context.ArtworkImages.Include(x => x.Artwork)
                 .FirstOrDefaultAsync(m => m.ArtworkImageId == ArtworkImageId);
 
             var artworkId = artworkImage.Artwork.ArtworkId;
