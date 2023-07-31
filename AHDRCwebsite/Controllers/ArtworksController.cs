@@ -442,7 +442,7 @@ s.Medwoodinfo.Contains(test));
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> DeleteConfirmed(int artworkid, string? currentFilter)
+        public async Task<IActionResult> DeleteConfirmed(int artworkid)
         {
             if (_context.Artworks == null)
             {
@@ -456,7 +456,7 @@ s.Medwoodinfo.Contains(test));
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), new { currentFilter = currentFilter });
+            return RedirectToAction(nameof(Index));
         }
 
         private bool ArtworkExists(int artworkid)
