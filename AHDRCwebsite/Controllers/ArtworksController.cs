@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AHDRCwebsite.Controllers
@@ -115,133 +116,144 @@ namespace AHDRCwebsite.Controllers
 
             artworks = artworks.Where(a => publicArtworkList.Any(a2 => a2.ArtworkId == a.ArtworkId));
 
-            if (!String.IsNullOrEmpty(searchString))
+            IQueryable<Artwork> filteredArtworks = artworks.Take(0);
+            if(searchString != null)
             {
-                artworks = artworks.Where(s => s.Acquiredfrom.Contains(searchString) ||
-                s.Acquisitiondate.Contains(searchString) ||
-                s.Additionalfeatures.Contains(searchString) ||
-                s.Artist.Contains(searchString) ||
-                s.Artistgender.Contains(searchString) ||
-s.Artistsg.Contains(searchString) ||
-s.Associatefeatures.Contains(searchString) ||
-s.Auctions.Contains(searchString) ||
-s.Calabashinfo.Contains(searchString) ||
-s.Certificate.Contains(searchString) ||
-s.Chefferie.Contains(searchString) ||
-s.Clan.Contains(searchString) ||
-s.Collectedby.Contains(searchString) ||
-s.Collectedwhen.Contains(searchString) ||
-s.Collection.Contains(searchString) ||
-s.Commanditaire.Contains(searchString) ||
-s.Comments.Contains(searchString) ||
-s.Commgender.Contains(searchString) ||
-s.Commonfeatures.Contains(searchString) ||
-s.Commsg.Contains(searchString) ||
-s.Condition.Contains(searchString) ||
-s.Country.Contains(searchString) ||
-s.Createdate.Contains(searchString) ||
-s.Createdatemax.Contains(searchString) ||
-s.Createdatemin.Contains(searchString) ||
-s.Creditline.Contains(searchString) ||
-s.Depth.Contains(searchString) ||
-s.Diameter.Contains(searchString) ||
-s.Donationfrom.Contains(searchString) ||
-s.Ethnicgroup.Contains(searchString) ||
-s.Exhibition.Contains(searchString) ||
-s.Features.Contains(searchString) ||
-s.Groups.Contains(searchString) ||
-s.Hairinfo.Contains(searchString) ||
-s.Height.Contains(searchString) ||
-s.Identifier.Contains(searchString) ||
-s.Inventory.Contains(searchString) ||
-s.Kingdom.Contains(searchString) ||
-s.Langgroup.Contains(searchString) ||
-s.Length.Contains(searchString) ||
-s.Medbeinfo.Contains(searchString) ||
-s.Medbkinfo.Contains(searchString) ||
-s.Medboinfo.Contains(searchString) ||
-s.Medceinfo.Contains(searchString) ||
-s.Medclinfo.Contains(searchString) ||
-s.Medfeinfo.Contains(searchString) ||
-s.Medfiinfo.Contains(searchString) ||
-s.Medglinfo.Contains(searchString) ||
-s.Medhoinfo.Contains(searchString) ||
-s.Medirinfo.Contains(searchString) ||
-s.Medium.Contains(searchString) ||
-s.Medivinfo.Contains(searchString) ||
-s.Medmainfo.Contains(searchString) ||
-s.Medotinfo.Contains(searchString) ||
-s.Medrainfo.Contains(searchString) ||
-s.Medreinfo.Contains(searchString) ||
-s.Medseedpodsinfo.Contains(searchString) ||
-s.Medshinfo.Contains(searchString) ||
-s.Medskinfo.Contains(searchString) ||
-s.Medstinfo.Contains(searchString) ||
-s.Medwoinfo.Contains(searchString) ||
-s.Needbetter.Contains(searchString) ||
-s.Objectgender.Contains(searchString) ||
-s.Objectjanus.Contains(searchString) ||
-s.Objectname.Contains(searchString) ||
-s.Objectnameex.Contains(searchString) ||
-s.Objectnamegn.Contains(searchString) ||
-s.Objectposture.Contains(searchString) ||
-s.Photocopy.Contains(searchString) ||
-s.Photographer.Contains(searchString) ||
-s.Photoinvnr.Contains(searchString) ||
-s.Photoprov.Contains(searchString) ||
-s.Pigmentinfo.Contains(searchString) ||
-s.Provenance.Contains(searchString) ||
-s.Publication.Contains(searchString) ||
-s.Region.Contains(searchString) ||
-s.Restoration.Contains(searchString) ||
-s.Ritualassoc.Contains(searchString) ||
-s.Sitearcheo.Contains(searchString) ||
-s.Structuralfeatures.Contains(searchString) ||
-s.Usage.Contains(searchString) ||
-s.Village.Contains(searchString) ||
-s.Weight.Contains(searchString) ||
-s.Width.Contains(searchString) ||
-s.Workshop.Contains(searchString) ||
-s.Workshoplist.Contains(searchString) ||
-s.Associatfeatures.Contains(searchString) ||
-s.Langsubgroup.Contains(searchString) ||
-s.Aquisitiondate.Contains(searchString) ||
-s.Medwoodinfo.Contains(searchString));
+                var searchTerms = SplitSearchString(searchString);
+
+                for (int x = 0; x <= searchTerms.Count-1; x++)
+                {
+                    string test = searchTerms[x];
+                    var test2 = artworks.Where(s => s.Acquiredfrom.Contains(test) ||
+                s.Acquisitiondate.Contains(test) ||
+                s.Additionalfeatures.Contains(test) ||
+                s.Artist.Contains(test) ||
+                s.Artistgender.Contains(test) ||
+s.Artistsg.Contains(test) ||
+s.Associatefeatures.Contains(test) ||
+s.Auctions.Contains(test) ||
+s.Calabashinfo.Contains(test) ||
+s.Certificate.Contains(test) ||
+s.Chefferie.Contains(test) ||
+s.Clan.Contains(test) ||
+s.Collectedby.Contains(test) ||
+s.Collectedwhen.Contains(test) ||
+s.Collection.Contains(test) ||
+s.Commanditaire.Contains(test) ||
+s.Comments.Contains(test) ||
+s.Commgender.Contains(test) ||
+s.Commonfeatures.Contains(test) ||
+s.Commsg.Contains(test) ||
+s.Condition.Contains(test) ||
+s.Country.Contains(test) ||
+s.Createdate.Contains(test) ||
+s.Createdatemax.Contains(test) ||
+s.Createdatemin.Contains(test) ||
+s.Creditline.Contains(test) ||
+s.Depth.Contains(test) ||
+s.Diameter.Contains(test) ||
+s.Donationfrom.Contains(test) ||
+s.Ethnicgroup.Contains(test) ||
+s.Exhibition.Contains(test) ||
+s.Features.Contains(test) ||
+s.Groups.Contains(test) ||
+s.Hairinfo.Contains(test) ||
+s.Height.Contains(test) ||
+s.Identifier.Contains(test) ||
+s.Inventory.Contains(test) ||
+s.Kingdom.Contains(test) ||
+s.Langgroup.Contains(test) ||
+s.Length.Contains(test) ||
+s.Medbeinfo.Contains(test) ||
+s.Medbkinfo.Contains(test) ||
+s.Medboinfo.Contains(test) ||
+s.Medceinfo.Contains(test) ||
+s.Medclinfo.Contains(test) ||
+s.Medfeinfo.Contains(test) ||
+s.Medfiinfo.Contains(test) ||
+s.Medglinfo.Contains(test) ||
+s.Medhoinfo.Contains(test) ||
+s.Medirinfo.Contains(test) ||
+s.Medium.Contains(test) ||
+s.Medivinfo.Contains(test) ||
+s.Medmainfo.Contains(test) ||
+s.Medotinfo.Contains(test) ||
+s.Medrainfo.Contains(test) ||
+s.Medreinfo.Contains(test) ||
+s.Medseedpodsinfo.Contains(test) ||
+s.Medshinfo.Contains(test) ||
+s.Medskinfo.Contains(test) ||
+s.Medstinfo.Contains(test) ||
+s.Medwoinfo.Contains(test) ||
+s.Needbetter.Contains(test) ||
+s.Objectgender.Contains(test) ||
+s.Objectjanus.Contains(test) ||
+s.Objectname.Contains(test) ||
+s.Objectnameex.Contains(test) ||
+s.Objectnamegn.Contains(test) ||
+s.Objectposture.Contains(test) ||
+s.Photocopy.Contains(test) ||
+s.Photographer.Contains(test) ||
+s.Photoinvnr.Contains(test) ||
+s.Photoprov.Contains(test) ||
+s.Pigmentinfo.Contains(test) ||
+s.Provenance.Contains(test) ||
+s.Publication.Contains(test) ||
+s.Region.Contains(test) ||
+s.Restoration.Contains(test) ||
+s.Ritualassoc.Contains(test) ||
+s.Sitearcheo.Contains(test) ||
+s.Structuralfeatures.Contains(test) ||
+s.Usage.Contains(test) ||
+s.Village.Contains(test) ||
+s.Weight.Contains(test) ||
+s.Width.Contains(test) ||
+s.Workshop.Contains(test) ||
+s.Workshoplist.Contains(test) ||
+s.Associatfeatures.Contains(test) ||
+s.Langsubgroup.Contains(test) ||
+s.Aquisitiondate.Contains(test) ||
+s.Medwoodinfo.Contains(test));
+
+
+                    //add artworks to filtered artworks
+                    filteredArtworks = filteredArtworks.Union(test2);
+                }
             }
 
             if (!User.IsInRole("Administrator"))
             {
-                artworks = artworks.Take(1000);
+                filteredArtworks = filteredArtworks.Take(1000);
             }
 
-            if (artworks != null)
+            if (filteredArtworks != null && 1 == 2)
             {
                 switch (sortOrder)
                 {
                     case "identifier_desc":
-                        artworks = artworks.OrderByDescending(s => s.ArtworkId);
+                        filteredArtworks = filteredArtworks.OrderByDescending(s => s.ArtworkId);
                         break;
 
                     case "Size":
-                        artworks = artworks.OrderBy(s => s.Height);
+                        filteredArtworks = filteredArtworks.OrderBy(s => s.Height);
                         break;
 
                     case "size_desc":
-                        artworks = artworks.OrderByDescending(s => s.Height);
+                        filteredArtworks = filteredArtworks.OrderByDescending(s => s.Height);
                         break;
 
                     default:
-                        artworks = artworks.OrderBy(s => s.ArtworkId);
+                        filteredArtworks = filteredArtworks.OrderBy(s => s.ArtworkId);
                         break;
                 }
             }
-            artworkQueryString = String.Join(",", artworks.OrderBy(s => s.ArtworkId).Select(a => a.ArtworkId).AsEnumerable());
+            artworkQueryString = String.Join(",", filteredArtworks.OrderBy(s => s.ArtworkId).Select(a => a.ArtworkId).AsEnumerable());
             ViewBag.artworkQueryString = artworkQueryString;
 
-            artworks = artworks.Include(i => i.ArtworkImage);
+            filteredArtworks = filteredArtworks.Include(i => i.ArtworkImage);
             int pageSize = 100;
-            int totalArtworks = artworks.Count();
-            return View(await PaginatedList<Artwork>.CreateAsync(artworks.AsNoTracking(), pageNumber ?? 1, pageSize, totalArtworks));
+            int totalArtworks = filteredArtworks.Count();
+            return View(await PaginatedList<Artwork>.CreateAsync(filteredArtworks.AsNoTracking(), pageNumber ?? 1, pageSize, totalArtworks));
         }
 
         // GET: Artworks/Details/5
@@ -430,7 +442,7 @@ s.Medwoodinfo.Contains(searchString));
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> DeleteConfirmed(int artworkid)
+        public async Task<IActionResult> DeleteConfirmed(int artworkid, string? currentFilter)
         {
             if (_context.Artworks == null)
             {
@@ -444,12 +456,31 @@ s.Medwoodinfo.Contains(searchString));
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { currentFilter = currentFilter });
         }
 
         private bool ArtworkExists(int artworkid)
         {
             return _context.Artworks.Any(e => e.ArtworkId == artworkid);
+        }
+
+        static List<string> SplitSearchString(string searchString)
+        {
+            // Split the searchString by spaces, hyphens, and double quotes
+            string[] splitBySpace = Regex.Split(searchString, @"[\s-]+");
+
+            // Remove empty entries and double quotes
+            var searchTerms = splitBySpace.Where(term => !string.IsNullOrWhiteSpace(term) && !term.Contains("\""));
+
+            // Remove double quotes from terms enclosed in double quotes
+            var quotedTerms = Regex.Matches(searchString, "\"([^\"]*)\"");
+            foreach (var quotedTerm in quotedTerms)
+            {
+                string term = quotedTerm.ToString().Trim('"');
+                searchTerms = searchTerms.Append(term);
+            }
+
+            return searchTerms.ToList();
         }
     }
 }

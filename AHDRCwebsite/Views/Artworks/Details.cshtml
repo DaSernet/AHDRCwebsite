@@ -250,7 +250,7 @@
         <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
         <a asp-action="Edit" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_edit.png")></a>
         <a asp-action="Create"><img src=@("/images/page_new.png")></a>
-        <a asp-action="Delete" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_delete.png")></a>
+            <a asp-action="Delete" asp-route-artworkid="@Model.ArtworkId" asp-route-currentFilter="@ViewData["CurrentFilter"]"><img src=@("/images/page_delete.png")></a>
         <img src=@("/images/page_move.png")>
         <img src=@("/images/book.png")>
         //we are still missing some buttons!
