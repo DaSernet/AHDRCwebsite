@@ -107,6 +107,7 @@ namespace AHDRCwebsite.Controllers
 
                 // Replace reserved characters with underscores
                 char[] invalidChars = Path.GetInvalidFileNameChars();
+                originalFileName = originalFileName.Replace(" ", "_");
                 string sanitizedFileName = string.Concat(originalFileName.Select(c => invalidChars.Contains(c) ? '_' : c));
 
                 fileName = $"{Guid.NewGuid()}-{sanitizedFileName}{extension}";
