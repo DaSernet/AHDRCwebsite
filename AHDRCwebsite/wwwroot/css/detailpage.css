@@ -28,6 +28,11 @@ tbody tr td:first-child {
         margin-bottom: 10px;
     }
 
+.resizable-textarea {
+    resize: both;
+    overflow: auto;
+}
+
 #custCarousel .carousel-indicators {
     position: relative;
     margin-top: 20px;
