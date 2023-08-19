@@ -28,6 +28,10 @@ tbody tr td:first-child {
         margin-bottom: 10px;
     }
 
+tr td:nth-child(2n) {
+    width: 100%;
+}
+
 .resizable-textarea {
     resize: both;
     overflow: auto;
