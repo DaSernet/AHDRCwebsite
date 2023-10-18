@@ -23,6 +23,13 @@ window.onload = function matchString() {
         }
     }
 }
+$(document).ready(function () {
+    $('#custCarousel').on('slid.bs.carousel', function () {
+        var activeItem = $('.carousel-item.active');
+        var artworkImageId = activeItem.find('.delete-link').data('artworkimageid');
+        console.log('Active ArtworkImageId:', artworkImageId);
+    });
+});
 
 function addHyperLinks(item, item2) {
     return "<a href='../Artworks?SearchString=" + item2 + "&selectedCategory=ao&selectedCategory=ph&selectedCategory=wh&selectedCategory=bk&selectedCategory=xp&selectedCategory=co&selectedCategory=au'>" + item + "</a>,"
