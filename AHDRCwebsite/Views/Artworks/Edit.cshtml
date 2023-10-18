@@ -92,10 +92,10 @@
             <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
             if(Model.ArtworkImage.Count > 0)
             {
-                Console.WriteLine(numberTest);
-                var test = Model.ArtworkImage.ToList();
-                var test2 = test[numberTest].ArtworkImageId;
-                <a asp-controller="ArtworkImages" asp-action="Delete" asp-route-artworkimageid="@test2"><img src=@("/images/pic_delete.png")></a>
+
+
+                var test = Model.ArtworkImage.ToList().FirstOrDefault().ArtworkImageId;
+                <a asp-controller="ArtworkImages" asp-action="Delete" asp-route-artworkimageid="@test" id="deleteLink"><img src=@("/images/pic_delete.png")></a>
             }
             <a asp-action="Edit" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/page_edit.png")></a>
             <a asp-action="Create"><img src=@("/images/page_new.png")></a>

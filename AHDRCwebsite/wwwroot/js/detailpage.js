@@ -25,9 +25,10 @@ window.onload = function matchString() {
 }
 $(document).ready(function () {
     $('#custCarousel').on('slid.bs.carousel', function () {
-        var activeItem = $('.carousel-item.active');
-        var artworkImageId = activeItem.find('.delete-link').data('artworkimageid');
-        console.log('Active ArtworkImageId:', artworkImageId);
+        var activeItem = document.querySelector('.carousel-item.active a');
+        var artworkImageId = activeItem.getAttribute('data-artworkimageid');
+        var deleteLink = document.getElementById('deleteLink');
+        deleteLink.href = "/ArtworkImages/Delete?artworkimageid=" + artworkImageId;
     });
 });
 
