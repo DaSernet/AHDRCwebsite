@@ -862,16 +862,36 @@
                         </tr>
                     }
                     @if (Model.Ispublic != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Ispublic)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Ispublic)
-                            </td>
-                        </tr>
-                    }
+                        {
+                            if (Model.Ispublic == "Private Collection")
+                            {
+                                if (User.IsInRole("Administrator"))
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => Model.Ispublic)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(Model.Ispublic)
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => Model.Ispublic)
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Model.Ispublic)
+                                    </td>
+
+                                </tr>
+                            }
+                        }
                     @if (Model.Inventory != null)
                     {
                         <tr>
@@ -1213,17 +1233,37 @@
                             </tr>
                         }
                         
-                    @if (Model.Ispublic != null)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Ispublic)
-                            </td>
-                            <td>
-                                @Html.Raw(Model.Ispublic)
-                            </td>
-                        </tr>
-                    }
+                        @if (Model.Ispublic != null)
+                        {
+                            if (Model.Ispublic == "Private Collection")
+                            {
+                                if (User.IsInRole("Administrator"))
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => Model.Ispublic)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(Model.Ispublic)
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayNameFor(model => Model.Ispublic)
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Model.Ispublic)
+                                    </td>
+
+                                </tr>
+                            }
+                        }
                         @if (Model.Provenance != null)
                         {
                             <tr>

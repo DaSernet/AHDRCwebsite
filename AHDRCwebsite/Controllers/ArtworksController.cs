@@ -61,10 +61,10 @@ namespace AHDRCwebsite.Controllers
                                       select x.Category;*/
 
             //confidentials v2
-            if (!User.IsInRole("Administrator"))
-            {
-                publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(b => b.Ispublic == "false"));
-            }
+            //if (!User.IsInRole("Administrator"))
+            //{
+            //    publicArtworkList = publicArtworkList.Except(publicArtworkList.Where(b => b.Ispublic == "false"));
+            //}
 
             //not logged in v2
             if (!User.Identity.IsAuthenticated)
