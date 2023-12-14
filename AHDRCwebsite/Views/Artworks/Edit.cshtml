@@ -90,7 +90,7 @@
         {
 
             <a asp-controller="ArtworkImages" asp-action="Create" asp-route-artworkid="@Model.ArtworkId"><img src=@("/images/pic_add.png")></a>
-            if(Model.ArtworkImage.Count > 0)
+            if (Model.ArtworkImage.Count > 0)
             {
 
 
@@ -364,7 +364,8 @@
                                         @Html.DisplayNameFor(model => model.Country)
                                     </td>
                                     <td>
-                                        <select asp-for="Country" class="form-control">
+                                        <input asp-for="Country" list="countryList" class="form-control" />
+                                        <datalist id="countryList">
                                             <option>Afghanistan</option>
                                             <option>Albania</option>
                                             <option>Algeria</option>
@@ -561,7 +562,7 @@
                                             <option>Yemen</option>
                                             <option>Zambia</option>
                                             <option>Zimbabwe</option>
-                                        </select>
+                                        </datalist>
                                         <span asp-validation-for="Country" class="text-danger"></span>
                                     </td>
                                 </tr>
@@ -630,7 +631,8 @@
                                         @Html.DisplayNameFor(model => model.Country)
                                     </td>
                                     <td>
-                                        <select asp-for="Country" class="form-control">
+                                        <input asp-for="Country" list="countryList" class="form-control" />
+                                        <datalist id="countryList">
                                             <option>Afghanistan</option>
                                             <option>Albania</option>
                                             <option>Algeria</option>
@@ -827,7 +829,7 @@
                                             <option>Yemen</option>
                                             <option>Zambia</option>
                                             <option>Zimbabwe</option>
-                                        </select>
+                                        </datalist>
                                         <span asp-validation-for="Country" class="text-danger"></span>
                                     </td>
                                 </tr>
@@ -961,7 +963,8 @@
                                         @Html.DisplayNameFor(model => model.Country)
                                     </td>
                                     <td>
-                                        <select asp-for="Country" class="form-control">
+                                        <input asp-for="Country" list="countryList" class="form-control" />
+                                        <datalist id="countryList">
                                             <option>Afghanistan</option>
                                             <option>Albania</option>
                                             <option>Algeria</option>
@@ -1158,7 +1161,7 @@
                                             <option>Yemen</option>
                                             <option>Zambia</option>
                                             <option>Zimbabwe</option>
-                                        </select>
+                                        </datalist>
                                         <span asp-validation-for="Country" class="text-danger"></span>
                                     </td>
                                 </tr>
@@ -1327,7 +1330,8 @@
                                         @Html.DisplayNameFor(model => model.Country)
                                     </td>
                                     <td>
-                                        <select asp-for="Country" class="form-control">
+                                        <input asp-for="Country" list="countryList" class="form-control" />
+                                        <datalist id="countryList">
                                             <option>Afghanistan</option>
                                             <option>Albania</option>
                                             <option>Algeria</option>
@@ -1524,7 +1528,7 @@
                                             <option>Yemen</option>
                                             <option>Zambia</option>
                                             <option>Zimbabwe</option>
-                                        </select>
+                                        </datalist>
                                         <span asp-validation-for="Country" class="text-danger"></span>
                                     </td>
                                 </tr>

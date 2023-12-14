@@ -36,10 +36,23 @@ Structuralfeatures
 Tms (Mag weg)
 Web (Mag weg)
 Yaleid (Mag weg)
-Groups(mag weg?)
-Unit Geen idee
-Multiline Geen idee
-Reacttmp Geen idee
+Groups
+Unit (mag weg)
+Multiline
+Reacttmp
+_create_date
+publication
+type
+people (mag weg)
+coveridforimages
+allow_photo_whoswho
+medcoinfo
+additional_information (mag weg)
+additionalinformation
+legend
+town
+summary
+descr
 
 
 Additional collumns since last migration :)
