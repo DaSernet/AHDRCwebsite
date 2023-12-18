@@ -132,6 +132,19 @@
                             <input asp-for="Identifier" class="form-control" />
                         </td>
                     </tr>
+                    </div>
+                <div>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.AvailableForPublic)
+                        </td>
+                        <td>
+                            <select asp-for="AvailableForPublic" class="form-control">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </td>
+                    </tr>
                 </div>
                 <h1>@Model.IdentifierNoCategory</h1>
 

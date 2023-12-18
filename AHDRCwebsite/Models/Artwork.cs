@@ -7,6 +7,10 @@ namespace AHDRCwebsite.Models
     {
         public int ArtworkId { get; set; }
 
+        [Display(Name = "Confidential Artwork")]
+
+        public bool AvailableForPublic { get; set; }
+
         [Display(Name = "Acquired from")]
         public string Acquiredfrom { get; set; }
 
