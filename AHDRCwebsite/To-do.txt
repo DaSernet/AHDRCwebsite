@@ -23,6 +23,14 @@ FROM [AHDRC].[dbo].[Artworks]
 where [Category] IS NULL
 
 
+
+
+
+
+//Objectname (collections) heeft een dropdown met 2 keuzes, maar deze was vroeger manueel getypt en komt dus niet noodzakelijk overeen met de keuzes in de dropdown.
+//dit kan issues geven bij het editen van een object.
+
+
 Drop tables:
 Needbetter (object < Information Photo)
 Objectgender (Object < What is it?)

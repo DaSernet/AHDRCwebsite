@@ -210,7 +210,10 @@
                                             @Html.DisplayNameFor(model => model.Objectname)
                                         </td>
                                         <td>
-                                            @Html.Raw(Model.Objectname)
+                                            <select asp-for="Objectname" class="form-control">
+                                                <option value="Interior photo">Interior photo</option>
+                                                <option value="Exhibition photo">Exhibition photo</option>
+                                            </select>
                                         </td>
                                     </tr>
                                 }
@@ -296,14 +299,6 @@
                     <div id="notesInfo">
                         <table>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <p>Missing</p>
-                                    </td>
-                                    <td>
-                                        <p>Keuze tussen: Exhibition photo OF Interior photo</p>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td>
                                         <p>Missing</p>
