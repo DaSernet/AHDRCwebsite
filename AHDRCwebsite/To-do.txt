@@ -30,6 +30,9 @@ where [Category] IS NULL
 //Objectname (collections) heeft een dropdown met 2 keuzes, maar deze was vroeger manueel getypt en komt dus niet noodzakelijk overeen met de keuzes in de dropdown.
 //dit kan issues geven bij het editen van een object.
 
+//Er is momenteel geen conversie op bestaande "verborgen" objecten. Deze zijn momenteel nog allemaal zichtbaar.
+//Bij nieuwe objecten is dit wel in orde.
+
 
 Drop tables:
 Needbetter (object < Information Photo)
