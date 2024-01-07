@@ -12,7 +12,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
 
 namespace AHDRCwebsite.Controllers
 {
@@ -324,64 +323,9 @@ s.Medwoodinfo.Contains(test));
 
         // GET: Artworks/Create
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreateAsync(int? artworkid)
+        public IActionResult Create()
         {
-            if (artworkid == null || _context.Artworks == null)
-            {
-                return View();
-            }
-            //var artwork = await _context.Artworks.FindAsync(id);
-            var artwork = await _context.Artworks.FirstOrDefaultAsync(m => m.ArtworkId == artworkid);
-            if (artwork == null)
-            {
-                return NotFound();
-            }
-
-            var newArtwork = new Artwork
-            {
-
-            };
-
-            switch(artwork.Category)
-            {
-                //au: auction sectie
-                //bk: publicatie sectie
-                //ph: field photo(terrein foto's) sectie
-                //xp: exhibition sectie
-                //co: collection sectie
-                //pc: postcard sectie
-
-
-                case "au":
-                    
-                    break;
-                case "bk":
-
-                    break;
-                case "ph":
-
-                    break;
-                case "xp":
-
-                    break;
-                case "co":
-
-                    break;
-                case "pc":
-
-                    break;
-                case "ao":
-
-                    break;
-
-                default:
-                    
-                    break;
-            }
-          
-
-            //Filter
-            return View(artwork);
+            return View();
         }
 
         // POST: Artworks/Create
