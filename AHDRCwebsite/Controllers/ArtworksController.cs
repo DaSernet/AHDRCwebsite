@@ -322,10 +322,111 @@ s.Medwoodinfo.Contains(test));
         }
 
         // GET: Artworks/Create
-        [Authorize(Roles = "Administrator")]
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync(int? artworkid)
         {
-            return View();
+            if (artworkid == null || _context.Artworks == null)
+            {
+                return View();
+            }
+            //var artwork = await _context.Artworks.FindAsync(id);
+            var artwork = await _context.Artworks.FirstOrDefaultAsync(m => m.ArtworkId == artworkid);
+            if (artwork == null)
+            {
+                return NotFound();
+            }
+
+            var newArtwork = new Artwork
+            {
+
+            };
+
+            switch (artwork.Category)
+            {
+                //au: auction sectie
+                //bk: publicatie sectie
+                //ph: field photo(terrein foto's) sectie
+                //xp: exhibition sectie
+                //co: collection sectie
+                //pc: postcard sectie
+
+                case "xp":
+
+                    break;
+                case "pc":
+
+                    break;
+                case "au":
+                    newArtwork.Title = artwork.Title;
+                    newArtwork.Date = artwork.Date;
+                    newArtwork.Country = artwork.Country;
+                    newArtwork.City = artwork.City;
+                    newArtwork.Location = artwork.Location;
+                    newArtwork.Catalogue = artwork.Catalogue;
+                    newArtwork.Commercial = artwork.Commercial;
+                    break;
+                case "bk":
+                    newArtwork.Title = artwork.Title;
+                    newArtwork.Author = artwork.Author;
+                    newArtwork.Publisher = artwork.Publisher;
+                    newArtwork.Year = artwork.Year;
+                    newArtwork.Country = artwork.Country;
+                    newArtwork.Categoryofobject = artwork.Categoryofobject;
+                    break;
+                case "ph":
+                    newArtwork.Clan = artwork.Clan;
+                    newArtwork.Objectname = artwork.Objectname;
+                    newArtwork.Country = artwork.Country;
+                    newArtwork.Collection = artwork.Collection;
+                    newArtwork.Publication = artwork.Publication;
+                    newArtwork.Photographer = artwork.Photographer;
+                    newArtwork.Photoprov = artwork.Photoprov;
+                    newArtwork.Photocopy = artwork.Photocopy;
+                    newArtwork.Photoinvnr = artwork.Photoinvnr;
+                    break;
+                case "co":
+                    newArtwork.Clan = artwork.Clan;
+                    newArtwork.Objectname = artwork.Objectname;
+                    newArtwork.Country = artwork.Country;
+                    newArtwork.Collection = artwork.Collection;
+                    newArtwork.Publication = artwork.Publication;
+                    newArtwork.Photographer = artwork.Photographer;
+                    newArtwork.Photoprov = artwork.Photoprov;
+                    newArtwork.Photocopy = artwork.Photocopy;
+                    newArtwork.Photoinvnr = artwork.Photoinvnr;
+                    break;
+
+                case "ao":
+                    newArtwork.Clan = artwork.Clan;
+                    newArtwork.Country = artwork.Country;
+                    newArtwork.Objectname = artwork.Objectname;
+                    newArtwork.Medium = artwork.Medium;
+                    newArtwork.Collection = artwork.Collection;
+                    newArtwork.Photographer = artwork.Photographer;
+                    newArtwork.Photoprov = artwork.Photoprov;
+                    newArtwork.Photocopy = artwork.Photocopy;
+                    newArtwork.Photoinvnr = artwork.Photoinvnr;
+                    newArtwork.Provenance = artwork.Provenance;
+                    newArtwork.Publication = artwork.Publication;
+                    newArtwork.Exhibition = artwork.Exhibition;
+                    newArtwork.Auctions = artwork.Auctions;
+                    break;
+                case "wh":
+                    newArtwork.First_Name = artwork.First_Name;
+                    newArtwork.Last_name = artwork.Last_name;
+                    newArtwork.Born = artwork.Born;
+                    newArtwork.Dead = artwork.Dead;
+                    newArtwork.Categoryofobject = artwork.Categoryofobject;
+                    newArtwork.Biography = artwork.Biography;
+                    break;
+
+                default:
+
+                    break;
+            }
+
+
+            //Filter
+            return View(artwork);
         }
 
         // POST: Artworks/Create
