@@ -423,10 +423,10 @@ s.Medwoodinfo.Contains(test));
 
                     break;
             }
-
+            newArtwork.Category = artwork.Category;
 
             //Filter
-            return View(artwork);
+            return View(newArtwork);
         }
 
         // POST: Artworks/Create
