@@ -33,6 +33,7 @@ $(document).ready(function () {
 });
 
 function addHyperLinks(item, item2) {
+    debugger;
     return "<a href='../Artworks?SearchString=" + item2 + "&selectedCategory=ao&selectedCategory=ph&selectedCategory=wh&selectedCategory=bk&selectedCategory=xp&selectedCategory=co&selectedCategory=au'>" + item + "</a>"
 }
 
@@ -92,31 +93,55 @@ var urlParams = new URLSearchParams(window.location.search);
 var currentIndex = parseInt(urlParams.get("artworkid"));
 
 
+
 if (artworkIds && currentIndex && artworkIds.length > 0) {
     // Find the index of the current artwork ID
     var currentArtworkIndex = currentIndex;
 
+    var foundIndex = -1;
 
-    if (currentArtworkIndex !== -1 || currentArtworkIndex !== 0) {
-        // Get the previous artwork ID
-        var prevArtworkIndex = currentArtworkIndex - 1;
-        var prevArtworkId = prevArtworkIndex >= 0 ? artworkIds[prevArtworkIndex - 1] : null;
+    // Loop through the artworkIds array to find the artworkNumber
+    for (var i = 0; i < artworkIds.length; i++) {
+        console.log(artworkIds[i]);
+        if (artworkIds[i] == currentArtworkIndex) {
+            foundIndex = i; // Store the index when found
+            console.log(foundIndex);
+            break; // Exit the loop since we found the value
+        }
+    }
 
+    console.log()
+    if (foundIndex !== -1 ) {
+        let prevArtworkIndex = -1;
+        var prevArtworkId = null;
+        if (foundIndex != 0) {
+            console.log('setting prev info');
+            prevArtworkIndex = foundIndex - 1;
+            prevArtworkId = artworkIds[prevArtworkIndex];
+        }
+
+
+        let nextArtworkIndex = -1;
+        var nextArtworkId = null;
+        if (foundIndex != artworkIds.length) {
+            nextArtworkIndex = foundIndex + 1;
+            nextArtworkId = artworkIds[nextArtworkIndex];
+        }
 
         // Get the next artwork ID
-        var nextArtworkIndex = currentArtworkIndex + 1;
-        var nextArtworkId = nextArtworkIndex < artworkIds.length ? artworkIds[nextArtworkIndex - 1] : null;
-
+        //var nextArtworkIndex = foundIndex + 1;
+        //var nextArtworkId = nextArtworkIndex < artworkIds.length ? artworkIds[nextArtworkIndex - 1] : null;
     }
+
+    
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     // Update the href attributes of the previous and next links
     var prevLink = document.getElementById("prevLink");
     var nextLink = document.getElementById("nextLink");
-
     if (prevLink) {
-        if (prevArtworkId !== currentIndex && prevArtworkId !== undefined) {
+        if (prevArtworkId !== currentIndex && prevArtworkId !== undefined && prevArtworkId !== null) {
             var prevUrlParams = getURLParams(prevLink.href);
             prevUrlParams.set("artworkid", prevArtworkId);
             prevLink.href = "/Artworks/Details?" + serializeURLParams(prevUrlParams);
@@ -131,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (nextLink) {
-        if (nextArtworkId !== currentIndex && nextArtworkId !== undefined) {
+        if (nextArtworkId !== currentIndex && nextArtworkId !== undefined && nextArtworkId !== null) {
             var nextUrlParams = getURLParams(nextLink.href);
             nextUrlParams.set("artworkid", nextArtworkId);
             nextLink.href = "/Artworks/Details?" + serializeURLParams(nextUrlParams);
