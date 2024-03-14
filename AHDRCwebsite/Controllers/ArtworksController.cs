@@ -263,13 +263,18 @@ namespace AHDRCwebsite.Controllers
                     break;
                 // Add more cases for other sorting options
                 default:
-                    artworksQuery = artworksQuery.OrderBy(a => a.ArtworkId).Take(1000);
+                    artworksQuery = artworksQuery.OrderBy(a => a.ArtworkId);
                     break;
             }
 
             // Paginate the results
             int pageSize = 100; // Change the page size as needed
 
+
+            if (!User.IsInRole("Administrator"))
+            {
+                artworksQuery = artworksQuery.Take(1000);
+            }
 
             var totalArtworks = await artworksQuery.CountAsync();
             artworkQueryString = String.Join(",", artworksQuery.OrderBy(s => s.ArtworkId).Select(a => a.ArtworkId).AsEnumerable());
@@ -480,10 +485,6 @@ s.Medwoodinfo.Contains(test));
             }
 
             if (!User.IsInRole("Administrator"))
-            {
-                filteredArtworks = filteredArtworks.Take(1000);
-            }
-            if (User.IsInRole("Administrator"))
             {
                 filteredArtworks = filteredArtworks.Take(1000);
             }
